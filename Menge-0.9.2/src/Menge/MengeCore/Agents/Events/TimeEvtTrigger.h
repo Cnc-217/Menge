@@ -136,7 +136,7 @@ namespace Menge {
 		 *
 		 *	@returns	True if the condition has been met, false otherwise.
 		 */
-		virtual bool testCondition(Agents::SimulatorInterface * sim, BFSM::FSM * fsm);
+		virtual bool testCondition();
 
 		/*!
 		 *	@brief		The last timestamp of pause.

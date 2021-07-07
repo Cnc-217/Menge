@@ -91,7 +91,7 @@ namespace Menge {
 		/*!
 		 *	@brief		Evaluates the event (and triggers handlers as necessary).
 		 */
-		void evaluate(Agents::SimulatorInterface * sim, BFSM::FSM * fsm);
+		void evaluate();
 
 		friend Event * parseEvent( TiXmlElement * node, const std::string & specFldr );
 		friend class EventSystem;

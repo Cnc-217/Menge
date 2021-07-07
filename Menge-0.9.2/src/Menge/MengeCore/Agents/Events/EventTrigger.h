@@ -60,7 +60,7 @@ namespace Menge {
 		 *
 		 *	@returns	True if the condition has been met, false otherwise.
 		 */
-		bool conditionMet(Agents::SimulatorInterface * sim, BFSM::FSM * fsm);
+		bool conditionMet();
 
 		/*!
 		 *	@brief		Informs the trigger that the associated event effects
@@ -85,7 +85,7 @@ namespace Menge {
 		 *
 		 *	@returns		True if the condition has been met, false otherwise.
 		 */
-		virtual bool testCondition(Agents::SimulatorInterface * sim, BFSM::FSM * fsm) = 0;
+		virtual bool testCondition() = 0;
 
 		/*!
 		 *	@brief		An optional callback for when the trigger fired() method is

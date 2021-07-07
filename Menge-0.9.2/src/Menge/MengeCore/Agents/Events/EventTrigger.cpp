@@ -45,10 +45,10 @@ namespace Menge {
 	//					Implementation of EventTrigger
 	/////////////////////////////////////////////////////////////////////
 
-	bool EventTrigger::conditionMet(Agents::SimulatorInterface * sim, BFSM::FSM * fsm) {
+	bool EventTrigger::conditionMet() {
 		float elapsed = SIM_TIME - _lastFire;
 		if ( elapsed > _firePeriod ) {
-			return testCondition(sim, fsm);
+			return testCondition();
 		}
 		return false;
 	}	

@@ -77,9 +77,9 @@ namespace Menge {
 
 	/////////////////////////////////////////////////////////////////////
 
-	void EventSystem::evaluateEvents(Agents::SimulatorInterface * sim, BFSM::FSM * fsm) {
+	void EventSystem::evaluateEvents() {
 		for ( size_t i = 0; i < _events.size(); ++i ) {
-			_events[i]->evaluate(sim, fsm);
+			_events[i]->evaluate();
 		}
 	}
 

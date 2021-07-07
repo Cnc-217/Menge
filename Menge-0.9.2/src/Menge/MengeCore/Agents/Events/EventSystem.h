@@ -98,7 +98,7 @@ namespace Menge {
 		/*!
 		 *	@brief		Evaluates the registered events
 		 */
-		void evaluateEvents(Agents::SimulatorInterface * sim, BFSM::FSM * fsm);
+		void evaluateEvents();
 
 		/*!
 		 *	@brief		Finalize the event system.

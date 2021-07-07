@@ -262,7 +262,7 @@ namespace Menge {
 			// NOTE: This is a cast from size_t to int to be compatible with older implementations
 			//		of openmp which require signed integers as loop variables
 			SIM_TIME = this->_sim->getGlobalTime();
-			EVENT_SYSTEM->evaluateEvents(this->_sim, this);
+			EVENT_SYSTEM->evaluateEvents();
 			int agtCount = (int)this->_sim->getNumAgents();
 			size_t exceptionCount = 0;
 			#pragma omp parallel for reduction(+:exceptionCount)

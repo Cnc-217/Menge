@@ -124,10 +124,10 @@ namespace Menge {
 
 	/////////////////////////////////////////////////////////////////////
 
-	void Event::evaluate(Agents::SimulatorInterface * sim, BFSM::FSM * fsm) {
+	void Event::evaluate() {
 		assert( _responses.size() > 0 && "Evaluating an event with no responses!" );
 		assert( _trigger != 0x0 && "Trying to evaluate an event with no trigger" );
-		if ( _trigger->conditionMet(sim, fsm) ) {
+		if ( _trigger->conditionMet() ) {
 			_trigger->fired();
 			for ( size_t i = 0; i < _responses.size(); ++i ) {
 				_responses[i]->apply();
