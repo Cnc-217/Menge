@@ -1,0 +1,88 @@
+场景建模 townS
+1.无障碍物，30个goals
+2.3种类型的游客（A B C），分散到全图中（需要设置最大仿真时间，或许可以考虑没有人出去，只进行10次的进店仿真，然后结束）
+
+任务：
+1.搭建需要的人群仿真环境
+2.设计优惠券入口，动作到概率的转化方案(设计人群的概率转移矩阵，优惠券对人行为影响的方案，)
+3.仿真结果处理，输出unity/商品推荐/强化学习需要的数据
+
+
+行为建模 townB
+BFSM有限状态机：
+	GoalSet：(第1次进店的三种选择类型的goalset)
+		1AE goal_id=0-9:A类游客的10次进饭店，对30家店铺的概率选择（除饭店之外的概率为0）E
+		1AP goal_id=0-9:A类游客的10次进玩乐，对30家店铺的概率选择（除玩乐之外的概率为0）P
+		1AB goal_id=0-9:A类游客的10次进购物，对30家店铺的概率选择（除购物之外的概率为0）B
+
+		1BE goal_id=1-10:B类游客的10次进饭店，对30家店铺的概率选择（除饭店之外的概率为0）
+		1BP goal_id=1-10:B类游客的10次进玩乐，对30家店铺的概率选择（除玩乐之外的概率为0）
+		1BB goal_id=1-10:B类游客的10次进购物，对30家店铺的概率选择（除购物之外的概率为0）
+
+		1CE goal_id=1-10:C类游客的10次进饭店，对30家店铺的概率选择（除饭店之外的概率为0）
+		1CP goal_id=1-10:C类游客的10次进玩乐，对30家店铺的概率选择（除玩乐之外的概率为0）
+		1CB goal_id=1-10:C类游客的10次进购物，对30家店铺的概率选择（除购物之外的概率为0）
+
+
+	State:
+		name=A_Choose1/A_eat1（对应goalset1AE）,A_play1（对应goalset1AP）,A_buy1（对应goalset1AB）,A_leave1
+		name=A_Choose2/A_eat1（对应goalset2AE）,A_play1（对应goalset2AP）,A_buy1（对应goalset2AB）,A_leave2
+		......
+		name=A_Choose10/A_eat10（对应goalset10AE）,A_play1（对应goalset10AP）,A_buy1（对应goalset10AB）,A_leave10
+
+		name=B_Choose1/B_eat1（对应goalset1BE）,B_play1（对应goalset1BP）,B_buy1（对应goalset1BB）,B_leave1
+		name=B_Choose2/B_eat1（对应goalset2BE）,B_play1（对应goalset2BP）,B_buy1（对应goalset2BB）,B_leave2
+		......
+		name=B_Choose10/B_eat10（对应goalset10BE）,B_play1（对应goalset10BP）,B_buy1（对应goalset10BB）,B_leave10
+
+		name=C_Choose1/C_eat1（对应goalset1CE）,C_play1（对应goalset1CP）,C_buy1（对应goalset1CB）,C_leave1
+		name=C_Choose2/C_eat1（对应goalset2CE）,C_play1（对应goalset2CP）,C_buy1（对应goalset2CB）,C_leave2
+		......
+		name=C_Choose10/C_eat10（对应goalset10CE）,C_play1（对应goalset10CP）,C_buy1（对应goalset10CB）,C_leave10
+
+		name=toExit 
+		name=out
+
+
+	Transition：
+		from A_Choose1 to A_eat1,A_play1,A_buy1,A_leave1 / from A_eat1 to A_Choose2,form A_play1 to A_Choose2,from A_buy1 to A_Choose2（停留时间不同)
+		from A_Choose2 to A_eat2,A_play2,A_buy2,A_leave2 / from A_eat2 to A_Choose3,form A_play2 to A_Choose3,from A_buy2 to A_Choose3
+		...
+		from A_Choose10 to A_eat10,A_play10,A_buy10,A_leave10 / from A_eat10 tA_play2 A_buy2 to ToExit/ from ToExit to Stop 
+
+
+		form B_walk1 to B_stay1 / form B_stay1 to B_walk2
+		form B_walk2 to B_stay2 / form B_stay2 to B_walk3
+		...
+		form B_walk9 to B_stay10 / form B_stay10 to Stop
+
+		form C_walk1 to C_stay1 / form C_stay1 to C_walk2
+		form C_walk2 to C_stay2 / form C_stay2 to C_walk3
+		...
+		form C_walk9 to C_stay10 / form C_stay10 to Stop
+
+
+
+地图：6*5
+中心：
+x:-90  118 矩形横向边长为20 间距（中心）为42 判决距离（离中心）为15
+判断点的x坐标：[-69, -27, 15, 57, 99]
+
+y:-107 49 纵向边长为11 间距（中心）为39 判决距离为15
+判断点的y坐标：[-87.5, -48.5, -9.5, 29.5]
+
+店铺编号
+0P 1E 2B 3P 4E 5P
+6E 7B 8P 9B 10B 11P 
+12E 13B 14P 15E 16P 17B 
+18E 19E 20B 21P 22B 23B 
+24E 25P 26B 27P 28E 29E
+
+利润设置：吃100 玩100 购100
+
+
+xml文件中的顺序：
+action中输入的shopnumber的1-10对应的店铺号：
+E 1 28 24 4 12 6 15 19 18 29 
+P 0 11 3 27 14 25 5 16 8 21
+B 9 20 7 22 10 23 17 2 26 13

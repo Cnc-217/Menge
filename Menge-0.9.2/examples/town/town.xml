@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<Project 
+	scene="townS.xml" 
+	behavior="updated_townB.xml" 
+	view="townV.xml" 
+	model="orca"
+	dumpPath="images"
+/>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<BFSM>
+   <GoalSet id="0">
+      <Goal capacity="1000000" id="0" max_x="-8040.98" max_y="-599.11" min_x="-8914.84" min_y="-2003.52" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="1" max_x="-3732.23" max_y="-4243.28" min_x="-5058.62" min_y="-4929.88" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="2" max_x="-3568.93" max_y="3397.65" min_x="-4957.74" min_y="2742.26" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="3" max_x="4333.43" max_y="3516.77" min_x="2897.81" min_y="2830.17" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="4" max_x="-1076.01" max_y="-4504.77" min_x="-2449.22" min_y="-5253.79" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="5" max_x="8349.83" max_y="3177.99" min_x="6742.56" min_y="2491.39" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="6" max_x="12274.19" max_y="2992.63" min_x="10635.71" min_y="2368.45" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="7" max_x="3985.87" max_y="-4707.79" min_x="2556.91" min_y="-5372.17" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="8" max_x="8356.99" max_y="-4691.04" min_x="6340.04" min_y="-5357.71" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="9" max_x="12061.14" max_y="-4670.90" min_x="10719.14" min_y="-5373.10" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="10" max_x="19406.72" max_y="41.12" min_x="18688.91" min_y="-1737.80" type="AABB" weight="1.00"/>
+    </GoalSet>
+
+  <State name="Evacuation" final="0" >
+    <!-- <GoalSelector type="random" goal_set="0" /> -->
+    <!-- <GoalSelector type="farthest" goal_set="0" /> -->
+    <GoalSelector type="nearest" goal_set="0" />
+    <!-- <GoalSelector type="algorithm" goal_set="0" /> -->
+    <!-- <GoalSelector type="explicit" goal_set="0" goal="2" /> -->
+    <!-- <GoalSelector type="weighted" goal_set="0" />   -->
+    <VelComponent type="road_map" file_name="graph.txt" />
+    <!-- <VelComponent type="road_map_plus" file_name="graph.txt" /> -->
+    <!-- <VelComponent type="goal" /> -->
+    <!-- <VelComponent type="nav_mesh" file_name="field.txt" /> -->
+    <Action type="distance_stress" exit_behavior="cool down"
+      inner_dist="c" inner_value="100" 
+      outer_dist="c" outer_value="120"
+      fall_off="linear"
+      shape_number="2" max_x1="-3762" min_x1="-4487" max_y1="2054" min_y1="1605"
+      max_x2="3700" min_x2="3363" max_y2="2178" min_y2="1658"
+      />
+  </State>
+
+  <State name="Stop" final="1" >
+    <GoalSelector type="identity" />
+    <VelComponent type="zero" />
+  </State>
+
+  <Transition from="Evacuation" to="Stop" >
+    <Condition type="goal_reached" distance="0.05" />
+  </Transition>
+  
+</BFSM>

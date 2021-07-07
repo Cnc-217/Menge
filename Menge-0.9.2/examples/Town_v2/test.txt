@@ -1,0 +1,72 @@
+[signin] 0 0 -20 0 -5
+[arrive] 0 45 -20 0 10
+[leave] 0 47 -20 0 10
+[signout] 0 50 -20 0 -5
+
+[signin] 1 0 -20 0 -5
+[arrive] 1 26 3 0 15
+[leave] 1 28 3 0 15
+[arrive] 1 39 -20 0 10
+[leave] 1 41 -20 0 10
+[signout] 1 50 -20 0 -5
+
+[signin] 2 0 -20 0 -5
+[arrive] 2 24 -20 0 10
+[leave] 2 26 -20 0 10
+[arrive] 2 31 -13 0 38
+[leave] 2 33 -13 0 38
+[arrive] 2 37 -13 0 38
+[leave] 2 39 -13 0 38
+[signout] 2 50 -20 0 -5
+
+[signin] 3 0 -20 0 -5
+[arrive] 3 18 -13 0 38
+[leave] 3 20 -13 0 38
+[arrive] 3 31 -20 0 10
+[leave] 3 33 -20 0 10
+[signout] 3 50 -20 0 -5
+
+[signin] 4 0 -20 0 -5
+[arrive] 4 24 -20 0 10
+[leave] 4 26 -20 0 10
+[arrive] 4 31 -13 0 38
+[leave] 4 33 -13 0 38
+[arrive] 4 43 -20 0 10
+[leave] 4 45 -20 0 10
+[signout] 4 50 -20 0 -5
+
+[signin] 5 0 -20 0 -5
+[signout] 5 50 -20 0 -5
+
+[signin] 6 0 -20 0 -5
+[arrive] 6 24 -20 0 10
+[leave] 6 26 -20 0 10
+[arrive] 6 31 -13 0 38
+[leave] 6 33 -13 0 38
+[arrive] 6 43 -20 0 10
+[leave] 6 45 -20 0 10
+[signout] 6 50 -20 0 -5
+
+[signin] 7 0 -20 0 -5
+[arrive] 7 18 -13 0 38
+[leave] 7 20 -13 0 38
+[arrive] 7 31 -20 0 10
+[leave] 7 33 -20 0 10
+[arrive] 7 43 -20 0 10
+[leave] 7 45 -20 0 10
+[signout] 7 50 -20 0 -5
+
+[signin] 8 0 -20 0 -5
+[arrive] 8 24 -20 0 10
+[leave] 8 26 -20 0 10
+[arrive] 8 37 -20 0 10
+[leave] 8 39 -20 0 10
+[signout] 8 50 -20 0 -5
+
+[signin] 9 0 -20 0 -5
+[arrive] 9 32 -20 0 10
+[leave] 9 34 -20 0 10
+[arrive] 9 45 -20 0 10
+[leave] 9 47 -20 0 10
+[signout] 9 50 -20 0 -5
+

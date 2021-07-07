@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<BFSM>
+   <GoalSet id="0">
+        <Goal capacity="1000000" id="0" max_x="-1022.36" max_y="2772.66" min_x="-1476.99" min_y="2512.87" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="1" max_x="2127.57" max_y="1581.97" min_x="1727.06" min_y="1365.48" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="2" max_x="2636.32" max_y="975.79" min_x="2170.86" min_y="694.36" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="3" max_x="-1866.67" max_y="586.11" min_x="-2180.58" min_y="326.32" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="4" max_x="-611.03" max_y="12.41" min_x="-903.29" min_y="-312.32" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="5" max_x="-3360.45" max_y="1679.39" min_x="-3587.77" min_y="1441.25" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="6" max_x="893.57" max_y="-734.48" min_x="579.66" min_y="-972.61" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="7" max_x="1878.60" max_y="-1578.79" min_x="1564.69" min_y="-1838.57" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="8" max_x="3404.86" max_y="326.32" min_x="3015.18" min_y="66.54" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="9" max_x="5450.69" max_y="-2055.06" min_x="5147.60" min_y="-2304.03" type="AABB" weight="1.00"/>
+    </GoalSet>
+
+  <State name="Evacuation" final="0" >
+    <GoalSelector type="random" goal_set="0" />
+    <!-- <GoalSelector type="farthest" goal_set="0" /> -->
+    <!-- <GoalSelector type="nearest" goal_set="0" /> -->
+    <!-- <GoalSelector type="explicit" goal_set="0" goal="5" /> -->
+    <!-- <GoalSelector type="weighted" goal_set="0" />   -->
+    <VelComponent type="road_map" file_name="graph.txt" />
+    <!-- <VelComponent type="goal" /> -->
+    <!-- <VelComponent type="nav_mesh" file_name="field.txt" /> -->
+  </State>
+  <State name="Stop" final="1" >
+    <GoalSelector type="identity" />
+    <VelComponent type="goal" />
+  </State>
+  
+
+  <Transition from="Evacuation" to="Stop" >
+    <Condition type="goal_reached" distance="0.05" />
+  </Transition>
+  
+
+</BFSM>

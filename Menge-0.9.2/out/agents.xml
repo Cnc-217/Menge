@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Experiment version="2.0" >
+
+	<AgentProfile name="group1" >
+		<Common max_angle_vel="360" class="1" max_neighbors="10" obstacleSet="1" neighbor_dist="5" r="0.23" pref_speed="1.34" max_speed="2" max_accel="5" />'.format(indent, self.radius)
+		<PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
+		<Helbing mass="80" />
+		<ORCA tau="3.0" tauObst="0.15" />
+	</AgentProfile>
+            
+	<AgentGroup>
+        <ProfileSelector type="const" name="group1" />
+		<StateSelector type="const" name="???" />
+		<Generator type="explicit" >
+        	<Agent p_x="-91.0267778238" p_y="-44.5816454866" />
+        	<Agent p_x="-82.3992023354" p_y="-49.1224746911" />
+        	<Agent p_x="-60.1491392335" p_y="-51.8469722137" />
+        	<Agent p_x="-31.0620767417" p_y="-17.7846639283" />
+        	<Agent p_x="-44.2799628505" p_y="-6.97002983933" />
+        	<Agent p_x="-125.990531523" p_y="1.84189423319" />
+        	<Agent p_x="19.4062156736" p_y="65.5280727573" />
+        	<Agent p_x="-118.38023346" p_y="-56.2366962448" />
+        	<Agent p_x="-69.5141090581" p_y="-12.9781598888" />
+        	<Agent p_x="-11.4355185802" p_y="37.4901325265" />
+		</Generator>
+	</AgentGroup>
+</Experiment>

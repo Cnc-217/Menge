@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 
+设定：
+	场景中有4个店铺
+	游客最多逛6次店，然后一定离开
+	
+--><BFSM>  
+	  <!-- group游客进入小镇-->  
+	  <GoalSet id="1">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.5599999999999999"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.5599999999999999"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.5599999999999999"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.5599999999999999"/>     
+	  </GoalSet>  
+	  <!-- 第2次进店-->  
+	  <GoalSet id="2">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.5599999999999999"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.5599999999999999"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.5599999999999999"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.5599999999999999"/>     
+	  </GoalSet>  
+	  <!-- 第3次进店-->  
+	  <GoalSet id="3">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.5599999999999999"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.5599999999999999"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.5599999999999999"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.5599999999999999"/>     
+	  </GoalSet>  
+	  <!-- 第4次进店-->  
+	  <GoalSet id="4">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.5599999999999999"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.5599999999999999"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.5599999999999999"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.5599999999999999"/>     
+	  </GoalSet>  
+	  <!-- 第5次进店-->  
+	  <GoalSet id="5">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.25"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.25"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.25"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.25"/>     
+	  </GoalSet>  
+	  <!-- 第6次进店-->  
+	  <GoalSet id="6">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.25"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.25"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.25"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.25"/>     
+	  </GoalSet>  
+
+	  <!-- group_shopping游客进入小镇-->  
+	  <GoalSet id="7">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.63"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.63"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.63"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.63"/>     
+	  </GoalSet>  
+	  <!-- 第2次进店-->  
+	  <GoalSet id="8">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.63"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.63"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.63"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.63"/>     
+	  </GoalSet>  
+	  <!-- 第3次进店-->  
+	  <GoalSet id="9">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.63"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.63"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.63"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.63"/>     
+	  </GoalSet>  
+	  <!-- 第4次进店-->  
+	  <GoalSet id="10">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.63"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.63"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.63"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.63"/>     
+	  </GoalSet>  
+	  <!-- 第5次进店-->  
+	  <GoalSet id="11">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.25"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.25"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.25"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.25"/>     
+	  </GoalSet>  
+	  <!-- 第6次进店-->  
+	  <GoalSet id="12">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.25"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.25"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.25"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.25"/>     
+	  </GoalSet>  
+
+	  <!-- group_sightseeing游客进入小镇-->  
+	  <GoalSet id="13">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.6400000000000001"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.6400000000000001"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.6400000000000001"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.6400000000000001"/>     
+	  </GoalSet>  
+	  <!-- 第2次进店-->  
+	  <GoalSet id="14">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.6400000000000001"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.6400000000000001"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.6400000000000001"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.6400000000000001"/>     
+	  </GoalSet>  
+	  <!-- 第3次进店-->  
+	  <GoalSet id="15">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.6400000000000001"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.6400000000000001"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.6400000000000001"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.6400000000000001"/>     
+	  </GoalSet>  
+	  <!-- 第4次进店-->  
+	  <GoalSet id="16">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.6400000000000001"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.6400000000000001"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.6400000000000001"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.6400000000000001"/>     
+	  </GoalSet>  
+	  <!-- 第5次进店-->  
+	  <GoalSet id="17">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.25"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.25"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.25"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.25"/>     
+	  </GoalSet>  
+	  <!-- 第6次进店-->  
+	  <GoalSet id="18">    
+		    <Goal id="0" max_x="-4" max_y="6" min_x="-6" min_y="5" type="AABB" weight="0.25"/>     
+		    <Goal id="1" max_x="-4" max_y="-5" min_x="-6" min_y="-6" type="AABB" weight="0.25"/>     
+		    <Goal id="2" max_x="6" max_y="6" min_x="4" min_y="5" type="AABB" weight="0.25"/>     
+		    <Goal id="3" max_x="6" max_y="-5" min_x="4" min_y="-6" type="AABB" weight="0.25"/>     
+	  </GoalSet>  
+
+	  <GoalSet id="100">    
+		    <Goal capacity="10000" id="0" max_x="25" max_y="2" min_x="13" min_y="-2" type="AABB"/>    
+	  </GoalSet>  
+
+
+
+
+
+
+	  <!-- 下面是游客状态-->  
+	  <!-- 普通游客状态-->  
+	  <State final="0" name="Walk1">    
+		    <GoalSelector goal_set="1" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Buy1">    
+			    <VelComponent type="zero"/>    
+			 
+		  </State>  
+	  <State final="0" name="NotBuy1">    
+			    <VelComponent type="zero"/>    
+			
+		  </State>  
+
+	  <State final="0" name="Walk2">    
+		    <GoalSelector goal_set="2" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Buy2">    
+			    <VelComponent type="zero"/>    
+		  </State>  
+	  <State final="0" name="NotBuy2">    
+			    <VelComponent type="zero"/>    
+		  </State>  
+
+	  <State final="0" name="Walk3">    
+		    <GoalSelector goal_set="3" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Buy3">    
+			    <VelComponent type="zero"/>    
+		  </State>  
+	  <State final="0" name="NotBuy3">    
+			    <VelComponent type="zero"/>    
+		  </State>  
+
+	  <State final="0" name="Walk4">    
+		    <GoalSelector goal_set="4" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Buy4">    
+			    <VelComponent type="zero"/>    
+		  </State>  
+	  <State final="0" name="NotBuy4">    
+			    <VelComponent type="zero"/>    
+		  </State>  
+
+	  <State final="0" name="Walk5">    
+		    <GoalSelector goal_set="5" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Buy5">    
+			    <VelComponent type="zero"/>    
+		  </State>  
+	  <State final="0" name="NotBuy5">    
+			    <VelComponent type="zero"/>    
+		  </State>  
+
+	  <State final="0" name="Walk6">    
+		    <GoalSelector goal_set="6" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Buy6">    
+			    <VelComponent type="zero"/>    
+		  </State>  
+	  <State final="0" name="NotBuy6">    
+			    <VelComponent type="zero"/>    
+		  </State>  
+
+	  <!-- shopping游客状态-->  
+	  <State final="0" name="Walk_shopping1">    
+		    <GoalSelector goal_set="7" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Walk_shopping_Buy1">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+	  <State final="0" name="Walk_shopping_Notbuy1">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+
+	  <State final="0" name="Walk_shopping2">    
+		    <GoalSelector goal_set="8" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Walk_shopping_Buy2">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+	  <State final="0" name="Walk_shopping_Notbuy2">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+
+	  <State final="0" name="Walk_shopping3">    
+		    <GoalSelector goal_set="9" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Walk_shopping_Buy3">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+	  <State final="0" name="Walk_shopping_Notbuy3">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+
+	  <State final="0" name="Walk_shopping4">    
+		    <GoalSelector goal_set="10" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Walk_shopping_Buy4">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+	  <State final="0" name="Walk_shopping_Notbuy4">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+
+	  <State final="0" name="Walk_shopping5">    
+		    <GoalSelector goal_set="11" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Walk_shopping_Buy5">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+	  <State final="0" name="Walk_shopping_Notbuy5">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+
+	  <State final="0" name="Walk_shopping6">    
+		    <GoalSelector goal_set="12" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Walk_shopping_Buy6">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+	  <State final="0" name="Walk_shopping_Notbuy6">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+
+	  <!-- sightseeing游客状态-->  
+	  <State final="0" name="Walk_sightseeing1">    
+		    <GoalSelector goal_set="13" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Walk_sightseeing_Buy1">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+	  <State final="0" name="Walk_sightseeing_Notbuy1">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+
+	  <State final="0" name="Walk_sightseeing2">    
+		    <GoalSelector goal_set="14" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Walk_sightseeing_Buy2">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+	  <State final="0" name="Walk_sightseeing_Notbuy2">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+
+	  <State final="0" name="Walk_sightseeing3">    
+		    <GoalSelector goal_set="15" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Walk_sightseeing_Buy3">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+	  <State final="0" name="Walk_sightseeing_Notbuy3">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+
+	  <State final="0" name="Walk_sightseeing4">    
+		    <GoalSelector goal_set="16" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Walk_sightseeing_Buy4">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+	  <State final="0" name="Walk_sightseeing_Notbuy4">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+
+	  <State final="0" name="Walk_sightseeing5">    
+		    <GoalSelector goal_set="17" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Walk_sightseeing_Buy5">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+	  <State final="0" name="Walk_sightseeing_Notbuy5">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+
+	  <State final="0" name="Walk_sightseeing6">    
+		    <GoalSelector goal_set="18" type="weighted"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="0" name="Walk_sightseeing_Buy6">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+	  <State final="0" name="Walk_sightseeing_Notbuy6">    
+			    <VelComponent type="zero"/>    
+	  </State>  
+
+
+	  <!-- 选择离开的状态都一样 -->  
+	  <State final="0" name="ToExit">    
+		    <GoalSelector goal="0" goal_set="100" type="explicit"/>    
+		    <VelComponent file_name="townMap.txt" type="road_map"/>    
+	  </State>  
+	  <State final="1" name="Out">    
+		    <GoalSelector type="identity"/>    
+		    <VelComponent type="goal"/>    
+	  </State>  
+
+
+
+
+
+
+
+
+
+
+	  <!-- 下面是状态转移 -->  
+	  <!-- 普通游客进入小镇，第1次进店后，状态由walk1转变为buy/notbuy,然后进入walk2或者ToExit直接离开-->  
+	  <Transition from="Walk1">    
+			    <Condition distance="0.2" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Buy1" weight="0.6"/>      
+				      <State name="NotBuy1" weight="0.4"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Buy1,NotBuy1">    
+		    <Condition distance="0.2" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk2" weight="0.99"/>      
+			      <State name="ToExit" weight="0.01"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- 游客第2次进店后，状态由walk2转变为happy/normal/depress,然后进入walk3或者ToExit直接离开-->  
+	  <Transition from="Walk2">    
+			    <Condition distance=".3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Buy2" weight="0.6"/>      
+				      <State name="NotBuy2" weight="0.4"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Buy2,NotBuy2">    
+		    <Condition distance="0.2" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk3" weight="0.99"/>      
+			      <State name="ToExit" weight="0.01"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- 游客第3次进店后，状态由walk3转变为happy/normal/depress,然后进入walk4或者ToExit直接离开-->  
+	  <Transition from="Walk3">    
+			    <Condition distance=".3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Buy3" weight="0.6"/>      
+				      <State name="NotBuy3" weight="0.4"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Buy3,NotBuy3">    
+		    <Condition distance="0.2" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk4" weight="0.99"/>      
+			      <State name="ToExit" weight="0.01"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- 游客第4次进店后，状态由walk4转变为happy/normal/depress,然后进入walk5或者ToExit直接离开-->  
+	  <Transition from="Walk4">    
+			    <Condition distance=".3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Buy4" weight="0.6"/>      
+				      <State name="NotBuy4" weight="0.4"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Buy4,NotBuy4">    
+		    <Condition distance="0.2" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk5" weight="0.99"/>      
+			      <State name="ToExit" weight="0.01"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- 游客第5次进店后，状态由walk5转变为happy/normal/depress,然后进入walk6或者ToExit直接离开-->  
+	  <Transition from="Walk5">    
+			    <Condition distance=".3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Buy5" weight="0.7"/>      
+				      <State name="NotBuy5" weight="0.3"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Buy5,NotBuy5">    
+		    <Condition distance="0.2" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk6" weight="0.4"/>      
+			      <State name="ToExit" weight="0.6"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- 游客第6次进店后，状态由walk6转变为happy/normal/depress,然后进入ToExit直接离开-->  
+	  <Transition from="Walk6">    
+			    <Condition distance=".3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Buy6" weight="0.7"/>      
+				      <State name="NotBuy6" weight="0.3"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Buy6,NotBuy6" to="ToExit">    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+	  </Transition>  
+
+
+
+	  <!-- shopping游客进入小镇，第1次进店后，状态由walk1转变为buy/notbuy,然后进入walk2或者ToExit直接离开-->  
+	  <Transition from="Walk_shopping1">    
+			    <Condition distance="0.3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Walk_shopping_Buy1" weight="0.7"/>      
+				      <State name="Walk_shopping_Notbuy1" weight="0.30000000000000004"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Walk_shopping_Buy1,Walk_shopping_Notbuy1">    
+		    <Condition distance="0.2" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk_shopping2" weight="0.99"/>      
+			      <State name="ToExit" weight="0.01"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- shopping游客第2次进店后，状态由walk2转变为happy/normal/depress,然后进入walk3或者ToExit直接离开-->  
+	  <Transition from="Walk_shopping2">    
+			    <Condition distance="0.3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Walk_shopping_Buy2" weight="0.7"/>      
+				      <State name="Walk_shopping_Notbuy2" weight="0.30000000000000004"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Walk_shopping_Buy2,Walk_shopping_Notbuy2">    
+		    <Condition distance="0.2" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk_shopping3" weight="0.99"/>      
+			      <State name="ToExit" weight="0.01"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- shopping游客第3次进店后，状态由walk3转变为happy/normal/depress,然后进入walk4或者ToExit直接离开-->  
+	  <Transition from="Walk_shopping3">    
+			    <Condition distance="0.3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Walk_shopping_Buy3" weight="0.7"/>      
+				      <State name="Walk_shopping_Notbuy3" weight="0.30000000000000004"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Walk_shopping_Buy3,Walk_shopping_Notbuy3">    
+		    <Condition distance="0.2" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk_shopping4" weight="0.99"/>      
+			      <State name="ToExit" weight="0.01"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- shopping游客第4次进店后，状态由walk4转变为happy/normal/depress,然后进入walk5或者ToExit直接离开-->  
+	  <Transition from="Walk_shopping4">    
+			    <Condition distance="0.3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Walk_shopping_Buy4" weight="0.7"/>      
+				      <State name="Walk_shopping_Notbuy4" weight="0.30000000000000004"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Walk_shopping_Buy4,Walk_shopping_Notbuy4">    
+		    <Condition distance="0.2" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk_shopping5" weight="0.99"/>      
+			      <State name="ToExit" weight="0.01"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- shopping游客第5次进店后，状态由walk5转变为happy/normal/depress,然后进入walk6或者ToExit直接离开-->  
+		  <Transition from="Walk_shopping5">    
+			    <Condition distance="0.3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Walk_shopping_Buy5" weight="0.8"/>      
+				      <State name="Walk_shopping_Notbuy5" weight="0.2"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Walk_shopping_Buy5,Walk_shopping_Notbuy5">    
+		    <Condition distance="0.2" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk_shopping6" weight="0.4"/>      
+			      <State name="ToExit" weight="0.6"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- shopping游客第6次进店后，状态由walk6转变为happy/normal/depress,然后进入ToExit直接离开-->  
+	  <Transition from="Walk_shopping6">    
+			    <Condition distance=".3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Walk_shopping_Buy6" weight="0.8"/>      
+				      <State name="Walk_shopping_Notbuy6" weight="0.2"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Walk_shopping_Buy6,Walk_shopping_Notbuy6" to="ToExit">    
+		    <Condition distance="0.3" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+	  </Transition>  
+
+
+  <!-- sightseeing游客进入小镇，第1次进店后，状态由walk1转变为buy/notbuy,然后进入walk2或者ToExit直接离开-->  
+	  <Transition from="Walk_sightseeing1">    
+			    <Condition distance="0.3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Walk_sightseeing_Buy1" weight="0.35"/>      
+				      <State name="Walk_sightseeing_Notbuy1" weight="0.6499999999999999"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Walk_sightseeing_Buy1,Walk_sightseeing_Notbuy1">    
+		    <Condition distance="0.3" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk_sightseeing2" weight="0.99"/>      
+			      <State name="ToExit" weight="0.01"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- sightseeing游客第2次进店后，状态由walk2转变为happy/normal/depress,然后进入walk3或者ToExit直接离开-->  
+	  <Transition from="Walk_sightseeing2">    
+			    <Condition distance="0.3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Walk_sightseeing_Buy2" weight="0.35"/>      
+				      <State name="Walk_sightseeing_Notbuy2" weight="0.6499999999999999"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Walk_sightseeing_Buy2,Walk_sightseeing_Notbuy2">    
+		    <Condition distance="0.3" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk_sightseeing3" weight="0.99"/>      
+			      <State name="ToExit" weight="0.01"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- sightseeing游客第3次进店后，状态由walk3转变为happy/normal/depress,然后进入walk4或者ToExit直接离开-->  
+	  <Transition from="Walk_sightseeing3">    
+			    <Condition distance="0.3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Walk_sightseeing_Buy3" weight="0.35"/>      
+				      <State name="Walk_sightseeing_Notbuy3" weight="0.6499999999999999"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Walk_sightseeing_Buy3,Walk_sightseeing_Notbuy3">    
+		    <Condition distance="0.3" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk_sightseeing4" weight="0.99"/>      
+			      <State name="ToExit" weight="0.01"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- sightseeing游客第4次进店后，状态由walk4转变为happy/normal/depress,然后进入walk5或者ToExit直接离开-->  
+	  <Transition from="Walk_sightseeing4">    
+			    <Condition distance="0.3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Walk_sightseeing_Buy4" weight="0.35"/>      
+				      <State name="Walk_sightseeing_Notbuy4" weight="0.6499999999999999"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Walk_sightseeing_Buy4,Walk_sightseeing_Notbuy4">    
+		    <Condition distance="0.3" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk_sightseeing5" weight="0.99"/>      
+			      <State name="ToExit" weight="0.01"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- shopping游客第5次进店后，状态由walk5转变为happy/normal/depress,然后进入walk6或者ToExit直接离开-->  
+	  <Transition from="Walk_sightseeing5">    
+			    <Condition distance="0.3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Walk_sightseeing_Buy5" weight="0.7"/>      
+				      <State name="Walk_sightseeing_Notbuy5" weight="0.3"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Walk_sightseeing_Buy5,Walk_sightseeing_Notbuy5">    
+		    <Condition distance="0.3" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+		    <Target type="prob">      
+			      <State name="Walk_sightseeing6" weight="0.2"/>      
+			      <State name="ToExit" weight="0.8"/>      
+		    </Target>    
+	  </Transition>  
+	  <!-- shopping游客第6次进店后，状态由walk6转变为happy/normal/depress,然后进入ToExit直接离开-->  
+	  <Transition from="Walk_sightseeing6">    
+			    <Condition distance=".3" type="goal_reached"/>    
+			    <Target type="prob">      
+				      <State name="Walk_sightseeing_Buy6" weight="0.7"/>      
+				      <State name="Walk_sightseeing_Notbuy6" weight="0.3"/>      
+			    </Target>    
+	  </Transition>  
+	  <Transition from="Walk_sightseeing_Buy6,Walk_sightseeing_Notbuy6" to="ToExit">    
+		    <Condition distance="0.3" type="goal_reached"/>    
+		    <Condition dist="c" per_agent="1" type="timer" value="10"/>    
+	  </Transition>  
+
+
+
+
+	  <!-- 游客选择离开小镇-->  
+	  <Transition from="ToExit" to="Out">    
+		    <Condition distance="0.2" type="goal_reached"/>    
+	  </Transition>  
+
+
+</BFSM>

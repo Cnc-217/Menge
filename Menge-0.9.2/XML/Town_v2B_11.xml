@@ -1,0 +1,2152 @@
+<?xml version="1.0"?>
+
+<BFSM>  
+
+	       <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>   
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>   
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>   
+
+
+        <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>   
+
+
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>   
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>   
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>   
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>   
+
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>   
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>   
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>   
+
+
+
+        <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>   
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>  
+
+
+              <GoalSet id="1">      
+            <Goal capacity="1000000" id="2" max_x="-40.19" max_y="55.15" min_x="-60.63" min_y="44.07" type="AABB" weight="1.00"/>  
+            <Goal capacity="1000000" id="29" max_x="84.05" max_y="-100.06" min_x="62.07" min_y="-112.67" type="AABB" weight="1.00"/>     
+              <Goal capacity="1000000" id="25" max_x="-78.84" max_y="-103.30" min_x="-100.46" min_y="-115.56" type="AABB" weight="1.00"/>
+            <Goal capacity="1000000" id="5" max_x="83.90" max_y="55.40" min_x="60.76" min_y="44.07" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="13" max_x="-78.84" max_y="-25.46" min_x="-100.10" min_y="-36.27" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="7" max_x="-79.56" max_y="14.54" min_x="-99.74" min_y="4.09" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="16" max_x="41.16" max_y="-22.94" min_x="19.18" min_y="-36.27" type="AABB" weight="1.00"/>
+             <Goal capacity="1000000" id="20" max_x="-38.84" max_y="-63.30" min_x="-59.02" min_y="-74.83" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="19" max_x="-78.48" max_y="-64.74" min_x="-100.82" min_y="-75.55" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="30" max_x="129.45" max_y="-100.06" min_x="106.39" min_y="-113.75" type="AABB" weight="1.00"/>    
+      </GoalSet>  
+
+        <GoalSet id="2">  
+            <Goal capacity="1000000" id="1" max_x="-80.63" max_y="55.00" min_x="-98.30" min_y="43.58" type="AABB" weight="1.00"/>     
+            <Goal capacity="1000000" id="12" max_x="127.65" max_y="15.26" min_x="105.31" min_y="3.73" type="AABB" weight="1.00"/>    
+              <Goal capacity="1000000" id="4" max_x="41.80" max_y="55.64" min_x="19.15" min_y="43.58" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="28" max_x="42.25" max_y="-101.50" min_x="22.06" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="15" max_x="2.24" max_y="-25.10" min_x="-22.26" min_y="-37.72" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="26" max_x="-37.04" max_y="-102.94" min_x="-59.74" min_y="-114.47" type="AABB" weight="1.00"/>   
+            <Goal capacity="1000000" id="6" max_x="131.62" max_y="56.34" min_x="104.95" min_y="43.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="17" max_x="86.57" max_y="-24.74" min_x="62.07" min_y="-36.27" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="9" max_x="1.16" max_y="14.54" min_x="-20.82" min_y="3.73" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="22" max_x="41.16" max_y="-63.30" min_x="21.34" min_y="-75.19" type="AABB" weight="1.00"/>           
+        </GoalSet>  
+
+        <GoalSet id="3"> 
+            <Goal capacity="1000000" id="10" max_x="41.88" max_y="14.54" min_x="20.62" min_y="2.64" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="21" max_x="2.61" max_y="-64.38" min_x="-19.74" min_y="-75.55" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="8" max_x="-39.20" max_y="14.90" min_x="-60.82" min_y="3.73" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="23" max_x="83.33" max_y="-64.02" min_x="62.79" min_y="-75.19" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="11" max_x="83.33" max_y="15.98" min_x="62.07" min_y="2.64" type="AABB" weight="1.00"/> 
+            <Goal capacity="1000000" id="24" max_x="129.09" max_y="-61.86" min_x="106.03" min_y="-74.83" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="18" max_x="129.81" max_y="-24.02" min_x="106.75" min_y="-37.00" type="AABB" weight="1.00"/> 
+             <Goal capacity="1000000" id="3" max_x="-0.06" max_y="55.40" min_x="-20.74" min_y="43.33" type="AABB" weight="1.00"/>    
+            <Goal capacity="1000000" id="27" max_x="4.05" max_y="-102.58" min_x="-18.66" min_y="-114.47" type="AABB" weight="1.00"/>    
+             <Goal capacity="1000000" id="14" max_x="-38.84" max_y="-25.10" min_x="-60.82" min_y="-36.64" type="AABB" weight="1.00"/>    
+        </GoalSet>   
+
+      <GoalSet id="91">    
+             <Goal capacity="1000000" id="901" max_x="160" max_y="55" min_x="150" min_y="-115" type="AABB"/>    
+      </GoalSet>  
+
+	  <!-- �������ο�״̬-->  
+	  <!-- A���ο�״̬,�ӵ�һ��ѡ�񵽵�10��ѡ��-->  
+      <State final="0" name="A_Choose1">    
+		    <VelComponent type="zero"/>    
+	  </State>  
+	  <State final="0" name="A_eat1">    
+		<GoalSelector type="weighted" goal_set="1"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_play1">    
+            <GoalSelector type="weighted" goal_set="2"   />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_buy1">    
+            <GoalSelector type="weighted" goal_set="3"   />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_leave1">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>     
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="A_Choose2">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="A_eat2">    
+            <GoalSelector type="weighted" goal_set="10"   />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_play2">    
+            <GoalSelector type="weighted" goal_set="11"   />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_buy2">    
+            <GoalSelector type="weighted" goal_set="12"   />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_leave2">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>   
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="A_Choose3">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="A_eat3">    
+            <GoalSelector goal_set="19" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_play3">    
+            <GoalSelector goal_set="20" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_buy3">    
+            <GoalSelector goal_set="21" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_leave3">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>   
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="A_Choose4">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="A_eat4">    
+            <GoalSelector goal_set="28" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_play4">    
+            <GoalSelector goal_set="29" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_buy4">    
+            <GoalSelector goal_set="30" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_leave4">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/> 
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="A_Choose5">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="A_eat5">    
+            <GoalSelector goal_set="37" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_play5">    
+            <GoalSelector goal_set="38" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_buy5">    
+            <GoalSelector goal_set="39" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_leave5">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>   
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="A_Choose6">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="A_eat6">    
+            <GoalSelector goal_set="46" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_play6">    
+            <GoalSelector goal_set="47" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_buy6">    
+            <GoalSelector goal_set="48" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_leave6">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/> 
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="A_Choose7">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="A_eat7">    
+            <GoalSelector goal_set="55" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_play7">    
+            <GoalSelector goal_set="56" type="weighted" />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_buy7">    
+            <GoalSelector goal_set="57" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_leave7">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>   
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="A_Choose8">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="A_eat8">    
+            <GoalSelector goal_set="64" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_play8">    
+            <GoalSelector goal_set="65" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_buy8">    
+            <GoalSelector goal_set="66" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_leave8">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>  
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="A_Choose9">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="A_eat9">    
+            <GoalSelector goal_set="73" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_play9">    
+            <GoalSelector goal_set="74" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_buy9">    
+            <GoalSelector goal_set="75" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_leave9">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>  
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="A_Choose10">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="A_eat10">    
+            <GoalSelector goal_set="82" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_play10">    
+            <GoalSelector goal_set="83" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="A_buy10">    
+            <GoalSelector goal_set="84" type="weighted"  />    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="1" name="A_leave10">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>  
+            <VelComponent type="goal"/>    
+      </State>  
+
+
+
+      <!-- B���ο�״̬,�ӵ�һ��ѡ�񵽵�10��ѡ��-->  
+      <State final="0" name="B_Choose1">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="B_eat1">    
+            <GoalSelector goal_set="4" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_play1">    
+            <GoalSelector goal_set="5" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_buy1">    
+            <GoalSelector goal_set="6" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_leave1">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="B_Choose2">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="B_eat2">    
+            <GoalSelector goal_set="13" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_play2">    
+            <GoalSelector goal_set="14" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_buy2">    
+            <GoalSelector goal_set="15" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_leave2">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="B_Choose3">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="B_eat3">    
+            <GoalSelector goal_set="22" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_play3">    
+            <GoalSelector goal_set="23" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_buy3">    
+            <GoalSelector goal_set="24" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_leave3">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>   
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="B_Choose4">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="B_eat4">    
+            <GoalSelector goal_set="31" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_play4">    
+            <GoalSelector goal_set="32" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_buy4">    
+            <GoalSelector goal_set="33" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_leave4">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>  
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="B_Choose5">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="B_eat5">    
+            <GoalSelector goal_set="40" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_play5">    
+            <GoalSelector goal_set="41" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_buy5">    
+            <GoalSelector goal_set="42" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_leave5">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>  
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="B_Choose6">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="B_eat6">    
+            <GoalSelector goal_set="49" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_play6">    
+            <GoalSelector goal_set="50" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_buy6">    
+            <GoalSelector goal_set="51" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_leave6">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>   
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="B_Choose7">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="B_eat7">    
+            <GoalSelector goal_set="58" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_play7">    
+            <GoalSelector goal_set="59" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_buy7">    
+            <GoalSelector goal_set="60" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_leave7">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>   
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="B_Choose8">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="B_eat8">    
+            <GoalSelector goal_set="67" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_play8">    
+            <GoalSelector goal_set="68" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_buy8">    
+            <GoalSelector goal_set="69" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_leave8">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/> 
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="B_Choose9">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="B_eat9">    
+            <GoalSelector goal_set="76" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_play9">    
+            <GoalSelector goal_set="77" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_buy9">    
+            <GoalSelector goal_set="78" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_leave9">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="B_Choose10">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="B_eat10">    
+            <GoalSelector goal_set="85" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_play10">    
+            <GoalSelector goal_set="86" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="B_buy10">    
+            <GoalSelector goal_set="87" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="1" name="B_leave10">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>
+            <VelComponent type="goal"/>    
+      </State>  
+
+
+
+      <!-- C���ο�״̬,�ӵ�һ��ѡ�񵽵�10��ѡ��-->  
+      <State final="0" name="C_Choose1">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="C_eat1">    
+            <GoalSelector goal_set="7" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_play1">    
+            <GoalSelector goal_set="8" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_buy1">    
+            <GoalSelector goal_set="9" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_leave1">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>  
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="C_Choose2">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="C_eat2">    
+            <GoalSelector goal_set="16" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_play2">    
+            <GoalSelector goal_set="17" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_buy2">    
+            <GoalSelector goal_set="18" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_leave2">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>   
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="C_Choose3">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="C_eat3">    
+            <GoalSelector goal_set="25" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_play3">    
+            <GoalSelector goal_set="26" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_buy3">    
+            <GoalSelector goal_set="27" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_leave3">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>   
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="C_Choose4">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="C_eat4">    
+            <GoalSelector goal_set="34" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_play4">    
+            <GoalSelector goal_set="35" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_buy4">    
+            <GoalSelector goal_set="36" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_leave4">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>  
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="C_Choose5">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="C_eat5">    
+            <GoalSelector goal_set="43" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_play5">    
+            <GoalSelector goal_set="44" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_buy5">    
+            <GoalSelector goal_set="45" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_leave5">    
+           <GoalSelector  goal_set="91" goal="901" type="explicit"/>   
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="C_Choose6">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="C_eat6">    
+            <GoalSelector goal_set="52" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_play6">    
+            <GoalSelector goal_set="53" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_buy6">    
+            <GoalSelector goal_set="54" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_leave6">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>   
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="C_Choose7">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="C_eat7">    
+            <GoalSelector goal_set="61" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_play7">    
+            <GoalSelector goal_set="62" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_buy7">    
+            <GoalSelector goal_set="63" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_leave7">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="C_Choose8">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="C_eat8">    
+            <GoalSelector goal_set="70" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_play8">    
+            <GoalSelector goal_set="71" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_buy8">    
+            <GoalSelector goal_set="72" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_leave8">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>   
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="C_Choose9">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="C_eat9">    
+            <GoalSelector goal_set="79" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_play9">    
+            <GoalSelector goal_set="80" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_buy9">    
+            <GoalSelector goal_set="81" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_leave9">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>  
+            <VelComponent type="goal"/>    
+      </State>  
+
+      <State final="0" name="C_Choose10">    
+            <VelComponent type="zero"/>    
+      </State>  
+      <State final="0" name="C_eat10">    
+            <GoalSelector goal_set="88" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_play10">    
+            <GoalSelector goal_set="89" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="0" name="C_buy10">    
+            <GoalSelector goal_set="90" type="weighted"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+      <State final="1" name="C_leave10">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>    
+            <VelComponent type="goal"/>    
+      </State>  
+
+
+	  <!-- �뿪С�� -->  
+      <State final="0" name="ToExit">    
+            <GoalSelector  goal_set="91" goal="901" type="explicit"/>   
+            <VelComponent type="goal"/>    
+      </State>  
+
+	<State final="1" name="Stop">      
+		<GoalSelector type="identity"/>
+            <VelComponent type="zero" />  
+	</State>  
+
+
+
+
+
+
+
+
+
+	  <!-- ������״̬ת�� -->  
+	  <!-- A���οͽ���С�� ��һ����ʮ��״̬��ת��-->  
+	  <Transition from="A_Choose1">    
+            <Condition type="auto"  />    
+		    <Target type="prob">      
+                  <State name="A_eat1" weight="1.0" />      
+                  <State name="A_play1" weight="1.0"/>      
+                  <State name="A_buy1" weight="1.0"/>      
+                  <State name="A_leave1" weight="0.01"/>      
+            </Target>    
+	  </Transition>  
+	  <Transition from="A_eat1" to="A_Choose2"> 
+            <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="90" min="15" per_agent="0" type="timer"/>  
+             </Condition>
+	  </Transition>  
+      <Transition from="A_play1" to="A_Choose2">  
+            <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="120" min="15" per_agent="0" type="timer"/>  
+             </Condition>
+      </Transition>  
+      <Transition from="A_buy1" to="A_Choose2">
+            <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="60" min="15" per_agent="0" type="timer"/>  
+             </Condition>   
+      </Transition>  
+      <Transition from="A_leave1" to="ToExit">    
+            <Condition distance="0.2" type="goal_reached"/>    
+      </Transition>  
+
+      <Transition from="A_Choose2">   
+            <Condition type="auto"  />      
+            <Target type="prob">      
+                  <State name="A_eat2" weight="1.0"/>      
+                  <State name="A_play2" weight="1.0"/>      
+                  <State name="A_buy2" weight="1.0"/>      
+                  <State name="A_leave2" weight="0.01"/>      
+            </Target>    
+      </Transition>  
+      <Transition from="A_eat2" to="A_Choose3"> 
+            <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="90" min="15" per_agent="0" type="timer"/>  
+             </Condition>
+      </Transition>  
+      <Transition from="A_play2" to="A_Choose3"> 
+            <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="120" min="15" per_agent="0" type="timer"/>  
+             </Condition>  
+      </Transition>  
+      <Transition from="A_buy2" to="A_Choose3">   
+              <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="60" min="15" per_agent="0" type="timer"/>  
+             </Condition>    
+      </Transition>  
+      <Transition from="A_leave2" to="ToExit">    
+            <Condition distance="0.2" type="goal_reached"/>    
+      </Transition>  
+
+      <Transition from="A_Choose3">    
+            <Condition type="auto"  />
+            <Target type="prob">      
+                  <State name="A_eat3" weight="1.0"/>      
+                  <State name="A_play3" weight="1.0"/>      
+                  <State name="A_buy3" weight="1.0"/>      
+                  <State name="A_leave3" weight="0.01"/>      
+            </Target>    
+      </Transition>  
+      <Transition from="A_eat3" to="A_Choose4">  
+           <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="90" min="15" per_agent="0" type="timer"/>  
+             </Condition>   
+      </Transition>  
+      <Transition from="A_play3" to="A_Choose4">  
+           <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="120" min="15" per_agent="0" type="timer"/>  
+             </Condition>
+      </Transition>  
+      <Transition from="A_buy3" to="A_Choose4"> 
+               <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="60" min="15" per_agent="0" type="timer"/>  
+             </Condition>     
+      </Transition>  
+      <Transition from="A_leave3" to="ToExit">    
+            <Condition distance="0.2" type="goal_reached"/>    
+      </Transition>  
+
+      <Transition from="A_Choose4">    
+           <Condition type="auto"  />  
+            <Target type="prob">      
+                  <State name="A_eat4" weight="1.0"/>      
+                  <State name="A_play4" weight="1.0"/>      
+                  <State name="A_buy4" weight="1.0"/>      
+                  <State name="A_leave4" weight="0.01"/>      
+            </Target>    
+      </Transition>  
+      <Transition from="A_eat4" to="A_Choose5">    
+            <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="90" min="15" per_agent="0" type="timer"/>  
+             </Condition>    
+      </Transition>  
+      <Transition from="A_play4" to="A_Choose5">    
+            <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="120" min="15" per_agent="0" type="timer"/>  
+             </Condition>
+      </Transition>  
+      <Transition from="A_buy4" to="A_Choose5">    
+               <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="60" min="15" per_agent="0" type="timer"/>  
+             </Condition>      
+      </Transition>  
+      <Transition from="A_leave4" to="ToExit">    
+            <Condition distance="0.2" type="goal_reached"/>    
+      </Transition>  
+
+      <Transition from="A_Choose5">    
+           <Condition type="auto"  /> 
+            <Target type="prob">      
+                  <State name="A_eat5" weight="1.0"/>      
+                  <State name="A_play5" weight="1.0"/>      
+                  <State name="A_buy5" weight="1.0"/>      
+                  <State name="A_leave5" weight="0.01"/>      
+            </Target>    
+      </Transition>  
+      <Transition from="A_eat5" to="A_Choose6">    
+            <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="90" min="15" per_agent="0" type="timer"/>  
+             </Condition>
+      </Transition>  
+      <Transition from="A_play5" to="A_Choose6">    
+            <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="120" min="15" per_agent="0" type="timer"/>  
+             </Condition>  
+      </Transition>  
+      <Transition from="A_buy5" to="A_Choose6">    
+              <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="60" min="15" per_agent="0" type="timer"/>  
+             </Condition>       
+      </Transition>  
+      <Transition from="A_leave5" to="ToExit">    
+            <Condition distance="0.2" type="goal_reached"/>    
+      </Transition>  
+
+      <Transition from="A_Choose6">    
+            <Condition type="auto"  />  
+            <Target type="prob">      
+                  <State name="A_eat6" weight="1.0"/>      
+                  <State name="A_play6" weight="1.0"/>      
+                  <State name="A_buy6" weight="1.0"/>      
+                  <State name="A_leave6" weight="0.01"/>      
+            </Target>    
+      </Transition>  
+      <Transition from="A_eat6" to="A_Choose7">    
+           <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="90" min="15" per_agent="0" type="timer"/>  
+             </Condition>    
+      </Transition>  
+      <Transition from="A_play6" to="A_Choose7">    
+          <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="120" min="15" per_agent="0" type="timer"/>  
+             </Condition>
+      </Transition>  
+      <Transition from="A_buy6" to="A_Choose7">    
+               <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="60" min="15" per_agent="0" type="timer"/>  
+             </Condition>    
+      </Transition>  
+      <Transition from="A_leave6" to="ToExit">    
+            <Condition distance="0.2" type="goal_reached"/>    
+      </Transition>  
+
+      <Transition from="A_Choose7">    
+           <Condition type="auto"  />    
+            <Target type="prob">      
+                  <State name="A_eat7" weight="1.0"/>      
+                  <State name="A_play7" weight="1.0"/>      
+                  <State name="A_buy7" weight="1.0"/>      
+                  <State name="A_leave7" weight="0.01"/>      
+            </Target>    
+      </Transition>  
+      <Transition from="A_eat7" to="A_Choose8">    
+           <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="90" min="15" per_agent="0" type="timer"/>  
+             </Condition>
+      </Transition>  
+      <Transition from="A_play7" to="A_Choose8">    
+            <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="120" min="15" per_agent="0" type="timer"/>  
+             </Condition>
+      </Transition>  
+      <Transition from="A_buy7" to="A_Choose8">    
+               <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="60" min="15" per_agent="0" type="timer"/>  
+             </Condition>    
+      </Transition>  
+      <Transition from="A_leave7" to="ToExit">    
+            <Condition distance="0.2" type="goal_reached"/>    
+      </Transition>  
+
+      <Transition from="A_Choose8">    
+           <Condition type="auto"  />    
+            <Target type="prob">      
+                  <State name="A_eat8" weight="1.0"/>      
+                  <State name="A_play8" weight="1.0"/>      
+                  <State name="A_buy8" weight="1.0"/>      
+                  <State name="A_leave8" weight="0.01"/>      
+            </Target>    
+      </Transition>  
+      <Transition from="A_eat8" to="A_Choose9">    
+            <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="90" min="15" per_agent="0" type="timer"/>  
+             </Condition>
+      </Transition>  
+      <Transition from="A_play8" to="A_Choose9">    
+            <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="120" min="15" per_agent="0" type="timer"/>  
+             </Condition>
+      </Transition>  
+      <Transition from="A_buy8" to="A_Choose9">    
+               <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="60" min="15" per_agent="0" type="timer"/>  
+             </Condition>    
+      </Transition>  
+      <Transition from="A_leave8" to="ToExit">    
+            <Condition distance="0.2" type="goal_reached"/>    
+      </Transition>  
+
+      <Transition from="A_Choose9">    
+            <Condition type="auto"  />
+            <Target type="prob">      
+                  <State name="A_eat9" weight="1.0"/>      
+                  <State name="A_play9" weight="1.0"/>      
+                  <State name="A_buy9" weight="1.0"/>      
+                  <State name="A_leave9" weight="0.01"/>      
+            </Target>    
+      </Transition>  
+      <Transition from="A_eat9" to="A_Choose10">    
+           <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="50" min="15" per_agent="0" type="timer"/>  
+             </Condition>
+      </Transition>  
+      <Transition from="A_play9" to="A_Choose10">    
+          <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="80" min="15" per_agent="0" type="timer"/>  
+             </Condition>
+      </Transition>  
+      <Transition from="A_buy9" to="A_Choose10">    
+              <Condition type="and">
+                  <Condition type="goal_reached" distance="0.2" />
+                  <Condition dist="u" max="30" min="15" per_agent="0" type="timer"/>  
+             </Condition>    
+      </Transition>  
+      <Transition from="A_leave9" to="ToExit">    
+            <Condition distance="0.2" type="goal_reached"/>    
+      </Transition>  
+
+      <Transition from="A_Choose10">    
+            <Condition type="auto"  />    
+            <Target type="prob">      
+                  <State name="A_eat10" weight="1.0"/>      
+                  <State name="A_play10" weight="1.0"/>      
+                  <State name="A_buy10" weight="1.0"/>      
+                  <State name="A_leave10" weight="0.01"/>      
+            </Target>    
+      </Transition>  
+      <Transition from="A_eat10,A_play10,A_buy10" to="ToExit">    
+            <Condition distance="0.2" type="goal_reached"/>    
+      </Transition>  
+
+      <Transition from="ToExit" to="Stop">    
+            <Condition distance="0.2" type="goal_reached"/>    
+      </Transition>  
+
+
+
+
+
+
+
+</BFSM>

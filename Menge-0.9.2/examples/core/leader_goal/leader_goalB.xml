@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<BFSM>
+  <GoalSet id="0">
+  
+
+
+    <Goal type="agent" id="0" shape="circle" x="0" y="0" radius="0.5" idleader="0"/>
+
+
+    <Goal capacity="1000000" id="1" max_x="20" max_y="1" min_x="19" min_y="0" type="AABB" weight="1.00"/>
+  </GoalSet>
+
+  <State name="Walk" final="0" >
+    <GoalSelector type="explicit" goal_set="0" goal="1"/>
+    <VelComponent type="road_map" file_name="graph.txt" />
+  </State>
+
+  <State name="Follow" final="0" >
+    <GoalSelector type="explicit" goal_set="0" goal="0"/>
+    <VelComponent type="goal" />
+  </State>
+
+  <State name="Stop" final="1" >
+    <GoalSelector type="identity" />
+    <VelComponent type="goal" />
+  </State>
+  
+
+  <Transition from="Walk" to="Stop" >
+    <Condition type="goal_reached" distance="0.05" />
+  </Transition>
+  <Transition from="Follow" to="Stop" >
+    <Condition type="goal_reached" distance="0.05" />
+  </Transition>
+
+</BFSM>

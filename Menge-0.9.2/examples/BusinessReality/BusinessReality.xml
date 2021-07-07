@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<Project 
+	scene="BusinessRealityS.xml" 
+	behavior="BusinessRealityB.xml" 
+	view="BusinessRealityV.xml" 
+	model="orca"
+	dumpPath="images"
+/>

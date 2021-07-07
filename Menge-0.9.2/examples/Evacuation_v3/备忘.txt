@@ -1,0 +1,43 @@
+
+
+xml库：
+ <Target name="xxx" type="named_state_member" is_member="1" state="Evacuation" /> 
+ <Target name="xxx" type="class_id" id="1" prob="0.5"/>
+ <Target name="xxx" type="agent_all"/>
+<Effect name="test" type="set_agent_state_by_code"></Effect>
+
+<EventSystem conservative="1">
+    <Target name="xxx1" type="agent_all"/>
+    <Effect name="xxx2" type="set_agent_state_by_code"></Effect>
+    <Event name="sim_pause">
+      <Trigger name="time_reached" type="time_reached" timeSimulate="30.0"/>
+      <Response effect="xxx2" target="xxx1" />
+    </Event>
+  </EventSystem>
+
+
+<GoalSelector type="random" goal_set="0" />
+<GoalSelector type="farthest" goal_set="0" />
+<GoalSelector type="nearest" goal_set="0" />
+<GoalSelector type="algorithm" goal_set="0" />
+<GoalSelector type="explicit" goal_set="0" goal="2" />
+<GoalSelector type="weighted" goal_set="0" />
+
+<VelComponent type="road_map" file_name="graph.txt" />
+<VelComponent type="road_map_plus" file_name="graph.txt" />
+<VelComponent type="goal" />
+
+
+<Action type="distance_stress" exit_behavior="cool down"
+   inner_dist="c" inner_value="100" 
+   outer_dist="c" outer_value="120"
+   fall_off="linear"
+   shape_number="2" max_x1="-3762" min_x1="-4487" max_y1="2054" min_y1="1605"
+   max_x2="3700" min_x2="3363" max_y2="2178" min_y2="1658"
+   />
+
+   <Transition from="ShopperEat,ShopperShop,ShopperPlay" to="ShopperChoose">    
+      <Condition type="goal_reached_wait"/>
+  </Transition>
+
+   <Goal type="agent" id="0" shape="circle" x="0" y="0" radius="0.5" idleader="0"/>

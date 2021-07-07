@@ -1,0 +1,16 @@
+使用步骤：
+1.程序入口在Menge-master\examples\Town_v2\test.py,下面这个地方需要手动修改路径
+	test.py代码第10行，根据自己的路径对内容进行替换，注意-d 200不要修改，这个控制仿真时间
+		os.system('D:\File\Project\Menge-master\Exe\menge.exe -p D:\File\Project\Menge-master\examples\Town_v2\Town_v2.xml -o D:\File\Project\Menge-master\examples\Town_v2\out.scb -d 200')
+
+2.如果程序运行失败，需要用visual studio编译menge的解决方案才能运行menge程序，步骤如下
+	2.1用visual studio打开\Menge-master\projects\VS2017\Menge,右边解决方案menge右键生成
+
+
+注意：python环境是2.7
+
+
+mengeMain.cpp 428行
+D:\File\Project\Menge-master\src\Menge\MengeCore\Agents\PrefVelocity.cpp 101-103行
+
+

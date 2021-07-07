@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<Experiment version="2.0">
+    <SpatialQuery type="kd-tree" test_visibility="false"/>
+
+
+    <OpenSteer max_force="8" leak_through="0.1" reaction_time="0.5" />
+    <Common time_step="0.4" />
+    <GCF reaction_time="0.5" max_agent_dist="2" max_agent_force="3" agent_interp_width="0.1" agent_force_strength="0.35" />
+    <Helbing agent_scale="2000" obstacle_scale="4000" reaction_time="0.5" body_force="1200" friction="2400" force_distance="0.015" />
+    <Johansson agent_scale="25" obstacle_scale="35" reaction_time="0.5" force_distance="0.5" stride_time="0.5" />
+    <Karamouzas orient_weight="0.8" fov="200" reaction_time="0.4" wall_steepness="4" wall_distance="4" colliding_count="5" d_min="1" d_mid="8" d_max="10" agent_force="4" />
+    <Zanlungo agent_scale="2000" obstacle_scale="4000" reaction_time="0.5" force_distance="0.005" />
+	<Dummy stddev="1.0" />
+
+    <!-- 定义游客基础信息 -->
+    <AgentProfile name="group_A" >
+		<OpenSteer tau="3" tauObst="6" />
+        <Common max_angle_vel="180" max_neighbors="1" obstacleSet="1" neighbor_dist="1" r="1" class="1" pref_speed="100" max_speed="10" max_accel="2" />
+        <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
+        <GCF stand_depth="0.18" move_scale="0.53" slow_width="0.25" sway_change="0.05" />
+        <Helbing mass="80" />
+        <Johansson fov_weight="0.16" />
+        <Karamouzas personal_space="0.69" anticipation="8" />
+        <ORCA tau="3" tauObst="0.15" />
+        <Zanlungo mass="80" orient_weight="0.75" />
+	</AgentProfile>
+
+    <AgentProfile name="group_B" inherits="group_A" >
+      <Common max_angle_vel="180" max_neighbors="1" obstacleSet="1" neighbor_dist="0.3" r="0.1" class="2" pref_speed="1.04" max_speed="1" max_accel="2" />
+  </AgentProfile>
+
+  <AgentProfile name="group_C" inherits="group_A" >
+    <Common max_angle_vel="180" max_neighbors="1" obstacleSet="1" neighbor_dist="0.3" r="0.1" class="3" pref_speed="1.04" max_speed="1" max_accel="2" />
+  </AgentProfile>
+
+    <!-- 定义起始位置信息及状态入口 -->
+    <AgentGroup>
+        <ProfileSelector type="const" name="group_A" />
+		<StateSelector type="const" name="A_walk1" />
+		<Generator type="rect_grid"
+				anchor_x="-10" anchor_y="0"
+				offset_x="20" offset_y="-20"
+				count_x="10" count_y="10"
+        displace_dist="u" displace_min="10" displace_max="20"/>         
+    </AgentGroup>
+
+    <AgentGroup>
+        <ProfileSelector type="const" name="group_B" />
+    <StateSelector type="const" name="B_walk1" />
+    <Generator type="rect_grid"
+            anchor_x="-180" anchor_y="100"
+            offset_x="300" offset_y="-170"
+            count_x="0" count_y="0"
+        displace_dist="u" displace_min="0.0" displace_max="0.25"/>         
+    </AgentGroup>
+
+    <AgentGroup>
+        <ProfileSelector type="const" name="group_C" />
+    <StateSelector type="const" name="C_walk1" />
+    <Generator type="rect_grid"
+            anchor_x="-180" anchor_y="100"
+            offset_x="300" offset_y="-170"
+            count_x="0" count_y="0"
+        displace_dist="u" displace_min="0.0" displace_max="0.25"/>         
+    </AgentGroup>
+
+</Experiment>

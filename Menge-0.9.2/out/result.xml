@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+
+<Experiment version="2.0">
+    <Common time_step="0.1" visible_neighbors="1" />
+<Obstacle closed="0" boundingbox="0">
+	<Vertex p_x="271.434510" p_y="0.000000" />
+	<Vertex p_x="271.434510" p_y="0.000000" />
+	<Vertex p_x="-1728.565950" p_y="0.000000" />
+	<Vertex p_x="-1728.565950" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="0" boundingbox="0">
+	<Vertex p_x="271.434450" p_y="0.000000" />
+	<Vertex p_x="271.434450" p_y="0.000000" />
+	<Vertex p_x="340.092026" p_y="0.000000" />
+	<Vertex p_x="340.092026" p_y="0.000000" />
+	<Vertex p_x="183.332682" p_y="0.000000" />
+	<Vertex p_x="183.332682" p_y="0.000000" />
+	<Vertex p_x="-477.159806" p_y="0.000000" />
+	<Vertex p_x="-477.159806" p_y="0.000000" />
+	<Vertex p_x="-577.159818" p_y="0.000000" />
+	<Vertex p_x="-989.084498" p_y="0.000000" />
+	<Vertex p_x="-1075.448885" p_y="0.000000" />
+	<Vertex p_x="-1075.448885" p_y="0.000000" />
+	<Vertex p_x="-863.823359" p_y="0.000000" />
+	<Vertex p_x="-863.823360" p_y="0.000000" />
+	<Vertex p_x="-823.823360" p_y="0.000000" />
+	<Vertex p_x="-823.823359" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="0" boundingbox="0">
+	<Vertex p_x="-66.739319" p_y="0.000000" />
+	<Vertex p_x="-66.739319" p_y="0.000000" />
+	<Vertex p_x="-360.945425" p_y="0.000000" />
+	<Vertex p_x="-360.945425" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="0" boundingbox="0">
+	<Vertex p_x="1120.652800" p_y="0.000000" />
+	<Vertex p_x="1120.652800" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="0" boundingbox="0">
+	<Vertex p_x="2320.318980" p_y="0.000000" />
+	<Vertex p_x="2320.318980" p_y="0.000000" />
+	<Vertex p_x="322.549208" p_y="0.000000" />
+	<Vertex p_x="322.549208" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="0" boundingbox="0">
+	<Vertex p_x="1820.319000" p_y="0.000000" />
+	<Vertex p_x="1820.319000" p_y="0.000000" />
+	<Vertex p_x="720.318910" p_y="0.000000" />
+	<Vertex p_x="720.318910" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="1" boundingbox="0">
+	<Vertex p_x="1820.319000" p_y="0.000000" />
+	<Vertex p_x="1820.319000" p_y="0.000000" />
+	<Vertex p_x="1891.029759" p_y="0.000000" />
+	<Vertex p_x="1891.029759" p_y="0.000000" />
+	<Vertex p_x="1820.319000" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="1" boundingbox="0">
+	<Vertex p_x="720.318910" p_y="0.000000" />
+	<Vertex p_x="649.608220" p_y="0.000000" />
+	<Vertex p_x="649.608220" p_y="0.000000" />
+	<Vertex p_x="720.318910" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="0" boundingbox="0">
+	<Vertex p_x="1141.995100" p_y="0.000000" />
+	<Vertex p_x="1121.800300" p_y="0.000000" />
+	<Vertex p_x="1121.800300" p_y="0.000000" />
+	<Vertex p_x="1141.995100" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="0" boundingbox="0">
+	<Vertex p_x="1020.577500" p_y="0.000000" />
+	<Vertex p_x="1020.577500" p_y="0.000000" />
+	<Vertex p_x="832.347780" p_y="0.000000" />
+	<Vertex p_x="832.347780" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="0" boundingbox="0">
+	<Vertex p_x="959.026000" p_y="0.000000" />
+	<Vertex p_x="959.026000" p_y="0.000000" />
+	<Vertex p_x="893.899290" p_y="0.000000" />
+	<Vertex p_x="893.899290" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="1" boundingbox="0">
+	<Vertex p_x="1138.305700" p_y="0.000000" />
+	<Vertex p_x="1407.488500" p_y="0.000000" />
+	<Vertex p_x="1407.488500" p_y="0.000000" />
+	<Vertex p_x="1138.305700" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="0" boundingbox="0">
+	<Vertex p_x="1774.136761" p_y="0.000000" />
+	<Vertex p_x="1838.910200" p_y="0.000000" />
+	<Vertex p_x="1838.910200" p_y="0.000000" />
+	<Vertex p_x="1774.136761" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="0" boundingbox="0">
+	<Vertex p_x="766.501053" p_y="0.000000" />
+	<Vertex p_x="701.727671" p_y="0.000000" />
+	<Vertex p_x="701.727671" p_y="0.000000" />
+	<Vertex p_x="766.501053" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="1" boundingbox="0">
+	<Vertex p_x="8366.398400" p_y="0.000000" />
+	<Vertex p_x="8366.398400" p_y="0.000000" />
+	<Vertex p_x="8357.678700" p_y="0.000000" />
+	<Vertex p_x="8357.678700" p_y="0.000000" />
+	<Vertex p_x="8366.398400" p_y="0.000000" />
+</Obstacle>
+<Obstacle closed="0" boundingbox="0">
+	<Vertex p_x="12331.434000" p_y="0.000000" />
+	<Vertex p_x="12331.434000" p_y="0.000000" />
+	<Vertex p_x="8331.433600" p_y="0.000000" />
+	<Vertex p_x="8331.433600" p_y="0.000000" />
+</Obstacle>
+</Experiment>
