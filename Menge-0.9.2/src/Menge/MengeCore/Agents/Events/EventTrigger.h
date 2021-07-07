@@ -28,6 +28,7 @@
 #include "MengeCore/PluginEngine/Element.h"
 
 #include <string>
+#include <MengeCore/Agents/SimulatorInterface.h>
 
 namespace Menge {
 	// forward declaration
@@ -59,7 +60,7 @@ namespace Menge {
 		 *
 		 *	@returns	True if the condition has been met, false otherwise.
 		 */
-		bool conditionMet();
+		bool conditionMet(Agents::SimulatorInterface * sim, BFSM::FSM * fsm);
 
 		/*!
 		 *	@brief		Informs the trigger that the associated event effects
@@ -84,7 +85,7 @@ namespace Menge {
 		 *
 		 *	@returns		True if the condition has been met, false otherwise.
 		 */
-		virtual bool testCondition() = 0;
+		virtual bool testCondition(Agents::SimulatorInterface * sim, BFSM::FSM * fsm) = 0;
 
 		/*!
 		 *	@brief		An optional callback for when the trigger fired() method is

@@ -24,6 +24,7 @@
 #ifndef __TIME_EVT_TRIGGER_H__
 #define __TIME_EVT_TRIGGER_H__
 
+#include <MengeCore/Agents/SimulatorInterface.h>
 #include "MengeCore/Agents/Events/EventTrigger.h"
 #include "MengeCore/Agents/Events/EventTriggerFactory.h"
 
@@ -135,7 +136,7 @@ namespace Menge {
 		 *
 		 *	@returns	True if the condition has been met, false otherwise.
 		 */
-		virtual bool testCondition();
+		virtual bool testCondition(Agents::SimulatorInterface * sim, BFSM::FSM * fsm);
 
 		/*!
 		 *	@brief		The last timestamp of pause.

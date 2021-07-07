@@ -27,6 +27,7 @@
 #include "MengeCore/mengeCommon.h"
 
 #include <vector>
+#include <MengeCore/Agents/SimulatorInterface.h>
 
 // forward declaration
 class TiXmlElement;
@@ -97,7 +98,7 @@ namespace Menge {
 		/*!
 		 *	@brief		Evaluates the registered events
 		 */
-		void evaluateEvents();
+		void evaluateEvents(Agents::SimulatorInterface * sim, BFSM::FSM * fsm);
 
 		/*!
 		 *	@brief		Finalize the event system.

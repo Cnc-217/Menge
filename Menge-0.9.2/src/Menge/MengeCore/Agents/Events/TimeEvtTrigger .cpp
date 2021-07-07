@@ -134,7 +134,7 @@ namespace Menge {
 
 	/////////////////////////////////////////////////////////////////////
 
-	bool TimeReachedTrigger::testCondition() { //检测触发条件
+	bool TimeReachedTrigger::testCondition(Agents::SimulatorInterface * sim, BFSM::FSM * fsm) { //检测触发条件
 
 		if ((Menge::SIM_TIME - _lastTimestamp) > _timeSimulate) {
 			cout << "trigger condition met at :"<<Menge::SIM_TIME << endl;
@@ -209,6 +209,16 @@ namespace Menge {
 
 				MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;
 
+			}
+			else{
+                const size_t AGT_COUNT = sim->getNumAgents();
+                for ( size_t a = 0; a < AGT_COUNT; ++a ) {
+                    Agents::BaseAgent * agt = sim->getAgent( a );
+                    State * pState = fsm->getCurrentState(agt);
+                    pState->leave(agt);
+                    //pState->enter(agt);
+
+                }
 			}
 
 			return true;

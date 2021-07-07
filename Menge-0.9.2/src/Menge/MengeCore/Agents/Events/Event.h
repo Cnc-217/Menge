@@ -26,6 +26,7 @@
 
 #include <string>
 #include <vector>
+#include <MengeCore/Agents/SimulatorInterface.h>
 
 // forward declaration
 class TiXmlElement;
@@ -90,7 +91,7 @@ namespace Menge {
 		/*!
 		 *	@brief		Evaluates the event (and triggers handlers as necessary).
 		 */
-		void evaluate();
+		void evaluate(Agents::SimulatorInterface * sim, BFSM::FSM * fsm);
 
 		friend Event * parseEvent( TiXmlElement * node, const std::string & specFldr );
 		friend class EventSystem;
