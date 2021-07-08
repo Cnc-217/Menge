@@ -168,7 +168,7 @@ namespace Menge {
 				
 			}
 
-			vector<Agents::BaseAgent*>::iterator iter;
+			//vector<Agents::BaseAgent*>::iterator iter;
 			for (iter = _normalSet.begin(); iter != _leaderSet.end(); ++iter) {
 				Agents::BaseAgent* agentLeader = const_cast<Agents::BaseAgent*>(*iter);
 
