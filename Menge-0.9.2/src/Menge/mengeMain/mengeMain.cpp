@@ -197,7 +197,7 @@ bool parseCommandParameters( int argc, char* argv[], ProjectSpec* spec, const Si
 		else if (strcmp(name.c_str(), "BusinessReality") == 0) {
 			PROJECTNAME = BUSINESSREALITY;
 		}
-		else if (strcmp(name.c_str(), "Evacution") == 0) {
+		else if (strcmp(name.c_str(), "Evacuation") == 0) {
 			PROJECTNAME = EVACUATION;
 		}
 		

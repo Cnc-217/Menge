@@ -206,7 +206,7 @@ namespace Menge {
 			}
 		}
 		_sumWeightMatrix = new MatrixDim2(3,30,0);
-		//_sumWeightMatrix = matrix;
+		
 		
 		for (int i = 0; i < dimension_a; i++) {
 			for (int j = 0; j < dimension_b; j++) {

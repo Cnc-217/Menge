@@ -40,6 +40,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/Agents/Events/StateEvtTrigger.h"
 #include "MengeCore/Agents/Events/EventTriggerExternal.h"
 #include "MengeCore/Agents/Events/TimeEvtTrigger.h"
+#include "MengeCore/Agents/Events/NeighborhoodTrigger.h"
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 
@@ -64,6 +65,8 @@ namespace Menge {
 		addFactory( new StatePopIncTriggerFactory() );
 		addFactory( new ExternalEvtTriggerFactory() );
 		addFactory( new TimeReachedTriggerFactory() );//需要增加一个触发条件
+		addFactory( new NeighborhoodDetectedTriggerFactory() );
+
 	}
 
 }	// namespace Menge

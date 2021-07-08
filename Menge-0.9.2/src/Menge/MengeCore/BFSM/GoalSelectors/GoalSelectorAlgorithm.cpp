@@ -30,6 +30,7 @@ namespace Menge {
 
 		Goal* AlgorithmGoalSelector::getGoal(const Agents::BaseAgent* agent) const {
 			if (_flag == false) {
+				cout << "AlgorithmGoalSelector start" << endl;
 				//ÅÐ¶ÏÏµÍ³´íÎó
 				assert(agent != 0x0 && "AlgorithmGoalSelector requires a valid base agent!");
 				const size_t GOAL_COUNT = _goalSet->size();
@@ -40,6 +41,7 @@ namespace Menge {
 					return 0x0;
 				}
 
+				AlgorithmGoalSelector::_bestGoals.clear();
 				const size_t NUM_AGENT = Menge::SIMULATOR->getNumAgents();
 				const size_t NUM_GOAL = _goalSet->size();
 				size_t agent_id;

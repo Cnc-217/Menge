@@ -326,7 +326,7 @@ def main():
             bb.min = Vector3( -100, -100, 0 )
             bb.max = Vector3( 100, 100, 0 )
 
-    agents = AgentSet( 30 )
+    agents = AgentSet( 15 )
     if ( agtName ):
         agents.initFromFile( agtName )
         if ( scbName != '' ):

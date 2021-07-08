@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<Population >
+    <GoalSet id="0">
+        <Goal capacity="1000000" id="0" max_x="-8040.98" max_y="-599.11" min_x="-8914.84" min_y="-2003.52" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="1" max_x="-3732.23" max_y="-4243.28" min_x="-5058.62" min_y="-4929.88" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="2" max_x="-3568.93" max_y="3397.65" min_x="-4957.74" min_y="2742.26" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="3" max_x="4333.43" max_y="3516.77" min_x="2897.81" min_y="2830.17" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="4" max_x="-1076.01" max_y="-4504.77" min_x="-2449.22" min_y="-5253.79" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="7" max_x="3985.87" max_y="-4707.79" min_x="2556.91" min_y="-5372.17" type="AABB" weight="1.00"/>
+    </GoalSet>
+
+</Population>

@@ -45,6 +45,8 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/Transitions/TargetProb.h"
 #include "MengeCore/BFSM/Goals/Goal.h"
 #include "MengeCore/BFSM/GoalSet.h"
+#include "MengeCore/BFSM/GoalSelectors/GoalSelector.h"
+#include "MengeCore/BFSM/GoalSelectors/GoalSelectorAlgorithm.h"
 #include "MengeCore/MatrixMy.h"
 #include "MengeCore/BFSM/Transitions/Transition.h"
 #include "MengeCore/Agents/SimulatorInterface.h"
@@ -124,6 +126,8 @@ namespace Menge {
 	//	the event from triggering upon initialization.  The first call to
 	//	testCondition will bring it back down.
 	TimeReachedTrigger::TimeReachedTrigger() : TimeEvtTrigger() {
+		TimeReachedTrigger::_timeSimulate = 10;
+		TimeReachedTrigger::_lastTimestamp = 0;
 	}
 
 	/////////////////////////////////////////////////////////////////////
@@ -186,8 +190,6 @@ namespace Menge {
 				//根据接收到的信息修改矩阵概率
 				Business::MartixToFsm();
 
-				//重新开始
-				MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;
 				
 
 			}
@@ -207,21 +209,15 @@ namespace Menge {
 				//BusinessReality::ProbGoals->Show();
 				//根据接收到的信息修改矩阵概率
 
-				MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;
-
-			}
-			else{
 				
-                const size_t AGT_COUNT = Menge::SIMULATOR->getNumAgents();
-                for ( size_t a = 0; a < AGT_COUNT; ++a ) {
-                    Agents::BaseAgent * agt = Menge::SIMULATOR->getAgent( a );
-                    State * pState = Menge::ACTIVE_FSM->getCurrentState(agt);
-                    pState->leave(agt);
-                    //pState->enter(agt);
 
-                }
 			}
-
+			else {
+				//do nothingt
+			}
+			
+			//重新开始
+			MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;
 			return true;
 		}
 

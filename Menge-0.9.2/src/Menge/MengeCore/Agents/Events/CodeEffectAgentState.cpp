@@ -53,6 +53,11 @@ namespace Menge {
 		else if (PROJECTNAME == BUSINESSREALITY) {
 			//do nothing
 		}
+
+		else if (PROJECTNAME == EVACUATION) {
+			//do nothing
+		}
+
 		
 	}
 
