@@ -47,6 +47,8 @@ namespace Menge {
 			 /*! The unique identifier used to register this type with run-time components. */
 			 static const std::string NAME;
 
+			 size_t _leaderID;
+
 			private:
 			 friend class AgentGoalFactory;
 
@@ -65,7 +67,7 @@ namespace Menge {
 			 // The "position" (or origin) of the geometry's frame measured and expressed in the world frame.
 			 Math::Vector2 _p_WGo;
 
-			 size_t _leaderID;
+			 
 		};
 
 		/*!

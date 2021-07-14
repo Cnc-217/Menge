@@ -89,10 +89,10 @@ namespace Menge {
 			 *				After FSM construction, it contains a pointer to the
 			 *				actual goal set.
 			 */
-			union {
+			
 				size_t		_goalSetID;		///< The identifier for the goal set
 				GoalSet *	_goalSet;		///< The pointer to the goal set.
-			};
+			
 		};
 
 		/*!

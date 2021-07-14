@@ -66,9 +66,9 @@ namespace Menge {
 	float NeighborhoodDetectedTrigger::_timeSimulate = 10;
 	float NeighborhoodDetectedTrigger::_lastTimestamp = 0;
 	bool NeighborhoodDetectedTrigger::_flag = false;
-	std::vector<Agents::BaseAgent*>NeighborhoodDetectedTrigger::_leaderSet;
-	std::vector<Agents::BaseAgent*>NeighborhoodDetectedTrigger::_panicSet;
-	std::vector<Agents::BaseAgent*>NeighborhoodDetectedTrigger::_normalSet;
+	std::vector<Agents::BaseAgent*> NeighborhoodDetectedTrigger::_leaderSet;
+	std::vector<Agents::BaseAgent*> NeighborhoodDetectedTrigger::_panicSet;
+	std::vector<Agents::BaseAgent*> NeighborhoodDetectedTrigger::_normalSet;
 	/////////////////////////////////////////////////////////////////////
 	//					Implementation of StateEvtTrigger
 	/////////////////////////////////////////////////////////////////////
@@ -129,56 +129,95 @@ namespace Menge {
 
 	bool NeighborhoodDetectedTrigger::testCondition() { //检测触发条件
 
-		//如果是第一次进入testcondition，将所有agent的信息存入hashset便于后面遍历
-		if (_flag == false) {
-			const size_t AGT_COUNT = Menge::SIMULATOR->getNumAgents();
-			for (size_t a = 0; a < AGT_COUNT; ++a) {
-				Agents::BaseAgent* agt = Menge::SIMULATOR->getAgent(a);
-				if (agt->_class == 0) _leaderSet.push_back(agt); //leader
-				else if (agt->_class == 1) _panicSet.push_back(agt);//panic
-				else _normalSet.push_back(agt);
-			}
-			_flag = true;
-		}
 
 		if (PROJECTNAME == EVACUATION) {
-			//每一段时间检测一次leader的goal
-			if ((Menge::SIM_TIME - _lastTimestamp) > _timeSimulate) {
-				cout << "trigger condition met at :" << Menge::SIM_TIME << endl;
-				_lastTimestamp = Menge::SIM_TIME;
 
-				vector<Agents::BaseAgent*>::iterator iter;
-				for (iter = _leaderSet.begin(); iter != _leaderSet.end(); ++iter) {
-					Agents::BaseAgent* agentLeader = const_cast<Agents::BaseAgent*>(*iter);
-					State* currentState = Menge::ACTIVE_FSM->getCurrentState(agentLeader);
-					currentState->leave(agentLeader);
+			if (_flag == false) {//第一次进入，将人群分进vector里
+				for (int idx = 0; idx < Menge::SIMULATOR->getNumAgents(); idx++) {
+					Agents::BaseAgent* agent = Menge::SIMULATOR->getAgent(idx);
+					if (agent->_class == 0) _leaderSet.push_back(agent);
+					else if (agent->_class == 1) _panicSet.push_back(agent);
+					else _normalSet.push_back(agent);
+				}
+				_flag = true;
+			}
+
+			//每一段时间检测一次leader的goal,并重新选择出口
+			if ((Menge::SIM_TIME - _lastTimestamp) > _timeSimulate) {//时间到了
+				cout << "trigger condition met at :" << Menge::SIM_TIME << endl;
+				vector<Agents::BaseAgent*>::iterator agent;
+				for (agent = _leaderSet.begin(); agent != _leaderSet.end(); agent++) {
+					State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
+					currentState->leave(*agent);
 					AlgorithmGoalSelector* algorithmGoalSelector = (AlgorithmGoalSelector*)currentState->getGoalSelector();
-					if(iter == _leaderSet.begin()) algorithmGoalSelector->_flag = false;
-					currentState->enter(agentLeader);
-					cout << "leader ID: " << agentLeader->_id << "choose new goal"<<endl;
+					if (agent == _leaderSet.begin()) algorithmGoalSelector->_flag = false;
+					currentState->enter(*agent);
+					cout << "leader ID: " << (*agent)->_id << "choose new goal" << endl;
+				}
+				_lastTimestamp = Menge::SIM_TIME;
+			}
+
+			//每一个恐慌者判断有没有引导者在附近，有的话就跟随
+			vector<Agents::BaseAgent*>::iterator agent;
+			for (agent = _panicSet.begin(); agent != _panicSet.end(); agent++) {
+				State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
+				if (currentState->getName() == "Follow_leader") continue;
+				vector<Menge::Agents::NearAgent>::iterator nearAgent;
+
+				//遍历每一个附近的人
+				for (nearAgent = (*agent)->_nearAgents.begin(); nearAgent != (*agent)->_nearAgents.end(); ++nearAgent) {
+					//for (nearAgent = Menge::SIMULATOR->getAgent(idx)->_nearAgents.begin(); nearAgent != Menge::SIMULATOR->getAgent(idx)->_nearAgents.end(); ++nearAgent) {
+						/*
+						if ((*agent)->_id == 31) {
+							cout << "idx: " << idx << " " << (*nearAgent).agent->_id << " class : " << (*nearAgent).agent->_class << endl;
+							if ((*nearAgent).agent->_class == 0) cout << "pop" << endl;
+						}*/
+					//附近有leader
+					if ((*nearAgent).agent->_class == 0) {
+						currentState->leave((*agent));
+						State* nextState = Menge::ACTIVE_FSM->getNode("Follow_leader");//进入新state
+						nextState->enter((*agent));
+						Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
+						break;
+					}
 				}
 
-			return true;
 			}
 
-			//随时检测其他类型agent周围是否有其他类型
-			vector<Agents::BaseAgent*>::iterator iter;
-			for (iter = _panicSet.begin(); iter != _leaderSet.end(); ++iter) {
-				Agents::BaseAgent* agentLeader = const_cast<Agents::BaseAgent*>(*iter);
-				
+			//普通人判断附近有无恐慌者和引导这，有的话就跟随，引导者优先
+			for (agent = _normalSet.begin(); agent != _normalSet.end(); agent++) {
+				State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
+				if (currentState->getName() == "Follow_leader") continue;
+				vector<Menge::Agents::NearAgent>::iterator nearAgent;
+				for (nearAgent = (*agent)->_nearAgents.begin(); nearAgent != (*agent)->_nearAgents.end(); ++nearAgent) {
+					{
+						//附近有leader
+						if ((*nearAgent).agent->_class == 0) {
+							currentState->leave((*agent));
+							State* nextState = Menge::ACTIVE_FSM->getNode("Follow_leader");
+							nextState->enter((*agent));
+							Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
+							break;
+						}
+						//附近有panicer
+						else if ((*nearAgent).agent->_class == 1) {
+							currentState->leave((*agent));
+							State* nextState = Menge::ACTIVE_FSM->getNode("Follow_panic");//进入新state，具体怎么选择goal在goalselecter
+							nextState->enter((*agent));
+							Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
+							break;
+						}
+					}
+
+				}
+
 			}
-
-			//vector<Agents::BaseAgent*>::iterator iter;
-			for (iter = _normalSet.begin(); iter != _leaderSet.end(); ++iter) {
-				Agents::BaseAgent* agentLeader = const_cast<Agents::BaseAgent*>(*iter);
-
-			}
-
 		}
 		else {
 			//do nothing
 		}
 
+		
 
 		return false;
 	}

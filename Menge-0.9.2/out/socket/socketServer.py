@@ -33,10 +33,10 @@ def socketSend(c,action):
 def main( project):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     portSend = 12347
-    s.bind(('localhost', portSend))
+    s.bind(('10.28.195.233', portSend))
     s.listen(5)
 
-    if (project == "Business"):
+    if (project == "BusinessLearning"):
         while True:
             data_result, c, caddr = socketAccept(s)
             print ("after transfer:")
@@ -61,6 +61,6 @@ def main( project):
 
 if __name__ == '__main__':
 
-    project = "Business"
+    project = "BusinessLearning"
     #project = "BusinessReality"
     main(project)

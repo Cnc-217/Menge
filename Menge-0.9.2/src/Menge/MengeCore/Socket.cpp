@@ -41,7 +41,9 @@ namespace Menge {
 	
 	int* Socket::socketGetCouponBusiness(char* message) {
 		//1.socket初始化、发送数据
-		char* ip = "127.0.0.1";
+		//char* ip = "10.210.77.109";
+		//int host = 12349;
+		char* ip = "10.28.195.233";
 		int host = 12347;
 		SOCKET clientPython = socketInit(ip,host);
 

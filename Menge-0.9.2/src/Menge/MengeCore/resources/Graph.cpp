@@ -465,9 +465,9 @@ namespace Menge {
 		size_t tmp;
 		float_t distance = 0;
 		next = endID;
-		for (size_t i = wayCount; i > 0; --i) {
+		for (size_t i = wayCount; i > 1; i--) {//因为如果i=1，heap找不到next的前一个结点
 			tmp = heap.getReachedFrom((unsigned int)next);
-			distance += _vertices[tmp].getDistance(_vertices[next]);
+			distance += _vertices[tmp].getDistance(_vertices[next]);//这里产生了越界
 			next = tmp;
 		}
 		return distance;

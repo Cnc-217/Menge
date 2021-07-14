@@ -39,9 +39,7 @@ namespace Menge {
 			//思路1：一个goal对应一个agent的id，goal坐标=agent的坐标即可
 			CircleShape* geo = (CircleShape*)_geometry;
 			geo->setCenter(Menge::SIMULATOR->getAgent(_leaderID)->_pos);
-			//_p_WGo = Menge::SIMULATOR->getAgent(_leaderID)->_pos;
-			//SIMULATOR->getBFSM()->getGoal(0,0).
-			//set_velocity();
+
 
 			
 		}

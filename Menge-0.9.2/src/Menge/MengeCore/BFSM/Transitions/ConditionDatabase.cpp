@@ -44,6 +44,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/Transitions/CondGoal.h"
 #include "MengeCore/BFSM/Transitions/CondBoolean.h"
 #include "MengeCore/BFSM/Transitions/CondGoalWait.h"
+#include "MengeCore/BFSM/Transitions/CondLeaderGoal.h"
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 
@@ -67,6 +68,7 @@ namespace Menge {
 		addFactory( new BFSM::OrCondFactory() );
 		addFactory( new BFSM::NotCondFactory() );
 		addFactory( new BFSM::GoalWaitCondFactory());//增加的功能
+		addFactory( new BFSM::LeaderGoalCondFactory());//
 	}
 
 }	// namespace Menge

@@ -117,11 +117,14 @@ namespace StressGAS {
 		//agt->_prefSpeed = _basePrefSpeed + stressLevel * _deltaPrefSpeed;
 		//agt->_radius = _baseRadius + stressLevel * _deltaRadius;
 		if (stressLevel > 0.0) { //进入出口区域
+			/*
 			if (agt->_nearAgents.size() >=4) {
 				agt->_prefSpeed = 30;//周围人数大于等于4，速度为30
 			}  
 			else if(agt->_class==1) agt->_prefSpeed = _basePrefSpeed - agt->_nearAgents.size() * 10;//group1最慢50
 			else agt->_prefSpeed = _basePrefSpeed - agt->_nearAgents.size() * 10;//group2最慢60
+			*/
+			agt->_prefSpeed = 20;
 		}	
 		else agt->_prefSpeed = _basePrefSpeed;
 		//agt->_prefSpeed = _basePrefSpeed - stressLevel * _deltaPrefSpeed*50;

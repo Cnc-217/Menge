@@ -5,37 +5,37 @@
     <OpenSteer max_force="8" leak_through="0.1" reaction_time="0.5" />
     <Common time_step="0.1" />
     <GCF reaction_time="0.5" max_agent_dist="2" max_agent_force="3" agent_interp_width="0.1" agent_force_strength="0.35" />
-    <Helbing agent_scale="2000" obstacle_scale="4000" reaction_time="0.5" body_force="1200" friction="2400" force_distance="1" />
+    <Helbing agent_scale="400" obstacle_scale="4000" reaction_time="0.5" body_force="200" friction="200" force_distance="1" />
     <Johansson agent_scale="25" obstacle_scale="35" reaction_time="0.5" force_distance="0.15" stride_time="0.5" />
     <Karamouzas orient_weight="0.8" fov="200" reaction_time="0.4" wall_steepness="2" wall_distance="2" colliding_count="5" d_min="1" d_mid="8" d_max="10" agent_force="4" />
     <Zanlungo agent_scale="2000" obstacle_scale="4000" reaction_time="0.5" force_distance="0.005" />
   <Dummy stddev="1.0" />
 
   <AgentProfile name="leader" >
-    <Common max_angle_vel="360" class="0" max_neighbors="10" obstacleSet="1" neighbor_dist="200" r="15" pref_speed="60" max_speed="70" max_accel="35" />
+    <Common max_angle_vel="360" class="0" max_neighbors="50" obstacleSet="1" neighbor_dist="500" r="15" pref_speed="30" max_speed="70" max_accel="70" />
     <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
-    <Helbing mass="80" />
+    <Helbing mass="50" />
     <ORCA tau="1" tauObst="5" />
   </AgentProfile>
 
   <AgentProfile name="panicer" >
-    <Common max_angle_vel="360" class="1" max_neighbors="10" obstacleSet="1" neighbor_dist="200" r="15" pref_speed="70" max_speed="80" max_accel="35" />
+    <Common max_angle_vel="360" class="1" max_neighbors="10" obstacleSet="1" neighbor_dist="300" r="15" pref_speed="30" max_speed="80" max_accel="70" />
     <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
-    <Helbing mass="80" />
+    <Helbing mass="50" />
     <ORCA tau="1" tauObst="5" />
   </AgentProfile>
 
-  <AgentProfile name="follower" >
-    <Common max_angle_vel="360" class="2" max_neighbors="10" obstacleSet="1" neighbor_dist="200" r="15" pref_speed="70" max_speed="80" max_accel="35" />
+  <AgentProfile name="normal" >
+    <Common max_angle_vel="360" class="2" max_neighbors="10" obstacleSet="1" neighbor_dist="300" r="15" pref_speed="30" max_speed="80" max_accel="70" />
     <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
-    <Helbing mass="80" />
+    <Helbing mass="50" />
     <ORCA tau="1" tauObst="5" />
   </AgentProfile>
 
 
   <AgentGroup>
      <ProfileSelector name="leader" type="const"/>
-    <StateSelector type="const" name="Evacuation_leader" />
+    <StateSelector type="const" name="Evacuation_lead" />
     <Generator type="explicit" >
           <Agent p_x="-4060.26640702" p_y="1052.4966797" />
           <Agent p_x="-1860.40848668" p_y="1601.22879805" />
@@ -57,9 +57,32 @@
           <Agent p_x="506.775444778" p_y="1661.66521544" />
     </Generator>
   </AgentGroup>
+
 <AgentGroup>
-     <ProfileSelector name="follower" type="const"/>
-    <StateSelector type="const" name="Evacuation_follower" />
+     <ProfileSelector name="panicer" type="const"/>
+    <StateSelector type="const" name="Evacuation_random" />
+    <Generator type="explicit" >
+          <Agent p_x="-1065.3009662" p_y="172.944575159" />
+          <Agent p_x="-870.65050285" p_y="1989.68223309" />
+          <Agent p_x="1.67194401549" p_y="1312.01024958" />
+          <Agent p_x="-1620.41525057" p_y="1189.45255043" />
+          <Agent p_x="-301.11766564" p_y="-1463.56117227" />
+          <Agent p_x="376.554317875" p_y="-2227.74447283" />
+          <Agent p_x="1162.3654477" p_y="-3604.71626912" />
+          <Agent p_x="1912.13019541" p_y="-2869.37007424" />
+          <Agent p_x="-2384.59855113" p_y="-2162.86098504" />
+          <Agent p_x="-2586.4582909" p_y="2119.44920866" />
+          <Agent p_x="-2543.20263238" p_y="612.710436802" />
+          <Agent p_x="2265.38474001" p_y="-1254.49215608" />
+          <Agent p_x="1328.17880536" p_y="591.082607541" />
+          <Agent p_x="1782.36321985" p_y="1910.38019247" />
+          <Agent p_x="-2968.54994118" p_y="-3193.78751316" />
+    </Generator>
+  </AgentGroup>
+
+<AgentGroup>
+     <ProfileSelector name="normal" type="const"/>
+    <StateSelector type="const" name="Evacuation_random" />
     <Generator type="explicit" >
           <Agent p_x="-7450.18078849" p_y="-1212.18441433" />
           <Agent p_x="-7183.71738548" p_y="-1427.40485523" />

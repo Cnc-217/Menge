@@ -81,6 +81,7 @@ namespace Menge {
 			 *	@returns		A pointer to a newly instantiated GoalSelector class.
 			 */
 			GoalSelector * instance() const { return new WeightedGoalSelector(); }	
+
 		};
 	}	// namespace BFSM
 }	// namespace Menge

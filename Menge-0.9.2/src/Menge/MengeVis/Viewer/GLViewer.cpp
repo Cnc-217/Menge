@@ -56,6 +56,9 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeVis/Viewer/Profiler.h"
 #include "MengeVis/Viewer/Watermark.h"
 
+#include "MengeCore/Core.h"
+
+
 #include <iostream>
 #include <sstream>
 #include <iomanip>
@@ -192,7 +195,7 @@ namespace MengeVis {
 			bool redraw = true;
 			float time = 0.f;
 			_fpsDisplayTimer.start();
-
+			if (Menge::PROJECTNAME == BUSINESSLEARNING || Menge::PROJECTNAME == BUSINESSREALITY) _pause = false;
 			while ( _running ) {
 				SDL_Event e;
 				while ( SDL_PollEvent( &e ) ) {
