@@ -26,7 +26,9 @@
 #define	__CORE_H__
 
 #include "MengeCore/CoreConfig.h"
+#include "MengeCore/Math/Geometry2D.h"
 #include <string>
+#include <map>
 
 #define BUSINESS 1
 #define EVACUATION 2
@@ -38,6 +40,16 @@
  * @brief	The core namespace.  All elements of Menge are contained in this namespace.
  */
 namespace Menge {
+
+    struct ExitPeople{
+        size_t id;
+        int num;
+
+        ExitPeople(size_t id, int num) {
+            this->id = id;
+            this->num = num;
+        }
+    };
 
 	// forward declarations
 	namespace Agents {
@@ -91,6 +103,17 @@ namespace Menge {
 	extern MENGE_API EventSystem * EVENT_SYSTEM;
 
 	extern MENGE_API size_t PROJECTNAME;
+
+	/*!
+	 * @brief       A map used to count the number of people in each export
+	 */
+	extern MENGE_API   std::map<Math::Geometry2D *, ExitPeople> ExitPeopleCount;
+
+
+	/*!
+	 * @brief       A map used to record which exit the pedestrian is at
+	 */
+	extern MENGE_API   std::map<Menge::Agents::BaseAgent *, size_t> WherePeopleIs;
 
 	namespace Business {
 		extern MENGE_API MatrixDim2* ProbStatesNormal;//第一维：顾客类型；第二维：选择state类型；值：概率

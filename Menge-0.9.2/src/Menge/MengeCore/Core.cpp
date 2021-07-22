@@ -36,15 +36,21 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 
 */
 
+#include <map>
+#include <MengeCore/Math/Geometry2D.h>
 #include "MengeCore/Core.h"
 #include "MengeCore/Agents/SpatialQueries/SpatialQuery.h"
 #include "MengeCore/BFSM/FSM.h"
 #include "MengeCore/Agents/Events/EventSystem.h"
 #include "MengeCore/MatrixMy.h"
-
+#include "MengeCore/Math/Geometry2D.h"
 
 
 namespace Menge {
+
+
+
+
 	BFSM::FSM * ACTIVE_FSM = 0x0;
 
 	float SIM_TIME = 0.f;
@@ -60,6 +66,7 @@ namespace Menge {
 	Menge::EventSystem * EVENT_SYSTEM = new Menge::EventSystem();
 
 	size_t PROJECTNAME = 0;
+
 
 	namespace Business {
 		MatrixDim2* ProbStatesNormal = new MatrixDim2(3, 3, 1);//第一维：顾客类型；第二维：选择state类型；值：概率

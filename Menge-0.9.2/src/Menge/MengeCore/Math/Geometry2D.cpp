@@ -32,6 +32,8 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 
 #include "MengeCore/Agents/PrefVelocity.h"
 #include "MengeCore/PluginEngine/Attribute.h"
+#include "MengeCore/Core.h"
+#include <map>
 
 #include "thirdParty/tinyxml.h"
 
@@ -765,7 +767,9 @@ namespace Menge {
 
             for (size_t i = 1; i <= shapeNumber; i++) {
                 Geometrys.insert(std::pair <size_t, Geometry2D*>(i, createAABB(node, i, prefix)));
+                ExitPeopleCount.insert(std::pair<Geometry2D*, ExitPeople>(createAABB(node, i, prefix), ExitPeople(i, 0)));
             }
+
 
             return Geometrys;
         }

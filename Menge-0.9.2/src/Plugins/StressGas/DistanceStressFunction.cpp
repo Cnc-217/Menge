@@ -1,6 +1,7 @@
 #include "DistanceStressFunction.h"
 #include "AgentStressor.h"
 
+#include <map>
 #include "MengeCore/Core.h"
 #include "MengeCore/Agents/BaseAgent.h"
 #include "MengeCore/Math/Geometry2D.h"
@@ -52,6 +53,14 @@ namespace StressGAS {
 		while (it != _regions.end()) {
 			region = it->second;
 			if (region->containsPoint(_agent->_pos)) {
+                if (Menge::WherePeopleIs.count(_agent) == 0) {
+                    //如果检测到区域中有这个人，但是人与出口的映射map中不存在这个人，
+                    //说明这个人刚刚进去该区域，此时在该区域的人数中++，并在 人与出口的映射map 中加入该人对应的出口编号
+                    Menge::WherePeopleIs.insert(std::pair<Menge::Agents::BaseAgent*, size_t>(_agent, it->first));
+                    int num = Menge::ExitPeopleCount.find(region)->second.num;
+                    Menge::ExitPeopleCount.insert(std::pair<Geometry2D*, Menge::ExitPeople>(region, Menge::ExitPeople(num+1, 0)));
+                }
+
 				float d = sqrt(region->squaredDistance(_agent->_pos));
 				if (d > _outer) target = 0.f;
 				else if (d < _inner) target = 1.f;
@@ -67,6 +76,16 @@ namespace StressGAS {
 
 				_stressLevel = (target > _stressLevel) ? target : _stressLevel;
 				return _stressLevel;
+			}
+			else{
+			    //如果此时该区域中没有这个人，得判断此人是否刚刚从该区域走出来
+			    //如果人与出口的映射map中存在这个人，并且value等于该区域的id，说明这个人进去过该区域
+			    //此时他正好走出这个区域，该区域人数--，并在 人与出口的映射map 中将该人对应的出口编号置0
+                if (Menge::WherePeopleIs.count(_agent) == 0 && Menge::WherePeopleIs.find(_agent)->second == it->first) {
+                    Menge::WherePeopleIs.find(_agent)->second = 0;
+                    int num = Menge::ExitPeopleCount.find(region)->second.num;
+                    Menge::ExitPeopleCount.insert(std::pair<Geometry2D*, Menge::ExitPeople>(region, Menge::ExitPeople(num-1, 0)));
+                }
 			}
 			it++;
 		}
