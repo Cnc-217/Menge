@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<Project 
+	scene="EvacuationAlgorithmS.xml" 
+	behavior="EvacuationAlgorithmB.xml" 
+	view="EvacuationV.xml" 
+	model="helbing"
+	dumpPath="images"
+/>

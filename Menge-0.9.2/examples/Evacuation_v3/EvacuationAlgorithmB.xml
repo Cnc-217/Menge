@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+
+<BFSM>
+   <GoalSet id="0">
+      <Goal capacity="1000000" id="1" max_x="-8711.76" max_y="-818.49" min_x="-10130.76" min_y="-1880.43" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="2" max_x="-3585.16" max_y="-4430.41" min_x="-4902.38" min_y="-5483.97" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="3" max_x="-3380.09" max_y="4028.93" min_x="-4788.49" min_y="3004.11" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="4" max_x="4277.23" max_y="3995.38" min_x="2876.31" min_y="2947.10" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="5" max_x="-912.64" max_y="-4546.92" min_x="-2248.73" min_y="-5533.33" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="6" max_x="4002.78" max_y="-4772.67" min_x="2613.11" min_y="-5682.24" type="AABB" weight="1.00"/>
+    </GoalSet>
+
+<!-- 引导者-->
+  <GoalSet id="1">
+      <Goal capacity="1000000" type="agent" id="0" shape="circle" x="0" y="0" radius="30" idleader="0"/>
+      <Goal capacity="1000000" type="agent" id="1" shape="circle" x="0" y="0" radius="30" idleader="1"/>
+      <Goal capacity="1000000" type="agent" id="2" shape="circle" x="0" y="0" radius="30" idleader="2"/>
+      <Goal capacity="1000000" type="agent" id="3" shape="circle" x="0" y="0" radius="30" idleader="3"/>
+      <Goal capacity="1000000" type="agent" id="4" shape="circle" x="0" y="0" radius="30" idleader="4"/>
+      <Goal capacity="1000000" type="agent" id="5" shape="circle" x="0" y="0" radius="30" idleader="5"/>
+      <Goal capacity="1000000" type="agent" id="6" shape="circle" x="0" y="0" radius="30" idleader="6"/>
+      <Goal capacity="1000000" type="agent" id="7" shape="circle" x="0" y="0" radius="30" idleader="7"/>
+      <Goal capacity="1000000" type="agent" id="8" shape="circle" x="0" y="0" radius="30" idleader="8"/>
+      <Goal capacity="1000000" type="agent" id="9" shape="circle" x="0" y="0" radius="30" idleader="9"/>
+      <Goal capacity="1000000" type="agent" id="10" shape="circle" x="0" y="0" radius="30" idleader="10"/>
+      <Goal capacity="1000000" type="agent" id="11" shape="circle" x="0" y="0" radius="30" idleader="11"/>
+      <Goal capacity="1000000" type="agent" id="12" shape="circle" x="0" y="0" radius="30" idleader="12"/>
+      <Goal capacity="1000000" type="agent" id="13" shape="circle" x="0" y="0" radius="30" idleader="13"/>
+      <Goal capacity="1000000" type="agent" id="14" shape="circle" x="0" y="0" radius="30" idleader="14"/>
+      <Goal capacity="1000000" type="agent" id="15" shape="circle" x="0" y="0" radius="30" idleader="15"/>
+      <Goal capacity="1000000" type="agent" id="16" shape="circle" x="0" y="0" radius="30" idleader="16"/>
+      <Goal capacity="1000000" type="agent" id="17" shape="circle" x="0" y="0" radius="30" idleader="17"/>
+  </GoalSet>
+
+<!-- 恐慌者 -->
+  <GoalSet id="2">
+      <Goal capacity="1000000" type="agent" id="18" shape="circle" x="0" y="0" radius="30" idleader="18"/>
+      <Goal capacity="1000000" type="agent" id="19" shape="circle" x="0" y="0" radius="30" idleader="19"/>
+      <Goal capacity="1000000" type="agent" id="20" shape="circle" x="0" y="0" radius="30" idleader="20"/>
+      <Goal capacity="1000000" type="agent" id="21" shape="circle" x="0" y="0" radius="30" idleader="21"/>
+      <Goal capacity="1000000" type="agent" id="22" shape="circle" x="0" y="0" radius="30" idleader="22"/>
+      <Goal capacity="1000000" type="agent" id="23" shape="circle" x="0" y="0" radius="30" idleader="23"/>
+      <Goal capacity="1000000" type="agent" id="24" shape="circle" x="0" y="0" radius="30" idleader="24"/>
+      <Goal capacity="1000000" type="agent" id="25" shape="circle" x="0" y="0" radius="30" idleader="25"/>
+      <Goal capacity="1000000" type="agent" id="26" shape="circle" x="0" y="0" radius="30" idleader="26"/>
+      <Goal capacity="1000000" type="agent" id="27" shape="circle" x="0" y="0" radius="30" idleader="27"/>
+      <Goal capacity="1000000" type="agent" id="28" shape="circle" x="0" y="0" radius="30" idleader="28"/>
+      <Goal capacity="1000000" type="agent" id="29" shape="circle" x="0" y="0" radius="30" idleader="29"/>
+      <Goal capacity="1000000" type="agent" id="30" shape="circle" x="0" y="0" radius="30" idleader="30"/>
+      <Goal capacity="1000000" type="agent" id="31" shape="circle" x="0" y="0" radius="30" idleader="31"/>
+      <Goal capacity="1000000" type="agent" id="32" shape="circle" x="0" y="0" radius="30" idleader="32"/>
+  </GoalSet>
+
+
+  <State name="Evacuation_lead" final="0" >
+    <GoalSelector type="algorithm" goal_set="0" algorithmID="2"/>
+    <VelComponent type="road_map" file_name="graph.txt" />
+    <Action type="distance_stress" exit_behavior="cool down"
+      inner_dist="c" inner_value="100" 
+      outer_dist="c" outer_value="120"
+      fall_off="linear"
+      shape_number="6" 
+      max_x1="-5840" min_x1="-7450" max_y1="-930" min_y1="-1680"
+      max_x2="-3120" min_x2="-4500" max_y2="-2500" min_y2="-3670"
+      max_x3="-3300" min_x3="-4530" max_y3="2054" min_y3="980"
+      max_x4="3730" min_x4="2900" max_y4="2178" min_y4="700"
+      max_x5="-950" min_x5="-2130" max_y5="-3000" min_y5="-3800"
+      max_x6="3730" min_x6="2660" max_y6="-2100" min_y6="-3540"
+      />
+  </State>
+
+<!-- <GoalSelector type="explicit" goal_set="1" goal="0"/> -->
+ <State name="Follow_leader" final="0" >
+    <GoalSelector type="near_agent" goal_set="1" />
+    <!-- <VelComponent type="road_map" file_name="graph.txt" /> -->
+    <VelComponent type="goal" />
+    <Action type="distance_stress" exit_behavior="cool down"
+      inner_dist="c" inner_value="100" 
+      outer_dist="c" outer_value="120"
+      fall_off="linear"
+      shape_number="6" 
+      max_x1="-5840" min_x1="-7450" max_y1="-930" min_y1="-1680"
+      max_x2="-3120" min_x2="-4500" max_y2="-2500" min_y2="-3670"
+      max_x3="-3300" min_x3="-4530" max_y3="2054" min_y3="980"
+      max_x4="3730" min_x4="2900" max_y4="2178" min_y4="700"
+      max_x5="-950" min_x5="-2130" max_y5="-3000" min_y5="-3800"
+      max_x6="3730" min_x6="2660" max_y6="-2100" min_y6="-3540"
+      />
+  </State>
+
+ <State name="Follow_panic" final="0" >
+    <GoalSelector type="near_agent" goal_set="2" />
+    <!-- <VelComponent type="road_map" file_name="graph.txt" /> -->
+    <VelComponent type="goal" />
+    <Action type="distance_stress" exit_behavior="cool down"
+      inner_dist="c" inner_value="100" 
+      outer_dist="c" outer_value="120"
+      fall_off="linear"
+      shape_number="6" 
+      max_x1="-5840" min_x1="-7450" max_y1="-930" min_y1="-1680"
+      max_x2="-3120" min_x2="-4500" max_y2="-2500" min_y2="-3670"
+      max_x3="-3300" min_x3="-4530" max_y3="2054" min_y3="980"
+      max_x4="3730" min_x4="2900" max_y4="2178" min_y4="700"
+      max_x5="-950" min_x5="-2130" max_y5="-3000" min_y5="-3800"
+      max_x6="3730" min_x6="2660" max_y6="-2100" min_y6="-3540"
+      />
+  </State>
+
+ <State name="Evacuation_random" final="0" >
+    <GoalSelector type="random" goal_set="0" />
+    <VelComponent type="road_map" file_name="graph.txt" />
+    <Action type="distance_stress" exit_behavior="cool down"
+      inner_dist="c" inner_value="100" 
+      outer_dist="c" outer_value="120"
+      fall_off="linear"
+      shape_number="6" 
+     max_x1="-5840" min_x1="-7450" max_y1="-930" min_y1="-1680"
+      max_x2="-3120" min_x2="-4500" max_y2="-2500" min_y2="-3670"
+      max_x3="-3300" min_x3="-4530" max_y3="2054" min_y3="980"
+      max_x4="3730" min_x4="2900" max_y4="2178" min_y4="700"
+      max_x5="-950" min_x5="-2130" max_y5="-3000" min_y5="-3800"
+      max_x6="3730" min_x6="2660" max_y6="-2100" min_y6="-3540"
+      />
+  </State>
+
+
+<State name="out" final="0" >
+    <GoalSelector type="nearest" goal_set="0" />
+    <VelComponent type="road_map" file_name="graph.txt" />
+    <Action type="distance_stress" exit_behavior="cool down"
+      inner_dist="c" inner_value="100" 
+      outer_dist="c" outer_value="120"
+      fall_off="linear"
+      shape_number="6" 
+      max_x1="-5840" min_x1="-7450" max_y1="-930" min_y1="-1680"
+      max_x2="-3120" min_x2="-4500" max_y2="-2500" min_y2="-3670"
+      max_x3="-3300" min_x3="-4530" max_y3="2054" min_y3="980"
+      max_x4="3730" min_x4="2900" max_y4="2178" min_y4="700"
+      max_x5="-950" min_x5="-2130" max_y5="-3000" min_y5="-3800"
+      max_x6="3730" min_x6="2660" max_y6="-2100" min_y6="-3540"
+      />
+  </State>
+
+  <State name="Stop" final="1" >
+    <GoalSelector type="identity" />
+    <VelComponent type="zero" />
+  </State>
+
+  <Transition from="Evacuation_lead" to="Stop" >
+    <Condition type="goal_reached" distance="1" />
+  </Transition>
+
+  <Transition from="Follow_leader" to="Stop" >
+      <Condition type="leadergoal_reached" distance="20" />
+  </Transition>
+
+  <Transition from="Follow_panic" to="Stop" >
+      <Condition type="leadergoal_reached" distance="20" />
+  </Transition>
+
+   <Transition from="Evacuation_random" to="Stop" >
+      <Condition type="goal_reached" distance="1" />
+  </Transition>
+
+   <Transition from="out" to="Stop" >
+      <Condition type="goal_reached" distance="1" />
+  </Transition>
+
+<!-- 这里只有trigger有用，其他的都是donothing -->
+<EventSystem conservative="1">
+    <Target name="target" type="agent_all"/>
+    <Effect name="effect" type="set_agent_state_by_code"></Effect>
+    <Event name="chage_goal">
+      <Trigger name="neighborhood_search" type="neighborhood_search" timeSimulate="30"/>
+      <Response effect="effect" target="target" />
+    </Event>
+</EventSystem>
+
+</BFSM>

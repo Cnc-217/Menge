@@ -230,7 +230,7 @@ namespace Menge {
 			for (int j = 0; j < 30; j++) { //到每一家店
 				int shopType = j / 10;//目标店铺类型
 				int shopID = j % 10;//目标店铺id
-				if (mapArea.find(j)->second == shopArea) {//如果是相同区域的店
+				if (mapArea.find(j)->second == shopArea) {//如果是相同区域的店。
 					BusinessReality::ProbGoals->SetPoint(0, i, shopType, shopID, static_cast<float>(20) / size);
 					BusinessReality::ProbGoals->SetPoint(1, i, shopType, shopID, static_cast<float>(20) / size);
 					BusinessReality::ProbGoals->SetPoint(2, i, shopType, shopID, static_cast<float>(20) / size);

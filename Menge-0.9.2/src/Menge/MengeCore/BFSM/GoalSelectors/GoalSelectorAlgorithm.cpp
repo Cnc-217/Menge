@@ -2,6 +2,7 @@
 
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorAlgorithm.h"
 #include "MengeCore/resources/Graph.h"
+#include "MengeCore/Core.h"
 
 #include "MengeCore/Agents/BaseAgent.h"
 #include "MengeCore/BFSM/GoalSet.h"
@@ -19,18 +20,34 @@ namespace Menge {
 		/////////////////////////////////////////////////////////////////////
 
 		using namespace std;
+		using Menge::Evacuation::ExitReagionInfo;
+		using Menge::Evacuation::ExitAgentInfo;
+		using Menge::Evacuation::ExitReagionCapacity;
 
 		bool AlgorithmGoalSelector::_flag;
 		map <size_t, Goal*> AlgorithmGoalSelector::_bestGoals;
 
-		AlgorithmGoalSelector::AlgorithmGoalSelector() {
+		AlgorithmGoalSelector::AlgorithmGoalSelector() :GoalSelector(), _goalSetID(-1) {
 			AlgorithmGoalSelector::_flag = false;
 			AlgorithmGoalSelector::_bestGoals.clear();
 		}
 
+		/////////////////////////////////////////////////////////////////////
+
+		void AlgorithmGoalSelector::setGoalSet(std::map< size_t, GoalSet* >& goalSets) {
+			if (goalSets.count(_goalSetID) == 1) {
+				_goalSet = goalSets[_goalSetID];
+			}
+			else {
+				logger << Logger::ERR_MSG << "Error selecting goal set ";
+				logger << _goalSetID << " from those defined.  It does not exist.";
+				throw GoalSelectorException();
+			}
+		}
+
 		Goal* AlgorithmGoalSelector::getGoal(const Agents::BaseAgent* agent) const {
 			if (_flag == false) {
-				cout << "AlgorithmGoalSelector start" << endl;
+				cout << "AlgorithmGoalSelector start, AlgorithmID is: " << _algorithmID << endl;
 				//判断系统错误
 				assert(agent != 0x0 && "AlgorithmGoalSelector requires a valid base agent!");
 				const size_t GOAL_COUNT = _goalSet->size();
@@ -44,32 +61,75 @@ namespace Menge {
 				AlgorithmGoalSelector::_bestGoals.clear();
 				const size_t NUM_AGENT = Menge::SIMULATOR->getNumAgents();
 				const size_t NUM_GOAL = _goalSet->size();
-				size_t agent_id;
-				float_t speed;
-				float_t distance;
-				float_t time_predict;
-				size_t i = 0;
-				size_t j = 0;
-				//存储每个goal的所有agent-time map，大小为NUM_GOAL key=goalID value=map<agentID,time>
-				map<size_t, map<size_t, float_t>> map_goal;
-				//存储每个agent到i出口的time，大小为NUM_AGENT key=agentID value=time
-				map<size_t, float_t> map_agent;
+				float_t distance = 0;
+				//存储每个agent到所有出口的总距离，大小为NUM_AGENT
+				vector<float_t> distanceSum(NUM_AGENT, 0);
+				//存储某个agent到每个出口的距离
+				//vector<float_t> distance(NUM_GOAL, 0);
+				//存储每个agent到所有出口的距离vector
+				vector<vector<float_t>> distanceVec(NUM_AGENT, vector<float_t>(NUM_GOAL+1,0));
 
-				for (i = 0; i < NUM_GOAL; i++) { //遍历每个出口
-					j = 0;
-					for (j = 0; j < NUM_AGENT; j++) { //遍历每个agent
-						Agents::BaseAgent* agentTest = Menge::SIMULATOR->getAgent(j);//当前agent
-						speed = agentTest->_prefSpeed;//初始速度
+				for (int i = 0; i < NUM_AGENT; i++) { //遍历每个agent
+					distance = 0;
+					for (int j = 1; j < NUM_GOAL+1; j++) { //遍历每个出口
+						Agents::BaseAgent* agentTest = Menge::SIMULATOR->getAgent(i);//当前agent
 						//在graph.h中增加了静态成员变量，下面是A*算法
-						distance = Graph::graphLoad->getPathLenth(agentTest, _goalSet->getIthGoal(i));//得到路径长度
-						time_predict = distance / speed + 50;//这里是公式的实现，后面的吞吐量暂时不知道怎么设置
-						//存agent到i出口的time，不考虑顺序
-						map_agent.insert(pair < size_t, float_t >(j, time_predict));
+						distance = Graph::graphLoad->getPathLenth(agentTest, _goalSet->getGoalByID(j));//得到路径长度
+						distanceVec[i][j] = distance;
+						distanceSum[i] += distance;
 					}
-					map_goal.insert(pair < size_t, map<size_t, float_t> >(i, map_agent));
-					map_agent.clear();
 				}
 
+				Goal* bestGoal = _goalSet->getGoalByID(1);
+				size_t populationExit = 0;
+				float_t populationCapacity = 0;
+				for (size_t i = 0; i < ExitReagionInfo.size(); i++)
+				{
+					populationExit += ExitReagionInfo[i];//所有出口的总人数
+					if(i>0)populationCapacity += ExitReagionInfo[i]/ ExitReagionCapacity[i];//所有出口的总容量
+				}
+
+				//下面计算优先级
+				float_t priorityMax;
+				float_t priorityTmp;
+				for (int i = 0; i < NUM_AGENT; i++) { //遍历每个agent
+					priorityMax = 0; //优先级算法得到的优先级越大越好
+					priorityTmp = 0;
+					for (int j = 1; j < NUM_GOAL + 1; j++) {//遍历每个goal,计算优先级
+						
+						if (_algorithmID == 0) {
+
+							priorityTmp = 1/distanceVec[i][j];
+						}
+						else if (_algorithmID == 1) {
+							if (populationExit == 0) priorityTmp = 2 - distanceVec[i][j] / distanceSum[i];
+							else priorityTmp = 3*(1 - ExitReagionInfo[j] / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]);
+						}
+						else if (_algorithmID == 2) {
+							if (populationExit == 0) priorityTmp = 2 - distanceVec[i][j] / distanceSum[i];
+							else priorityTmp = 3*(1 - (ExitReagionInfo[j]/ populationCapacity) / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]);
+						}
+						else {
+							cout <<"AlgorithmID wrong" << endl;
+							return 0x0;
+						}
+						
+
+						if (priorityTmp > priorityMax) {
+							priorityMax = priorityTmp;
+							bestGoal = _goalSet->getGoalByID(j);
+						}
+					}
+					_bestGoals.insert(pair <size_t, Goal*>(i, bestGoal));
+				}
+
+				_flag = true;
+				
+			}
+
+			return _bestGoals.find(agent->_id)->second;
+
+				/*
  				Goal* bestGoal = _goalSet->getIthGoal(0);
 
 				map <size_t, map<size_t, float_t>> ::iterator itGoal;
@@ -80,13 +140,13 @@ namespace Menge {
 				//找第一个map_agent对里面的元素进行逐个查找
 				while (itAgent != map_agent.end()) {  //遍历每个agent
 					agent_id = itAgent->first;
-					time_predict = itAgent->second;
+					priority = itAgent->second;
 					itGoal = map_goal.begin();
 					itGoal++;
 					bestGoal = _goalSet->getIthGoal(0);
 					while (itGoal != map_goal.end()) {  //遍历每个goal
-						if (itGoal->second.find(agent_id)->second <= time_predict) {//找到时间更少的出口了
-							time_predict = itGoal->second.find(agent_id)->second;
+						if (itGoal->second.find(agent_id)->second > priority) {//找到优先级更高的出口了
+							priority = itGoal->second.find(agent_id)->second;
 							bestGoal = _goalSet->getIthGoal(itGoal->first);
 						}
 						itGoal++;
@@ -98,8 +158,36 @@ namespace Menge {
 			}
 			
 			return _bestGoals.find(agent->_id)->second;
+			*/
 		}
 
+		/////////////////////////////////////////////////////////////////////
+		//                   Implementation of AlgorithmGoalSelectorFactory
+		/////////////////////////////////////////////////////////////////////
+
+		AlgorithmGoalSelectorFactory::AlgorithmGoalSelectorFactory() : GoalSelectorFactory() {
+			_goalSetID = _attrSet.addSizeTAttribute("goal_set", true /*required*/);
+			_algorithmID = _attrSet.addSizeTAttribute("algorithmID", true /*required*/);
+		}
+
+		/////////////////////////////////////////////////////////////////////
+
+		bool AlgorithmGoalSelectorFactory::setFromXML(GoalSelector* selector, TiXmlElement* node,
+			const std::string& behaveFldr) const {
+			AlgorithmGoalSelector* sgs = dynamic_cast<AlgorithmGoalSelector*>(selector);
+			assert(sgs != 0x0 &&
+				"Trying to set goal set goal selector attributes on an incompatible object.");
+
+			if (!GoalSelectorFactory::setFromXML(sgs, node, behaveFldr)) return false;
+
+			sgs->setGoalSetID(_attrSet.getSizeT(_goalSetID));
+			sgs->setAlgorithmID(_attrSet.getSizeT(_algorithmID));
+
+			return true;
+		}
+		
+
+		
 
 	}	// namespace BFSM
  

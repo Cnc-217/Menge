@@ -45,6 +45,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/Core.h"
 #include "MengeCore/BFSM/FSM.h"
 #include "MengeCore/BFSM/State.h"
+#include "MengeCore/BFSM/GoalSet.h"
 #include "MengeCore/Agents/SimulatorInterface.h"
 
 namespace Menge {
@@ -101,7 +102,6 @@ namespace Menge {
 
 			if (_reachedAgents[agent->_id] && _triggerTimes.find(agent->_id)->second==0) {//已到达，且计时未开始
 				if (PROJECTNAME == BUSINESSREALITY) {
-
 					float timeReached = 0.0;
 					int goalType = goal->getID() / 10; //0 1 2 对应eat shop play
 					switch (goalType) {
@@ -114,6 +114,22 @@ namespace Menge {
 					_lock.releaseWrite();
 
 				}	
+				else if (PROJECTNAME == BUSINESSLEARNING) {
+					float timeReached = 0.0;
+					//const GoalSet* goalSet = goal->getGoalSet();
+					State* currentState = Menge::ACTIVE_FSM->getCurrentState(agent);
+					//GoalSet* = currentState.g
+					size_t stateType = currentState->getID() % 4; //0 1 2 3 对应choose eat shop play
+					switch (stateType) {
+					case 1:timeReached = Menge::SIM_TIME + 30; break;
+					case 2:timeReached = Menge::SIM_TIME + 20; break;
+					case 3:timeReached = Menge::SIM_TIME + 50; break;
+					default:break;
+					}
+					_lock.lockWrite();
+					_triggerTimes[agent->_id] = timeReached;//赋值的时候要用锁
+					_lock.releaseWrite();
+				}
 			}
 
 			if (_reachedAgents[agent->_id] && Menge::SIM_TIME > _triggerTimes.find(agent->_id)->second) {

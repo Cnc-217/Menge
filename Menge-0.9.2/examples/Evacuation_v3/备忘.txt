@@ -1,4 +1,5 @@
-
+algorithmID=0 策略2 算法不包含吞吐量
+algorithmID=1 策略3 算法包含吞吐量
 
 xml库：
  <Target name="xxx" type="named_state_member" is_member="1" state="Evacuation" /> 

@@ -251,8 +251,8 @@
     </Transition>
 
   <Transition from="EaterEat,EaterShop,EaterPlay" to="EaterChoose">    
-      <Condition distance="0.2" type="goal_reached"/>
-      <!-- <Condition distance="0.2" type="goal_reached_wait"/>    -->
+      <!-- <Condition distance="0.2" type="goal_reached"/> -->
+      <Condition distance="0.2" type="goal_reached_wait"/>   
       
   </Transition>  
 
@@ -282,8 +282,8 @@
       </Target>
     </Transition>
   <Transition from="ShopperEat,ShopperShop,ShopperPlay" to="ShopperChoose">    
-      <Condition distance="0.2" type="goal_reached"/>  
-      <!-- <Condition type="goal_reached_wait"/>     -->
+      <!-- <Condition distance="0.2" type="goal_reached"/>   -->
+      <Condition type="goal_reached_wait"/>    
   </Transition>  
 
  <State name="PalyerChoose" final="0" >
@@ -311,8 +311,8 @@
       </Target>
     </Transition>
   <Transition from="PlayerEat,PlayerShop,PlayerPlay" to="PalyerChoose">    
-      <Condition distance="0.2" type="goal_reached"/>    
-      <!-- <Condition type="goal_reached_wait"/>   -->
+      <!-- <Condition distance="0.2" type="goal_reached"/>     -->
+      <Condition type="goal_reached_wait"/>  
   </Transition>  
 
 
@@ -347,8 +347,8 @@
     </Transition>
 
   <Transition from="EaterCouponEat,EaterCouponShop,EaterCouponPlay" to="EaterCouponChoose">    
-      <Condition distance="0.2" type="goal_reached"/>  
-      <!-- <Condition type="goal_reached_wait"/>   -->
+      <!-- <Condition distance="0.2" type="goal_reached"/>   -->
+      <Condition type="goal_reached_wait"/>  
   </Transition>  
 
 
@@ -377,7 +377,8 @@
       </Target>
     </Transition>
   <Transition from="ShopperCouponEat,ShopperCouponShop,ShopperCouponPlay" to="ShopperCouponChoose">    
-      <Condition distance="0.2" type="goal_reached"/>    
+      <!-- <Condition distance="0.2" type="goal_reached"/>   -->
+      <Condition type="goal_reached_wait"/>    
   </Transition>  
 
  <State name="PalyerCouponChoose" final="0" >
@@ -406,7 +407,8 @@
     </Transition>
   <Transition from="PlayerCouponEat,PlayerCouponShop,PlayerCouponPlay" to="PalyerCouponChoose">   
 
-      <Condition distance="0.2" type="goal_reached"/>    
+      <!-- <Condition distance="0.2" type="goal_reached"/>     -->
+      <Condition type="goal_reached_wait"/>  
   </Transition>  
 
 
@@ -415,7 +417,7 @@
     <Target name="target" type="agent_all"/>
     <Effect name="effect" type="set_agent_state_by_code"></Effect>
     <Event name="sim_pause">
-      <Trigger name="time_reached" type="time_reached" timeSimulate="120"/>
+      <Trigger name="time_reached" type="time_reached" timeSimulate="100"/>
       <Response effect="effect" target="target" />
     </Event>
 </EventSystem>

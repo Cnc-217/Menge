@@ -164,7 +164,7 @@ namespace Menge {
 			 *	@returns		Pointer to the neighboring agent.
 			 */
 			const BaseAgent * getNeighbor( int idx ) const { return _nearAgents[ idx ].agent; }
-
+			void setPosition(Math::Vector2 &vec) { _pos = vec; }
 			/*!
 			 *	@brief			Returns a pointer to the obstacle with given index
 			 *

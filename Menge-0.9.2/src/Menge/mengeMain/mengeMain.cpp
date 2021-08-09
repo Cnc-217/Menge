@@ -197,7 +197,8 @@ bool parseCommandParameters( int argc, char* argv[], ProjectSpec* spec, const Si
 		else if (strcmp(name.c_str(), "BusinessReality") == 0) {
 			PROJECTNAME = BUSINESSREALITY;
 		}
-		else if (strcmp(name.c_str(), "Evacuation") == 0) {
+		//else if (strcmp(name.c_str(), "Evacuation") == 0) {
+		else if(name.find("Evacuation")!=name.npos){
 			PROJECTNAME = EVACUATION;
 		}
 		
@@ -427,7 +428,7 @@ int main( int argc, char* argv[] ) {
 	std::string outFile = projSpec.getOutputName();
 
 	std::string viewCfgFile = projSpec.getView();
-	bool useVis = viewCfgFile != "";
+	bool useVis = viewCfgFile != "";//可视化界面的控制
 	std::string model( projSpec.getModel() );
 
 	SimulatorDBEntry * simDBEntry = simDB.getDBEntry( model );

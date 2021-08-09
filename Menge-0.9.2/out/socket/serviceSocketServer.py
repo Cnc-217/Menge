@@ -45,7 +45,8 @@ def simulation(client,sleepTime,projectname):
 def main( ):
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     port = 12348
-    server.bind(('10.28.195.233', port))
+    #server.bind(('10.28.195.233', port)) #本机mobile
+    server.bind(('10.128.254.80', port))  #本机portal
     server.listen(5)
     while True:
         json_string, client, addr = socketAccept(server)

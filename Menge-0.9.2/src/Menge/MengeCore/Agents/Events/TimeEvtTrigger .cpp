@@ -56,7 +56,6 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 
 #include "MengeCore/Core.h"
 #include "MengeVis/Viewer/GLViewer.h"
-
 #include <winsock.h>
 #pragma comment(lib, "ws2_32.lib")
 
@@ -212,12 +211,12 @@ namespace Menge {
 				
 
 			}
-			else {
-				//do nothingt
+			else {	
 			}
 			
 			//重新开始
 			MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;
+			cout << "Timestamp: " << _lastTimestamp << endl;
 			return true;
 		}
 

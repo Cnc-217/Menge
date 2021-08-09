@@ -27,6 +27,7 @@
 
 #include "MengeCore/CoreConfig.h"
 #include "MengeCore/Math/Geometry2D.h"
+#include "MengeCore/Agents/BaseAgent.h"
 #include <string>
 #include <map>
 
@@ -40,16 +41,6 @@
  * @brief	The core namespace.  All elements of Menge are contained in this namespace.
  */
 namespace Menge {
-
-    struct ExitPeople{
-        size_t id;
-        int num;
-
-        ExitPeople(size_t id, int num) {
-            this->id = id;
-            this->num = num;
-        }
-    };
 
 	// forward declarations
 	namespace Agents {
@@ -104,16 +95,7 @@ namespace Menge {
 
 	extern MENGE_API size_t PROJECTNAME;
 
-	/*!
-	 * @brief       A map used to count the number of people in each export
-	 */
-	extern MENGE_API   std::map<Math::Geometry2D *, ExitPeople> ExitPeopleCount;
-
-
-	/*!
-	 * @brief       A map used to record which exit the pedestrian is at
-	 */
-	extern MENGE_API   std::map<Menge::Agents::BaseAgent *, size_t> WherePeopleIs;
+	
 
 	namespace Business {
 		extern MENGE_API MatrixDim2* ProbStatesNormal;//第一维：顾客类型；第二维：选择state类型；值：概率
@@ -126,6 +108,18 @@ namespace Menge {
 		extern MENGE_API MatrixDim4* ProbGoals;
 		//第一维：顾客类型；第二维：当前的30家店铺；第三维：店铺类型；第四维：店铺id；值：选择店铺的概率
 	}
+
+	namespace Evacuation {
+		
+
+		extern MENGE_API   std::vector<size_t> ExitReagionInfo;//exitRegionID-population
+
+		extern MENGE_API   std::vector<size_t> ExitAgentInfo;//AgentID-AgentState
+
+		extern MENGE_API   std::vector<size_t> ExitReagionCapacity;//exitRegionID-Capacity
+
+	}
+
 
 }	// namespace Menge
 

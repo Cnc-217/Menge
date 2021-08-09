@@ -766,8 +766,9 @@ namespace Menge {
             map<size_t, Geometry2D*> Geometrys;
 
             for (size_t i = 1; i <= shapeNumber; i++) {
-                Geometrys.insert(std::pair <size_t, Geometry2D*>(i, createAABB(node, i, prefix)));
-                ExitPeopleCount.insert(std::pair<Geometry2D*, ExitPeople>(createAABB(node, i, prefix), ExitPeople(i, 0)));
+                AABBShape* AABB = createAABB(node, i, prefix);
+                Geometrys.insert(std::pair <size_t, Geometry2D*>(i, AABB));
+
             }
 
 

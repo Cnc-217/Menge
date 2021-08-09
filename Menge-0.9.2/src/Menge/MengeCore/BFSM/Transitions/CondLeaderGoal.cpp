@@ -73,11 +73,22 @@ namespace Menge {
 			size_t currenState = Menge::ACTIVE_FSM->getAgentStateID(agent);
 			float distSq = 0;
 			const Goal* leadersGoal = 0x0;
+
+			if (Menge::ACTIVE_FSM->getNode(currenState)->getID() == 5) return false;
+
 			if (Menge::ACTIVE_FSM->getNode(currenState)->getID()==1) {//Follow_leader
-				//当前agent状态为followleader，leader的goal一定在goalset0中，leader为引导者
-				leadersGoal = Menge::ACTIVE_FSM->getNode("Evacuation_lead")->getGoal(agentGoal->_leaderID);
-				distSq = leadersGoal->squaredDistance(agent->_pos);
-				return distSq <= _distSq;
+				Agents::BaseAgent* leaderAgent = Menge::SIMULATOR->getAgent(agentGoal->_leaderID);//得到leader的agent
+				size_t leaderState = Menge::ACTIVE_FSM->getAgentStateID(leaderAgent);
+				if (Menge::ACTIVE_FSM->getNode(leaderState)->getID() == 0|| Menge::ACTIVE_FSM->getNode(leaderState)->getID() == 4) { //leader在行进中
+					//当前agent状态为followleader，leader的goal一定在goalset0中，leader为引导者
+					leadersGoal = Menge::ACTIVE_FSM->getNode("Evacuation_lead")->getGoal(agentGoal->_leaderID);
+					distSq = leadersGoal->squaredDistance(agent->_pos);
+					return distSq <= _distSq;
+				}
+				else { //leader到终点了
+					distSq = leaderAgent->_pos.distance(agent->_pos);
+					return distSq <= _distSq;
+				}
 			}
 			else {//如果是跟随panicer,那么判断一下panic是在随机走还是在跟随leader
 				//panicer随机选择固定目标游走			
@@ -94,7 +105,7 @@ namespace Menge {
 					distSq = leadersGoal->squaredDistance(agent->_pos);
 					return distSq <= _distSq;
 				}
-				else if (Menge::ACTIVE_FSM->getNode(panicState)->getID() == 4) {//panic已经到了，stop状态
+				else if (Menge::ACTIVE_FSM->getNode(panicState)->getID() == 5) {//panic已经到了，stop状态
 					distSq = panicAgent->_pos.distance(agent->_pos);
 					return distSq <= _distSq;
 

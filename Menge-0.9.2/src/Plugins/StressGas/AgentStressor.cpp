@@ -3,9 +3,12 @@
 #include "MengeCore/Agents/BaseAgent.h"
 #include "MengeCore/Orca/ORCAAgent.h"
 #include "MengeCore/PedVO/PedVOAgent.h"
+#include "MengeCore/Core.h"
+#include "MengeCore/BFSM/State.h"
+#include "MengeCore/BFSM/FSM.h"
 
 namespace StressGAS {
-
+	using Menge::BFSM::State;
 	using Menge::Agents::BaseAgent;
 
 	// These values come from the GAS paper
@@ -113,22 +116,20 @@ namespace StressGAS {
 		//agt->_maxNeighbors = static_cast<size_t>(_baseMaxNeighbors +
 			//stressLevel * _deltaMaxNeighbors + 0.5f);
 
-		//原来是加速+增大半径，现在改成固定速度20
-		//agt->_prefSpeed = _basePrefSpeed + stressLevel * _deltaPrefSpeed;
-		//agt->_radius = _baseRadius + stressLevel * _deltaRadius;
-		if (stressLevel > 0.0) { //进入出口区域
-			/*
-			if (agt->_nearAgents.size() >=4) {
-				agt->_prefSpeed = 30;//周围人数大于等于4，速度为30
-			}  
-			else if(agt->_class==1) agt->_prefSpeed = _basePrefSpeed - agt->_nearAgents.size() * 10;//group1最慢50
-			else agt->_prefSpeed = _basePrefSpeed - agt->_nearAgents.size() * 10;//group2最慢60
-			*/
-			agt->_prefSpeed = 20;
-		}	
-		else agt->_prefSpeed = _basePrefSpeed;
-		//agt->_prefSpeed = _basePrefSpeed - stressLevel * _deltaPrefSpeed*50;
+		if (Menge::PROJECTNAME == EVACUATION) {
+			if (stressLevel > 0.0) { //进入出口区域，判断该区域的人数
+				size_t exitID = Menge::Evacuation::ExitAgentInfo[agt->_id];
+				size_t population = Menge::Evacuation::ExitReagionInfo[exitID];
+				if (population >= Menge::Evacuation::ExitReagionCapacity[exitID]) agt->_prefSpeed = 10;
+				else {
+					agt->_prefSpeed = _basePrefSpeed;
+				}
 
+			}
+			else agt->_prefSpeed = _basePrefSpeed;
+		}
+		
+		else agt->_prefSpeed = _basePrefSpeed;
 
 		// handle the orca-derived classes specially
 		ORCA::Agent * oAgt = dynamic_cast<ORCA::Agent *>(agt);

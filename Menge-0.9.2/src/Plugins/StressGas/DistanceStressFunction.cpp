@@ -50,16 +50,18 @@ namespace StressGAS {
 		map <size_t, Geometry2D*> ::iterator it;
 		it = _regions.begin();
 		Geometry2D* region = it->second;
+		//遍历每一个区域
 		while (it != _regions.end()) {
 			region = it->second;
-			if (region->containsPoint(_agent->_pos)) {
-                if (Menge::WherePeopleIs.count(_agent) == 0) {
-                    //如果检测到区域中有这个人，但是人与出口的映射map中不存在这个人，
-                    //说明这个人刚刚进去该区域，此时在该区域的人数中++，并在 人与出口的映射map 中加入该人对应的出口编号
-                    Menge::WherePeopleIs.insert(std::pair<Menge::Agents::BaseAgent*, size_t>(_agent, it->first));
-                    int num = Menge::ExitPeopleCount.find(region)->second.num;
-                    Menge::ExitPeopleCount.insert(std::pair<Geometry2D*, Menge::ExitPeople>(region, Menge::ExitPeople(num+1, 0)));
-                }
+			if (region->containsPoint(_agent->_pos)) {//这里的agent不是所有的agent，是在某个state中的一个agent
+				
+				//vector=0表示agent之前不在region里，现在进入了
+				if (Menge::Evacuation::ExitAgentInfo[_agent->_id] == 0) {
+					Menge::Evacuation::ExitAgentInfo[_agent->_id] = it->first;
+					//cout << "agentState" << Menge::Evacuation::ExitAgentInfo[_agent->_id] << endl;
+					Menge::Evacuation::ExitReagionInfo[it->first] = Menge::Evacuation::ExitReagionInfo[it->first] + 1;
+					//cout << "agentID: " << _agent->_id << " reagionID: " << it->first << " population: " << Menge::Evacuation::ExitReagionInfo[it->first] << endl;;
+				}
 
 				float d = sqrt(region->squaredDistance(_agent->_pos));
 				if (d > _outer) target = 0.f;
@@ -78,35 +80,17 @@ namespace StressGAS {
 				return _stressLevel;
 			}
 			else{
-			    //如果此时该区域中没有这个人，得判断此人是否刚刚从该区域走出来
-			    //如果人与出口的映射map中存在这个人，并且value等于该区域的id，说明这个人进去过该区域
-			    //此时他正好走出这个区域，该区域人数--，并在 人与出口的映射map 中将该人对应的出口编号置0
-                if (Menge::WherePeopleIs.count(_agent) == 0 && Menge::WherePeopleIs.find(_agent)->second == it->first) {
-                    Menge::WherePeopleIs.find(_agent)->second = 0;
-                    int num = Menge::ExitPeopleCount.find(region)->second.num;
-                    Menge::ExitPeopleCount.insert(std::pair<Geometry2D*, Menge::ExitPeople>(region, Menge::ExitPeople(num-1, 0)));
-                }
+				
+				//agent之前在此区域内，现在出去了
+				if (Menge::Evacuation::ExitAgentInfo[_agent->_id] == it->first) {
+					Menge::Evacuation::ExitAgentInfo[_agent->_id] = 0;
+					Menge::Evacuation::ExitReagionInfo[it->first] = Menge::Evacuation::ExitReagionInfo[it->first] - 1;
+				}
+					
 			}
 			it++;
 		}
 		return 0;
-		/*
-		float d = sqrt( region->squaredDistance( _agent->_pos ) );
-		if ( d > _outer ) target = 0.f;
-		else if ( d < _inner ) target = 1.f;
-		else {
-			target = 1.f - ( d - _inner ) / ( _outer - _inner );
-			switch ( _funcType ) {
-				case LINEAR:
-					break;
-				case QUADRATIC:
-					target *= target;
-			}
-		}
-		
-		_stressLevel = ( target > _stressLevel ) ? target : _stressLevel;
-		return _stressLevel;
-		*/
 	}
 
 } // namespace StressGAS

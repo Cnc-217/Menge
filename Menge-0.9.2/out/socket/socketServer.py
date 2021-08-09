@@ -43,7 +43,7 @@ def main( project):
             print (data_result)
 
             # action = [[0, 0, 1], [0, 4, 5], 3]
-            action = [[1, 0, 0], [8, 0, 0], 3]
+            action = [[1, 0, 0], [8, 0, 0], 0]
             socketSend(c, action)
 
 

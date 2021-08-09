@@ -48,9 +48,6 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 
 namespace Menge {
 
-
-
-
 	BFSM::FSM * ACTIVE_FSM = 0x0;
 
 	float SIM_TIME = 0.f;
@@ -79,6 +76,18 @@ namespace Menge {
 		MatrixDim4* ProbGoals = new MatrixDim4(3, 30, 3, 10, 1);
 		//第一维：顾客类型；第二维：当前的30家店铺；第三维：店铺类型；第四维：店铺id；值：选择店铺的概率
 	}
+
+	namespace Evacuation {
+
+		std::vector<size_t> ExitReagionInfo;//exitRegionID-population
+
+		std::vector<size_t> ExitAgentInfo;//AgentID-AgentState
+
+		std::vector<size_t> ExitReagionCapacity;//exitRegionID-Capacity
+
+	}
+	
+
 
 }
 namespace MengeVis {

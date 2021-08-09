@@ -148,31 +148,54 @@ namespace Menge {
 				vector<Agents::BaseAgent*>::iterator agent;
 				for (agent = _leaderSet.begin(); agent != _leaderSet.end(); agent++) {
 					State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
+					if (currentState->getID() == 4) continue;
 					currentState->leave(*agent);
 					AlgorithmGoalSelector* algorithmGoalSelector = (AlgorithmGoalSelector*)currentState->getGoalSelector();
 					if (agent == _leaderSet.begin()) algorithmGoalSelector->_flag = false;
 					currentState->enter(*agent);
-					cout << "leader ID: " << (*agent)->_id << "choose new goal" << endl;
+					cout << "leader ID: " << (*agent)->_id << " choose new goal" << endl;
 				}
 				_lastTimestamp = Menge::SIM_TIME;
+
+				vector<size_t>::iterator it;
+				int idx = 0;
+				for (it = Menge::Evacuation::ExitReagionInfo.begin(); it != Menge::Evacuation::ExitReagionInfo.end(); it++) {
+					cout << "reagionID: " << idx << " reagionPopulation: " << (*it) << endl;
+					idx++;
+				}
 			}
 
-			//每一个恐慌者判断有没有引导者在附近，有的话就跟随
+			//每一个引导者判断是否进入了出口区域
 			vector<Agents::BaseAgent*>::iterator agent;
+			for (agent = _leaderSet.begin(); agent != _leaderSet.end(); agent++) {
+				State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
+				if (currentState->getID() == 4) continue;//currentState "out"
+				else if (Menge::Evacuation::ExitAgentInfo[(*agent)->_id] != 0) {//正在疏散出口附近
+					currentState->leave((*agent));
+					State* nextState = Menge::ACTIVE_FSM->getNode("out");
+					nextState->enter((*agent));
+					Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
+				}
+			}
+
+
+			//每一个恐慌者判断有没有引导者在附近，有的话就跟随
+			
 			for (agent = _panicSet.begin(); agent != _panicSet.end(); agent++) {
 				State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
-				if (currentState->getName() == "Follow_leader") continue;
+				if (currentState->getID() == 4) continue;//currentState "out"
+				else if (Menge::Evacuation::ExitAgentInfo[(*agent)->_id] != 0) {//正在疏散出口附近
+					currentState->leave((*agent));
+					State* nextState = Menge::ACTIVE_FSM->getNode("out");
+					nextState->enter((*agent));
+					Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
+					continue;
+				}
+				else if (currentState->getID() == 1)continue;//currentState follow leader
 				vector<Menge::Agents::NearAgent>::iterator nearAgent;
 
 				//遍历每一个附近的人
 				for (nearAgent = (*agent)->_nearAgents.begin(); nearAgent != (*agent)->_nearAgents.end(); ++nearAgent) {
-					//for (nearAgent = Menge::SIMULATOR->getAgent(idx)->_nearAgents.begin(); nearAgent != Menge::SIMULATOR->getAgent(idx)->_nearAgents.end(); ++nearAgent) {
-						/*
-						if ((*agent)->_id == 31) {
-							cout << "idx: " << idx << " " << (*nearAgent).agent->_id << " class : " << (*nearAgent).agent->_class << endl;
-							if ((*nearAgent).agent->_class == 0) cout << "pop" << endl;
-						}*/
-					//附近有leader
 					if ((*nearAgent).agent->_class == 0) {
 						currentState->leave((*agent));
 						State* nextState = Menge::ACTIVE_FSM->getNode("Follow_leader");//进入新state
@@ -184,10 +207,18 @@ namespace Menge {
 
 			}
 
-			//普通人判断附近有无恐慌者和引导这，有的话就跟随，引导者优先
+			//普通人判断附近有无恐慌者和引导者，有的话就跟随，引导者优先
 			for (agent = _normalSet.begin(); agent != _normalSet.end(); agent++) {
 				State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
-				if (currentState->getName() == "Follow_leader") continue;
+				if (currentState->getID() == 4) continue;//currentState->getName() == "Follow_leader" "out"
+				else if (Menge::Evacuation::ExitAgentInfo[(*agent)->_id] != 0) {
+					currentState->leave((*agent));
+					State* nextState = Menge::ACTIVE_FSM->getNode("out");
+					nextState->enter((*agent));
+					Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
+					continue;
+				}
+				else if (currentState->getID() == 1) continue;
 				vector<Menge::Agents::NearAgent>::iterator nearAgent;
 				for (nearAgent = (*agent)->_nearAgents.begin(); nearAgent != (*agent)->_nearAgents.end(); ++nearAgent) {
 					{
@@ -212,6 +243,9 @@ namespace Menge {
 				}
 
 			}
+
+			
+
 		}
 		else {
 			//do nothing

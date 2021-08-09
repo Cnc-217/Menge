@@ -69,6 +69,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/GoalSet.h"
 
 #include "MengeCore/Scene/Business.h"
+#include <vector>
 
 namespace Menge {
 
@@ -280,7 +281,19 @@ namespace Menge {
 			logger << " registered tasks.\n";
 			fsm->doTasks();
 
-			
+			if (PROJECTNAME == EVACUATION) {
+				//初始化两个vector
+				for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++) {
+					Menge::Evacuation::ExitAgentInfo.push_back(0);
+				}
+				for (int i = 0; i < fsm->getGoalSet(0)->size() + 1; i++) {
+					Menge::Evacuation::ExitReagionInfo.push_back(0);
+				}
+
+				vector<size_t> tmp = { 0,15,8,5,5,15,10 };
+				Menge::Evacuation::ExitReagionCapacity.assign(tmp.begin(), tmp.end());
+				cout << "It's Evacuation Simulation" << endl;
+			}
 			
 			//	5. Initialize all agents
 			if ( VERBOSE ) logger << Logger::INFO_MSG << "Initializing agents:\n";
@@ -348,9 +361,19 @@ namespace Menge {
 					
 				}
 					
-				case EVACUATION:
+				case EVACUATION: {
+					/*
+					//初始化两个vector
+					for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++) {
+						Menge::Evacuation::ExitAgentInfo.push_back(0);
+					}
+					for (int i = 0; i < fsm->getGoalSet(0)->size()+1; i++) {
+						Menge::Evacuation::ExitReagionInfo.push_back(0);
+					}
 					cout << "It's Evacuation Simulation" << endl;
+					*/
 					break;
+				}
 				default:
 					cout << "No Specific Simulation" << endl;
 					break;

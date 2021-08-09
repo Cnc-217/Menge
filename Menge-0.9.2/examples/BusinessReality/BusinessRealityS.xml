@@ -12,21 +12,21 @@
   <Dummy stddev="1.0" />
 
   <AgentProfile name="groupEat" >
-    <Common max_angle_vel="360" class="0" max_neighbors="10" obstacleSet="1" neighbor_dist="200" r="20" pref_speed="50" max_speed="70" max_accel="20" />
+    <Common max_angle_vel="360" class="0" max_neighbors="10" obstacleSet="1" neighbor_dist="200" r="20" pref_speed="25" max_speed="40" max_accel="30" />
     <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
     <Helbing mass="80" />
     <ORCA tau="1" tauObst="5" />
   </AgentProfile>
 
   <AgentProfile name="groupShop" >
-    <Common max_angle_vel="360" class="1" max_neighbors="10" obstacleSet="1" neighbor_dist="200" r="20" pref_speed="50" max_speed="70" max_accel="20" />
+    <Common max_angle_vel="360" class="1" max_neighbors="10" obstacleSet="1" neighbor_dist="200" r="20" pref_speed="25" max_speed="40" max_accel="30" />
     <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
     <Helbing mass="80" />
     <ORCA tau="1" tauObst="5" />
   </AgentProfile>
 
   <AgentProfile name="groupPlay" >
-    <Common max_angle_vel="360" class="2" max_neighbors="10" obstacleSet="1" neighbor_dist="200" r="20" pref_speed="50" max_speed="70" max_accel="20" />
+    <Common max_angle_vel="360" class="2" max_neighbors="10" obstacleSet="1" neighbor_dist="200" r="20" pref_speed="25" max_speed="40" max_accel="30" />
     <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
     <Helbing mass="80" />
     <ORCA tau="1" tauObst="5" />
