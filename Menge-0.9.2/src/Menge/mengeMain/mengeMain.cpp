@@ -201,6 +201,9 @@ bool parseCommandParameters( int argc, char* argv[], ProjectSpec* spec, const Si
 		else if(name.find("Evacuation")!=name.npos){
 			PROJECTNAME = EVACUATION;
 		}
+		else if (name.find("ThemePark") != name.npos) {
+			PROJECTNAME = THEMEPARK;
+		}
 		
 
       if ( !spec->loadFromXML( projName ) ) {
@@ -440,7 +443,6 @@ int main( int argc, char* argv[] ) {
 
 
 	//程序入口
-	srand((int)time(0));//随机数
 	int result = simMain( simDBEntry, projSpec.getBehavior(), projSpec.getScene(),
 						  projSpec.getOutputName(), projSpec.getSCBVersion(), useVis,
 						  viewCfgFile, dumpPath );

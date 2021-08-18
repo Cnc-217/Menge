@@ -35,6 +35,7 @@
 #define EVACUATION 2
 #define BUSINESSREALITY 3
 #define BUSINESSLEARNING 4
+#define THEMEPARK 5
 
 /*!
  * @namespace Menge
@@ -110,17 +111,24 @@ namespace Menge {
 	}
 
 	namespace Evacuation {
-		
-
 		extern MENGE_API   std::vector<size_t> ExitReagionInfo;//exitRegionID-population
 
 		extern MENGE_API   std::vector<size_t> ExitAgentInfo;//AgentID-AgentState
 
 		extern MENGE_API   std::vector<size_t> ExitReagionCapacity;//exitRegionID-Capacity
-
 	}
 
+	namespace ThemePark {
+		extern MENGE_API MatrixDim2* ProbMatrix;//10*10 10个目标点到10个目标点的转移概率
 
+		//三类人群的数组
+		extern MENGE_API std::vector<Agents::BaseAgent*> leaderAgentSet;
+		extern MENGE_API std::vector<Agents::BaseAgent*> panicAgentSet;
+		extern MENGE_API std::vector<Agents::BaseAgent*> normalAgentSet;
+
+		extern MENGE_API bool evacuationState; //控制event疏散部分状态启动和关闭
+	
+	}
 }	// namespace Menge
 
 

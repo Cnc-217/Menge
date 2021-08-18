@@ -78,16 +78,22 @@ namespace Menge {
 	}
 
 	namespace Evacuation {
-
 		std::vector<size_t> ExitReagionInfo;//exitRegionID-population
 
 		std::vector<size_t> ExitAgentInfo;//AgentID-AgentState
 
 		std::vector<size_t> ExitReagionCapacity;//exitRegionID-Capacity
-
 	}
 	
+	namespace ThemePark {
+		MatrixDim2* ProbMatrix = new MatrixDim2(10, 10, 1);//10*10 10个目标点到10个目标点的转移概率
 
+		std::vector<Agents::BaseAgent*> leaderAgentSet;
+		std::vector<Agents::BaseAgent*> panicAgentSet;
+		std::vector<Agents::BaseAgent*> normalAgentSet;
+
+		bool evacuationState = false;
+	}
 
 }
 namespace MengeVis {

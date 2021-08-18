@@ -116,7 +116,7 @@ namespace StressGAS {
 		//agt->_maxNeighbors = static_cast<size_t>(_baseMaxNeighbors +
 			//stressLevel * _deltaMaxNeighbors + 0.5f);
 
-		if (Menge::PROJECTNAME == EVACUATION) {
+		if (Menge::PROJECTNAME == EVACUATION|| Menge::PROJECTNAME == THEMEPARK) {
 			if (stressLevel > 0.0) { //进入出口区域，判断该区域的人数
 				size_t exitID = Menge::Evacuation::ExitAgentInfo[agt->_id];
 				size_t population = Menge::Evacuation::ExitReagionInfo[exitID];

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<Project 
+	scene="ThemeParkS.xml" 
+	behavior="ThemeParkB.xml" 
+	view="ThemeParkV.xml" 
+	model="orca"
+	dumpPath="images"
+/>

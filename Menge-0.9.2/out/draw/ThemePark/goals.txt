@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<Population >
+    <GoalSet id="-1">
+        <Goal capacity="1000000" id="0" radius="433.91" type="circle" weight="1.00" x="-4820.27" y="-4278.65"/>
+        <Goal capacity="1000000" id="1" radius="262.25" type="circle" weight="1.00" x="-130.19" y="1505.06"/>
+        <Goal capacity="1000000" id="2" radius="250.73" type="circle" weight="1.00" x="2483.39" y="1163.16"/>
+        <Goal capacity="1000000" id="3" radius="290.97" type="circle" weight="1.00" x="6812.29" y="2472.84"/>
+        <Goal capacity="1000000" id="4" radius="329.30" type="circle" weight="1.00" x="4691.30" y="-1172.25"/>
+        <Goal capacity="1000000" id="5" radius="340.73" type="circle" weight="1.00" x="-1967.22" y="-453.67"/>
+        <Goal capacity="1000000" id="6" radius="268.89" type="circle" weight="1.00" x="4465.30" y="2275.81"/>
+        <Goal capacity="1000000" id="7" radius="283.07" type="circle" weight="1.00" x="-4644.54" y="3139.27"/>
+        <Goal capacity="1000000" id="8" radius="322.24" type="circle" weight="1.00" x="-4795.21" y="1470.29"/>
+        <Goal capacity="1000000" id="9" radius="508.65" type="circle" weight="1.00" x="907.10" y="-2154.62"/>
+    </GoalSet>
+
+</Population>

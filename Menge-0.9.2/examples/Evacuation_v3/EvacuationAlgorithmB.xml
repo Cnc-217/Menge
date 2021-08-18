@@ -2,12 +2,12 @@
 
 <BFSM>
    <GoalSet id="0">
-      <Goal capacity="1000000" id="1" max_x="-8711.76" max_y="-818.49" min_x="-10130.76" min_y="-1880.43" type="AABB" weight="1.00"/>
-        <Goal capacity="1000000" id="2" max_x="-3585.16" max_y="-4430.41" min_x="-4902.38" min_y="-5483.97" type="AABB" weight="1.00"/>
-        <Goal capacity="1000000" id="3" max_x="-3380.09" max_y="4028.93" min_x="-4788.49" min_y="3004.11" type="AABB" weight="1.00"/>
-        <Goal capacity="1000000" id="4" max_x="4277.23" max_y="3995.38" min_x="2876.31" min_y="2947.10" type="AABB" weight="1.00"/>
-        <Goal capacity="1000000" id="5" max_x="-912.64" max_y="-4546.92" min_x="-2248.73" min_y="-5533.33" type="AABB" weight="1.00"/>
-        <Goal capacity="1000000" id="6" max_x="4002.78" max_y="-4772.67" min_x="2613.11" min_y="-5682.24" type="AABB" weight="1.00"/>
+      <Goal capacity="1000000" id="0" max_x="-8711.76" max_y="-818.49" min_x="-10130.76" min_y="-1880.43" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="1" max_x="-3585.16" max_y="-4430.41" min_x="-4902.38" min_y="-5483.97" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="2" max_x="-3380.09" max_y="4028.93" min_x="-4788.49" min_y="3004.11" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="3" max_x="4277.23" max_y="3995.38" min_x="2876.31" min_y="2947.10" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="4" max_x="-912.64" max_y="-4546.92" min_x="-2248.73" min_y="-5533.33" type="AABB" weight="1.00"/>
+        <Goal capacity="1000000" id="5" max_x="4002.78" max_y="-4772.67" min_x="2613.11" min_y="-5682.24" type="AABB" weight="1.00"/>
     </GoalSet>
 
 <!-- 引导者-->
@@ -53,19 +53,19 @@
 
 
   <State name="Evacuation_lead" final="0" >
-    <GoalSelector type="algorithm" goal_set="0" algorithmID="2"/>
+    <GoalSelector type="algorithm" goal_set="0" algorithmID="0"/>
     <VelComponent type="road_map" file_name="graph.txt" />
     <Action type="distance_stress" exit_behavior="cool down"
       inner_dist="c" inner_value="100" 
       outer_dist="c" outer_value="120"
       fall_off="linear"
       shape_number="6" 
-      max_x1="-5840" min_x1="-7450" max_y1="-930" min_y1="-1680"
-      max_x2="-3120" min_x2="-4500" max_y2="-2500" min_y2="-3670"
-      max_x3="-3300" min_x3="-4530" max_y3="2054" min_y3="980"
-      max_x4="3730" min_x4="2900" max_y4="2178" min_y4="700"
-      max_x5="-950" min_x5="-2130" max_y5="-3000" min_y5="-3800"
-      max_x6="3730" min_x6="2660" max_y6="-2100" min_y6="-3540"
+      max_x0="-5840" min_x0="-7450" max_y0="-930" min_y0="-1680"
+      max_x1="-3120" min_x1="-4500" max_y1="-2500" min_y1="-3670"
+      max_x2="-3300" min_x2="-4530" max_y2="2054" min_y2="980"
+      max_x3="3730" min_x3="2900" max_y3="2178" min_y3="700"
+      max_x4="-950" min_x4="-2130" max_y4="-3000" min_y4="-3800"
+      max_x5="3730" min_x5="2660" max_y5="-2100" min_y5="-3540"
       />
   </State>
 
@@ -79,12 +79,12 @@
       outer_dist="c" outer_value="120"
       fall_off="linear"
       shape_number="6" 
-      max_x1="-5840" min_x1="-7450" max_y1="-930" min_y1="-1680"
-      max_x2="-3120" min_x2="-4500" max_y2="-2500" min_y2="-3670"
-      max_x3="-3300" min_x3="-4530" max_y3="2054" min_y3="980"
-      max_x4="3730" min_x4="2900" max_y4="2178" min_y4="700"
-      max_x5="-950" min_x5="-2130" max_y5="-3000" min_y5="-3800"
-      max_x6="3730" min_x6="2660" max_y6="-2100" min_y6="-3540"
+     max_x0="-5840" min_x0="-7450" max_y0="-930" min_y0="-1680"
+      max_x1="-3120" min_x1="-4500" max_y1="-2500" min_y1="-3670"
+      max_x2="-3300" min_x2="-4530" max_y2="2054" min_y2="980"
+      max_x3="3730" min_x3="2900" max_y3="2178" min_y3="700"
+      max_x4="-950" min_x4="-2130" max_y4="-3000" min_y4="-3800"
+      max_x5="3730" min_x5="2660" max_y5="-2100" min_y5="-3540"
       />
   </State>
 
@@ -97,12 +97,12 @@
       outer_dist="c" outer_value="120"
       fall_off="linear"
       shape_number="6" 
-      max_x1="-5840" min_x1="-7450" max_y1="-930" min_y1="-1680"
-      max_x2="-3120" min_x2="-4500" max_y2="-2500" min_y2="-3670"
-      max_x3="-3300" min_x3="-4530" max_y3="2054" min_y3="980"
-      max_x4="3730" min_x4="2900" max_y4="2178" min_y4="700"
-      max_x5="-950" min_x5="-2130" max_y5="-3000" min_y5="-3800"
-      max_x6="3730" min_x6="2660" max_y6="-2100" min_y6="-3540"
+      max_x0="-5840" min_x0="-7450" max_y0="-930" min_y0="-1680"
+      max_x1="-3120" min_x1="-4500" max_y1="-2500" min_y1="-3670"
+      max_x2="-3300" min_x2="-4530" max_y2="2054" min_y2="980"
+      max_x3="3730" min_x3="2900" max_y3="2178" min_y3="700"
+      max_x4="-950" min_x4="-2130" max_y4="-3000" min_y4="-3800"
+      max_x5="3730" min_x5="2660" max_y5="-2100" min_y5="-3540"
       />
   </State>
 
@@ -114,12 +114,12 @@
       outer_dist="c" outer_value="120"
       fall_off="linear"
       shape_number="6" 
-     max_x1="-5840" min_x1="-7450" max_y1="-930" min_y1="-1680"
-      max_x2="-3120" min_x2="-4500" max_y2="-2500" min_y2="-3670"
-      max_x3="-3300" min_x3="-4530" max_y3="2054" min_y3="980"
-      max_x4="3730" min_x4="2900" max_y4="2178" min_y4="700"
-      max_x5="-950" min_x5="-2130" max_y5="-3000" min_y5="-3800"
-      max_x6="3730" min_x6="2660" max_y6="-2100" min_y6="-3540"
+     max_x0="-5840" min_x0="-7450" max_y0="-930" min_y0="-1680"
+      max_x1="-3120" min_x1="-4500" max_y1="-2500" min_y1="-3670"
+      max_x2="-3300" min_x2="-4530" max_y2="2054" min_y2="980"
+      max_x3="3730" min_x3="2900" max_y3="2178" min_y3="700"
+      max_x4="-950" min_x4="-2130" max_y4="-3000" min_y4="-3800"
+      max_x5="3730" min_x5="2660" max_y5="-2100" min_y5="-3540"
       />
   </State>
 
@@ -132,12 +132,12 @@
       outer_dist="c" outer_value="120"
       fall_off="linear"
       shape_number="6" 
-      max_x1="-5840" min_x1="-7450" max_y1="-930" min_y1="-1680"
-      max_x2="-3120" min_x2="-4500" max_y2="-2500" min_y2="-3670"
-      max_x3="-3300" min_x3="-4530" max_y3="2054" min_y3="980"
-      max_x4="3730" min_x4="2900" max_y4="2178" min_y4="700"
-      max_x5="-950" min_x5="-2130" max_y5="-3000" min_y5="-3800"
-      max_x6="3730" min_x6="2660" max_y6="-2100" min_y6="-3540"
+      max_x0="-5840" min_x0="-7450" max_y0="-930" min_y0="-1680"
+      max_x1="-3120" min_x1="-4500" max_y1="-2500" min_y1="-3670"
+      max_x2="-3300" min_x2="-4530" max_y2="2054" min_y2="980"
+      max_x3="3730" min_x3="2900" max_y3="2178" min_y3="700"
+      max_x4="-950" min_x4="-2130" max_y4="-3000" min_y4="-3800"
+      max_x5="3730" min_x5="2660" max_y5="-2100" min_y5="-3540"
       />
   </State>
 

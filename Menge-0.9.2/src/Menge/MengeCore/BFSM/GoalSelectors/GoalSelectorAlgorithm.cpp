@@ -129,36 +129,6 @@ namespace Menge {
 
 			return _bestGoals.find(agent->_id)->second;
 
-				/*
- 				Goal* bestGoal = _goalSet->getIthGoal(0);
-
-				map <size_t, map<size_t, float_t>> ::iterator itGoal;
-				map < size_t, float_t > ::iterator itAgent;
-				map_agent = map_goal.begin()->second; //取出第一个goal的map
-				itAgent = map_agent.begin();
-
-				//找第一个map_agent对里面的元素进行逐个查找
-				while (itAgent != map_agent.end()) {  //遍历每个agent
-					agent_id = itAgent->first;
-					priority = itAgent->second;
-					itGoal = map_goal.begin();
-					itGoal++;
-					bestGoal = _goalSet->getIthGoal(0);
-					while (itGoal != map_goal.end()) {  //遍历每个goal
-						if (itGoal->second.find(agent_id)->second > priority) {//找到优先级更高的出口了
-							priority = itGoal->second.find(agent_id)->second;
-							bestGoal = _goalSet->getIthGoal(itGoal->first);
-						}
-						itGoal++;
-					}
-					_bestGoals.insert(pair <size_t, Goal*>(agent_id, bestGoal));
-					itAgent++;
-				}
-				_flag=true;
-			}
-			
-			return _bestGoals.find(agent->_id)->second;
-			*/
 		}
 
 		/////////////////////////////////////////////////////////////////////

@@ -138,7 +138,6 @@ namespace Menge {
 	/////////////////////////////////////////////////////////////////////
 
 	bool TimeReachedTrigger::testCondition() { //¼ì²â´¥·¢Ìõ¼þ
-
 		if ((Menge::SIM_TIME - _lastTimestamp) > _timeSimulate) {
 			cout << "trigger condition met at :"<<Menge::SIM_TIME << endl;
 			_lastTimestamp = Menge::SIM_TIME;

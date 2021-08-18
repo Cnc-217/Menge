@@ -51,6 +51,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 
 #include <cassert>
 #include <cmath>
+#include <ctime>
 
 namespace Menge {
 
@@ -234,17 +235,19 @@ namespace Menge {
 		Goal* GoalSet::getGoalFromMatrix(const Agents::BaseAgent* agent) {
 			// TODO: Change this to use _goalIDs as the key interface of available goals
 			Goal* tgtGoal = 0x0;
-
-			if (_goalIDs.size() > 0) {
-
-				if(SIM_TIME>0){
+			if (PROJECTNAME == BUSINESSREALITY) {
+				if (SIM_TIME > 0) {
 					int shopIDNow = ACTIVE_FSM->getNode(0)->getGoal(agent->_id)->_id;//agent当前的goal的id
 					float weight = BusinessReality::ProbGoals->_sumWeightMatrix->Point(agent->_class, shopIDNow);
-					float TGT_WEIGHT = BusinessReality::ProbGoals->_sumWeightMatrix->Point(agent->_class, shopIDNow) * (rand()%100*0.01);//_totalWeight
+					LARGE_INTEGER seed;
+					QueryPerformanceFrequency(&seed);
+					QueryPerformanceCounter(&seed);
+					srand(seed.QuadPart);//取硬件计时器，精度更高
+					float TGT_WEIGHT = weight * (rand() % 100 * 0.01);//_totalWeight
 					std::map< size_t, Goal* >::const_iterator itr = _goals.find(_goalIDs[0]);
 					assert(itr != _goals.end() && "A goalID does not map to a goal");
-					tgtGoal = itr->second; 
-					float accumWeight = BusinessReality::ProbGoals->Point(agent->_class, shopIDNow, tgtGoal->_id/10, tgtGoal->_id %10);//这里用矩阵
+					tgtGoal = itr->second;
+					float accumWeight = BusinessReality::ProbGoals->Point(agent->_class, shopIDNow, tgtGoal->_id / 10, tgtGoal->_id % 10);//这里用矩阵
 					for (size_t i = 1; i < _goalIDs.size(); ++i) {
 						if (accumWeight > TGT_WEIGHT) break;
 						itr = _goals.find(_goalIDs[i]);
@@ -257,8 +260,45 @@ namespace Menge {
 				else {
 					tgtGoal = GoalSet::getRandomWeightedGoal();
 				}
+				
+			
+				return tgtGoal;
 			}
-			return tgtGoal;
+
+			else if (PROJECTNAME == THEMEPARK) {
+				if (SIM_TIME > 0) {
+					int goalIDNow = ACTIVE_FSM->getNode("tour")->getGoal(agent->_id)->_id;//agent当前的goal的id
+					//如果概率和不为1，weight和的值如下
+					//float weight = ThemePark::ProbMatrix->_sumWeight->at(shopIDNow);
+					LARGE_INTEGER seed;
+					QueryPerformanceFrequency(&seed);
+					QueryPerformanceCounter(&seed);
+					srand(seed.QuadPart);//取硬件计时器，精度更高
+					float TGT_WEIGHT = 1 * ((rand() % 100) * 0.01);//概率和为1
+
+					//float accumWeight = ThemePark::ProbMatrix->Point(goalIDNow-1, (tgtGoal->_id)-1);
+					float accumWeight = 0;
+					std::map< size_t, Goal* >::const_iterator itr;
+					for (size_t i = 0; i < _goalIDs.size(); i++) {
+						itr = _goals.find(_goalIDs[i]);
+						tgtGoal = itr->second;
+						accumWeight += ThemePark::ProbMatrix->Point(goalIDNow, (tgtGoal->_id));
+						if (accumWeight > TGT_WEIGHT) break;
+					}
+					
+				}
+					
+				else {
+					//第一次选取目标点必定是选目标点0
+					//std::map< size_t, Goal* >::const_iterator itr = ;
+					tgtGoal = getGoalByID(0);
+				}
+
+				return tgtGoal;
+
+
+			}
+		
 		}
 
 

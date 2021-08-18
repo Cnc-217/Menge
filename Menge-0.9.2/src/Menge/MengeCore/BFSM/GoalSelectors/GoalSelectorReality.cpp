@@ -54,11 +54,8 @@ namespace Menge {
 		
 		Goal * MatrixGoalSelector::getGoal( const Agents::BaseAgent * agent ) const {
 			assert( agent != 0x0 && "MatrixGoalSelector requires a valid base agent!" );
-
-			if (PROJECTNAME == BUSINESSREALITY) {
-				return _goalSet->getGoalFromMatrix(agent);
-				
-			}
+			return _goalSet->getGoalFromMatrix(agent);
+			
 
 		}
 	}	// namespace BFSM

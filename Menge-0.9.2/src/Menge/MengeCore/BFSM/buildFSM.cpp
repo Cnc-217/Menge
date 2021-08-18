@@ -69,7 +69,11 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/GoalSet.h"
 
 #include "MengeCore/Scene/Business.h"
+#include "MengeCore/Scene/ThemePark.h"
+#include "MengeCore/Scene/BaseScene.h"
+#include "MengeCore/Socket.h"
 #include <vector>
+#include <thread>
 
 namespace Menge {
 
@@ -284,13 +288,13 @@ namespace Menge {
 			if (PROJECTNAME == EVACUATION) {
 				//初始化两个vector
 				for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++) {
-					Menge::Evacuation::ExitAgentInfo.push_back(0);
+					Menge::Evacuation::ExitAgentInfo.push_back(1000);
 				}
-				for (int i = 0; i < fsm->getGoalSet(0)->size() + 1; i++) {
+				for (int i = 0; i < fsm->getGoalSet(0)->size(); i++) {
 					Menge::Evacuation::ExitReagionInfo.push_back(0);
 				}
 
-				vector<size_t> tmp = { 0,15,8,5,5,15,10 };
+				vector<size_t> tmp = { 15,8,5,5,15,10 };
 				Menge::Evacuation::ExitReagionCapacity.assign(tmp.begin(), tmp.end());
 				cout << "It's Evacuation Simulation" << endl;
 			}
@@ -346,7 +350,6 @@ namespace Menge {
 					Business::fsmToMartix();
 					break; 
 				}
-					
 				case BUSINESSREALITY: {
 					cout << "It's BussinessReality Simulation" << endl;
 					//1.socket接收python的人流信息 2.生成初始矩阵
@@ -360,18 +363,47 @@ namespace Menge {
 					break;
 					
 				}
-					
 				case EVACUATION: {
-					/*
+					break;
+				}
+				case THEMEPARK: {
 					//初始化两个vector
 					for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++) {
-						Menge::Evacuation::ExitAgentInfo.push_back(0);
+						Menge::Evacuation::ExitAgentInfo.push_back(1000);//默认值设置为1000
 					}
-					for (int i = 0; i < fsm->getGoalSet(0)->size()+1; i++) {
+					for (int i = 0; i < fsm->getGoalSet(1)->size(); i++) {
 						Menge::Evacuation::ExitReagionInfo.push_back(0);
 					}
-					cout << "It's Evacuation Simulation" << endl;
-					*/
+
+					vector<size_t> tmp0 = { 10,10 };
+					Menge::Evacuation::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
+
+					//初始化概率矩阵
+					vector<vector<float>> tmp = {
+						{0, 0, 0.05, 0, 0.16, 0, 0.79, 0, 0, 0},
+						{0, 0, 0.19, 0.37, 0, 0.12, 0.24, 0.07, 0, 0},
+						{0, 0.26, 0, 0.40, 0, 0.10, 0.12, 0.11, 0, 0},
+						{0, 0.13, 0.20, 0, 0.08, 0.30, 0.13, 0, 0, 0.16},
+						{0, 0.17, 0, 0.62, 0, 0.11, 0.11, 0, 0, 0},
+						{0, 0.10, 0.08, 0.26, 0, 0, 0, 0.09, 0.12, 0.35},
+						{0, 0.21, 0.15, 0.54, 0, 0.10, 0, 0, 0, 0 },
+						{0, 0.25, 0.19, 0.16, 0, 0.17, 0, 0, 0.10, 0.13},
+						{0, 0, 0, 0, 0, 0.51, 0, 0.20, 0, 0.29},
+						{0, 0, 0, 0, 0, 0, 0, 0, 0, 1} };
+					for (int i = 0; i < 10; i++) {
+						for (int j = 0; j < 10; j++) {
+							Menge::ThemePark::ProbMatrix->SetPoint(i,j,tmp[i][j]);
+						}
+					}
+					Menge::ThemePark::ProbMatrix->Show();
+					Menge::ThemePark::ProbMatrix->InitSumWeight();
+
+					//初始化socket服务端
+					SOCKET socketServer = Menge::Socket::socketServerInit("127.0.0.1",12660);
+					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
+					threadSocket.detach();
+
+					cout << "It's ThemePark Simulation" << endl;
 					break;
 				}
 				default:

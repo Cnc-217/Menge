@@ -52,6 +52,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorAlgorithm.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorReality.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorNearAgent.h"
+#include "MengeCore/BFSM/GoalSelectors/GoalSelectorEvacuation.h"
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 
@@ -79,6 +80,7 @@ namespace Menge {
 		addFactory( new BFSM::AlgorithmGoalSelectorFactory() ); // my job
 		addFactory( new BFSM::MatrixGoalSelectorFactory() ); // matrix
 		addFactory( new BFSM::NearAgentGoalSelectorFactory ); // near agent
+		addFactory( new BFSM::EvacuationGoalSelectorFactory ); // evacuation
 	}
 }	// namespace Menge
 

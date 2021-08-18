@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <vector>
 
 namespace Menge{
 	
@@ -14,6 +15,7 @@ namespace Menge{
 		void initialize();//初始化矩阵
 
 	public:
+		std::vector<float>* _sumWeight;
 		MatrixDim2(int, int, float);//二维初始化，矩阵全为某个值
 		virtual ~MatrixDim2();//析构函数应当是虚函数，除非此类不用做基类
 		void Show() const;//矩阵显示2维
@@ -21,6 +23,7 @@ namespace Menge{
 		void SetPoint(int i, int j, float value) ;//设置点的值
 		int row_size() const;//返回行数
 		int col_size() const;//返回列数
+		void InitSumWeight(); //初始化_sumWeight
 
 		void Aggregate(int typeAgent, int shopID, int strength);
 	};

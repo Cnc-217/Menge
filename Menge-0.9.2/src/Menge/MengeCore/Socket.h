@@ -15,7 +15,9 @@ namespace Menge {
     namespace Socket {
 
 
-        SOCKET socketInit(char* ip,int host);
+        SOCKET socketClientInit(char* ip,int host);
+
+        SOCKET socketServerInit(char* ip, int host);
 
         //BusinessµÄsocket½»»¥
         int* socketGetCouponBusiness(char* message);

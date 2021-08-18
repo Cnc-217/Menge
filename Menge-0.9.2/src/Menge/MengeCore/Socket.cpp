@@ -19,7 +19,7 @@ using namespace Menge::BFSM;
 
 namespace Menge {
 
-	SOCKET Socket::socketInit(char* ip, int host) {
+	SOCKET Socket::socketClientInit(char* ip, int host) {
 		WSADATA wsadata;
 		WSAStartup(MAKEWORD(2, 1), &wsadata);//第一个参数，socket版本；第二个参数，socket通过它返回请求socket版本信息
 
@@ -29,23 +29,48 @@ namespace Menge {
 		struct sockaddr_in adr_pythons;
 		adr_pythons.sin_family = AF_INET;
 		adr_pythons.sin_addr.s_addr = inet_addr(ip);
-		adr_pythons.sin_port = htons(host);//连接服务端12347端口
+		adr_pythons.sin_port = htons(host);
 
-		std::cout << "socket start" << std::endl;
+		std::cout << "socket client start" << std::endl;
 		clientPython = socket(AF_INET, SOCK_STREAM, 0);
 		connect(clientPython, (struct sockaddr*)&adr_pythons, sizeof(adr_pythons));
 
 		return clientPython;
 	}
 
+	SOCKET Socket::socketServerInit(char* ip, int host) {
+		WSADATA wsadata;
+		WSAStartup(MAKEWORD(2, 1), &wsadata);//第一个参数，socket版本；第二个参数，socket通过它返回请求socket版本信息
+
+		//c++作为客户端，生成套接字/绑定/监听
+		SOCKET  socketServer = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+		//初始化套接字配置
+		struct sockaddr_in adr_socket;
+		adr_socket.sin_family = AF_INET;
+		adr_socket.sin_addr.s_addr = inet_addr(ip);
+		adr_socket.sin_port = htons(host);
+
+
+		if (bind(socketServer, (SOCKADDR*)&adr_socket, sizeof(SOCKADDR)) == SOCKET_ERROR)
+		{
+			std::cout << "bind error!" << std::endl;
+			exit(0);
+		}
+		
+		std::cout << "socket server start" << std::endl;
+		listen(socketServer, 10);
+
+		return socketServer;
 	
+	}
+
 	int* Socket::socketGetCouponBusiness(char* message) {
 		//1.socket初始化、发送数据
 		//char* ip = "10.210.77.109";
 		//int host = 12349;
 		char* ip = "10.28.195.233";
 		int host = 12347;
-		SOCKET clientPython = socketInit(ip,host);
+		SOCKET clientPython = socketClientInit(ip,host);
 
 		std::cout << "send msg to python: " << message << std::endl;
 		send(clientPython, message, strlen(message) * sizeof(char), 0);//发送信息给python端server
@@ -84,7 +109,7 @@ namespace Menge {
 		//char* ip = "10.128.234.214";
 		char* ip = "10.28.195.233";
 		int host = 12347;
-		SOCKET clientPython = socketInit(ip,host);
+		SOCKET clientPython = socketClientInit(ip,host);
 
 
 		std::cout << "send msg to python: " << message << std::endl;

@@ -17,14 +17,20 @@ namespace Menge {
 	//声明一个值全部为value的矩阵
 	MatrixDim2::MatrixDim2(int rows, int cols, float value)
 	{
+		_sumWeight = new std::vector<float>();
 		rows_num = rows;
 		cols_num = cols;
 		initialize();
+		float sum = 0;
 		for (int i = 0; i < rows_num; i++) {
 			for (int j = 0; j < cols_num; j++) {
 				p[i][j] = value;
+				sum += p[i][j];
 			}
+			_sumWeight->push_back(sum);
+			sum = 0;
 		}
+
 	}
 
 	//析构函数
@@ -64,6 +70,19 @@ namespace Menge {
 	}
 	int MatrixDim2::col_size() const {
 		return cols_num;
+	}
+
+	//初始化_sumWeight
+	void MatrixDim2::InitSumWeight() {
+		_sumWeight->clear();
+		float sum = 0;
+		for (int i = 0; i < rows_num; i++) {
+			for (int j = 0; j < cols_num; j++) {
+				sum += p[i][j];
+			}
+			_sumWeight->push_back(sum);
+			sum = 0;
+		}
 	}
 
 	/////////////////////////////////////////////////////////////////////
