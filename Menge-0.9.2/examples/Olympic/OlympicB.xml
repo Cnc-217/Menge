@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<BFSM>
+   <!--  主仿真的目标点集合-->
+   <GoalSet id="0">
+        
+    </GoalSet>
+
+ <!-- 疏散的目标点集合 -->
+    <GoalSet id="1"> 
+       
+    </GoalSet>
+
+ <!-- agent的目标点集合，将所有的agent放进来 -->
+    <GoalSet id="2"> 
+
+    </GoalSet>
+
+
+  <State name="wait" final="0" >
+    <GoalSelector type="identity" />
+    <VelComponent type="zero" />
+  </State>
+
+  <State name="tour" final="0" >
+    <GoalSelector type="Reality" goal_set="0"/>
+    <!-- <GoalSelector type="random" goal_set="0"/> -->
+    <VelComponent type="road_map" file_name="graph.txt" />
+   <!-- <Action type="distance_stress" exit_behavior="cool down"
+      inner_dist="c" inner_value="100" 
+      outer_dist="c" outer_value="120"
+      fall_off="linear"
+      shape_number="x" 
+      
+      /> -->
+  </State>
+
+
+  <State name="Stop" final="1" >
+    <GoalSelector type="identity" />
+    <VelComponent type="zero" />
+  </State>
+
+ <!-- <State name="Evacuation" final="0" >
+    <GoalSelector type="evacuation" goal_set="1" algorithmID="0" />
+    <VelComponent type="road_map" file_name="graph.txt" />
+    <Action type="distance_stress" exit_behavior="cool down"
+      inner_dist="c" inner_value="100" 
+      outer_dist="c" outer_value="120"
+      fall_off="linear"
+      shape_number="x" 
+      max_x0="-3930" min_x0="-4840" max_y0="-3100" min_y0="-3690"
+      max_x1="1770" min_x1="585" max_y1="-1170" min_y1="-1440"
+      />
+  </State> -->
+
+  <State name="Agent" final="0" >
+    <GoalSelector type="evacuation" goal_set="2" algorithmID="0" />
+    <VelComponent type="road_map" file_name="graph.txt" />
+  </State>
+
+  <Transition from="tour" to="tour" >
+    <Condition type="goal_reached" distance="5" />
+    <!-- <Condition type="goal_reached_wait" distance="5"/>     -->
+    <!-- 这里需要修改源码实现不同的店停留不同的时间-->
+  </Transition>
+
+<!-- 这里只有trigger有用，其他的都是donothing -->
+  <EventSystem conservative="1">
+    <Target name="target" type="agent_all"/>
+    <Effect name="effect" type="set_agent_state_by_code"></Effect>
+    <Event name="Olympic">
+      <Trigger name="Evacuation" type="neighborhood_search" timeSimulate="30"/>
+      <Response effect="effect" target="target" />
+    </Event>
+  </EventSystem> 
+
+
+</BFSM>
+

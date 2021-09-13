@@ -69,16 +69,12 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/GoalSet.h"
 
 #include "MengeCore/Scene/Business.h"
-#include "MengeCore/Scene/ThemePark.h"
 #include "MengeCore/Scene/BaseScene.h"
 #include "MengeCore/Socket.h"
 #include <vector>
 #include <thread>
 
 namespace Menge {
-
-	extern void Business::fsmToMartix();
-	extern void BusinessReality::martixInit();
 
 	namespace BFSM {
 		/////////////////////////////////////////////////////////////////////
@@ -288,14 +284,14 @@ namespace Menge {
 			if (PROJECTNAME == EVACUATION) {
 				//初始化两个vector
 				for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++) {
-					Menge::Evacuation::ExitAgentInfo.push_back(1000);
+					Menge::BaseScene::ExitAgentInfo.push_back(1000);
 				}
 				for (int i = 0; i < fsm->getGoalSet(0)->size(); i++) {
-					Menge::Evacuation::ExitReagionInfo.push_back(0);
+					Menge::BaseScene::ExitReagionInfo.push_back(0);
 				}
 
 				vector<size_t> tmp = { 15,8,5,5,15,10 };
-				Menge::Evacuation::ExitReagionCapacity.assign(tmp.begin(), tmp.end());
+				Menge::BaseScene::ExitReagionCapacity.assign(tmp.begin(), tmp.end());
 				cout << "It's Evacuation Simulation" << endl;
 			}
 			
@@ -367,18 +363,18 @@ namespace Menge {
 					break;
 				}
 				case THEMEPARK: {
-					//初始化两个vector
+					//1.初始化两个vector
 					for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++) {
-						Menge::Evacuation::ExitAgentInfo.push_back(1000);//默认值设置为1000
+						Menge::BaseScene::ExitAgentInfo.push_back(1000);//默认值设置为1000
 					}
 					for (int i = 0; i < fsm->getGoalSet(1)->size(); i++) {
-						Menge::Evacuation::ExitReagionInfo.push_back(0);
+						Menge::BaseScene::ExitReagionInfo.push_back(0);
 					}
 
 					vector<size_t> tmp0 = { 10,10 };
-					Menge::Evacuation::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
+					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
 
-					//初始化概率矩阵
+					//2.初始化概率矩阵
 					vector<vector<float>> tmp = {
 						{0, 0, 0.05, 0, 0.16, 0, 0.79, 0, 0, 0},
 						{0, 0, 0.19, 0.37, 0, 0.12, 0.24, 0.07, 0, 0},
@@ -392,13 +388,13 @@ namespace Menge {
 						{0, 0, 0, 0, 0, 0, 0, 0, 0, 1} };
 					for (int i = 0; i < 10; i++) {
 						for (int j = 0; j < 10; j++) {
-							Menge::ThemePark::ProbMatrix->SetPoint(i,j,tmp[i][j]);
+							BaseScene::ProbMatrix->SetPoint(i,j,tmp[i][j]);
 						}
 					}
-					Menge::ThemePark::ProbMatrix->Show();
-					Menge::ThemePark::ProbMatrix->InitSumWeight();
+					BaseScene::ProbMatrix->Show();
+					BaseScene::ProbMatrix->InitSumWeight();
 
-					//初始化socket服务端
+					//3.初始化socket服务端，用于疏散状态转移控制
 					SOCKET socketServer = Menge::Socket::socketServerInit("127.0.0.1",12660);
 					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
 					threadSocket.detach();
@@ -406,9 +402,76 @@ namespace Menge {
 					cout << "It's ThemePark Simulation" << endl;
 					break;
 				}
-				default:
-					cout << "No Specific Simulation" << endl;
+				case OLYMPIC: {
+					//1.初始化两个vector
+					for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++) {
+						Menge::BaseScene::ExitAgentInfo.push_back(1000);//默认值设置为1000
+					}
+					//goalSet1包含了出口goal
+					for (int i = 0; i < fsm->getGoalSet(1)->size(); i++) {
+						Menge::BaseScene::ExitReagionInfo.push_back(0);
+					}
+					??
+					vector<size_t> tmp0 = {  };
+					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
+
+					//2.初始化概率矩阵
+					vector<vector<float>> tmp = ;
+					for (int i = 0; i < 10; i++) {
+						for (int j = 0; j < 10; j++) {
+							BaseScene::ProbMatrix->SetPoint(i, j, tmp[i][j]);
+						}
+					}
+
+
+					BaseScene::ProbMatrix->Show();
+					BaseScene::ProbMatrix->InitSumWeight();
+
+					//3.初始化socket服务端，用于疏散状态转移控制
+					SOCKET socketServer = Menge::Socket::socketServerInit("127.0.0.1", 12660);
+					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
+					threadSocket.detach();
+
+					cout << "It's OLYMPIC Simulation" << endl;
 					break;
+				}
+				default: {
+					cout << "No Specific Simulation" << endl;
+					//1.初始化区域检测的vector
+					for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++) {
+						Menge::BaseScene::ExitAgentInfo.push_back(1000);//默认值设置为1000
+					}
+					for (int i = 0; i < BaseScene::DetectReagionNum; i++) {
+						Menge::BaseScene::ExitReagionInfo.push_back(0);
+					}
+
+					//vector<size_t> tmp0 = { 10,10 };
+					//默认为10
+					vector<size_t> tmp0(BaseScene::DetectReagionNum, 10);
+					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
+
+
+					//2.无输入矩阵
+					int goalNum = fsm->getGoalSet(0)->size();
+					if (BaseScene::ProbMatrix == 0x0) {
+						cout << "apply the defult matrix,all ONE" << endl;
+						MatrixDim2* tmp = new MatrixDim2(goalNum, goalNum, 1);
+						BaseScene::ProbMatrix = tmp;
+						BaseScene::ProbMatrix->Show();
+					}
+					else if (BaseScene::ProbMatrix->col_size() != goalNum) {
+						cout << "matrix not matching goal number" << endl;
+						exit(1);
+					}
+
+					//3.初始化socket服务端，用于疏散状态转移控制
+					SOCKET socketServer = Menge::Socket::socketServerInit("127.0.0.1", 12660);
+					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
+					threadSocket.detach();
+
+					break;
+				}
+					
 			}
 			return fsm;
 		}

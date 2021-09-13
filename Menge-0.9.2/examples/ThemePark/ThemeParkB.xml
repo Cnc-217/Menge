@@ -154,8 +154,8 @@
       outer_dist="c" outer_value="120"
       fall_off="linear"
       shape_number="2" 
-      max_x0="-3920" min_x0="-4640" max_y0="-2940" min_y0="-3510"
-      max_x1="1700" min_x1="640" max_y1="-970" min_y1="-1440"
+      max_x0="-3930" min_x0="-4840" max_y0="-3100" min_y0="-3690"
+      max_x1="1770" min_x1="585" max_y1="-1170" min_y1="-1440"
       />
   </State>
 
@@ -178,8 +178,8 @@
       outer_dist="c" outer_value="120"
       fall_off="linear"
       shape_number="2" 
-      max_x0="-3920" min_x0="-4640" max_y0="-2940" min_y0="-3510"
-      max_x1="1700" min_x1="640" max_y1="-970" min_y1="-1440"
+      max_x0="-3930" min_x0="-4840" max_y0="-3100" min_y0="-3690"
+      max_x1="1770" min_x1="585" max_y1="-1170" min_y1="-1440"
       />
   </State>
 
@@ -195,10 +195,6 @@
   </Transition>
 
 
-
-  <Transition from="leave" to="Stop" >
-    <Condition type="goal_reached" distance="5" />
-  </Transition>
 
 
 <!-- 这里只有trigger有用，其他的都是donothing -->

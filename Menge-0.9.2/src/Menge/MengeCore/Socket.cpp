@@ -1,5 +1,4 @@
 
-
 #include "MengeCore/Socket.h"
 #include "MengeCore/Core.h"
 #include "MengeCore/BFSM/FSM.h"
@@ -53,7 +52,7 @@ namespace Menge {
 
 		if (bind(socketServer, (SOCKADDR*)&adr_socket, sizeof(SOCKADDR)) == SOCKET_ERROR)
 		{
-			std::cout << "bind error!" << std::endl;
+			std::cout << "socket server bind error! ip: " << ip <<" port: "<< host << std::endl;
 			exit(0);
 		}
 		

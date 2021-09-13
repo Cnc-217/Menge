@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<Population >
+    <GoalSet id="-1">
+        <!-- 滑雪场 -->
+        <Goal capacity="1000000" id="10" radius="214.56" type="circle" weight="1.00" x="-1063.35" y="1335.10"/>
+        <Goal capacity="1000000" id="9" radius="200.13" type="circle" weight="1.00" x="-3158.18" y="-2427.94"/>
+        <Goal capacity="1000000" id="8" radius="169.66" type="circle" weight="1.00" x="-891.28" y="-1889.59"/>
+
+        <!-- 饭店 -->
+        <Goal capacity="1000000" id="3" radius="51.83" type="circle" weight="1.00" x="918.10" y="-1073.62"/>
+        <Goal capacity="1000000" id="4" radius="54.43" type="circle" weight="1.00" x="1923.06" y="-1150.74"/>
+        <Goal capacity="1000000" id="14" radius="51.54" type="circle" weight="1.00" x="2681.09" y="-1019.34"/>
+        <Goal capacity="1000000" id="0" radius="42.88" type="circle" weight="1.00" x="-300.52" y="-119.81"/>
+        <Goal capacity="1000000" id="1" radius="50.54" type="circle" weight="1.00" x="-249.98" y="1638.84"/>
+        <Goal capacity="1000000" id="2" radius="56.59" type="circle" weight="1.00" x="1122.87" y="687.53"/>
+        <Goal capacity="1000000" id="5" radius="54.43" type="circle" weight="1.00" x="1273.79" y="-1886.15"/>
+        
+        
+        <Goal capacity="1000000" id="6" radius="63.92" type="circle" weight="1.00" x="1599.63" y="142.98"/>
+        <Goal capacity="1000000" id="7" radius="63.92" type="circle" weight="1.00" x="2145.41" y="1588.31"/>
+        <Goal capacity="1000000" id="18" radius="44.15" type="circle" weight="1.00" x="1367.67" y="-2175.81"/>
+        <Goal capacity="1000000" id="17" radius="55.65" type="circle" weight="1.00" x="1811.88" y="-2147.10"/>
+        <Goal capacity="1000000" id="19" radius="42.88" type="circle" weight="1.00" x="2559.81" y="-2181.67"/>
+        <Goal capacity="1000000" id="11" radius="67.18" type="circle" weight="1.00" x="205.75" y="1803.82"/>
+        <Goal capacity="1000000" id="12" radius="50.54" type="circle" weight="1.00" x="1276.20" y="1972.38"/>
+        <Goal capacity="1000000" id="13" radius="51.54" type="circle" weight="1.00" x="1589.52" y="1507.45"/>
+        <Goal capacity="1000000" id="15" radius="64.72" type="circle" weight="1.00" x="3317.85" y="405.77"/>
+        <Goal capacity="1000000" id="16" radius="58.93" type="circle" weight="1.00" x="3792.88" y="991.98"/>
+        <Goal capacity="1000000" id="20" radius="64.72" type="circle" weight="1.00" x="3358.27" y="820.16"/>
+        <Goal capacity="1000000" id="21" radius="63.92" type="circle" weight="1.00" x="3459.35" y="1345.73"/>
+        <Goal capacity="1000000" id="22" radius="54.43" type="circle" weight="1.00" x="558.59" y="132.87"/>
+        <Goal capacity="1000000" id="23" radius="64.72" type="circle" weight="1.00" x="2772.06" y="1739.91"/>
+        <Goal capacity="1000000" id="24" radius="0.00" type="circle" weight="1.00" x="360.15" y="295.67"/>
+    </GoalSet>
+    <GoalSet id="0">
+        <!-- noisePoint -->
+        <Goal capacity="1000000" id="0" radius="255.09" type="circle" weight="1.00" x="134.09" y="-1787.49"/>
+        <Goal capacity="1000000" id="1" radius="0.00" type="circle" weight="1.00" x="-229.77" y="-1201.27"/>
+        <Goal capacity="1000000" id="2" radius="50.54" type="circle" weight="1.00" x="2003.91" y="-483.66"/>
+        <Goal capacity="1000000" id="3" radius="54.43" type="circle" weight="1.00" x="-1088.88" y="-958.70"/>
+        <Goal capacity="1000000" id="4" radius="54.43" type="circle" weight="1.00" x="-482.45" y="-776.77"/>
+        <Goal capacity="1000000" id="5" radius="58.93" type="circle" weight="1.00" x="2569.92" y="72.23"/>
+        <Goal capacity="1000000" id="8" radius="78.94" type="circle" weight="1.00" x="-826.09" y="1972.38"/>
+        <Goal capacity="1000000" id="9" radius="72.88" type="circle" weight="1.00" x="2044.34" y="921.23"/>
+        <Goal capacity="1000000" id="10" radius="81.49" type="circle" weight="1.00" x="669.77" y="1315.41"/>
+        <Goal capacity="1000000" id="11" radius="0.00" type="circle" weight="1.00" x="2236.38" y="-150.13"/>
+        <Goal capacity="1000000" id="12" radius="58.93" type="circle" weight="1.00" x="2064.56" y="2305.91"/>
+        <Goal capacity="1000000" id="13" radius="63.92" type="circle" weight="1.00" x="669.77" y="-281.52"/>
+    </GoalSet>
+    <GoalSet id="1">
+        <!-- 出口 -->
+        <Goal capacity="1000000" id="0" radius="205.44" type="circle" weight="1.00" x="-3347.80" y="-601.36"/>
+        <Goal capacity="1000000" id="1" radius="258.12" type="circle" weight="1.00" x="4467.77" y="-535.25"/>
+    </GoalSet>
+
+</Population>

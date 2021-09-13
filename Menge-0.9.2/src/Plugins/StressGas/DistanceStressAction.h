@@ -192,6 +192,7 @@ namespace StressGAS {
 		size_t _funcId;
 
 		size_t _shapeNumber;//ĞÂÔö
+
 	};
 
 }	// namespace StressGAS

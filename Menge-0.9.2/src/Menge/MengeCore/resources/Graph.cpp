@@ -204,7 +204,7 @@ namespace Menge {
 		size_t startID = getClosestVertex( agent->_pos, agent->_radius );
 
 		//解决bug,如果穿墙,将其强制移动到地图中心
-		if (startID == -1) {
+		if (startID == -1&&PROJECTNAME == BUSINESSLEARNING) {
 			Vector2 pos;
 			if(PROJECTNAME == BUSINESSLEARNING) pos.set(12650.0f, -750.0f);
 			Agents::BaseAgent* ptr = (Agents::BaseAgent*)agent;
@@ -267,11 +267,8 @@ namespace Menge {
 				}
 			}
 		}
-
-
-		
-
-		assert( bestID != -1 && "Roadmap Graph was unable to find a visible vertex" );
+		if (bestID == -1) std::cout << "error: can't find way point"<<std::endl;
+		//assert( bestID != -1 && "Roadmap Graph was unable to find a visible vertex" );
 
 		return bestID;
 	}

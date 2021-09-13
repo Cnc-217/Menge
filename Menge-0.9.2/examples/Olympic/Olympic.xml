@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<Project 
+	scene="OlympicS.xml" 
+	behavior="OlympicB.xml" 
+	view="OlympicV.xml" 
+	model="orca"
+	dumpPath="images"
+/>

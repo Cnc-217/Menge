@@ -761,8 +761,7 @@ namespace Menge {
         //
         map<size_t, Geometry2D*> createGeometrys(TiXmlElement* node, size_t shapeNumber, const std::string& prefix) {
 
-            //cout << shapeNumber << endl;
-
+            Menge::BaseScene::DetectReagionNum = shapeNumber;
             map<size_t, Geometry2D*> Geometrys;
 
             for (size_t i = 0; i < shapeNumber; i++) {

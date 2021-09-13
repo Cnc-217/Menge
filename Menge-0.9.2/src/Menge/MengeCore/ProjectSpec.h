@@ -247,6 +247,14 @@ namespace Menge {
      */
     void setTimeStep( float time_step ) { _timeStep = time_step; }
 
+
+    //matrix txt file
+    std::string getMatrixFile() const { return _matrixFliePath; }
+    
+    void setMatrixFile(const std::string& matrixFileName) { _matrixFliePath = matrixFileName; }
+
+
+
     //@}
 
     /*!
@@ -342,6 +350,10 @@ namespace Menge {
      *	@brief		The path to the output folder for screen grab images
      */
     std::string		_imgDumpPath;
+
+
+    //matrix txt path
+    std::string		_matrixFliePath;
 
     /*!
      *	@brief		The number of intermediate simulation steps to take.

@@ -15,10 +15,16 @@ namespace Menge {
     namespace BaseScene {
         
         void sockerServerListen(SOCKET socketServer);
-
+        void loadMatrixFromTxt(const char* fileName);
+        void modifyMatrix(char* matrixStr);
     }
 
     namespace ThemePark {
+        void evacuateModeStart();
+    }
+
+
+    namespace Olympic {
         void evacuateModeStart();
     }
 

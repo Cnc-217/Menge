@@ -5,6 +5,9 @@
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
+#include<iostream>
+#include<fstream>
+#include <string>
 
 namespace Menge{
 	
@@ -67,5 +70,23 @@ namespace Menge{
 		void Aggregate(int typeAgent, int shopID, int strength) ;
 
 	};
+
+
+	namespace Matrix {
+
+		//得到文件行数
+		int getFileRows(const char* fileName);
+
+		//得到文件列数
+		int getFileColumns(const char* fileName);
+
+		//获取数据
+		void getFileData(const char* fileName, int rowNum, int colNum);
+
+		
+
+	}
+
+
 }
 #endif

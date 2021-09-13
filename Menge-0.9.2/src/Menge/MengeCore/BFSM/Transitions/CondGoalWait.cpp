@@ -100,7 +100,9 @@ namespace Menge {
 				_lock.releaseWrite();
 			}
 
-			if (_reachedAgents[agent->_id] && _triggerTimes.find(agent->_id)->second==0) {//已到达，且计时未开始
+			//已到达，且计时未开始
+			if (_reachedAgents[agent->_id] && _triggerTimes.find(agent->_id)->second==0) {
+				//开始计时，不同场景下停留时间定制化设计
 				if (PROJECTNAME == BUSINESSREALITY) {
 					float timeReached = 0.0;
 					int goalType = goal->getID() / 10; //0 1 2 对应eat shop play
@@ -130,8 +132,26 @@ namespace Menge {
 					_triggerTimes[agent->_id] = timeReached;//赋值的时候要用锁
 					_lock.releaseWrite();
 				}
+				else if (PROJECTNAME == OLYMPIC) {
+					float timeReached = 0.0;
+					??
+					/*
+					//停留时间
+					switch () {
+					case 1:timeReached = Menge::SIM_TIME + 30; break;
+					case 2:timeReached = Menge::SIM_TIME + 20; break;
+					case 3:timeReached = Menge::SIM_TIME + 50; break;
+					default:break;
+					}
+					*/
+					
+					_lock.lockWrite();
+					_triggerTimes[agent->_id] = timeReached;//赋值的时候要用锁
+					_lock.releaseWrite();
+				}
 			}
 
+			//已到达目标点，且计时结束，则转移条件满足，agent进入下一个状态
 			if (_reachedAgents[agent->_id] && Menge::SIM_TIME > _triggerTimes.find(agent->_id)->second) {
 				return true;
 			}

@@ -1,8 +1,131 @@
 #include "MatrixMy.h"
+#include "Menge/MengeCore/Core.h"
 
 namespace Menge {
 
 	using namespace std;
+
+	/////////////////////////////////////////////////////////////////////
+	//					Implementation of MatrixFile
+	/////////////////////////////////////////////////////////////////////
+
+	int Matrix::getFileRows(const char* fileName) {
+		ifstream fileStream;
+		string tmp;
+		int count = 0;// 行数计数器
+		fileStream.open(fileName, ios::in);//ios::in 表示以只读的方式读取文件
+		if (fileStream.fail())//文件打开失败:返回0
+		{
+			return 0;
+		}
+		else//文件存在
+		{
+			while (getline(fileStream, tmp, '\n'))//读取一行
+			{
+				if (tmp.size() > 0)
+					count++;
+			}
+			fileStream.close();
+			return count;
+		}
+	}
+
+	int Matrix::getFileColumns(const char* fileName) {
+		ifstream fileStream;
+		fileStream.open(fileName, std::ios::_Nocreate);
+
+		double tmp = 0;
+		int count = 0;	// 列数计数器	
+		char c;			//当前位置的字符
+		c = fileStream.peek();
+		while (('\n' != c) && (!fileStream.eof()))	// 指针指向的当前字符，仅观测，不移动指针位置
+		{
+			fileStream >> tmp;
+			++count;
+			c = fileStream.peek();
+		}
+
+		fileStream.close();
+		return count;
+	}
+
+	void Matrix::getFileData(const char* fileName, int rowNum, int colNum)
+	{
+		MatrixDim2* tmpMatrix = new MatrixDim2(rowNum, colNum, 1);
+		ifstream fileStream;
+		string oneLine = "";	//输入文件的某一行
+		double tmp = 0;		//当前位置上的数值
+		int rowCount;	// 行数计数器
+		int colCount = 0;	// 列数计数器
+		int index = 0;		// 当前位置在X[]数组的下标
+		int maxIndex = rowNum * (colNum - 1) - 1;
+
+		// 打开文件
+		fileStream.open(fileName, ios::in);	//ios::in 表示以只读的方式读取文件
+		//文件打开失败:返回0
+		if (fileStream.fail()){
+			cout << "文件不存在." << endl;
+			fileStream.close();
+			system("pause");
+			exit(1);
+		}
+		//文件存在
+		else{
+			// 读入数据
+			rowCount = 0;	//初始化当前行数为0
+			colCount = 0;	//当前列数清零
+			float tmp = 0;	//当前读入的数值
+			while (!fileStream.eof()) {
+				fileStream >> tmp;
+
+				if (colCount == 0) {	//第一列
+					if (rowCount < rowNum) {		//越界检查
+						tmpMatrix->SetPoint(rowCount, colCount, tmp);
+					}
+					else {
+						cout << "计算出的行数与输入数据不符，请检查数据（如文件末尾不能有空行）." << endl;
+						fileStream.close();
+						system("pause");
+						exit(1);
+					}
+				}
+				else {				//非第一列
+					index = rowCount * (colNum - 1) + colCount - 1;
+					if (index <= maxIndex) {		//越界检查
+						tmpMatrix->SetPoint(rowCount, colCount, tmp);
+					}
+					else {
+						cout << "X[]下标超出数组范围，可能是文件中某行的列数>第一行的列数，退出！" << endl;
+						fileStream.close();
+						system("pause");
+						exit(1);
+					}
+				}
+				if ('\n' != fileStream.peek()) {	// 未到行尾，colCount累加，rowCount不变
+
+					++colCount;
+
+				}
+				else {	//已到行尾，colCount清零，rowCount累加				
+					if ((colCount + 1) != colNum)		//越界检查
+					{
+						cout << "第" << rowCount + 1 << "行，输入的列数与文件列数不一致，请检查数据." << endl;
+						fileStream.close();
+						system("pause");
+						exit(1);
+					}
+					else {
+						rowCount++;	// 换下一行
+						colCount = 0;	// 列数清零				
+					}
+				}
+			}
+
+			Menge::BaseScene::ProbMatrix = tmpMatrix;
+			// 关闭文件
+			fileStream.close();
+		}
+	}
 
 	/////////////////////////////////////////////////////////////////////
 	//					Implementation of MatrixDim2

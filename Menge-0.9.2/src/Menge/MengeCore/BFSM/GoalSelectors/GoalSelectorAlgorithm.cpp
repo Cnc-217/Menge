@@ -20,9 +20,9 @@ namespace Menge {
 		/////////////////////////////////////////////////////////////////////
 
 		using namespace std;
-		using Menge::Evacuation::ExitReagionInfo;
-		using Menge::Evacuation::ExitAgentInfo;
-		using Menge::Evacuation::ExitReagionCapacity;
+		using Menge::BaseScene::ExitReagionInfo;
+		using Menge::BaseScene::ExitAgentInfo;
+		using Menge::BaseScene::ExitReagionCapacity;
 
 		bool AlgorithmGoalSelector::_flag;
 		map <size_t, Goal*> AlgorithmGoalSelector::_bestGoals;
@@ -71,7 +71,7 @@ namespace Menge {
 
 				for (int i = 0; i < NUM_AGENT; i++) { //遍历每个agent
 					distance = 0;
-					for (int j = 1; j < NUM_GOAL+1; j++) { //遍历每个出口
+					for (int j = 0; j < NUM_GOAL; j++) { //遍历每个出口
 						Agents::BaseAgent* agentTest = Menge::SIMULATOR->getAgent(i);//当前agent
 						//在graph.h中增加了静态成员变量，下面是A*算法
 						distance = Graph::graphLoad->getPathLenth(agentTest, _goalSet->getGoalByID(j));//得到路径长度
@@ -95,7 +95,7 @@ namespace Menge {
 				for (int i = 0; i < NUM_AGENT; i++) { //遍历每个agent
 					priorityMax = 0; //优先级算法得到的优先级越大越好
 					priorityTmp = 0;
-					for (int j = 1; j < NUM_GOAL + 1; j++) {//遍历每个goal,计算优先级
+					for (int j = 0; j < NUM_GOAL; j++) {//遍历每个goal,计算优先级
 						
 						if (_algorithmID == 0) {
 

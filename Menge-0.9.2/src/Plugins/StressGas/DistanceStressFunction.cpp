@@ -57,11 +57,11 @@ namespace StressGAS {
 				if (region->containsPoint(_agent->_pos)) {//这里的agent不是所有的agent，是在某个state中的一个agent
 
 					//vector=1000表示agent之前不在region里，现在进入了
-					if (Menge::Evacuation::ExitAgentInfo[_agent->_id] == 1000) {
-						Menge::Evacuation::ExitAgentInfo[_agent->_id] = it->first;
+					if (Menge::BaseScene::ExitAgentInfo[_agent->_id] == 1000) {
+						Menge::BaseScene::ExitAgentInfo[_agent->_id] = it->first;
 						//cout << "agentState" << Menge::Evacuation::ExitAgentInfo[_agent->_id] << endl;
-						Menge::Evacuation::ExitReagionInfo[it->first] = Menge::Evacuation::ExitReagionInfo[it->first] + 1;
-						cout << "agentID: " << _agent->_id << " reagionID: " << it->first << " population: " << Menge::Evacuation::ExitReagionInfo[it->first] << endl;;
+						Menge::BaseScene::ExitReagionInfo[it->first] = Menge::BaseScene::ExitReagionInfo[it->first] + 1;
+						cout << "agentID: " << _agent->_id << " reagionID: " << it->first << " population: " << Menge::BaseScene::ExitReagionInfo[it->first] << endl;;
 					}
 
 					float d = sqrt(region->squaredDistance(_agent->_pos));
@@ -82,9 +82,9 @@ namespace StressGAS {
 				}
 				else {
 					//agent之前在此区域内，现在出去了
-					if (Menge::Evacuation::ExitAgentInfo[_agent->_id] == it->first) {
-						Menge::Evacuation::ExitAgentInfo[_agent->_id] = 1000;
-						Menge::Evacuation::ExitReagionInfo[it->first] = Menge::Evacuation::ExitReagionInfo[it->first] - 1;
+					if (Menge::BaseScene::ExitAgentInfo[_agent->_id] == it->first) {
+						Menge::BaseScene::ExitAgentInfo[_agent->_id] = 1000;
+						Menge::BaseScene::ExitReagionInfo[it->first] = Menge::BaseScene::ExitReagionInfo[it->first] - 1;
 					}
 
 				}

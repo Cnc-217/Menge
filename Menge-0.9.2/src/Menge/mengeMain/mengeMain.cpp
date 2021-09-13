@@ -43,6 +43,9 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/Runtime/Logger.h"
 #include "MengeCore/Runtime/os.h"
 #include "MengeCore/Runtime/SimulatorDB.h"
+#include "MengeCore/Scene/BaseScene.cpp"
+#include "MengeCore/MatrixMy.cpp"
+#include "MengeCore/Core.h"
 
 #include "MengeVis/PluginEngine/VisPluginEngine.h"
 #include "MengeVis/Runtime/AgentContext/BaseAgentContext.h"
@@ -56,6 +59,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeVis/Viewer/ViewConfig.h"
 
 #include "thirdParty/tclap/CmdLine.h"
+
 
 #include <algorithm>
 #include <exception>
@@ -151,6 +155,9 @@ bool parseCommandParameters( int argc, char* argv[], ProjectSpec* spec, const Si
                                          " If the simulation time step is 10 Hz with 1 substep, it"
                                          " actually runs at 20 Hz, but output is only updated at"
                                          " 10 Hz.", false, -1, "int", cmd );
+	//增加矩阵txt文件输入
+	TCLAP::ValueArg< std::string > matrixFileArg("x", "matrix", "Matrix txt file", false, "",
+		"string", cmd);
 
     std::string modelDoc = "The pedestrian model to use.  Should be one of: ";
     modelDoc += simDB.paramList();
@@ -203,6 +210,9 @@ bool parseCommandParameters( int argc, char* argv[], ProjectSpec* spec, const Si
 		}
 		else if (name.find("ThemePark") != name.npos) {
 			PROJECTNAME = THEMEPARK;
+		}
+		else if (name.find("Olympic") != name.npos) {
+			PROJECTNAME = OLYMPIC;
 		}
 		
 
@@ -260,6 +270,12 @@ bool parseCommandParameters( int argc, char* argv[], ProjectSpec* spec, const Si
       os::path::absPath( tmp, temp );
       spec->setDumpPath( temp );
     }
+
+	//matrix
+	temp = matrixFileArg.getValue();
+	if (temp != "") {
+		spec->setMatrixFile(temp);
+	}
 
   } catch ( TCLAP::ArgException &e ) {
     std::cerr << "Error parsing command-line arguments: " << e.error() << " for arg " << e.argId() << std::endl;
@@ -394,7 +410,9 @@ int simMain( SimulatorDBEntry * dbEntry, const std::string & behaveFile,
 	return 0;
 }
 
+
 int main( int argc, char* argv[] ) {
+	//extern void Menge::BaseScene::loadMatrixFromTxt(const char* fileName, MatrixDim2 * FileMatrix);
 	logger.setFile( "log.html" );
 	logger << Logger::INFO_MSG << "initialized logger";
 
@@ -433,6 +451,11 @@ int main( int argc, char* argv[] ) {
 	std::string viewCfgFile = projSpec.getView();
 	bool useVis = viewCfgFile != "";//可视化界面的控制
 	std::string model( projSpec.getModel() );
+	std::string matrixFile = projSpec.getMatrixFile();
+
+	if (matrixFile != "") {
+		Menge::BaseScene::loadMatrixFromTxt(matrixFile.c_str());
+	}
 
 	SimulatorDBEntry * simDBEntry = simDB.getDBEntry( model );
 	if ( simDBEntry == 0x0 ) {

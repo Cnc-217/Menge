@@ -118,9 +118,9 @@ namespace StressGAS {
 
 		if (Menge::PROJECTNAME == EVACUATION|| Menge::PROJECTNAME == THEMEPARK) {
 			if (stressLevel > 0.0) { //进入出口区域，判断该区域的人数
-				size_t exitID = Menge::Evacuation::ExitAgentInfo[agt->_id];
-				size_t population = Menge::Evacuation::ExitReagionInfo[exitID];
-				if (population >= Menge::Evacuation::ExitReagionCapacity[exitID]) agt->_prefSpeed = 10;
+				size_t exitID = Menge::BaseScene::ExitAgentInfo[agt->_id];
+				size_t population = Menge::BaseScene::ExitReagionInfo[exitID];
+				if (population >= Menge::BaseScene::ExitReagionCapacity[exitID]) agt->_prefSpeed = 10;
 				else {
 					agt->_prefSpeed = _basePrefSpeed;
 				}

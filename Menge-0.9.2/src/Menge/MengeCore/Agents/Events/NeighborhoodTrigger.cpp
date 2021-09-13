@@ -159,7 +159,7 @@ namespace Menge {
 
 				vector<size_t>::iterator it;
 				int idx = 0;
-				for (it = Menge::Evacuation::ExitReagionInfo.begin(); it != Menge::Evacuation::ExitReagionInfo.end(); it++) {
+				for (it = Menge::BaseScene::ExitReagionInfo.begin(); it != Menge::BaseScene::ExitReagionInfo.end(); it++) {
 					cout << "reagionID: " << idx << " reagionPopulation: " << (*it) << endl;
 					idx++;
 				}
@@ -170,7 +170,7 @@ namespace Menge {
 			for (agent = _leaderSet.begin(); agent != _leaderSet.end(); agent++) {
 				State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
 				if (currentState->getID() == 4) continue;//currentState "out"
-				else if (Menge::Evacuation::ExitAgentInfo[(*agent)->_id] != 1000) {//正在疏散出口附近
+				else if (Menge::BaseScene::ExitAgentInfo[(*agent)->_id] != 1000) {//正在疏散出口附近
 					currentState->leave((*agent));
 					State* nextState = Menge::ACTIVE_FSM->getNode("out");
 					nextState->enter((*agent));
@@ -183,7 +183,7 @@ namespace Menge {
 			for (agent = _panicSet.begin(); agent != _panicSet.end(); agent++) {
 				State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
 				if (currentState->getID() == 4) continue;//currentState "out"
-				else if (Menge::Evacuation::ExitAgentInfo[(*agent)->_id] != 1000) {//正在疏散出口附近
+				else if (Menge::BaseScene::ExitAgentInfo[(*agent)->_id] != 1000) {//正在疏散出口附近
 					currentState->leave((*agent));
 					State* nextState = Menge::ACTIVE_FSM->getNode("out");
 					nextState->enter((*agent));
@@ -210,7 +210,7 @@ namespace Menge {
 			for (agent = _normalSet.begin(); agent != _normalSet.end(); agent++) {
 				State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
 				if (currentState->getID() == 4) continue;//currentState->getName() == "Follow_leader" "out"
-				else if (Menge::Evacuation::ExitAgentInfo[(*agent)->_id] != 1000) {
+				else if (Menge::BaseScene::ExitAgentInfo[(*agent)->_id] != 1000) {
 					currentState->leave((*agent));
 					State* nextState = Menge::ACTIVE_FSM->getNode("out");
 					nextState->enter((*agent));
@@ -246,10 +246,10 @@ namespace Menge {
 			
 
 		}
-		else if(PROJECTNAME == THEMEPARK) {
+		else if(PROJECTNAME == THEMEPARK || PROJECTNAME == OLYMPIC) {
 			
 			//疏散状态的控制信号量
-			if (Menge::ThemePark::evacuationState == true) {
+			if (Menge::ThemePark::evacuationState == true || Menge::Olympic::evacuationState == true) {
 				if (_flag == false) {//第一次进入，将人群分进vector里
 					for (int idx = 0; idx < Menge::SIMULATOR->getNumAgents(); idx++) {
 						Agents::BaseAgent* agent = Menge::SIMULATOR->getAgent(idx);
@@ -277,7 +277,7 @@ namespace Menge {
 
 					vector<size_t>::iterator it;
 					int idx = 0;
-					for (it = Menge::Evacuation::ExitReagionInfo.begin(); it != Menge::Evacuation::ExitReagionInfo.end(); it++) {
+					for (it = Menge::BaseScene::ExitReagionInfo.begin(); it != Menge::BaseScene::ExitReagionInfo.end(); it++) {
 						cout << "reagionID: " << idx << " reagionPopulation: " << (*it) << endl;
 						idx++;
 					}
@@ -288,7 +288,7 @@ namespace Menge {
 				for (agent = _leaderSet.begin(); agent != _leaderSet.end(); agent++) {
 					State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
 					if (currentState->getName()=="Stop") continue;
-					else if (Menge::Evacuation::ExitAgentInfo[(*agent)->_id] != 1000) {//正在疏散出口附近
+					else if (Menge::BaseScene::ExitAgentInfo[(*agent)->_id] != 1000) {//正在疏散出口附近
 						currentState->leave((*agent));
 						State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
 						nextState->enter((*agent));
@@ -300,7 +300,7 @@ namespace Menge {
 				for (agent = _panicSet.begin(); agent != _panicSet.end(); agent++) {
 					State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
 					if (currentState->getName()=="Stop") continue;
-					else if (Menge::Evacuation::ExitAgentInfo[(*agent)->_id] != 1000) {//正在疏散出口附近
+					else if (Menge::BaseScene::ExitAgentInfo[(*agent)->_id] != 1000) {//正在疏散出口附近
 						currentState->leave((*agent));
 						State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
 						nextState->enter((*agent));
@@ -326,7 +326,7 @@ namespace Menge {
 				for (agent = _normalSet.begin(); agent != _normalSet.end(); agent++) {
 					State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
 					if (currentState->getName()=="Stop") continue;
-					else if (Menge::Evacuation::ExitAgentInfo[(*agent)->_id] != 1000) {//进入了出口区域
+					else if (Menge::BaseScene::ExitAgentInfo[(*agent)->_id] != 1000) {//进入了出口区域
 						currentState->leave((*agent));
 						State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
 						nextState->enter((*agent));
@@ -350,12 +350,7 @@ namespace Menge {
 
 			}
 
-			
-
-
 		}
-
-		
 
 		return false;
 	}

@@ -77,22 +77,32 @@ namespace Menge {
 		//第一维：顾客类型；第二维：当前的30家店铺；第三维：店铺类型；第四维：店铺id；值：选择店铺的概率
 	}
 
-	namespace Evacuation {
+	
+	namespace ThemePark {
+		std::vector<Agents::BaseAgent*> leaderAgentSet;
+		std::vector<Agents::BaseAgent*> panicAgentSet;
+		std::vector<Agents::BaseAgent*> normalAgentSet;
+		bool evacuationState = false;
+	}
+
+	namespace Olympic {
+		std::vector<Agents::BaseAgent*> leaderAgentSet;
+		std::vector<Agents::BaseAgent*> panicAgentSet;
+		std::vector<Agents::BaseAgent*> normalAgentSet;
+		bool evacuationState = false;
+	}
+
+	namespace BaseScene {
+		MatrixDim2* ProbMatrix = 0x0;
+
 		std::vector<size_t> ExitReagionInfo;//exitRegionID-population
 
 		std::vector<size_t> ExitAgentInfo;//AgentID-AgentState
 
 		std::vector<size_t> ExitReagionCapacity;//exitRegionID-Capacity
-	}
+
+		size_t DetectReagionNum = 0;
 	
-	namespace ThemePark {
-		MatrixDim2* ProbMatrix = new MatrixDim2(10, 10, 1);//10*10 10个目标点到10个目标点的转移概率
-
-		std::vector<Agents::BaseAgent*> leaderAgentSet;
-		std::vector<Agents::BaseAgent*> panicAgentSet;
-		std::vector<Agents::BaseAgent*> normalAgentSet;
-
-		bool evacuationState = false;
 	}
 
 }

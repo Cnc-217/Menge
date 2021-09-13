@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+<Experiment version="2.0">
+    <SpatialQuery type="kd-tree" test_visibility="false" />
+  
+    <OpenSteer max_force="8" leak_through="0.1" reaction_time="0.5" />
+    <Common time_step="0.3" />
+    <GCF reaction_time="0.5" max_agent_dist="2" max_agent_force="3" agent_interp_width="0.1" agent_force_strength="0.35" />
+    <Helbing agent_scale="2000" obstacle_scale="4000" reaction_time="0.5" body_force="200" friction="200" force_distance="1" />
+    <Johansson agent_scale="25" obstacle_scale="35" reaction_time="0.5" force_distance="0.15" stride_time="0.5" />
+    <Karamouzas orient_weight="0.8" fov="200" reaction_time="0.4" wall_steepness="2" wall_distance="2" colliding_count="5" d_min="1" d_mid="8" d_max="10" agent_force="4" />
+    <Zanlungo agent_scale="2000" obstacle_scale="4000" reaction_time="0.5" force_distance="0.005" />
+  <Dummy stddev="1.0" />
+
+  <AgentProfile name="tourist" >
+    <Common max_angle_vel="360" class="0" max_neighbors="10" obstacleSet="1" neighbor_dist="500" r="15" pref_speed="30" max_speed="30" max_accel="10" />
+    <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
+    <Helbing mass="50" />
+    <ORCA tau="1" tauObst="5" />
+  </AgentProfile>
+
+  <AgentProfile name="leader" >
+    <Common max_angle_vel="360" class="1" max_neighbors="10" obstacleSet="1" neighbor_dist="500" r="15" pref_speed="30" max_speed="30" max_accel="10" />
+    <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
+    <Helbing mass="50" />
+    <ORCA tau="1" tauObst="5" />
+  </AgentProfile>
+
+  <AgentProfile name="panicer" >
+    <Common max_angle_vel="360" class="2" max_neighbors="10" obstacleSet="1" neighbor_dist="500" r="15" pref_speed="30" max_speed="30" max_accel="10" />
+    <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
+    <Helbing mass="50" />
+    <ORCA tau="1" tauObst="5" />
+  </AgentProfile>
+
+  <AgentProfile name="normal" >
+    <Common max_angle_vel="360" class="3" max_neighbors="10" obstacleSet="1" neighbor_dist="500" r="15" pref_speed="30" max_speed="30" max_accel="10" />
+    <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
+    <Helbing mass="50" />
+    <ORCA tau="1" tauObst="5" />
+  </AgentProfile>
+
+
+  <AgentGroup>
+    <ProfileSelector name="tourist" type="const"/>
+    <StateSelector type="const" name="tour" />
+    <Generator type="rect_grid"
+        anchor_x="-6000" anchor_y="-4300"
+        offset_x="250" offset_y="-300"
+        count_x="10" count_y="10"
+        />
+  </AgentGroup>
+
+  <AgentGroup>
+    <ProfileSelector name="leader" type="const"/>
+    <StateSelector type="const" name="Stop" />
+    <Generator type="explicit" >
+         <Agent p_x="-2814.29020127" p_y="930.593743395" />
+          <Agent p_x="-2404.30428593" p_y="-457.459215157" />
+          <Agent p_x="615.386954117" p_y="402.11256034" />
+          <Agent p_x="2357.32666838" p_y="-792.008657211" />
+          <Agent p_x="4560.91118324" p_y="771.42840082" />
+          <Agent p_x="2351.17140437" p_y="3061.18661179" />
+          <Agent p_x="4591.68750328" p_y="3898.30251688" />
+          <Agent p_x="6381.21110148" p_y="673.885932085" />
+          <Agent p_x="-4397.0476513" p_y="1277.68470837" />
+          <Agent p_x="-4225.82113266" p_y="3098.09295926" />
+          <Agent p_x="253.104118293" p_y="1530.01852533" />
+          <Agent p_x="2235.7269658" p_y="872.148216835" />
+          <Agent p_x="4272.4213455" p_y="2611.44916942" />
+          <Agent p_x="6579.47338623" p_y="2061.72192534" />
+          <Agent p_x="5173.61354891" p_y="-1155.53424084" />
+    </Generator>
+  </AgentGroup>
+
+  <AgentGroup>
+    <ProfileSelector name="panicer" type="const"/>
+    <StateSelector type="const" name="tour" />
+    <Generator type="rect_grid"
+        anchor_x="-6000" anchor_y="-4300"
+        offset_x="250" offset_y="-300"
+        count_x="0" count_y="0"
+        />
+  </AgentGroup>
+
+  <AgentGroup>
+    <ProfileSelector name="normal" type="const"/>
+    <StateSelector type="const" name="tour" />
+    <Generator type="rect_grid"
+        anchor_x="-6000" anchor_y="-4300"
+        offset_x="250" offset_y="-300"
+        count_x="0" count_y="0"
+        />
+  </AgentGroup>
+
+
+ <ObstacleSet type="explicit" class="1"> 
+    <Obstacle closed="1" >
+      <Vertex p_x="-4842.378492" p_y="-3088.034232" />
+      <Vertex p_x="-5336.310025" p_y="-2572.356003" />
+      <Vertex p_x="-4658.901186" p_y="-1725.565562" />
+      <Vertex p_x="-5330.142661" p_y="1373.831280" />
+      <Vertex p_x="-5090.899833" p_y="3210.476234" />
+      <Vertex p_x="-4895.449321" p_y="3531.583751" />
+      <Vertex p_x="-1253.378389" p_y="3658.502825" />
+      <Vertex p_x="-1016.060782" p_y="3509.218024" />
+      <Vertex p_x="-793.832379" p_y="2210.469345" />
+      <Vertex p_x="-286.676605" p_y="2148.982028" />
+      <Vertex p_x="5630.207852" p_y="4667.151605" />
+      <Vertex p_x="7019.529184" p_y="3835.609194" />
+      <Vertex p_x="7240.469815" p_y="2312.044782" />
+      <Vertex p_x="6523.281569" p_y="-1603.963673" />
+      <Vertex p_x="6266.750421" p_y="-1731.720132" />
+      <Vertex p_x="4213.387577" p_y="-1565.399181" />
+      <Vertex p_x="3043.841964" p_y="-1702.514472" />
+      <Vertex p_x="1765.459986" p_y="-1432.474156" />
+      <Vertex p_x="1757.812662" p_y="-1453.847881" />
+      <Vertex p_x="3045.713160" p_y="-1730.045805" />
+      <Vertex p_x="4212.312103" p_y="-1590.762903" />
+      <Vertex p_x="6270.353088" p_y="-1765.788274" />
+      <Vertex p_x="6548.110933" p_y="-1615.801727" />
+      <Vertex p_x="7271.645921" p_y="2306.666086" />
+      <Vertex p_x="7041.563977" p_y="3866.669949" />
+      <Vertex p_x="5633.532056" p_y="4710.016519" />
+      <Vertex p_x="-284.109818" p_y="2181.989561" />
+      <Vertex p_x="-755.446151" p_y="2248.855573" />
+      <Vertex p_x="-990.998732" p_y="3526.089470" />
+      <Vertex p_x="-1252.399212" p_y="3682.387165" />
+      <Vertex p_x="-4912.075648" p_y="3568.138553" />
+      <Vertex p_x="-5122.566179" p_y="3228.688867" />
+      <Vertex p_x="-5366.823587" p_y="1373.042098" />
+      <Vertex p_x="-4696.083190" p_y="-1715.329407" />
+      <Vertex p_x="-5377.017921" p_y="-2577.734698" />
+      <Vertex p_x="-4859.014436" p_y="-3110.458410" />
+    </Obstacle>
+    <Obstacle closed="1" >
+      <Vertex p_x="589.705289" p_y="-1135.831454" />
+      <Vertex p_x="-1401.764357" p_y="-534.509934" />
+      <Vertex p_x="-1555.034007" p_y="-862.210465" />
+      <Vertex p_x="-1273.065535" p_y="-1291.642556" />
+      <Vertex p_x="-1375.850328" p_y="-2436.144089" />
+      <Vertex p_x="-2301.390536" p_y="-3736.286896" />
+      <Vertex p_x="-3528.667127" p_y="-3834.725193" />
+      <Vertex p_x="-3927.931308" p_y="-3674.932651" />
+      <Vertex p_x="-3934.652488" p_y="-3689.047376" />
+      <Vertex p_x="-3534.869017" p_y="-3855.967163" />
+      <Vertex p_x="-2288.264258" p_y="-3753.118374" />
+      <Vertex p_x="-1345.023060" p_y="-2456.462217" />
+      <Vertex p_x="-1243.822430" p_y="-1287.877533" />
+      <Vertex p_x="-1523.135712" p_y="-853.521144" />
+      <Vertex p_x="-1393.708424" p_y="-566.536426" />
+      <Vertex p_x="583.921108" p_y="-1160.130960" />
+    </Obstacle>
+    <Obstacle closed="1" >
+      <Vertex p_x="318.970272" p_y="291.637601" />
+      <Vertex p_x="-2696.769325" p_y="775.275436" />
+      <Vertex p_x="-2702.114266" p_y="678.755521" />
+      <Vertex p_x="-1690.574878" p_y="477.784203" />
+      <Vertex p_x="-1504.911380" p_y="-460.924302" />
+      <Vertex p_x="29.662974" p_y="-928.685103" />
+    </Obstacle>
+    <Obstacle closed="1" >
+      <Vertex p_x="351.599328" p_y="585.338692" />
+      <Vertex p_x="-376.615275" p_y="836.538046" />
+      <Vertex p_x="-527.049368" p_y="1564.878754" />
+      <Vertex p_x="-256.189336" p_y="1982.960954" />
+      <Vertex p_x="505.662654" p_y="2387.624555" />
+      <Vertex p_x="491.753916" p_y="2435.283580" />
+      <Vertex p_x="-286.049706" p_y="2107.704444" />
+      <Vertex p_x="-820.878076" p_y="2182.261994" />
+      <Vertex p_x="-1021.920036" p_y="3307.704452" />
+      <Vertex p_x="-1813.343164" p_y="2800.234126" />
+      <Vertex p_x="-3088.207965" p_y="2721.811133" />
+      <Vertex p_x="-3114.330022" p_y="2634.108873" />
+      <Vertex p_x="-2535.453452" p_y="2421.049919" />
+      <Vertex p_x="-2408.600687" p_y="1946.810506" />
+      <Vertex p_x="-2671.051338" p_y="937.478220" />
+      <Vertex p_x="337.318552" p_y="471.536277" />
+    </Obstacle>
+    <Obstacle closed="1" >
+      <Vertex p_x="3187.719150" p_y="-1661.524998" />
+      <Vertex p_x="4728.560187" p_y="603.162521" />
+      <Vertex p_x="5125.176268" p_y="696.190619" />
+      <Vertex p_x="5444.350908" p_y="625.521428" />
+      <Vertex p_x="5450.244283" p_y="651.938992" />
+      <Vertex p_x="5125.176268" p_y="719.661495" />
+      <Vertex p_x="4718.841249" p_y="624.849990" />
+      <Vertex p_x="3145.027944" p_y="-1664.764144" />
+    </Obstacle>
+    <Obstacle closed="1" >
+      <Vertex p_x="4717.460348" p_y="986.729697" />
+      <Vertex p_x="4834.106562" p_y="2316.163586" />
+      <Vertex p_x="4559.187585" p_y="3483.491983" />
+      <Vertex p_x="4545.070940" p_y="3478.443450" />
+      <Vertex p_x="4816.650073" p_y="2314.776928" />
+      <Vertex p_x="4697.398301" p_y="986.386149" />
+    </Obstacle>
+    <Obstacle closed="1" >
+      <Vertex p_x="2460.437693" p_y="2637.351324" />
+      <Vertex p_x="2799.401101" p_y="1139.074928" />
+      <Vertex p_x="2159.652937" p_y="-483.988078" />
+      <Vertex p_x="2179.179804" p_y="-489.991506" />
+      <Vertex p_x="2835.583958" p_y="1135.753668" />
+      <Vertex p_x="2480.195320" p_y="2649.007183" />
+    </Obstacle>
+    <Obstacle closed="1" >
+      <Vertex p_x="1233.140274" p_y="2098.996609" />
+      <Vertex p_x="1316.499621" p_y="1468.596006" />
+      <Vertex p_x="1056.842265" p_y="855.066390" />
+      <Vertex p_x="1068.745376" p_y="850.482789" />
+      <Vertex p_x="1328.316488" p_y="1464.977913" />
+      <Vertex p_x="1244.094060" p_y="2102.468416" />
+    </Obstacle>
+    <Obstacle closed="1" >
+      <Vertex p_x="-5174.599126" p_y="2183.411267" />
+      <Vertex p_x="-4439.491569" p_y="2099.415228" />
+      <Vertex p_x="-3773.484523" p_y="2211.102871" />
+      <Vertex p_x="-3777.274563" p_y="2225.585341" />
+      <Vertex p_x="-4439.521506" p_y="2116.776980" />
+      <Vertex p_x="-5172.062096" p_y="2194.738612" />
+    </Obstacle>
+  </ObstacleSet>
+
+</Experiment>

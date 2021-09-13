@@ -23,9 +23,9 @@ namespace Menge {
 		/////////////////////////////////////////////////////////////////////
 
 		using namespace std;
-		using Menge::Evacuation::ExitReagionInfo;
-		using Menge::Evacuation::ExitAgentInfo;
-		using Menge::Evacuation::ExitReagionCapacity;
+		using Menge::BaseScene::ExitReagionInfo;
+		using Menge::BaseScene::ExitAgentInfo;
+		using Menge::BaseScene::ExitReagionCapacity;
 
 		bool EvacuationGoalSelector::_flag;
 		map <size_t, Goal*> EvacuationGoalSelector::_bestGoals;
@@ -50,7 +50,7 @@ namespace Menge {
 
 		Goal* EvacuationGoalSelector::getGoal(const Agents::BaseAgent* agent) const {
 
-			if (Menge::PROJECTNAME == THEMEPARK) {
+			if (Menge::PROJECTNAME == THEMEPARK || Menge::PROJECTNAME == OLYMPIC) {
 				//leader,用算法选择出口 
 				if (agent->_class == 1) {
 					if (_flag == false) {

@@ -265,24 +265,24 @@ namespace Menge {
 				return tgtGoal;
 			}
 
-			else if (PROJECTNAME == THEMEPARK) {
+			else if (PROJECTNAME == THEMEPARK || PROJECTNAME == OLYMPIC) {
 				if (SIM_TIME > 0) {
 					int goalIDNow = ACTIVE_FSM->getNode("tour")->getGoal(agent->_id)->_id;//agent当前的goal的id
-					//如果概率和不为1，weight和的值如下
-					//float weight = ThemePark::ProbMatrix->_sumWeight->at(shopIDNow);
+					//weight权重和的值如下
+					float weight = BaseScene::ProbMatrix->_sumWeight->at(goalIDNow);
 					LARGE_INTEGER seed;
 					QueryPerformanceFrequency(&seed);
 					QueryPerformanceCounter(&seed);
 					srand(seed.QuadPart);//取硬件计时器，精度更高
-					float TGT_WEIGHT = 1 * ((rand() % 100) * 0.01);//概率和为1
+					float TGT_WEIGHT = weight * ((rand() % 100) * 0.01);//概率和为weight
 
-					//float accumWeight = ThemePark::ProbMatrix->Point(goalIDNow-1, (tgtGoal->_id)-1);
+					
 					float accumWeight = 0;
 					std::map< size_t, Goal* >::const_iterator itr;
 					for (size_t i = 0; i < _goalIDs.size(); i++) {
 						itr = _goals.find(_goalIDs[i]);
 						tgtGoal = itr->second;
-						accumWeight += ThemePark::ProbMatrix->Point(goalIDNow, (tgtGoal->_id));
+						accumWeight += BaseScene::ProbMatrix->Point(goalIDNow, (tgtGoal->_id));
 						if (accumWeight > TGT_WEIGHT) break;
 					}
 					
@@ -297,6 +297,36 @@ namespace Menge {
 				return tgtGoal;
 
 
+			}
+
+			//default project
+			else {
+				if (SIM_TIME > 0) {
+					int goalIDNow = ACTIVE_FSM->getNode("tour")->getGoal(agent->_id)->_id;//agent当前的goal的id
+					//如果概率和不为1，weight和的值如下 
+					float weight = BaseScene::ProbMatrix->_sumWeight->at(goalIDNow);
+					LARGE_INTEGER seed;
+					QueryPerformanceFrequency(&seed);
+					QueryPerformanceCounter(&seed);
+					srand(seed.QuadPart);//取硬件计时器，精度更高
+					float TGT_WEIGHT = weight * ((rand() % 100) * 0.01);//概率和为1
+
+					//float accumWeight = BaseScene::ProbMatrix->Point(goalIDNow-1, (tgtGoal->_id)-1);
+					float accumWeight = 0;
+					std::map< size_t, Goal* >::const_iterator itr;
+					for (size_t i = 0; i < _goalIDs.size(); i++) {
+						itr = _goals.find(_goalIDs[i]);
+						tgtGoal = itr->second;
+						accumWeight += BaseScene::ProbMatrix->Point(goalIDNow, (tgtGoal->_id));
+						if (accumWeight > TGT_WEIGHT) break;
+					}
+
+				}
+
+				else {
+					//第一次选取目标点为随机选取
+					tgtGoal = GoalSet::getRandomWeightedGoal();
+				}
 			}
 		
 		}

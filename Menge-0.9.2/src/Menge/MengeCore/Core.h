@@ -36,6 +36,7 @@
 #define BUSINESSREALITY 3
 #define BUSINESSLEARNING 4
 #define THEMEPARK 5
+#define OLYMPIC 6
 
 /*!
  * @namespace Menge
@@ -110,25 +111,39 @@ namespace Menge {
 		//第一维：顾客类型；第二维：当前的30家店铺；第三维：店铺类型；第四维：店铺id；值：选择店铺的概率
 	}
 
-	namespace Evacuation {
+
+	namespace ThemePark {
+		//三类人群的数组
+		extern MENGE_API std::vector<Agents::BaseAgent*> leaderAgentSet;
+		extern MENGE_API std::vector<Agents::BaseAgent*> panicAgentSet;
+		extern MENGE_API std::vector<Agents::BaseAgent*> normalAgentSet;
+		extern MENGE_API bool evacuationState; //控制event疏散部分状态启动和关闭
+	}
+
+	namespace Olympic {
+		//三类人群的数组
+		extern MENGE_API std::vector<Agents::BaseAgent*> leaderAgentSet;
+		extern MENGE_API std::vector<Agents::BaseAgent*> panicAgentSet;
+		extern MENGE_API std::vector<Agents::BaseAgent*> normalAgentSet;
+		extern MENGE_API bool evacuationState; //控制event疏散部分状态启动和关闭
+	}
+
+	namespace BaseScene {
+		extern MENGE_API MatrixDim2* ProbMatrix;//通用场景下输入文件的矩阵
+
+		//通用场景下人流量检测
 		extern MENGE_API   std::vector<size_t> ExitReagionInfo;//exitRegionID-population
 
 		extern MENGE_API   std::vector<size_t> ExitAgentInfo;//AgentID-AgentState
 
 		extern MENGE_API   std::vector<size_t> ExitReagionCapacity;//exitRegionID-Capacity
+
+		extern MENGE_API   size_t DetectReagionNum;//detect region num
+
 	}
 
-	namespace ThemePark {
-		extern MENGE_API MatrixDim2* ProbMatrix;//10*10 10个目标点到10个目标点的转移概率
 
-		//三类人群的数组
-		extern MENGE_API std::vector<Agents::BaseAgent*> leaderAgentSet;
-		extern MENGE_API std::vector<Agents::BaseAgent*> panicAgentSet;
-		extern MENGE_API std::vector<Agents::BaseAgent*> normalAgentSet;
 
-		extern MENGE_API bool evacuationState; //控制event疏散部分状态启动和关闭
-	
-	}
 }	// namespace Menge
 
 
