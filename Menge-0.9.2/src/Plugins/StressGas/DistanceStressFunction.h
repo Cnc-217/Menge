@@ -31,6 +31,9 @@ namespace Menge {
 	namespace Math {
 		class Geometry2D;
 	}
+	
+	class MatrixDim2;
+	
 }
 
 namespace StressGAS {

@@ -402,6 +402,7 @@ namespace Menge {
 					cout << "It's ThemePark Simulation" << endl;
 					break;
 				}
+				/*
 				case OLYMPIC: {
 					//1.初始化两个vector
 					for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++) {
@@ -435,6 +436,7 @@ namespace Menge {
 					cout << "It's OLYMPIC Simulation" << endl;
 					break;
 				}
+				*/
 				default: {
 					cout << "No Specific Simulation" << endl;
 					//1.初始化区域检测的vector

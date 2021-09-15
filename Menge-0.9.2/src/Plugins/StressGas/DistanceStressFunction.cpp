@@ -12,6 +12,9 @@ namespace StressGAS {
 	using Menge::Agents::BaseAgent;
 	using Menge::Math::Geometry2D;
 	using std::map;
+	using Menge::BaseScene::ExitAgentInfo;
+	using Menge::BaseScene::ExitReagionInfo;
+	using Menge::BaseScene::ExitReagionCapacity;
 
 	/////////////////////////////////////////////////////////////////////
 	//                   Implementation of DistanceStressFunction

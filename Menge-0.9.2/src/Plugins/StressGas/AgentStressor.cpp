@@ -10,6 +10,9 @@
 namespace StressGAS {
 	using Menge::BFSM::State;
 	using Menge::Agents::BaseAgent;
+	using Menge::BaseScene::ExitAgentInfo;
+	using Menge::BaseScene::ExitReagionInfo;
+	using Menge::BaseScene::ExitReagionCapacity;
 
 	// These values come from the GAS paper
 	//	Interactive Simulation of Dynamic Crowd Behaviors using General Adaptation Syndrome Theory

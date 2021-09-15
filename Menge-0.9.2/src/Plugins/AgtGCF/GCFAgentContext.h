@@ -28,7 +28,8 @@
 #include "GCFAgent.h"
 
 #include "MengeCore/Agents/Obstacle.h"
-#include "MengeVis/Runtime/AgentContext/BaseAgentContext.h"
+#include "
+/Runtime/AgentContext/BaseAgentContext.h"
 
 namespace GCF {
 	// forward declaration

@@ -134,7 +134,7 @@ namespace Menge {
 				}
 				else if (PROJECTNAME == OLYMPIC) {
 					float timeReached = 0.0;
-					??
+					
 					/*
 					//Õ£¡Ù ±º‰
 					switch () {
