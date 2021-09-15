@@ -54,7 +54,7 @@ namespace Menge {
                 MengeVis::SimViewer->_pause = true;//暂停
                 //暂停，下面是根据不同项目的定制化代码部分
                 if(Menge::PROJECTNAME==THEMEPARK) ThemePark::evacuateModeStart();
-                else if(Menge::PROJECTNAME==OLYMPIC) ThemePark::evacuateModeStart();
+                else if(Menge::PROJECTNAME==OLYMPIC) Olympic::evacuateModeStart();
                 MengeVis::SimViewer->_pause = false;//false是正常运行
             }
 			//如果客户端传来了修改概率矩阵的数据，则修改概率矩阵

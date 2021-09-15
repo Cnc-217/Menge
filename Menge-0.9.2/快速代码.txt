@@ -1,0 +1,1 @@
+python roadmapBuilder.py --inDir="./draw/Olympic" --obstacle="obstacles.xml" --roadmap="graph.txt" --goal="goals.txt" --outDir="./draw/Olympic"

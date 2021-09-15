@@ -78,7 +78,7 @@
     <Generator type="rect_grid"
         anchor_x="-6000" anchor_y="-4300"
         offset_x="250" offset_y="-300"
-        count_x="0" count_y="0"
+        count_x="10" count_y="10"
         />
   </AgentGroup>
 

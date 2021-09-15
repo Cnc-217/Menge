@@ -290,8 +290,7 @@ namespace Menge {
 					
 				else {
 					//第一次选取目标点必定是选目标点0
-					//std::map< size_t, Goal* >::const_iterator itr = ;
-					tgtGoal = getGoalByID(0);
+					tgtGoal = getGoalByID(34);
 				}
 
 				return tgtGoal;
