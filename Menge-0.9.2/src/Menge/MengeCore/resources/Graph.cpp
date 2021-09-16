@@ -211,6 +211,7 @@ namespace Menge {
 			ptr->setPosition(pos);
 			startID = getClosestVertex(agent->_pos, agent->_radius);
 		}
+		
 
 		// Find the closest visible node to goal position
 		Vector2 goalPos = goal->getCentroid();
@@ -267,9 +268,12 @@ namespace Menge {
 				}
 			}
 		}
-		if (bestID == -1) std::cout << "error: can't find way point"<<std::endl;
+		
 		//assert( bestID != -1 && "Roadmap Graph was unable to find a visible vertex" );
-
+		if (bestID == -1) {
+			std::cout << "error: can't find way point" << ",position:" << point << std::endl;
+			MengeVis::SimViewer->_pause = true;//ÔÝÍ£
+		}
 		return bestID;
 	}
 

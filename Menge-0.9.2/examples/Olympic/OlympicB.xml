@@ -181,7 +181,6 @@
       <Goal capacity="1000000" type="agent" id="111" shape="circle" x="0" y="0" radius="30" idleader="111"/>
       <Goal capacity="1000000" type="agent" id="112" shape="circle" x="0" y="0" radius="30" idleader="112"/>
       <Goal capacity="1000000" type="agent" id="113" shape="circle" x="0" y="0" radius="30" idleader="113"/>
-      <Goal capacity="1000000" type="agent" id="114" shape="circle" x="0" y="0" radius="30" idleader="114"/>
     </GoalSet>
 
 
@@ -194,13 +193,14 @@
     <GoalSelector type="Reality" goal_set="0"/>
     <!-- <GoalSelector type="random" goal_set="0"/> -->
     <VelComponent type="road_map" file_name="graph.txt" />
-   <!-- <Action type="distance_stress" exit_behavior="cool down"
+   <Action type="distance_stress" exit_behavior="cool down"
       inner_dist="c" inner_value="100" 
       outer_dist="c" outer_value="120"
       fall_off="linear"
-      shape_number="x" 
-      
-      /> -->
+      shape_number="2" 
+      max_x0="-2300" min_x0="-3000" max_y0="-580" min_y0="-1000"
+      max_x1="4180" min_x1="3200" max_y1="-100" min_y1="-600"
+      />
   </State>
 
 
@@ -212,14 +212,14 @@
  <State name="Evacuation" final="0" >
     <GoalSelector type="evacuation" goal_set="1" algorithmID="0" />
     <VelComponent type="road_map" file_name="graph.txt" />
-    <!-- <Action type="distance_stress" exit_behavior="cool down"
+     <Action type="distance_stress" exit_behavior="cool down"
       inner_dist="c" inner_value="100" 
       outer_dist="c" outer_value="120"
       fall_off="linear"
       shape_number="2" 
       max_x0="-2300" min_x0="-3000" max_y0="-580" min_y0="-1000"
       max_x1="4180" min_x1="3200" max_y1="-100" min_y1="-600"
-      />-->
+      />
   </State>
 
   <State name="Agent" final="0" >

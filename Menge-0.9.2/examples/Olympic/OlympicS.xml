@@ -3,7 +3,7 @@
     <SpatialQuery type="kd-tree" test_visibility="false" />
   
     <OpenSteer max_force="8" leak_through="0.1" reaction_time="0.5" />
-    <Common time_step="0.1" />
+    <Common time_step="0.3" />
     <GCF reaction_time="0.5" max_agent_dist="2" max_agent_force="3" agent_interp_width="0.1" agent_force_strength="0.35" />
     <Helbing agent_scale="2000" obstacle_scale="4000" reaction_time="0.5" body_force="200" friction="200" force_distance="1" />
     <Johansson agent_scale="25" obstacle_scale="35" reaction_time="0.5" force_distance="0.15" stride_time="0.5" />
@@ -12,31 +12,31 @@
   <Dummy stddev="1.0" />
 
   <AgentProfile name="tourist" >
-    <Common max_angle_vel="360" class="0" max_neighbors="10" obstacleSet="1" neighbor_dist="500" r="15" pref_speed="30" max_speed="30" max_accel="10" />
+    <Common max_angle_vel="360" class="0" max_neighbors="10" obstacleSet="1" neighbor_dist="500" r="10" pref_speed="30" max_speed="30" max_accel="10" />
     <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
     <Helbing mass="50" />
-    <ORCA tau="1" tauObst="5" />
+    <ORCA tau="1" tauObst="1" />
   </AgentProfile>
 
   <AgentProfile name="leader" >
-    <Common max_angle_vel="360" class="1" max_neighbors="10" obstacleSet="1" neighbor_dist="500" r="15" pref_speed="30" max_speed="30" max_accel="10" />
+    <Common max_angle_vel="360" class="1" max_neighbors="10" obstacleSet="1" neighbor_dist="500" r="10" pref_speed="30" max_speed="30" max_accel="10" />
     <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
     <Helbing mass="50" />
-    <ORCA tau="1" tauObst="5" />
+    <ORCA tau="1" tauObst="1" />
   </AgentProfile>
 
   <AgentProfile name="panicer" >
-    <Common max_angle_vel="360" class="2" max_neighbors="10" obstacleSet="1" neighbor_dist="500" r="15" pref_speed="30" max_speed="30" max_accel="10" />
+    <Common max_angle_vel="360" class="2" max_neighbors="10" obstacleSet="1" neighbor_dist="500" r="10" pref_speed="30" max_speed="30" max_accel="10" />
     <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
     <Helbing mass="50" />
-    <ORCA tau="1" tauObst="5" />
+    <ORCA tau="1" tauObst="1" />
   </AgentProfile>
 
   <AgentProfile name="normal" >
-    <Common max_angle_vel="360" class="3" max_neighbors="10" obstacleSet="1" neighbor_dist="500" r="15" pref_speed="30" max_speed="30" max_accel="10" />
+    <Common max_angle_vel="360" class="3" max_neighbors="10" obstacleSet="1" neighbor_dist="500" r="10" pref_speed="30" max_speed="30" max_accel="10" />
     <PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
     <Helbing mass="50" />
-    <ORCA tau="1" tauObst="5" />
+    <ORCA tau="1" tauObst="1" />
   </AgentProfile>
 
 
@@ -67,7 +67,6 @@
         	<Agent p_x="2582.5686805" p_y="-542.901030077" />
         	<Agent p_x="1640.51466893" p_y="-1662.89857717" />
         	<Agent p_x="2352.288811" p_y="-2270.00005129" />
-        	<Agent p_x="-55.1825519049" p_y="-2144.39284975" />
         	<Agent p_x="-1080.97469784" p_y="-2154.86011655" />
 
     </Generator>
