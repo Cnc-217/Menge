@@ -157,6 +157,12 @@
     <Filter Include="Header Files\Json">
       <UniqueIdentifier>{5936ab03-1e0b-4973-b619-8eb735103f2d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\BFSM\Actions\Stress">
+      <UniqueIdentifier>{0ab7a266-e254-47e7-b346-9d34aa034a2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\BFSM\Actions\Stress">
+      <UniqueIdentifier>{30b926b8-ed2b-499c-b307-2858a499717c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(SrcDir)\mengeCore\Core.cpp">
@@ -692,6 +698,30 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorEvacuation.cpp">
       <Filter>Source Files\BFSM\GoalSelectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\AgentStressor.cpp">
+      <Filter>Source Files\BFSM\Actions\Stress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\DistanceStressAction.cpp">
+      <Filter>Source Files\BFSM\Actions\Stress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\DistanceStressFunction.cpp">
+      <Filter>Source Files\BFSM\Actions\Stress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressFunction.cpp">
+      <Filter>Source Files\BFSM\Actions\Stress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\BaseStressAction.cpp">
+      <Filter>Source Files\BFSM\Actions\Stress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressTask.cpp">
+      <Filter>Source Files\BFSM\Actions\Stress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressGlobals.cpp">
+      <Filter>Source Files\BFSM\Actions\Stress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressManager.cpp">
+      <Filter>Source Files\BFSM\Actions\Stress</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1354,6 +1384,30 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\Menge\MengeCore\Json\json.hpp">
       <Filter>Header Files\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\AgentStressor.h">
+      <Filter>Header Files\BFSM\Actions\Stress</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\DistanceStressAction.h">
+      <Filter>Header Files\BFSM\Actions\Stress</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\DistanceStressFunction.h">
+      <Filter>Header Files\BFSM\Actions\Stress</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressFunction.h">
+      <Filter>Header Files\BFSM\Actions\Stress</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\BaseStressAction.h">
+      <Filter>Header Files\BFSM\Actions\Stress</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressGlobals.h">
+      <Filter>Header Files\BFSM\Actions\Stress</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressTask.h">
+      <Filter>Header Files\BFSM\Actions\Stress</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressManager.h">
+      <Filter>Header Files\BFSM\Actions\Stress</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -41,6 +41,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/Actions/ObstacleAction.h"
 #include "MengeCore/BFSM/Actions/PropertyAction.h"
 #include "MengeCore/BFSM/Actions/TeleportAction.h"
+#include "MengeCore/BFSM/Actions/Stress/DistanceStressAction.h"
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 
@@ -60,6 +61,7 @@ namespace Menge {
 		addFactory( new BFSM::OffsetPropertyActFactory() );
 		addFactory( new BFSM::ScalePropertyActFactory() );
 		addFactory( new BFSM::TeleportActFactory() );
+		addFactory( new StressGAS::DistanceStressActionFactory);
 	}
 }	// namespace Menge
 

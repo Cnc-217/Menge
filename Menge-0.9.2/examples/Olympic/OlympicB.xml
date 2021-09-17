@@ -193,7 +193,7 @@
     <GoalSelector type="Reality" goal_set="0"/>
     <!-- <GoalSelector type="random" goal_set="0"/> -->
     <VelComponent type="road_map" file_name="graph.txt" />
-   <Action type="distance_stress" exit_behavior="cool down"
+   <Action type="stress" exit_behavior="cool down"
       inner_dist="c" inner_value="100" 
       outer_dist="c" outer_value="120"
       fall_off="linear"
@@ -212,7 +212,7 @@
  <State name="Evacuation" final="0" >
     <GoalSelector type="evacuation" goal_set="1" algorithmID="0" />
     <VelComponent type="road_map" file_name="graph.txt" />
-     <Action type="distance_stress" exit_behavior="cool down"
+     <Action type="stress" exit_behavior="cool down"
       inner_dist="c" inner_value="100" 
       outer_dist="c" outer_value="120"
       fall_off="linear"

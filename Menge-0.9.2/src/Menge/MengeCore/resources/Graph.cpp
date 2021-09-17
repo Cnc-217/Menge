@@ -203,15 +203,16 @@ namespace Menge {
 		// Find the closest visible node to agent position
 		size_t startID = getClosestVertex( agent->_pos, agent->_radius );
 
-		//解决bug,如果穿墙,将其强制移动到地图中心
-		if (startID == -1&&PROJECTNAME == BUSINESSLEARNING) {
+
+		//解决bug：如果穿墙，将其强制移动到最近的waypoint的位置
+		if (startID == -1) {
+			//如果穿墙, 将其强制移动到最近的waypoint的位置
 			Vector2 pos;
-			if(PROJECTNAME == BUSINESSLEARNING) pos.set(12650.0f, -750.0f);
+			pos = getClosestVertex(agent->_pos);
 			Agents::BaseAgent* ptr = (Agents::BaseAgent*)agent;
 			ptr->setPosition(pos);
 			startID = getClosestVertex(agent->_pos, agent->_radius);
 		}
-		
 
 		// Find the closest visible node to goal position
 		Vector2 goalPos = goal->getCentroid();
@@ -256,7 +257,6 @@ namespace Menge {
 
 		float bestDistSq = INFTY;
 		size_t bestID = -1;
-
 		for (size_t i = 0; i < _vCount; ++i) {
 			float testDistSq = absSq(_vertices[i].getPosition() - point);//每一个waypoint与agent的距离
 			if (testDistSq < bestDistSq) {//找到更小的距离所对应的waypoint
@@ -268,13 +268,25 @@ namespace Menge {
 				}
 			}
 		}
-		
-		//assert( bestID != -1 && "Roadmap Graph was unable to find a visible vertex" );
-		if (bestID == -1) {
-			std::cout << "error: can't find way point" << ",position:" << point << std::endl;
-			MengeVis::SimViewer->_pause = true;//暂停
-		}
+
 		return bestID;
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////
+
+	Vector2 Graph::getClosestVertex(const Vector2& point) {
+		float bestDistSq = INFTY;
+		size_t bestID = -1;
+		for (size_t i = 0; i < _vCount; ++i) {
+			float testDistSq = absSq(_vertices[i].getPosition() - point);//每一个waypoint与agent的距离
+			if (testDistSq < bestDistSq) {//找到更小的距离所对应的waypoint
+				bestDistSq = testDistSq;
+				bestID = i;
+			}
+		}
+		if (bestID == -1) std::cout << "fail!" << std::endl;
+
+		return _vertices[bestID].getPosition();
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////

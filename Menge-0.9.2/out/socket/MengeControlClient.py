@@ -56,4 +56,6 @@ if __name__ == '__main__':
 
     jsonData = { "command" : "Evacuate", "data":"" }
     #jsonData = { "command" : "Matrix", "data":matrixStr }
+    #jsonData = { "command" : "FlowScene", "data":matrixStr }
+    #jsonData = { "command" : "FlowScene", "data":matrixStr }
     main(jsonData)

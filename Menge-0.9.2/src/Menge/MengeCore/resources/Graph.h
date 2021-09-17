@@ -150,6 +150,7 @@ namespace Menge {
 		 *	@returns	The index of the closest node.
 		 */
 		size_t getClosestVertex( const Vector2 & point, float radius );
+		Vector2 getClosestVertex( const Vector2 & point );
 
 		/*!
 		 *	@brief		Computes the shortest path from start to end vertices.

@@ -3,7 +3,7 @@ import socket
 import json
 
 
-def main(project,duration):
+def simulationStart(project,duration):
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     #serverIp = "10.28.195.233" #本机
     #serverIp = "10.128.254.80" #本机
@@ -30,7 +30,9 @@ def main(project,duration):
 
 
 if __name__ == '__main__':
+    #仿真时长
     duration = 0
-    project = "BusinessLearning"
+    #project = "BusinessLearning"
     #project = "BusinessReality"
-    main(project, duration)
+    project = "Olympic"
+    simulationStart(project, duration)
