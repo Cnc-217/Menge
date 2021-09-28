@@ -240,6 +240,22 @@ namespace Menge {
 
 
 		}
+		void Shopinit() {
+			for (int i = 0; i < 36; i++)
+			{
+				if (Menge::Olympic::shoptype.find(i) != Menge::Olympic::shoptype.end()) {
+					Menge::Olympic::shoptype[i].type = i % 2;
+					Menge::Olympic::shoptype[i].maximum = 3;
+
+				}
+				else {
+					Menge::Olympic::Shoptype shoptemp;
+					shoptemp.type = i % 2;
+					shoptemp.maximum = 3;
+					Menge::Olympic::shoptype.insert(std::map< int, Menge::Olympic::Shoptype>::value_type(i, shoptemp));
+				}
+			}
+		}
 	}
 	
 }

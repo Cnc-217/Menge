@@ -26,6 +26,7 @@ namespace Menge {
 
     namespace Olympic {
         void evacuateModeStart();
+		void Shopinit();
     }
 
 }	// namespace Menge
