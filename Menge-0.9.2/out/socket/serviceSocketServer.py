@@ -14,9 +14,9 @@ def socketAccept(s):
 
 def simulation(client,sleepTime,projectname):
     #运行menge仿真
-    print("run "+projectname+" simulation")
+    print("run "+projectname+" simulation")                          
     process = subprocess.Popen(
-        "D:\File\Project\git\Menge-0.9.2\Exe\menge.exe -p D:\File\Project\git\Menge-0.9.2\examples\\"+projectname+"\\"+projectname+".xml",
+        "D:\File\Project\git\Menge-0.9.2\Exe\menge.exe -p D:\File\Project\git\Menge-0.9.2\examples\\"+projectname+"\\"+projectname+".xml -x D:\File\Project\git\Menge-0.9.2\examples\\"+projectname+"\\matrix.txt",
         shell=True, stdout=False)
     pid = process.pid
     #menge定时运行

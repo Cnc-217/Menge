@@ -208,6 +208,20 @@ namespace Menge {
 		}
 	}
 
+	vector<vector<float>> MatrixDim2::toVector() {
+		vector<vector<float>> res;
+		for (int i = 0; i < rows_num; ++i) {
+			vector<float> row;
+			for (int j = 0; j < cols_num; ++j) {
+				row.push_back(p[i][j]);
+			}
+			res.push_back(row);
+			row.clear();
+		}
+		
+		return res;
+	}
+
 	/////////////////////////////////////////////////////////////////////
 	//					Implementation of MatrixDim3
 	/////////////////////////////////////////////////////////////////////

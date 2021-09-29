@@ -195,7 +195,7 @@ namespace MengeVis {
 			bool redraw = true;
 			float time = 0.f;
 			_fpsDisplayTimer.start();
-			if (Menge::PROJECTNAME == BUSINESSLEARNING || Menge::PROJECTNAME == BUSINESSREALITY) _pause = false;
+			if (Menge::PROJECTNAME == BUSINESSLEARNING || Menge::PROJECTNAME == BUSINESSREALITY || Menge::PROJECTNAME == OLYMPIC) _pause = false;
 			while ( _running ) {
 				SDL_Event e;
 				while ( SDL_PollEvent( &e ) ) {

@@ -208,7 +208,7 @@ namespace Menge {
 		if (startID == -1) {
 			//如果穿墙, 将其强制移动到最近的waypoint的位置
 			Vector2 pos;
-			pos = getClosestVertex(agent->_pos);
+			pos = getClosestVertex	(agent->_pos);
 			Agents::BaseAgent* ptr = (Agents::BaseAgent*)agent;
 			ptr->setPosition(pos);
 			startID = getClosestVertex(agent->_pos, agent->_radius);

@@ -9,6 +9,8 @@
 #include<fstream>
 #include <string>
 
+using std::vector;
+
 namespace Menge{
 	
 	class MatrixDim2 {
@@ -26,7 +28,8 @@ namespace Menge{
 		void SetPoint(int i, int j, float value) ;//设置点的值
 		int row_size() const;//返回行数
 		int col_size() const;//返回列数
-		void InitSumWeight(); //初始化_sumWeight
+		void InitSumWeight(); //初始化_sumWeight，记录每一行的权重和
+		vector<vector<float>> toVector();//转为二维vector的格式，便于使用json传输
 
 		void Aggregate(int typeAgent, int shopID, int strength);
 	};

@@ -151,9 +151,6 @@
     <Filter Include="Source Files\Scene">
       <UniqueIdentifier>{54aac16a-87bd-4ddb-b629-127f75f2285c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Json">
-      <UniqueIdentifier>{62915ffc-cf77-4d54-9003-c648223d65ba}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Json">
       <UniqueIdentifier>{5936ab03-1e0b-4973-b619-8eb735103f2d}</UniqueIdentifier>
     </Filter>
