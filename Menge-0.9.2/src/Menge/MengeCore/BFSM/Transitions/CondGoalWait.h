@@ -28,7 +28,7 @@
 #include "MengeCore/BFSM/Transitions/Condition.h"
 #include "MengeCore/BFSM/Transitions/ConditionFactory.h"
 #include "MengeCore/Runtime/ReadersWriterLock.h"
-
+#include "MengeCore/BFSM/Transitions/myQueue.h"
 #include<map>
 
 namespace Menge {
@@ -53,6 +53,7 @@ namespace Menge {
 			 *	@param		cond		The condition to copy from.
 			 */
 			GoalWaitCondition( const GoalWaitCondition& cond );
+
 			
 			virtual void onEnter(Agents::BaseAgent* agent);
 
@@ -83,6 +84,8 @@ namespace Menge {
 			std::map< size_t, float >	_triggerTimes; //每一个agent对应一个时间
 
 			std::map< size_t, bool >	_reachedAgents;//存储agent是否到达目标点
+
+			std::map< size_t, int >	    _statusAgents;//存储agent状态0 1 2 3
 
 			/*!
 			 *	@brief		Lock to protect _triggerTimes;

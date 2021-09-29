@@ -30,7 +30,7 @@
 #include "MengeCore/Agents/BaseAgent.h"
 #include <string>
 #include <map>
-
+#include<queue>
 #define BUSINESS 1
 #define EVACUATION 2
 #define BUSINESSREALITY 3
@@ -126,6 +126,14 @@ namespace Menge {
 		extern MENGE_API std::vector<Agents::BaseAgent*> panicAgentSet;
 		extern MENGE_API std::vector<Agents::BaseAgent*> normalAgentSet;
 		extern MENGE_API bool evacuationState; //控制event疏散部分状态启动和关闭
+		extern MENGE_API struct Shoptype
+		{
+			int maximum;
+			int type;
+			std::queue<int> serviceQ;
+			std::queue<int> blockQ;
+		};
+		extern MENGE_API std::map<int, Shoptype>  shoptype;
 	}
 
 	namespace BaseScene {

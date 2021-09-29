@@ -385,6 +385,7 @@ xcopy /y $(TargetPath) $(ExeDir)
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Goals\GoalPath.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\CondGoalWait.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\CondLeaderGoal.cpp" />
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\myQueue.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\MatrixMy.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\Scene\BaseScene.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\Scene\Business.cpp" />
@@ -480,6 +481,7 @@ xcopy /y $(TargetPath) $(ExeDir)
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Goals\GoalPath.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\CondGoalWait.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\CondLeaderGoal.h" />
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\myQueue.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\Json\json.hpp" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\Math\Matrix.h" />
     <ClInclude Include="$(SrcDir)\mengeCore\Math\RandGenerator.h" />

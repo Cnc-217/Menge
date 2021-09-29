@@ -295,6 +295,28 @@ namespace Menge {
 			send(serConn, sendBuf.c_str(), strlen(sendBuf.c_str()), 0);
 
 		}
+<<<<<<< HEAD
+=======
+		void Shopinit() {
+			for (int i = 0; i < 36; i++)
+			{
+				if (Menge::Olympic::shoptype.find(i) != Menge::Olympic::shoptype.end()) {
+					Menge::Olympic::shoptype[i].type = i % 2;
+					Menge::Olympic::shoptype[i].maximum = 3;
+
+				}
+				else {
+					Menge::Olympic::Shoptype shoptemp;
+					shoptemp.type = i % 2;
+					shoptemp.maximum = 3;
+					Menge::Olympic::shoptype.insert(std::map< int, Menge::Olympic::Shoptype>::value_type(i, shoptemp));
+				}
+			}
+		}
+	}
+	
+}
+>>>>>>> c4c79ab4b93521008725e96b31d4fc3a6baf00e3
 
 		void sendMatrixFlowScene(SOCKET serConn, json j) {
 			//发送 1：36个目标点的人数 2：概率矩阵

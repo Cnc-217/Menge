@@ -44,7 +44,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/Agents/Events/EventSystem.h"
 #include "MengeCore/MatrixMy.h"
 #include "MengeCore/Math/Geometry2D.h"
-
+#include<queue>
 
 namespace Menge {
 
@@ -90,6 +90,7 @@ namespace Menge {
 		std::vector<Agents::BaseAgent*> panicAgentSet;
 		std::vector<Agents::BaseAgent*> normalAgentSet;
 		bool evacuationState = false;
+		std::map<int, Shoptype>  shoptype;
 	}
 
 	namespace BaseScene {

@@ -42,7 +42,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
  */
 
 #include "MengeCore/BFSM/FSMDescrip.h"
-
+#include "MengeCore/Scene/BaseScene.h"
 #include "MengeCore/Core.h"
 #include "MengeCore/Agents/BaseAgent.h"
 #include "MengeCore/BFSM/Transitions/Transition.h"
@@ -412,7 +412,7 @@ namespace Menge {
 					for (int i = 0; i < fsm->getGoalSet(1)->size(); i++) {
 						Menge::BaseScene::ExitReagionInfo.push_back(0);
 					}
-					
+					Menge::Olympic::Shopinit();
 					vector<size_t> tmp0 = { 10,10 };
 					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
 
