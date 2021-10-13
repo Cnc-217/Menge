@@ -11,3 +11,11 @@
 方式：如果到达  修改case0的maxspeed  服务结束以后在case2把maxspeed修改回去
 结果：不修改  1.49s  10  2.16s  1  9.31s  0.1  10min21.19s
 =>maxspeed与timestep有关？
+
+10.13
+1  更新了basescene的shopinit函数  传参方式改为txt文本形式  函数读取文本信息后写入全局变量shopinfo中  可供后续使用
+test.txt文件中为一个10*4的二维矩阵  
+行数为goalset的id  即第一行即是goalset id = 1  这与OlympicB.xml文件中goalset的id顺序一致
+列数为该goalset的相关信息  从左到右分别为  店铺类型（吃买玩噪点出入口） 店铺数量（几间）  服务队列的容量  阻塞队列的容量
+2  将reachagent改为全局变量  
+
