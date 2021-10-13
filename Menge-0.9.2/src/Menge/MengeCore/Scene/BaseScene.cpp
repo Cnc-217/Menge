@@ -65,14 +65,15 @@ namespace Menge {
 			j.clear();
 
 			//暂停，处理matrix数据，false是正常运行
-			MengeVis::SimViewer->_pause = true;
+			//注意：Unity中的MengeVis DLL无法正常导入，这条指令会导致崩溃，意味着Unity中无法对仿真进行暂停
+			//MengeVis::SimViewer->_pause = true;
 			//如果客户端传来了Evacuate，则进入状态转移的函数
 			if (!strcmp(command.c_str(), "Evacuate")) {
 				cout << "Evacuate mode start" << endl;
 				//下面是根据不同项目的定制化代码部分
 				if (Menge::PROJECTNAME == THEMEPARK) ThemePark::evacuateModeStart(serConn, j);
 				else if (Menge::PROJECTNAME == OLYMPIC) Olympic::evacuateModeStart(serConn, j);
-				MengeVis::SimViewer->_pause = false;//false是正常运行
+				//MengeVis::SimViewer->_pause = false;//false是正常运行
 			}
 			//如果客户端传来了修改概率矩阵的数据，则修改概率矩阵
 			else if (!strcmp(command.c_str(), "MatrixModify")) {
@@ -90,7 +91,7 @@ namespace Menge {
 				Olympic::sendMatrixBusinessScene(serConn, j);
 			}
 			//恢复运行
-			MengeVis::SimViewer->_pause = false;
+			//MengeVis::SimViewer->_pause = false;
 
 		}
 	}
@@ -159,6 +160,31 @@ namespace Menge {
 
 	}
 
+	void BaseScene::projectNameExtract(string folderPath) {
+		std::string tmp = folderPath;
+		size_t ps = tmp.find_last_of("\\");
+		size_t pe = tmp.length();
+		std::string name = tmp.substr(ps + 1, pe - ps + 1);
+
+		if (strcmp(name.c_str(), "Business") == 0) {
+			PROJECTNAME = BUSINESS;
+		}
+		else if (strcmp(name.c_str(), "BusinessLearning") == 0) {
+			PROJECTNAME = BUSINESSLEARNING;
+		}
+		else if (strcmp(name.c_str(), "BusinessReality") == 0) {
+			PROJECTNAME = BUSINESSREALITY;
+		}
+		else if (name.find("Evacuation") != name.npos) {
+			PROJECTNAME = EVACUATION;
+		}
+		else if (name.find("ThemePark") != name.npos) {
+			PROJECTNAME = THEMEPARK;
+		}
+		else if (name.find("Olympic") != name.npos) {
+			PROJECTNAME = OLYMPIC;
+		}
+	}
 
 	namespace ThemePark {
 
@@ -295,8 +321,7 @@ namespace Menge {
 			send(serConn, sendBuf.c_str(), strlen(sendBuf.c_str()), 0);
 
 		}
-<<<<<<< HEAD
-=======
+
 		void Shopinit() {
 			for (int i = 0; i < 36; i++)
 			{
@@ -313,14 +338,12 @@ namespace Menge {
 				}
 			}
 		}
-	}
-	
-}
->>>>>>> c4c79ab4b93521008725e96b31d4fc3a6baf00e3
 
 		void sendMatrixFlowScene(SOCKET serConn, json j) {
 			//发送 1：36个目标点的人数 2：概率矩阵
-			std::vector<int> agentNumOfShop(36, 1);
+			std::vector<int> agentNumOfShop(36,0);
+			for (int i = 0; i < Menge::ACTIVE_FSM->getGoalSet(0)->size(); i++) agentNumOfShop[i]=shoptype[i].serviceQ.size()+ shoptype[i].blockQ.size();
+			
 			vector<vector<float>> matrixVector = Menge::BaseScene::ProbMatrix->toVector();
 			//json生成
 			j["Info"] = "Menge has receive your commend: FlowScene";
@@ -338,7 +361,8 @@ namespace Menge {
 
 		void sendMatrixBusinessScene(SOCKET serConn, json j) {
 			//发送 1：36个目标点的人数 2：概率矩阵
-			std::vector<int> agentNumOfShop(36, 1);
+			std::vector<int> agentNumOfShop(36, 0);
+			for (int i = 0; i < Menge::ACTIVE_FSM->getGoalSet(0)->size(); i++) agentNumOfShop[i] = shoptype[i].serviceQ.size() + shoptype[i].blockQ.size();
 			vector<vector<float>> matrixVector = Menge::BaseScene::ProbMatrix->toVector();
 			//json生成
 			j["Info"] = "Menge has receive your commend: BusinessScene";

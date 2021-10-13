@@ -13,6 +13,7 @@
  * @brief	BaseScene
  */
 using namespace nlohmann;
+using namespace std;
 namespace Menge {
     namespace BaseScene {
         
@@ -20,6 +21,8 @@ namespace Menge {
         void loadMatrixFromTxt(const char* fileName);
         void modifyMatrix(char* matrixStr, SOCKET serConn,json j);
         void sendMatrix(SOCKET serConn, json j);
+        void projectNameExtract(string folderPath);//提取项目名
+
     }
 
     namespace ThemePark {
@@ -28,17 +31,17 @@ namespace Menge {
 
 
     namespace Olympic {
-<<<<<<< HEAD
+
         void evacuateModeStart(SOCKET serConn, json j);
 
         void sendMatrixFlowScene(SOCKET serConn, json j);
 
         void sendMatrixBusinessScene(SOCKET serConn, json j);
 
-=======
-        void evacuateModeStart();
+
+        void evacuateModeStart(SOCKET serConn, json j);
 		void Shopinit();
->>>>>>> c4c79ab4b93521008725e96b31d4fc3a6baf00e3
+
     }
 
 }	// namespace Menge

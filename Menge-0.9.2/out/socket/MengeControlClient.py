@@ -6,8 +6,8 @@ import json
 def service(jsonData):
     #socket初始化、发送json
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    serverIp = "10.128.232.195" #服务器
-    #serverIp = "10.28.195.233" #本机
+    #serverIp = "10.128.232.195" #服务器
+    serverIp = "10.28.195.233" #本机
     serverPort = 12660
     try:
         client.connect((serverIp, serverPort))
@@ -86,7 +86,7 @@ def matrixToStr(matrix):
 
 if __name__ == '__main__':
 
-    jsonData = { "command" : "Evacuate", "data":"" }
+    #jsonData = { "command" : "Evacuate", "data":"" }
     matrix = [
         [9.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
          1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
@@ -160,14 +160,14 @@ if __name__ == '__main__':
          1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
         [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
          1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]]
-    matrixStr = matrixToStr(matrix)
+    #matrixStr = matrixToStr(matrix)
     #jsonData = { "command" : "MatrixModify", "data": matrixStr }
-    service(jsonData)
-    #jsonData = { "command" : "FlowScene", "data":"" }
+    #service(jsonData)
+    jsonData = { "command" : "FlowScene", "data":"" }
     #jsonData = { "command" : "BusinessScene", "data":"" }
-    #listFlow, listMatrix = service(jsonData)
-    #print(listFlow)
-    #print(listMatrix)
+    listFlow, listMatrix = service(jsonData)
+    print(listFlow)
+    print(listMatrix)
 
 
 

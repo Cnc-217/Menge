@@ -5,9 +5,9 @@ import json
 
 def simulationStart(project,duration):
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    serverIp = "10.128.232.195" #服务器
+   # serverIp = "10.128.232.195" #服务器
     #serverIp = "10.128.254.80" #本机
-    #serverIp = "10.28.195.233" #本机
+    serverIp = "10.28.195.233" #本机
     serverPort = 12348
     try:
         client.connect((serverIp, serverPort))

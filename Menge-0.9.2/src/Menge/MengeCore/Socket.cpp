@@ -20,7 +20,7 @@ namespace Menge {
 
 	SOCKET Socket::socketClientInit(char* ip, int host) {
 		WSADATA wsadata;
-		WSAStartup(MAKEWORD(2, 1), &wsadata);//第一个参数，socket版本；第二个参数，socket通过它返回请求socket版本信息
+		WSAStartup(MAKEWORD(2, 2), &wsadata);//第一个参数，socket版本；第二个参数，socket通过它返回请求socket版本信息
 
 		//c++作为客户端，生成套接字/绑定/监听
 		SOCKET  clientPython;
@@ -39,7 +39,7 @@ namespace Menge {
 
 	SOCKET Socket::socketServerInit(char* ip, int host) {
 		WSADATA wsadata;
-		WSAStartup(MAKEWORD(2, 1), &wsadata);//第一个参数，socket版本；第二个参数，socket通过它返回请求socket版本信息
+		WSAStartup(MAKEWORD(2, 2), &wsadata);//第一个参数，socket版本；第二个参数，socket通过它返回请求socket版本信息
 
 		//c++作为客户端，生成套接字/绑定/监听
 		SOCKET  socketServer = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -53,7 +53,7 @@ namespace Menge {
 		if (bind(socketServer, (SOCKADDR*)&adr_socket, sizeof(SOCKADDR)) == SOCKET_ERROR)
 		{
 			std::cout << "socket server bind error! ip: " << ip <<" port: "<< host << std::endl;
-			exit(0);
+			exit(1);
 		}
 		
 		std::cout << "socket server start" << std::endl;

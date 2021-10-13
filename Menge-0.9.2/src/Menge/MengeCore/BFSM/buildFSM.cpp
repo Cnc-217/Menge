@@ -42,7 +42,6 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
  */
 
 #include "MengeCore/BFSM/FSMDescrip.h"
-#include "MengeCore/Scene/BaseScene.h"
 #include "MengeCore/Core.h"
 #include "MengeCore/Agents/BaseAgent.h"
 #include "MengeCore/BFSM/Transitions/Transition.h"
@@ -85,6 +84,9 @@ namespace Menge {
 
 
 		FSM * buildFSM( FSMDescrip & fsmDescrip, Agents::SimulatorInterface * sim, bool VERBOSE ) {
+
+			//提取项目名
+			BaseScene::projectNameExtract(fsmDescrip._behaviorFldr);
 
 			// Acquire the spatial query instance
 			SPATIAL_QUERY = sim->getSpatialQuery();
@@ -335,6 +337,7 @@ namespace Menge {
 
 			ACTIVE_FSM = fsm;
 
+
 			switch (PROJECTNAME) {
 				case BUSINESS: {
 					cout << "It's Bussiness Simulation" << endl;
@@ -412,6 +415,7 @@ namespace Menge {
 					for (int i = 0; i < fsm->getGoalSet(1)->size(); i++) {
 						Menge::BaseScene::ExitReagionInfo.push_back(0);
 					}
+					//初始化店铺信息
 					Menge::Olympic::Shopinit();
 					vector<size_t> tmp0 = { 10,10 };
 					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
@@ -478,10 +482,6 @@ namespace Menge {
 						cout << "matrix not matching goal number" << endl;
 						exit(1);
 					}
-					
-
-
-					
 					BaseScene::ProbMatrix->InitSumWeight();
 
 					//3.初始化socket服务端，用于疏散状态转移控制

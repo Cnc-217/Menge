@@ -188,34 +188,6 @@ bool parseCommandParameters( int argc, char* argv[], ProjectSpec* spec, const Si
     // Read the project file
     std::string projName = projArg.getValue();
     if ( projName != "" ) {
-
-		//提取项目名
-		std::string tmp = projArg.getValue();
-		int ps = tmp.find_last_of("\\");
-		int pe = tmp.find_last_of(".");
-		std::string name = tmp.substr(ps + 1, pe - ps-1);
-		
-		if (strcmp(name.c_str(), "Business") == 0 ) {
-			PROJECTNAME = BUSINESS;
-		}
-		else if (strcmp(name.c_str(), "BusinessLearning") == 0) {
-			PROJECTNAME = BUSINESSLEARNING;
-		}
-		else if (strcmp(name.c_str(), "BusinessReality") == 0) {
-			PROJECTNAME = BUSINESSREALITY;
-		}
-		//else if (strcmp(name.c_str(), "Evacuation") == 0) {
-		else if(name.find("Evacuation")!=name.npos){
-			PROJECTNAME = EVACUATION;
-		}
-		else if (name.find("ThemePark") != name.npos) {
-			PROJECTNAME = THEMEPARK;
-		}
-		else if (name.find("Olympic") != name.npos) {
-			PROJECTNAME = OLYMPIC;
-		}
-		
-
       if ( !spec->loadFromXML( projName ) ) {
         return false;
       }
