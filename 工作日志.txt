@@ -1,0 +1,13 @@
+1  修改agent 的prefspeed无效？
+2  一个思路是在进入服务or阻塞队列时修改maxspeed=0  并在结束服务时改回来  但是并不行？第一次进入以后就不动了
+3  在2的基础上  如果改成一个很小的值如0.1  那么整个地图上只有一两个agent在动  远远少于不修改时（30）的agent活跃程度=>maxspeed和仿真时间有关？
+4  在1的基础上  如果修改OlympicS文件里的prefpeed是可以实现的  但好像没什么用？
+
+9.29
+1  接着前一天的1  修改agent的prefspeed是可以的  修改后cout出来确实是0   但是并不能达到停下来的效果
+
+9.30
+1  尝试通过修改maxspeed来使agent停下来  但是agent在goal的停留时间明显受maxspeed的控制？
+方式：如果到达  修改case0的maxspeed  服务结束以后在case2把maxspeed修改回去
+结果：不修改  1.49s  10  2.16s  1  9.31s  0.1  10min21.19s
+=>maxspeed与timestep有关？
