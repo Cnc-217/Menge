@@ -13,11 +13,13 @@
 
 #include "MengeVis/Viewer/GLViewer.h"
 #include <string>
+#include <map>
 
 
 using namespace std;
 using namespace Menge::BFSM;
 using namespace nlohmann;
+using namespace Menge::Olympic;
 
 namespace Menge {
 	/////////////////////////////////////////////////////////////////////
@@ -29,7 +31,7 @@ namespace Menge {
 		SOCKET serConn;
 		while (true) {
 			//等待客户端的连接
-			serConn = accept(socketServer, (SOCKADDR*)&clientsocket, &len);
+			serConn = accept(socketServer, (SOCKADDR*)& clientsocket, &len);
 
 			//接收客户端传来的数据大小
 			char receiveBuf[1024] = {};
@@ -323,27 +325,41 @@ namespace Menge {
 		}
 
 		void Shopinit() {
-			for (int i = 0; i < 36; i++)
+			int data[10][4] = { 0 };
+			ifstream infile;//定义读取文件流，相对于程序来说是in
+			infile.open("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\test.txt");//打开文件
+			for (int i = 0; i < 10; i++)//定义行循环
 			{
-				if (Menge::Olympic::shoptype.find(i) != Menge::Olympic::shoptype.end()) {
-					Menge::Olympic::shoptype[i].type = i % 2;
-					Menge::Olympic::shoptype[i].maximum = 3;
-
-				}
-				else {
-					Menge::Olympic::Shoptype shoptemp;
-					shoptemp.type = i % 2;
-					shoptemp.maximum = 3;
-					Menge::Olympic::shoptype.insert(std::map< int, Menge::Olympic::Shoptype>::value_type(i, shoptemp));
+				for (int j = 0; j < 4; j++)//定义列循环
+				{
+					infile >> data[i][j];//读取一个值（空格、制表符、换行隔开）就写入到矩阵中，行列不断循环进行
 				}
 			}
-		}
+			infile.close();//读取完成之后关闭文件
+			int index = 0;
+			for (int i = 0; i < 10; i++)
+				for (int j = 0; j < data[i][1]; j++)
+				{
+					Shoptype shoptemp;
+					shoptemp.type = data[i][0];
+					shoptemp.serviceMax = data[i][2];
+					shoptemp.blockMax = data[i][3];
+					//cout << shoptemp.blockMax << "+" << shoptemp.serviceMax << "+" << shoptemp.type << endl;
+					//shopInfo.insert(std::map< int, Shoptype>::value_type(index, shoptemp));
+					//shopInfo.insert(pair<int, Shoptype>(index, shoptemp));
+					shopInfo.insert(make_pair(index, shoptemp));
+					index++;
+				}
+			//for (int i = 0; i < 36; i++)//测试用
+				//cout << shopInfo[index].blockMax << "+" << shopInfo[i].serviceMax << "+" << shopInfo[i].type << endl;
+			}
+
 
 		void sendMatrixFlowScene(SOCKET serConn, json j) {
 			//发送 1：36个目标点的人数 2：概率矩阵
-			std::vector<int> agentNumOfShop(36,0);
-			for (int i = 0; i < Menge::ACTIVE_FSM->getGoalSet(0)->size(); i++) agentNumOfShop[i]=shoptype[i].serviceQ.size()+ shoptype[i].blockQ.size();
-			
+			std::vector<int> agentNumOfShop(36, 0);
+			for (int i = 0; i < Menge::ACTIVE_FSM->getGoalSet(0)->size(); i++) agentNumOfShop[i] = shopInfo[i].serviceQ.size() + shopInfo[i].blockQ.size();
+
 			vector<vector<float>> matrixVector = Menge::BaseScene::ProbMatrix->toVector();
 			//json生成
 			j["Info"] = "Menge has receive your commend: FlowScene";
@@ -362,7 +378,7 @@ namespace Menge {
 		void sendMatrixBusinessScene(SOCKET serConn, json j) {
 			//发送 1：36个目标点的人数 2：概率矩阵
 			std::vector<int> agentNumOfShop(36, 0);
-			for (int i = 0; i < Menge::ACTIVE_FSM->getGoalSet(0)->size(); i++) agentNumOfShop[i] = shoptype[i].serviceQ.size() + shoptype[i].blockQ.size();
+			for (int i = 0; i < Menge::ACTIVE_FSM->getGoalSet(0)->size(); i++) agentNumOfShop[i] = shopInfo[i].serviceQ.size() + shopInfo[i].blockQ.size();
 			vector<vector<float>> matrixVector = Menge::BaseScene::ProbMatrix->toVector();
 			//json生成
 			j["Info"] = "Menge has receive your commend: BusinessScene";
@@ -380,5 +396,4 @@ namespace Menge {
 	}
 
 }
-
 

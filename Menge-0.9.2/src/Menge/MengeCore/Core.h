@@ -128,12 +128,14 @@ namespace Menge {
 		extern MENGE_API bool evacuationState; //控制event疏散部分状态启动和关闭
 		extern MENGE_API struct Shoptype
 		{
-			int maximum;
+			int serviceMax;
+			int blockMax;
 			int type;
 			std::queue<int> serviceQ;
 			std::queue<int> blockQ;
 		};
-		extern MENGE_API std::map<int, Shoptype>  shoptype;
+		extern MENGE_API std::map<int, Shoptype>  shopInfo;
+		extern std::map< size_t, bool >	_reachedAgents;//存储agent是否到达目标点
 	}
 
 	namespace BaseScene {

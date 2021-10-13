@@ -90,7 +90,8 @@ namespace Menge {
 		std::vector<Agents::BaseAgent*> panicAgentSet;
 		std::vector<Agents::BaseAgent*> normalAgentSet;
 		bool evacuationState = false;
-		std::map<int, Shoptype>  shoptype;
+		std::map<int, Shoptype>  shopInfo;
+		std::map< size_t, bool >	_reachedAgents;//存储agent是否到达目标点
 	}
 
 	namespace BaseScene {

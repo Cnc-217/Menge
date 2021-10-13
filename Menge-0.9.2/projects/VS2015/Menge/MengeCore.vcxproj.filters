@@ -720,9 +720,6 @@
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressManager.cpp">
       <Filter>Source Files\BFSM\Actions\Stress</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\myQueue.cpp">
-      <Filter>Source Files\BFSM\Transitions</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(SrcDir)\mengeCore\Core.h">
@@ -1408,9 +1405,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressManager.h">
       <Filter>Header Files\BFSM\Actions\Stress</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\myQueue.h">
-      <Filter>Source Files\BFSM\Transitions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

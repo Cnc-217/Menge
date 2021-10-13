@@ -37,11 +37,9 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 */
 
 #include "MengeCore/BFSM/Transitions/CondGoalWait.h"
-
 #include "MengeCore/Agents/BaseAgent.h"
 #include "MengeCore/BFSM/Goals/Goal.h"
 #include "MengeCore/Runtime/Logger.h"
-#include "MengeCore/BFSM/Transitions/myQueue.h"
 #include "MengeCore/Core.h"
 #include "MengeCore/BFSM/FSM.h"
 #include "MengeCore/BFSM/State.h"
@@ -51,7 +49,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #define EATTIME 20
 #define BUYTIME 40
 #define PLAYTIME 80
-
+using namespace Menge::Olympic;
 namespace Menge {
 
 	namespace BFSM {
@@ -102,7 +100,10 @@ namespace Menge {
 		{
 			float distSq = goal->squaredDistance(agent->_pos);
 			float servicetime;
-			switch (Menge::Olympic::shoptype[goal->getID()].type)//此处可以再改详细的时间  以后可以改成宏定义
+			int goalId = goal->getID();
+			int serviceMax = shopInfo[goalId].serviceMax;
+			int agentId = agent->_id;
+			switch (shopInfo[goalId].type)//此处可以再改详细的时间  以后可以改成宏定义
 			{
 			case 0:servicetime = EATTIME; break;//吃
 			case 1:servicetime = BUYTIME; break;//买
@@ -112,91 +113,68 @@ namespace Menge {
 			bool reached = (distSq <= _distSq);
 			if (reached) {
 				_lock.lockWrite();
-				_reachedAgents[agent->_id] = true;
+				_reachedAgents[agentId] = true;
 				_lock.releaseWrite();
 			}
 			else
 				return false;
-			switch (_statusAgents[agent->_id])//  0未到达  1到达  2接受服务  3阻塞  
+			switch (_statusAgents[agentId])//  0未到达  1到达  2接受服务  3阻塞  
 			{
 				/*  转移  0->1  */
 			case 0: {
-				if (_reachedAgents[agent->_id])
+				if (_reachedAgents[agentId])
 				{
-					if (goal->getID() == 34 || goal->getID() == 35)
+					if (goalId == 34 || goalId == 35)
 						return true;
-					_lock.lockWrite();
-					_statusAgents[agent->_id] = 1;
-					_lock.releaseWrite();
+					_statusAgents[agentId] = 1;
 					//agent->_maxSpeed = 0.1f;
-					if (agent->_id == 1)
+					if (agentId == 1)
 						cout << "0-1" << endl;
 				}
 			}; break;
 				/*  转移  1->2  1->3 */
 			case 1: {
-				/*if (goal->getID() == 34 || goal->getID() == 35)
+				 if (shopInfo[goalId].serviceQ.size() < serviceMax && shopInfo[goalId].blockQ.size()==0 )//服务队列有位
 				{
-					_lock.lockWrite();
-					_statusAgents[agent->_id] = 0;					//agent->_status = 0;
-					_reachedAgents[agent->_id] = false;
-					_lock.releaseWrite();
-					agent->_maxSpeed = 30.f;
-					if (agent->_id == 1)
-						cout << "1-0" << endl;//针对入口和出口  如果是出入口就直接返回进行下一个目标的选择
-					return true;
-				}
-				else*/
-				 if (Menge::Olympic::shoptype[goal->getID()].serviceQ.size() < Menge::Olympic::shoptype[goal->getID()].maximum)//服务队列有位
-				{
-					
-					_lock.lockWrite();
-					_statusAgents[agent->_id] = 2;					//agent->_status = 2;
-					_triggerTimes[agent->_id] = Menge::SIM_TIME + servicetime;
-					Menge::Olympic::shoptype[goal->getID()].serviceQ.push(agent->_id);//ID插入服务队尾；
-					_lock.releaseWrite();
-					if (agent->_id == 1)
-						cout << "1-2" << "+" << _statusAgents[agent->_id] << "+" << agent->_prefSpeed << endl;
+					_statusAgents[agentId] = 2;					//agent->_status = 2;
+					_triggerTimes[agentId] = Menge::SIM_TIME + servicetime;
+					shopInfo[goalId].serviceQ.push(agentId);//ID插入服务队尾；
+					if (agentId == 1)
+						cout << "1-2" << "+" << _statusAgents[agentId] << "+" << agent->_prefSpeed << endl;
 				}
 				else
 				{
-					_lock.lockWrite();
-					_statusAgents[agent->_id] = 3;					//agent->_status = 3;
-					_triggerTimes[agent->_id] = Menge::SIM_TIME + (Menge::Olympic::shoptype[goal->getID()].blockQ.size()+ Menge::Olympic::shoptype[goal->getID()].serviceQ.size())*servicetime;//此处需修改因为理论上最长的排队时间为服务队列+阻塞队列总人数*服务时间
-					Menge::Olympic::shoptype[goal->getID()].blockQ.push(agent->_id);//ID插入阻塞队尾；
-					_lock.releaseWrite();
-					if (agent->_id == 1)
-						cout << "1-3" << "+"<< _triggerTimes[agent->_id] <<endl;
+					_statusAgents[agentId] = 3;					//agent->_status = 3;
+					_triggerTimes[agentId] = Menge::SIM_TIME + (shopInfo[goalId].blockQ.size()+ shopInfo[goalId].serviceQ.size())*servicetime;//此处需修改因为理论上最长的排队时间为服务队列+阻塞队列总人数*服务时间
+					shopInfo[goalId].blockQ.push(agentId);//ID插入阻塞队尾；
+					if (agentId == 1)
+						cout << "1-3" << "+"<< _triggerTimes[agentId] <<endl;
 				}
 			}; break;
 
 			case 2: {				/*  转移  2->0 */
-				if (Menge::SIM_TIME > _triggerTimes[agent->_id] && agent->_id == Menge::Olympic::shoptype[goal->getID()].serviceQ.front())
+				if (Menge::SIM_TIME > _triggerTimes[agentId] && agentId == shopInfo[goalId].serviceQ.front())
 				{//服务队头agent时间到了&& 服务队头agent是自己
-					_lock.lockWrite();
-					_statusAgents[agent->_id] = 0;					//agent->_status = 0;
-					_reachedAgents[agent->_id] = false;
-					Menge::Olympic::shoptype[goal->getID()].serviceQ.pop();	//agent出服务队列;
-					_lock.releaseWrite();
-					agent->_maxSpeed = 30.f;
-					if (agent->_id == 1)
+					_statusAgents[agentId] = 0;					//agent->_status = 0;
+					_reachedAgents[agentId] = false;
+					shopInfo[goalId].serviceQ.pop();	//agent出服务队列;
+					//agent->_maxSpeed = 30.f;
+					if (agentId == 1)
 						cout << "2-0" << endl;
 					return true;					//出函数
 				};
 			}; break;
 				/*  转移  3->2 */
 			case 3: {
-				if (agent->_id == 1)
-					cout << Menge::Olympic::shoptype[goal->getID()].serviceQ.size() <<"+"<< Menge::Olympic::shoptype[goal->getID()].maximum<<"+" << Menge::Olympic::shoptype[goal->getID()].blockQ.front() <<"+"<< agent->_id << endl;
-					if ((Menge::Olympic::shoptype[goal->getID()].serviceQ.size() < Menge::Olympic::shoptype[goal->getID()].maximum) && (int(agent->_id) == Menge::Olympic::shoptype[goal->getID()].blockQ.front()))
+				if (agentId == 1)
+					cout << shopInfo[goalId].serviceQ.size() <<"+"<< serviceMax <<"+" << shopInfo[goalId].blockQ.front() <<"+"<< agentId << endl;
+					if ((shopInfo[goalId].serviceQ.size() < serviceMax) && (agentId == shopInfo[goalId].blockQ.front()))
 				{//服务队列有位&& 阻塞队头agent是自己
-					_lock.lockWrite();
-					_statusAgents[agent->_id] = 2;					//agent->_status = 2;
-					_triggerTimes[agent->_id] = Menge::SIM_TIME + servicetime;//此处可以再改详细的时间
-					Menge::Olympic::shoptype[goal->getID()].blockQ.pop();			  //agent出阻塞队列;
-					Menge::Olympic::shoptype[goal->getID()].serviceQ.push(agent->_id);//agent进服务队列;
-					_lock.releaseWrite();
-					if (agent->_id == 1)
+					_statusAgents[agentId] = 2;					//agent->_status = 2;
+					_triggerTimes[agentId] = Menge::SIM_TIME + servicetime;//此处可以再改详细的时间
+					shopInfo[goalId].blockQ.pop();			  //agent出阻塞队列;
+					shopInfo[goalId].serviceQ.push(agentId);//agent进服务队列;
+					if (agentId == 1)
 						cout << "3-2" << endl;
 				}
 			} break;
