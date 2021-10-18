@@ -86,7 +86,7 @@ def matrixToStr(matrix):
 
 if __name__ == '__main__':
 
-    #jsonData = { "command" : "Evacuate", "data":"" }
+
     matrix = [
         [9.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
          1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
@@ -163,14 +163,17 @@ if __name__ == '__main__':
     #matrixStr = matrixToStr(matrix)
     #jsonData = { "command" : "MatrixModify", "data": matrixStr }
     #service(jsonData)
-    jsonData = { "command" : "FlowScene", "data":"" }
+
+
+    #jsonData = { "command" : "FlowScene", "data":"" }
     #jsonData = { "command" : "BusinessScene", "data":"" }
-    listFlow, listMatrix = service(jsonData)
-    print(listFlow)
-    print(listMatrix)
+    #listFlow, listMatrix = service(jsonData)
+    #print(listFlow)
+    #print(listMatrix)
 
 
-
+    jsonData = { "command" : "Evacuate", "data":"" }
+    service(jsonData)
 
 
 

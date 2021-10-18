@@ -49,6 +49,8 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #define EATTIME 20
 #define BUYTIME 40
 #define PLAYTIME 80
+
+
 using namespace Menge::Olympic;
 namespace Menge {
 

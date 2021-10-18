@@ -327,7 +327,7 @@ namespace Menge {
 		void Shopinit() {
 			int data[10][4] = { 0 };
 			ifstream infile;//定义读取文件流，相对于程序来说是in
-			infile.open("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\test.txt");//打开文件
+			infile.open("D:\\File\\Project\\git\\Menge-0.9.2\\examples\\Olympic\\test.txt");//打开文件
 			for (int i = 0; i < 10; i++)//定义行循环
 			{
 				for (int j = 0; j < 4; j++)//定义列循环
