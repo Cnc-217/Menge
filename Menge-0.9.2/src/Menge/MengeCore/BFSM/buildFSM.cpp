@@ -73,6 +73,10 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include <vector>
 #include <thread>
 
+#include <stdio.h> 
+
+using namespace Menge::Olympic;
+using namespace Menge::Socket;
 namespace Menge {
 
 	namespace BFSM {
@@ -87,7 +91,7 @@ namespace Menge {
 
 			//提取项目名
 			BaseScene::projectNameExtract(fsmDescrip._behaviorFldr);
-
+			cout << fsmDescrip._behaviorFldr << endl;
 			// Acquire the spatial query instance
 			SPATIAL_QUERY = sim->getSpatialQuery();
 
@@ -416,7 +420,9 @@ namespace Menge {
 						Menge::BaseScene::ExitReagionInfo.push_back(0);
 					}
 					//初始化店铺信息
-					Menge::Olympic::Shopinit();
+					bool shopInitOk = shopInit();
+					if (!shopInitOk)
+						cout << " shop init fail!" << endl;
 					vector<size_t> tmp0 = { 10,10 };
 					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
 
@@ -483,7 +489,7 @@ namespace Menge {
 						exit(1);
 					}
 					BaseScene::ProbMatrix->InitSumWeight();
-
+					//int  myIp = getIp2();
 					//3.初始化socket服务端，用于疏散状态转移控制
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
 					SOCKET socketServer = Menge::Socket::socketServerInit("10.128.246.57", 12660);

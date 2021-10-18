@@ -324,10 +324,15 @@ namespace Menge {
 
 		}
 
-		void Shopinit() {
+		bool shopInit() {
 			int data[10][4] = { 0 };
 			ifstream infile;//定义读取文件流，相对于程序来说是in
-			infile.open("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\test.txt");//打开文件
+			infile.open("..\\examples\\Olympic\\test.txt");//打开文件
+			if (!infile.is_open())
+			{
+				cout << "open file error!" << endl;
+				return false;
+			}
 			for (int i = 0; i < 10; i++)//定义行循环
 			{
 				for (int j = 0; j < 4; j++)//定义列循环
@@ -350,6 +355,7 @@ namespace Menge {
 					shopInfo.insert(make_pair(index, shoptemp));
 					index++;
 				}
+			return true;
 			//for (int i = 0; i < 36; i++)//测试用
 				//cout << shopInfo[index].blockMax << "+" << shopInfo[i].serviceMax << "+" << shopInfo[i].type << endl;
 			}

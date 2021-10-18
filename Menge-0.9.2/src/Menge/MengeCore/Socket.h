@@ -4,9 +4,10 @@
 #define	__Socket_H__
 #include <winsock.h>
 #pragma comment(lib, "ws2_32.lib")
-
+#include <iostream>
 #include <string>
-
+#include <Iphlpapi.h>
+#pragma comment(lib,"Iphlpapi.lib")
 /*!
  * @namespace Menge
  * @brief	Socket
@@ -25,6 +26,9 @@ namespace Menge {
         //BusinessRealityµÄsocket½»»¥
         int* socketGetCouponBusinessReality(char* message);
 
+		int getIpinfo();
+		int getIp();
+		int getIp2();
 
     }
 }	// namespace Menge

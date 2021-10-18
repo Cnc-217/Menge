@@ -275,8 +275,6 @@ namespace Menge {
 					QueryPerformanceCounter(&seed);
 					srand(seed.QuadPart);//取硬件计时器，精度更高
 					float TGT_WEIGHT = weight * ((rand() % 100) * 0.01);//概率和为weight
-
-					
 					float accumWeight = 0;
 					std::map< size_t, Goal* >::const_iterator itr;
 					for (size_t i = 0; i < _goalIDs.size(); i++) {
@@ -285,14 +283,11 @@ namespace Menge {
 						accumWeight += BaseScene::ProbMatrix->Point(goalIDNow, (tgtGoal->_id));
 						if (accumWeight > TGT_WEIGHT) break;
 					}
-					
 				}
-					
 				else {
 					//第一次选取目标点必定是选目标点0
 					tgtGoal = getGoalByID(34);
 				}
-
 				return tgtGoal;
 
 

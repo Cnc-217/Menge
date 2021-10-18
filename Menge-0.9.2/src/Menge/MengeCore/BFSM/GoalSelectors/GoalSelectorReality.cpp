@@ -41,7 +41,8 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/GoalSet.h"
 #include "MengeCore/BFSM/Goals/Goal.h"
 #include "MengeCore/Core.h"
-
+#include <cstdlib> // Header file needed to use srand and rand
+#include <ctime> // Header file needed to use time
 #include <cassert>
 
 namespace Menge {
@@ -54,7 +55,17 @@ namespace Menge {
 		
 		Goal * MatrixGoalSelector::getGoal( const Agents::BaseAgent * agent ) const {
 			assert( agent != 0x0 && "MatrixGoalSelector requires a valid base agent!" );
-			return _goalSet->getGoalFromMatrix(agent);
+			unsigned seed = time(0);
+			srand(seed);
+			int randomNumber = rand() % 3 + 1;
+			if(agent->_id == 1)
+				cout << randomNumber << endl;
+			if (randomNumber != 1)
+			{
+				return _goalSet->getGoalFromMatrix(agent);
+			}
+			else
+				return _goalSet->getGoalFromMatrix(agent);
 			
 
 		}

@@ -136,7 +136,7 @@ namespace Menge {
 						return true;
 					_statusAgents[agentId] = 1;
 					if (agentId == 1)
-						cout << "0-1" << endl;
+						cout << "0-1" << "+" << shopInfo[goalId].serviceMax << endl;
 				}
 			}; break;
 				/*  ×ªÒÆ  1->2  1->3 */
