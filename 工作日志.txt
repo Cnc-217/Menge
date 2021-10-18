@@ -1,3 +1,4 @@
+9.28
 1  修改agent 的prefspeed无效？
 2  一个思路是在进入服务or阻塞队列时修改maxspeed=0  并在结束服务时改回来  但是并不行？第一次进入以后就不动了
 3  在2的基础上  如果改成一个很小的值如0.1  那么整个地图上只有一两个agent在动  远远少于不修改时（30）的agent活跃程度=>maxspeed和仿真时间有关？
@@ -17,5 +18,5 @@
 test.txt文件中为一个10*4的二维矩阵  
 行数为goalset的id  即第一行即是goalset id = 1  这与OlympicB.xml文件中goalset的id顺序一致
 列数为该goalset的相关信息  从左到右分别为  店铺类型（吃买玩噪点出入口） 店铺数量（几间）  服务队列的容量  阻塞队列的容量
-2  将reachagent改为全局变量  
+2  将reachagent改为全局变量  放在core中
 

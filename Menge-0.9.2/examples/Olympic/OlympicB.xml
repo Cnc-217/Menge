@@ -233,8 +233,8 @@
   </State>
 
   <Transition from="tour" to="tour" >
-    <Condition type="goal_reached" distance="5" />
-    <!-- <Condition type="goal_reached_wait" distance="5"/>     -->
+    <!-- <Condition type="goal_reached" distance="5" />-->
+    <Condition type="goal_reached_wait" distance="5"/>     
     <!-- 这里需要修改源码实现不同的店停留不同的时间-->
   </Transition>
 
