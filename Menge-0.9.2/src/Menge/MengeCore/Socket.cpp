@@ -39,17 +39,27 @@ namespace Menge {
 
 	SOCKET Socket::socketServerInit(char* ip, int host) {
 		WSADATA wsadata;
-		WSAStartup(MAKEWORD(2, 2), &wsadata);//第一个参数，socket版本；第二个参数，socket通过它返回请求socket版本信息
+		int i =WSAStartup(MAKEWORD(2, 2), &wsadata);//第一个参数，socket版本；第二个参数，socket通过它返回请求socket版本信息
 
+		if (i != 0)
+		{
+			printf("socket error 1!");
+			return 0;
+		}
 		//c++作为客户端，生成套接字/绑定/监听
 		SOCKET  socketServer = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+		if (socketServer == INVALID_SOCKET)
+		{
+			printf("socket error 2!");
+			return 0;
+		}
 		//初始化套接字配置
 		struct sockaddr_in adr_socket;
 		adr_socket.sin_family = AF_INET;
 		adr_socket.sin_addr.s_addr = inet_addr(ip);
 		adr_socket.sin_port = htons(host);
-
-
+		//adr_socket.sin_port = htons(8888);
+		//adr_socket.sin_addr.S_un.S_addr = INADDR_ANY;
 		if (bind(socketServer, (SOCKADDR*)&adr_socket, sizeof(SOCKADDR)) == SOCKET_ERROR)
 		{
 			std::cout << "socket server bind error! ip: " << ip <<" port: "<< host << std::endl;

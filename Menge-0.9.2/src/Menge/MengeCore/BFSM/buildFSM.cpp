@@ -485,8 +485,8 @@ namespace Menge {
 					BaseScene::ProbMatrix->InitSumWeight();
 
 					//3.初始化socket服务端，用于疏散状态转移控制
-					SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
-					//SOCKET socketServer = Menge::Socket::socketServerInit("10.128.232.195", 12660);
+					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
+					SOCKET socketServer = Menge::Socket::socketServerInit("10.128.246.57", 12660);
 					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
 					threadSocket.detach();
 
