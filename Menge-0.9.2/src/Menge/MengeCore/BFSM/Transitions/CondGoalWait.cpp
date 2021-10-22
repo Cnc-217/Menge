@@ -180,6 +180,9 @@ namespace Menge {
 					//agent->_maxSpeed = 30.f;
 					if (agentId == 1)
 						cout << "2-0" << endl;
+					if (agent->_shopGone.size() == 5)
+						agent->_shopGone.pop();
+					agent->_shopGone.push(goalId);
 					return true;					//³öº¯Êý
 				};
 			}; break;
@@ -203,6 +206,7 @@ namespace Menge {
 			return false;
 
 		}
+
 
 		///////////////////////////////////////////////////////////////////////////
 

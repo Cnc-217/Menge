@@ -420,7 +420,7 @@ namespace Menge {
 						Menge::BaseScene::ExitReagionInfo.push_back(0);
 					}
 					//初始化店铺信息
-					bool shopInitOk = shopInit();
+					bool shopInitOk = shopInit("..\\examples\\Olympic\\test.txt");
 					if (!shopInitOk)
 						cout << " shop init fail!" << endl;
 					vector<size_t> tmp0 = { 10,10 };

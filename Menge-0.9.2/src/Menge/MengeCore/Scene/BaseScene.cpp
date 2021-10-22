@@ -324,40 +324,40 @@ namespace Menge {
 
 		}
 
-		bool shopInit() {
+		bool shopInit(string dir) {
 			int data[10][4] = { 0 };
 			ifstream infile;//定义读取文件流，相对于程序来说是in
-			infile.open("..\\examples\\Olympic\\test.txt");//打开文件
+			infile.open(dir);//打开文件
 			if (!infile.is_open())
 			{
 				cout << "open file error!" << endl;
 				return false;
 			}
 			for (int i = 0; i < 10; i++)//定义行循环
-			{
 				for (int j = 0; j < 4; j++)//定义列循环
-				{
 					infile >> data[i][j];//读取一个值（空格、制表符、换行隔开）就写入到矩阵中，行列不断循环进行
-				}
-			}
 			infile.close();//读取完成之后关闭文件
 			int index = 0;
 			for (int i = 0; i < 10; i++)
+			{
 				for (int j = 0; j < data[i][1]; j++)
 				{
 					Shoptype shoptemp;
 					shoptemp.type = data[i][0];
 					shoptemp.serviceMax = data[i][2];
 					shoptemp.blockMax = data[i][3];
-					//cout << shoptemp.blockMax << "+" << shoptemp.serviceMax << "+" << shoptemp.type << endl;
-					//shopInfo.insert(std::map< int, Shoptype>::value_type(index, shoptemp));
-					//shopInfo.insert(pair<int, Shoptype>(index, shoptemp));
-					shopInfo.insert(make_pair(index, shoptemp));
+					shoptemp.goalSet = i;
+					shopInfo.insert(make_pair(index, shoptemp));//插入
 					index++;
 				}
+			}
+			for (int i = 0; i < 10; i++)
+				goalSetInfo.insert(std::map< size_t, int >::value_type(i, data[i][1]));
+			//for (int i = 0; i < 10; i++)
+				//cout<<goalSetInfo[i]<<endl;
 			return true;
 			//for (int i = 0; i < 36; i++)//测试用
-				//cout << shopInfo[index].blockMax << "+" << shopInfo[i].serviceMax << "+" << shopInfo[i].type << endl;
+			//	cout << shopInfo[index].blockMax << "+" << shopInfo[i].serviceMax << "+" << shopInfo[i].type <<"+"<< endl;
 			}
 
 

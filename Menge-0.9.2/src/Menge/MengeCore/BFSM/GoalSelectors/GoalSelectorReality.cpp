@@ -57,15 +57,19 @@ namespace Menge {
 			assert( agent != 0x0 && "MatrixGoalSelector requires a valid base agent!" );
 			unsigned seed = time(0);
 			srand(seed);
-			int randomNumber = rand() % 3 + 1;
-			if(agent->_id == 1)
-				cout << randomNumber << endl;
-			if (randomNumber != 1)
+			int randomNumber = rand() % 3 + 1;//取概率
+			if (randomNumber != 1 )//有2/3的概率（大）在本个goalset内选择
 			{
-				return _goalSet->getGoalFromMatrix(agent);
+				if (agent->_id == 1)
+					cout << "-----------nearlynew------------" << endl;
+				//return _goalSet->getGoalFromMatrix(agent);
+				//return _goalSet->getGoalNearly(agent);
+				return _goalSet->getGoalNearlyNew(agent);
 			}
-			else
-				return _goalSet->getGoalFromMatrix(agent);
+			else//有1/3的概率（小）直接去其他的goalset
+				if (agent->_id == 1)
+					cout << "-----------origin------------" << endl;
+				return _goalSet->getGoalFromMatrix(agent);//原来的
 			
 
 		}

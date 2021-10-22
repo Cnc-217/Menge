@@ -52,7 +52,8 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include <cassert>
 #include <cmath>
 #include <ctime>
-
+using namespace Menge::Olympic;
+using namespace std;
 namespace Menge {
 
 	namespace BFSM {
@@ -268,6 +269,7 @@ namespace Menge {
 			else if (PROJECTNAME == THEMEPARK || PROJECTNAME == OLYMPIC) {
 				if (SIM_TIME > 0) {
 					int goalIDNow = ACTIVE_FSM->getNode("tour")->getGoal(agent->_id)->_id;//agent当前的goal的id
+					int goalSetNow = shopInfo[goalIDNow].goalSet;//agent当前的goalset的id	
 					//weight权重和的值如下
 					float weight = BaseScene::ProbMatrix->_sumWeight->at(goalIDNow);
 					LARGE_INTEGER seed;
@@ -283,6 +285,8 @@ namespace Menge {
 						accumWeight += BaseScene::ProbMatrix->Point(goalIDNow, (tgtGoal->_id));
 						if (accumWeight > TGT_WEIGHT) break;
 					}
+					if (agent->_id == 1)
+						cout << "about goal  " << goalIDNow << "+" << goalSetNow << "+" << tgtGoal->_id << "+" << shopInfo[tgtGoal->_id].goalSet << endl;
 				}
 				else {
 					//第一次选取目标点必定是选目标点0
@@ -325,10 +329,114 @@ namespace Menge {
 		
 		}
 
+		Goal* GoalSet::getGoalNearly(const Agents::BaseAgent* agent)//在当前goalset下选择目标店铺
+		{
+			if (SIM_TIME > 0)
+			{
+				Goal* tgtGoal = 0x0;
+				int goalIDNow = ACTIVE_FSM->getNode("tour")->getGoal(agent->_id)->_id;//agent当前的goal的id
+				int goalSetNow = shopInfo[goalIDNow].goalSet;//agent当前的goalset的id				
+				int goalTypeNow = shopInfo[goalIDNow].type;//agent当前的goal的类型0吃1喝2玩3噪点4出入口
+				vector<int>goalSet;//当前goalset内的goal的id
+				for (int i = 0; i < 36; i++)
+				{
+					if (shopInfo[i].goalSet == goalSetNow)
+						goalSet.push_back(i);
+					if (goalSet.size() == goalSetInfo[goalSetNow])
+						break;
+				}
+				int i = 0;
+				float x = 0;
+				while (i < goalSetInfo[goalSetNow])
+				{
+					x += BaseScene::ProbMatrix->Point(goalIDNow, goalSet[i]);
+					i++;
+				}
+				//weight权重和的值如下
+				float weight = BaseScene::ProbMatrix->_sumWeight->at(goalIDNow);
+				float y = (weight - x * 5) / (weight - x);
+				float k = weight / x;
+				if (agent->_id == 1)
+					cout << "canshu: " << x << "+" << y << "+" << k << endl;
 
+				LARGE_INTEGER seed;
+				QueryPerformanceFrequency(&seed);
+				QueryPerformanceCounter(&seed);
+				srand(seed.QuadPart);//取硬件计时器，精度更高
+				float TGT_WEIGHT = weight * ((rand() % 100) * 0.01);//概率和为weight
+				float accumWeight = 0;
+				std::map< size_t, Goal* >::const_iterator itr;
+				for (size_t i = 0; i < _goalIDs.size(); i++) {
+					itr = _goals.find(_goalIDs[i]);
+					tgtGoal = itr->second;
+					if (shopInfo[tgtGoal->_id].goalSet == goalSetNow)
+						accumWeight += BaseScene::ProbMatrix->Point(goalIDNow, (tgtGoal->_id)) * k;
+					/*else
+						accumWeight += BaseScene::ProbMatrix->Point(goalIDNow, (tgtGoal->_id)) * 0;*/
+					if (accumWeight > TGT_WEIGHT) break;
+				}
+				if (agent->_id == 1)
+					cout <<"about goal  "<< goalIDNow << "+" << goalSetNow << "+" << tgtGoal->_id << "+" << shopInfo[tgtGoal->_id].goalSet << endl;
+				return tgtGoal;
+			}
+			else
+				return getGoalByID(34);
+			
+		}
 
-
-
-
+		Goal* GoalSet::getGoalNearlyNew(const Agents::BaseAgent* agent)
+		{
+			if (SIM_TIME > 0)
+			{
+				Goal* tgtGoal = 0x0;
+				int goalIDNow = ACTIVE_FSM->getNode("tour")->getGoal(agent->_id)->_id;//agent当前的goal的id
+				int goalSetNow = shopInfo[goalIDNow].goalSet;//agent当前的goalset的id				
+				int goalTypeNow = shopInfo[goalIDNow].type;//agent当前的goal的类型0吃1买2玩3噪点4出入口
+				unsigned seed = time(0);
+				srand(seed);
+				if (goalTypeNow == 1 || goalTypeNow == 3)
+				{
+					vector<int>goalSet;//当前goalset内的goal的id
+					for (int i = 0; i < 36; i++)
+					{
+						if (shopInfo[i].goalSet == goalSetNow)
+							if (i == goalIDNow && ((rand() % 100) * 0.01) < 0.9)//有0.9的概率不重复进入自己
+								continue;
+							else
+								goalSet.push_back(i);
+					}
+					
+					int randomNumber = rand() % goalSet.size();//取概率
+					std::map< size_t, Goal* >::const_iterator itr;
+					itr = _goals.find(goalSet[randomNumber]);
+					tgtGoal = itr->second;
+					if (agent->_id == 1)
+						cout << "about goal  " << goalIDNow << "+" << goalSetNow << "+" << tgtGoal->_id << "+" << shopInfo[tgtGoal->_id].goalSet << endl;
+					return tgtGoal;
+				}
+				else
+				{
+					float weight = BaseScene::ProbMatrix->_sumWeight->at(goalIDNow);
+					LARGE_INTEGER seed;
+					QueryPerformanceFrequency(&seed);
+					QueryPerformanceCounter(&seed);
+					srand(seed.QuadPart);//取硬件计时器，精度更高
+					float TGT_WEIGHT = weight * ((rand() % 100) * 0.01);//概率和为weight
+					float accumWeight = 0;
+					std::map< size_t, Goal* >::const_iterator itr;
+					for (size_t i = 0; i < _goalIDs.size(); i++) {
+						itr = _goals.find(_goalIDs[i]);
+						tgtGoal = itr->second;
+						accumWeight += BaseScene::ProbMatrix->Point(goalIDNow, (tgtGoal->_id));
+						if (accumWeight > TGT_WEIGHT) break;
+					}
+					if (agent->_id == 1)
+						cout << "about goal  " << goalIDNow << "+" << goalSetNow << "+" << tgtGoal->_id << "+" << shopInfo[tgtGoal->_id].goalSet << endl;
+					return tgtGoal;
+				}
+			}
+			else
+				return getGoalByID(34);
+		}
 	}	// namespace BFSM 
 }	// namespace Menge

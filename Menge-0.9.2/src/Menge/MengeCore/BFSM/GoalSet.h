@@ -161,6 +161,10 @@ namespace Menge {
 			
 			Goal * getGoalFromMatrix(const Agents::BaseAgent* agent);//基于matrix的人流仿真，goal通过matrix来选择
 
+			Goal * getGoalNearly(const Agents::BaseAgent* agent);
+
+			Goal* getGoalNearlyNew(const Agents::BaseAgent* agent);
+
 			/*!
 			 *	@brief		Locks the goal set for a read-only operations.
 			 */

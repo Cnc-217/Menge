@@ -40,7 +40,7 @@ namespace Menge {
 
 
         void evacuateModeStart(SOCKET serConn, json j);
-		bool shopInit();
+		bool shopInit(string dir);
 
     }
 
