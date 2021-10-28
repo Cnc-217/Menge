@@ -134,6 +134,7 @@ namespace Menge {
 			int goalSet;//哪种商店  也就是goalset
 			std::queue<int> serviceQ;
 			std::queue<int> blockQ;
+			int sameSetGoalNum;
 		};
 		extern MENGE_API std::map<int, Shoptype>  shopInfo;
 		extern MENGE_API std::map<size_t, int>  goalSetInfo;//储存goalset内有多少个goal

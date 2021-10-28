@@ -347,7 +347,9 @@ namespace Menge {
 					shoptemp.serviceMax = data[i][2];
 					shoptemp.blockMax = data[i][3];
 					shoptemp.goalSet = i;
+					shoptemp.sameSetGoalNum = data[i][1];
 					shopInfo.insert(make_pair(index, shoptemp));//≤Â»Î
+
 					index++;
 				}
 			}

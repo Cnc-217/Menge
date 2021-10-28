@@ -392,18 +392,21 @@ namespace Menge {
 				int goalIDNow = ACTIVE_FSM->getNode("tour")->getGoal(agent->_id)->_id;//agent当前的goal的id
 				int goalSetNow = shopInfo[goalIDNow].goalSet;//agent当前的goalset的id				
 				int goalTypeNow = shopInfo[goalIDNow].type;//agent当前的goal的类型0吃1买2玩3噪点4出入口
+				int sameSetGoalNum = shopInfo[goalIDNow].sameSetGoalNum;
 				unsigned seed = time(0);
 				srand(seed);
 				if (goalTypeNow == 1 || goalTypeNow == 3)
 				{
-					vector<int>goalSet;//当前goalset内的goal的id
+					vector<int>goalSet;//挑选出当前goalset内的goal的id
 					for (int i = 0; i < 36; i++)
 					{
-						if (shopInfo[i].goalSet == goalSetNow)
+						if (shopInfo[i].goalSet == goalSetNow)//如果goalsetID相同
 							if (i == goalIDNow && ((rand() % 100) * 0.01) < 0.9)//有0.9的概率不重复进入自己
 								continue;
 							else
 								goalSet.push_back(i);
+						if (goalSet.size() == sameSetGoalNum)//如果数量已经够了  就退出
+							break;
 					}
 					
 					int randomNumber = rand() % goalSet.size();//取概率

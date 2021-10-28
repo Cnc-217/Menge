@@ -175,11 +175,12 @@ namespace Menge {
 					shopInfo[goalId].serviceQ.pop();	//agent出服务队列;
 					_lock.releaseWrite();
 					//agent->_maxSpeed = 30.f;
-					if (agentId == 1)
-						cout << "2-0" << endl;
+					
 					if (agent->_shopGone.size() == 5)
 						agent->_shopGone.pop();
 					agent->_shopGone.push(goalId);
+					if (agentId == 1)
+						cout << "2-0" <<"+"<< agent->_shopGone.front() << endl;
 					return true;					//出函数
 				};
 			}; break;
