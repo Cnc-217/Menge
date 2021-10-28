@@ -48,7 +48,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/Agents/BaseAgent.h"
 
 #include "MengeCore/MatrixMy.h"
-
+#include<numeric>
 #include <cassert>
 #include <cmath>
 #include <ctime>
@@ -398,24 +398,45 @@ namespace Menge {
 				if (goalTypeNow == 1 || goalTypeNow == 3)
 				{
 					vector<int>goalSet;//挑选出当前goalset内的goal的id
+					vector<float>goalProbabilitySet;
+					std::map< int, float >	goalProbability;
 					for (int i = 0; i < 36; i++)
 					{
 						if (shopInfo[i].goalSet == goalSetNow)//如果goalsetID相同
-							if (i == goalIDNow && ((rand() % 100) * 0.01) < 0.9)//有0.9的概率不重复进入自己
+							if (i == goalIDNow && ((rand() % 100) * 0.01) < 0.9)//如果当前检索到自己  有0.9的概率不重复进入自己
 								continue;
-							else
+							else//当前检索的不是自己  但是是同goalset的其他店铺
+							{
 								goalSet.push_back(i);
-						if (goalSet.size() == sameSetGoalNum)//如果数量已经够了  就退出
+								goalProbability.insert(std::map< int, float >::value_type(i, BaseScene::ProbMatrix->Point(goalIDNow, i)));
+								goalProbabilitySet.push_back(BaseScene::ProbMatrix->Point(goalIDNow, i));
+
+							}
+						if (goalProbability.size() == sameSetGoalNum)//如果数量已经够了  就退出
 							break;
 					}
-					
-					int randomNumber = rand() % goalSet.size();//取概率
+					float proSum = accumulate(goalProbabilitySet.begin(), goalProbabilitySet.end(), 0);
+					for (int i = 0; i < goalProbabilitySet.size(); i++)
+						goalProbabilitySet[i] = goalProbabilitySet[i]/ proSum;
+					float TGT_WEIGHT = proSum * ((rand() % 100) * 0.01);//概率和为weight
+					float accumWeight = 0;
 					std::map< size_t, Goal* >::const_iterator itr;
-					itr = _goals.find(goalSet[randomNumber]);
-					tgtGoal = itr->second;
+					for (int i = 0; i < goalProbabilitySet.size(); i++) {
+						itr = _goals.find(goalSet[i]);
+						tgtGoal = itr->second;
+						accumWeight += goalProbabilitySet[i];
+						if (accumWeight > TGT_WEIGHT) break;
+					}
 					if (agent->_id == 1)
 						cout << "about goal  " << goalIDNow << "+" << goalSetNow << "+" << tgtGoal->_id << "+" << shopInfo[tgtGoal->_id].goalSet << endl;
 					return tgtGoal;
+					/*					
+					int randomNumber = rand() % goalSet.size();//取概率
+					std::map< size_t, Goal* >::const_iterator itr;
+					itr = _goals.find(goalSet[randomNumber]);
+					tgtGoal = itr->second;*/
+
+
 				}
 				else
 				{
