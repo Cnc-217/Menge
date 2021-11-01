@@ -163,7 +163,7 @@ namespace Menge {
 
 			Goal * getGoalNearly(const Agents::BaseAgent* agent);
 
-			Goal* getGoalNearlyNew(const Agents::BaseAgent* agent);
+			Goal* getGoalSameRegion(const Agents::BaseAgent* agent);
 
 			/*!
 			 *	@brief		Locks the goal set for a read-only operations.
