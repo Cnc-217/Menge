@@ -38,6 +38,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 
 #include "MengeCore/resources/Graph.h"
 
+#include "MengeCore/BFSM/FSM.h"
 #include "MengeCore/Core.h"
 #include "MengeCore/BFSM/State.h"
 #include "MengeCore/Agents/BaseAgent.h"
@@ -46,18 +47,22 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/resources/GraphEdge.h"
 #include "MengeCore/resources/MinHeap.h"
 #include "MengeCore/resources/RoadMapPath.h"
+#include <MengeCore/Agents/SimulatorInterface.h>
+
 
 #include "MengeVis/Viewer/GLViewer.h"
 
 #include <fstream>
 #include <iostream>
 #include <string>
+#include<memory.h>;
 
 #ifdef _OPENMP
 #include <omp.h>
 #endif
-
+using namespace std;
 namespace Menge {
+
 
 	/////////////////////////////////////////////////////////////////////
 	//					Implementation of Graph
@@ -124,9 +129,10 @@ namespace Menge {
 			graph->_vertices[ i ].setID( i );
 			graph->_vertices[ i ].setPosition( Vector2( x, y ) );
 			graph->_vertices[ i ].setDegree( degree );
+			graph->_verticesCanGo.push_back(1);
 			vertNbr[ i ] = 0;
 		}
-
+		graph->_verticesCanGo[2]=0;
 		// load edges
 		size_t eCount;
 		if ( ! ( f >> eCount ) ) {
@@ -194,6 +200,7 @@ namespace Menge {
 		graph->initHeapMemory();
 
 		graphLoad = graph;
+		graph->number = vector<int>(graph->_vCount, 0);
 		return graph;
 	}
 
@@ -284,7 +291,8 @@ namespace Menge {
 				bestID = i;
 			}
 		}
-		if (bestID == -1) std::cout << "fail!" << std::endl;
+		if (bestID == -1) 
+			std::cout << "fail!" << std::endl;
 
 		return _vertices[bestID].getPosition();
 	}
@@ -327,7 +335,9 @@ namespace Menge {
 			for ( size_t n = 0; n < E_COUNT; ++n ) {
 				const GraphVertex * nbr = vert.getNeighbor( n );
 				size_t y = nbr->getID();
-				if ( heap.isVisited( (unsigned int)y ) ) continue;
+				//if ( heap.isVisited( (unsigned int)y )/*如果被走过 || 是不可以走的  就返回   int数组[y]==false  */ ) 
+				if ( heap.isVisited((unsigned int)y) || _verticesCanGo[y] ==0)
+					continue;
 				float distance = vert.getDistance( n );
 				float tempG = heap.g( x ) + distance;
 				
@@ -501,6 +511,110 @@ namespace Menge {
 			next = tmp;
 		}
 		return distance;
+	}
+
+    void Graph::countPeople(Agents::BaseAgent* agent) {
+		assert(_vCount > 0 && "Trying to operate on an empty roadmap");
+
+		float bestDistSq = 100;
+		size_t bestID = -1;
+		for (size_t i = 0; i < _vCount; ++i) {
+			float testDistSq = absSq(_vertices[i].getPosition() - agent->_pos);//每一个waypoint与agent的距离
+			if (testDistSq < bestDistSq) {//找到更小的距离所对应的waypoint
+				number[i]++;
+				cout << "small  " << i << endl;
+				break;
+			}
+		}
+		//for (int i : number) cout << "第i个点上  "<<i << endl;
+    }
+
+    vector<float_t> Graph::pathPeopleNumberAndLength( const Agents::BaseAgent * agent, const BFSM::Goal * goal ) {
+        // Find the closest visible node to agent position
+        size_t startID = getClosestVertex(agent->_pos, agent->_radius);//起点的路径点
+        // Find the closest visible node to goal position
+        Vector2 goalPos1 = goal->getCentroid();
+        size_t endID = getClosestVertex(goalPos1, agent->_radius);//终点的路径点
+        // Compute the path based on those nodes
+        //A*
+        const size_t N = _vCount;
+
+        //第一个元素记录距离，第二个元素记录人数
+		vector<float_t> distanceAndNum{0,0};
+#ifdef _OPENMP
+        // Assuming that threadNum \in [0, omp_get_max_threads() )
+		const unsigned int threadNum = omp_get_thread_num();
+		AStarMinHeap heap(_HEAP + threadNum * N,
+			_DATA + threadNum * DATA_SIZE,
+			_STATE + threadNum * STATE_SIZE,
+			_PATH + threadNum * N, N);
+#else
+        AStarMinHeap heap(_HEAP, _DATA, _STATE, _PATH, N);
+#endif
+
+        const Vector2 goalPos(_vertices[endID].getPosition());
+
+        heap.g((unsigned int)startID, 0);
+        heap.h((unsigned int)startID, computeH(startID, goalPos));
+        heap.f((unsigned int)startID, heap.h((unsigned int)startID));
+        heap.push((unsigned int)startID);
+
+        bool found = false;
+        while (!heap.empty()) {
+            unsigned int x = heap.pop();
+
+            if (x == endID) {
+                found = true;
+                break;
+            }
+
+            GraphVertex& vert = _vertices[x];
+
+            const size_t E_COUNT = vert.getEdgeCount();
+            for (size_t n = 0; n < E_COUNT; ++n) {
+                const GraphVertex* nbr = vert.getNeighbor(n);
+                size_t y = nbr->getID();
+                if (heap.isVisited((unsigned int)y)) continue;
+                float distance = vert.getDistance(n);
+                float tempG = heap.g(x) + distance;
+
+                bool inHeap = heap.isInHeap((unsigned int)y);
+                if (!inHeap) {
+                    heap.h((unsigned int)y, computeH(y, goalPos));
+                }
+                if (tempG < heap.g((unsigned int)y)) {
+                    heap.setReachedFrom((unsigned int)y, (unsigned int)x);
+                    heap.g((unsigned int)y, tempG);
+                    heap.f((unsigned int)y, tempG + heap.h((unsigned int)y));
+                }
+                if (!inHeap) {
+                    heap.push((unsigned int)y);
+                }
+            }
+        }
+        if (!found) {
+            logger << Logger::ERR_MSG << "Was unable to find a path from " << startID;
+            logger << " to " << endID << "\n";
+            return distanceAndNum;
+        }
+
+        // Count the number of nodes in the path
+        size_t wayCount = 1;	// for the startID
+        size_t next = endID;
+        while (next != startID) {
+            ++wayCount;
+            next = heap.getReachedFrom((unsigned int)next);
+        }
+
+        size_t tmp;
+        next = endID;
+        for (size_t i = wayCount; i > 1; i--) {//因为如果i=1，heap找不到next的前一个结点
+            tmp = heap.getReachedFrom((unsigned int)next);
+            distanceAndNum[0] += _vertices[tmp].getDistance(_vertices[next]);//这里产生了越界
+            distanceAndNum[1] += number[tmp];
+            next = tmp;
+        }
+        return distanceAndNum;
 	}
 
 

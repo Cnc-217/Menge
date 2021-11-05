@@ -7,7 +7,7 @@ def service(jsonData):
     #socket初始化、发送json
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     #serverIp = "10.128.232.195" #服务器
-    serverIp = "10.128.214.66" #本机
+    serverIp = "10.128.204.10" #本机
     serverPort = 12660
     try:
         client.connect((serverIp, serverPort))

@@ -54,6 +54,7 @@
         <Goal capacity="1000000" id="31" radius="78.94" type="circle" weight="1.00" x="-826.09" y="1972.38"/>
         <Goal capacity="1000000" id="32" radius="81.49" type="circle" weight="1.00" x="669.77" y="1315.41"/>
         <Goal capacity="1000000" id="33" radius="63.92" type="circle" weight="1.00" x="669.77" y="-281.52"/>
+        
         <!-- 出口入口9 -->	
         <Goal capacity="1000000" id="34" radius="205.44" type="circle" weight="1.00" x="-3347.80" y="-601.36"/>
         <Goal capacity="1000000" id="35" radius="258.12" type="circle" weight="1.00" x="4467.77" y="-535.25"/>
@@ -215,7 +216,7 @@
   </State>
 
  <State name="Evacuation" final="0" >
-    <GoalSelector type="evacuation" goal_set="1" algorithmID="0" />
+    <GoalSelector type="evacuation" goal_set="1" algorithmID="3" />
     <VelComponent type="road_map" file_name="graph.txt" />
      <Action type="stress" exit_behavior="cool down"
       inner_dist="c" inner_value="100" 

@@ -353,8 +353,14 @@ namespace Menge {
 			//疏散状态的控制信号量
 			else if (Menge::Olympic::evacuationState == true) {
 				
-				if (_flag == false) {//第一次进入，标记一下
-					_flag = true;
+			if (_flag == false) {//第一次进入，将人群分进vector里
+				for (int idx = 0; idx < Menge::SIMULATOR->getNumAgents(); idx++) {
+					Agents::BaseAgent* agent = Menge::SIMULATOR->getAgent(idx);
+					if (agent->_class == 1) _leaderSet.push_back(agent);
+					else if (agent->_class == 2) _panicSet.push_back(agent);
+					else _normalSet.push_back(agent);
+				}
+				_flag = true;
 				}
 				
 
@@ -363,6 +369,7 @@ namespace Menge {
 					cout << "trigger condition met at :" << Menge::SIM_TIME << endl;
 					vector<Agents::BaseAgent*>::iterator agent;
 					for (agent = _leaderSet.begin(); agent != _leaderSet.end(); agent++) {
+						
 						State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
 						if (currentState->getName() == "Stop") continue;
 						currentState->leave(*agent);

@@ -133,6 +133,7 @@ namespace Menge {
 					{
 						if (agent->_shopGone2.size() == 5)
 							agent->_shopGone2.erase(agent->_shopGone2.begin());
+						agent->_shopGoneNum = 1;
 						agent->_shopGone2.push_back(goalId);
 						return true;
 					}

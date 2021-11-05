@@ -56,15 +56,14 @@ namespace Menge {
 		Goal * MatrixGoalSelector::getGoal( const Agents::BaseAgent * agent ) const {
 			if (Menge::SIM_TIME > 0)
 			{
-				
+				//return _goalSet->getGoalFromMatrix(agent);
 				
 				assert(agent != 0x0 && "MatrixGoalSelector requires a valid base agent!");
 				srand(time(0));
 				//int lastShopGone = agent->_shopGone.back();
 				int lastShopGone2 = agent->_shopGone2.back();
 				int travelNum = agent->_shopGoneNum;//最近走过的五个店中同类店铺数量
-				if (agent->_id == 1)
-				cout << lastShopGone2 << "= =" << travelNum << endl;
+
 				float randomNumber = rand() % 100 * 0.01 ;//取概率
 				if (travelNum < shopInfo[lastShopGone2].sameSetGoalNum)//如果不够最大数量
 				{	
@@ -87,6 +86,7 @@ namespace Menge {
 						cout << "-----------origin------------" << endl;
 					return _goalSet->getGoalFromMatrix(agent);//就跳出去
 				}
+				
 			}
 			else
 				return _goalSet->getGoalByID(34);//第一次选择
