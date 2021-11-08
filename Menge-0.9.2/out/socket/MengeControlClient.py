@@ -6,8 +6,8 @@ import json
 def service(jsonData):
     #socket初始化、发送json
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    #serverIp = "10.128.232.195" #服务器
-    serverIp = "10.128.214.66" #本机
+    #serverIp = "10.28.195.233" #本机
+    serverIp = "10.128.214.66" #服务器
     serverPort = 12660
     try:
         client.connect((serverIp, serverPort))
@@ -165,14 +165,14 @@ if __name__ == '__main__':
     #service(jsonData)
 
 
-    #jsonData = { "command" : "FlowScene", "data":"" }
+    jsonData = { "command" : "FlowScene", "data":"" }
     #jsonData = { "command" : "BusinessScene", "data":"" }
-    #listFlow, listMatrix = service(jsonData)
-    #print(listFlow)
-    #print(listMatrix)
+    listFlow, listMatrix = service(jsonData)
+    print(listFlow)
+    print(listMatrix)
 
-    jsonData = { "command" : "Evacuate", "data":"" }
-    service(jsonData)
+    #jsonData = { "command" : "Evacuate", "data":"" }
+    #service(jsonData)
 
 
 

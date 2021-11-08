@@ -669,9 +669,6 @@
     <ClCompile Include="..\..\..\src\Menge\MengeCore\Scene\Business.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Menge\MengeCore\Socket.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorReality.cpp">
       <Filter>Source Files\BFSM\GoalSelectors</Filter>
     </ClCompile>
@@ -719,6 +716,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressManager.cpp">
       <Filter>Source Files\BFSM\Actions\Stress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\Socket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorModel.cpp">
+      <Filter>Source Files\BFSM\GoalSelectors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1405,6 +1408,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressManager.h">
       <Filter>Header Files\BFSM\Actions\Stress</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorModel.h">
+      <Filter>Header Files\BFSM\GoalSelectors</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

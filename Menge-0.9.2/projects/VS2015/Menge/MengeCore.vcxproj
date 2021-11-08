@@ -379,6 +379,7 @@ xcopy /y $(TargetPath) $(ExeDir)
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressTask.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorAlgorithm.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorEvacuation.cpp" />
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorModel.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorNearAgent.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorReality.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Goals\GoalAgent.cpp" />
@@ -474,6 +475,7 @@ xcopy /y $(TargetPath) $(ExeDir)
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressManager.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressTask.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorEvacuation.h" />
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorModel.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorNearAgent.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorReality.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Goals\GoalAgent.h" />

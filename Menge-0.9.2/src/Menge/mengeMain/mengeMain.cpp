@@ -43,7 +43,6 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/Runtime/Logger.h"
 #include "MengeCore/Runtime/os.h"
 #include "MengeCore/Runtime/SimulatorDB.h"
-#include "MengeCore/Scene/BaseScene.cpp"
 #include "MengeCore/MatrixMy.cpp"
 #include "MengeCore/Core.h"
 
@@ -71,6 +70,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 FILE _iob[] = { *stdin, *stdout, *stderr };
 extern "C" FILE * __cdecl __iob_func(void) { return _iob; }
 #endif  // _MSC_VER >= 1900
+
 
 
 using namespace Menge;
@@ -424,10 +424,12 @@ int main( int argc, char* argv[] ) {
 	bool useVis = viewCfgFile != "";//可视化界面的控制
 	std::string model( projSpec.getModel() );
 	std::string matrixFile = projSpec.getMatrixFile();
-
+	
+	/*
 	if (matrixFile != "") {
 		Menge::BaseScene::loadMatrixFromTxt(matrixFile.c_str());
-	}
+	}*/
+	
 
 	SimulatorDBEntry * simDBEntry = simDB.getDBEntry( model );
 	if ( simDBEntry == 0x0 ) {

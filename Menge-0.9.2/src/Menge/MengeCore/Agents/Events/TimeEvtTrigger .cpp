@@ -68,15 +68,6 @@ namespace Menge {
 	using namespace std;
 	using namespace Menge::BFSM;
 
-	
-	//extern const MatrixDim2* Business::ProbStatesNormal;
-	//extern const MatrixDim2* Business::ProbStatesCoupon;
-	//extern const MatrixDim3* Business::ProbGoalsNormal;
-	//extern const MatrixDim3* Business::ProbGoalsCoupon;
-	extern char* Business::dataInit();
-	extern int* Socket::socketGetCouponBusiness(char* message);
-	extern int* Socket::socketGetCouponBusinessReality(char* message);
-
 	float TimeReachedTrigger::_timeSimulate = 10;
 	float TimeReachedTrigger::_lastTimestamp = 0;
 
@@ -141,7 +132,7 @@ namespace Menge {
 		if ((Menge::SIM_TIME - _lastTimestamp) > _timeSimulate) {
 			cout << "trigger condition met at :"<<Menge::SIM_TIME << endl;
 			_lastTimestamp = Menge::SIM_TIME;
-			MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;
+			//MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;
 			cout << "pause" << endl;
 
 
@@ -214,7 +205,7 @@ namespace Menge {
 			}
 			
 			//重新开始
-			MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;
+			//MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;
 			cout << "Timestamp: " << _lastTimestamp << endl;
 			return true;
 		}

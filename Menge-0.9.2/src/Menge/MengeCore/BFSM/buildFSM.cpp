@@ -73,15 +73,14 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include <vector>
 #include <thread>
 
+using namespace std;
+
 namespace Menge {
 
 	namespace BFSM {
 		/////////////////////////////////////////////////////////////////////
 		//                   Implementation of buildFSM
 		/////////////////////////////////////////////////////////////////////
-
-		using namespace std;
-
 
 		FSM * buildFSM( FSMDescrip & fsmDescrip, Agents::SimulatorInterface * sim, bool VERBOSE ) {
 
@@ -486,8 +485,11 @@ namespace Menge {
 
 					//3.初始化socket服务端，用于疏散状态转移控制
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
-					SOCKET socketServer = Menge::Socket::socketServerInit("10.128.246.57", 12660);
-					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
+
+					//初始化socket客户端，发出数据同步请求，接收仿真参数，更新仿真参数，最后进入监听状态
+					SOCKET socketClient = Menge::Socket::socketClientInit("10.28.195.233", 12660);
+					Menge::Olympic::parameterInit(socketClient);
+					thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);
 					threadSocket.detach();
 
 					cout << "It's OLYMPIC Simulation" << endl;

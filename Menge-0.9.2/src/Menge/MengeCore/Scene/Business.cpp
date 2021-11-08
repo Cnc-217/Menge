@@ -10,7 +10,7 @@
 #include "MengeCore/BFSM/Transitions/Transition.h"
 #include "MengeCore/BFSM/State.h"
 #include "MengeCore/Agents/SimulatorInterface.h"
-
+#include "MengeCore/Socket.h"
 
 using namespace std;
 using namespace Menge::BFSM;
