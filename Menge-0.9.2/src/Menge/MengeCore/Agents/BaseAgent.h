@@ -32,7 +32,7 @@
 #include "MengeCore/Agents/XMLSimulatorBase.h"
 #include "MengeCore/BFSM/VelocityModifiers/VelModifier.h"
 #include "MengeCore/Agents/SpatialQueries/SpatialQueryStructs.h"
-
+#include<queue>
 #include <vector>
 #include <list>
 
@@ -286,6 +286,12 @@ namespace Menge {
 			 */
 			size_t _obstacleSet;
 
+			//std::queue<int> _shopGone;//记录曾经去过的五家店铺
+
+			std::vector<int> _shopGone2;//记录曾经去过的五家店铺（vector）
+
+			int _shopGoneNum;
+
 			/*!
 			 *	@brief		The priority of each agent.  
 			 *
@@ -297,6 +303,8 @@ namespace Menge {
 			 *	@brief		A globally unique identifier for each agent.
 			 */
 			size_t _id;
+
+			
 
 			/*!
 			 *	@brief		The agent's radius.  

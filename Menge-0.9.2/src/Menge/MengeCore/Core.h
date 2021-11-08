@@ -131,11 +131,15 @@ namespace Menge {
 			int serviceMax;
 			int blockMax;
 			int type;
+			int goalSet;//哪种商店  也就是goalset
 			std::queue<int> serviceQ;
 			std::queue<int> blockQ;
+			int sameSetGoalNum;
 		};
 		extern MENGE_API std::map<int, Shoptype>  shopInfo;
-		extern std::map< size_t, bool >	_reachedAgents;//存储agent是否到达目标点
+		extern MENGE_API std::map<size_t, int>  goalSetInfo;//储存goalset内有多少个goal
+		extern MENGE_API std::map< size_t, bool >	_reachedAgents;//存储agent是否到达目标点
+		extern MENGE_API std::map<size_t, int > nowReachTimes;//储存agent在当前goalset的不同goal的次数
 	}
 
 	namespace BaseScene {

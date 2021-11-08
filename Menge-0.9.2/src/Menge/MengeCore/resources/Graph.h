@@ -29,6 +29,7 @@
 #include "MengeCore/resources/GraphVertex.h"
 #include "MengeCore/resources/Resource.h"
 #include "MengeCore/Runtime/ReadersWriterLock.h"
+#include<vector>
 
 namespace Menge {
 
@@ -37,12 +38,14 @@ namespace Menge {
 	class RoadMapPath;
 	namespace BFSM {
 		class Goal;
+		class FSM;
 	}
 
 	namespace Agents {
 		class BaseAgent;
 	}
 
+    using namespace std;
 	using Menge::Math::Vector2;
 
 	/*!
@@ -139,6 +142,25 @@ namespace Menge {
 		 */
 		static const std::string LABEL;
 
+        /*!
+         * @brief   The people number of every vertex
+         */
+        std::vector<int> number;
+
+        /*!
+         * @brief   Count the number of people at each vertex
+         * @param fsm
+         */
+        void countPeople(Agents::BaseAgent* agent);
+
+        /*!
+         * @brief   Count the number of people on the path from the current position to each exit
+         * @param agt
+         * @param goal
+         * @return
+         */
+        vector<float_t> pathPeopleNumberAndLength( const Agents::BaseAgent * agent, const BFSM::Goal * goal );
+
 	protected:
 
 		/*!
@@ -188,6 +210,7 @@ namespace Menge {
 		 */
 		GraphVertex *	_vertices;
 
+		vector<int>   _verticesCanGo;
 		/*!
 		 *	@brief		Initializes the heap memory based on current
 		 *				graph state.

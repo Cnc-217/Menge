@@ -73,9 +73,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include <vector>
 #include <thread>
 
-using namespace std;
-
-namespace Menge {
+using namespace std;namespace Menge {
 
 	namespace BFSM {
 		/////////////////////////////////////////////////////////////////////
@@ -86,7 +84,7 @@ namespace Menge {
 
 			//提取项目名
 			BaseScene::projectNameExtract(fsmDescrip._behaviorFldr);
-
+			cout << fsmDescrip._behaviorFldr << endl;
 			// Acquire the spatial query instance
 			SPATIAL_QUERY = sim->getSpatialQuery();
 
@@ -415,7 +413,9 @@ namespace Menge {
 						Menge::BaseScene::ExitReagionInfo.push_back(0);
 					}
 					//初始化店铺信息
-					Menge::Olympic::Shopinit();
+					bool shopInitOk = shopInit("..\\examples\\Olympic\\test.txt");
+					if (!shopInitOk)
+						cout << " shop init fail!" << endl;
 					vector<size_t> tmp0 = { 10,10 };
 					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
 
@@ -482,15 +482,16 @@ namespace Menge {
 						exit(1);
 					}
 					BaseScene::ProbMatrix->InitSumWeight();
-
+					
 					//3.初始化socket服务端，用于疏散状态转移控制
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
+					SOCKET socketServer = Menge::Socket::socketServerInit("10.128.246.57", 12660);
+					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
 
 					//初始化socket客户端，发出数据同步请求，接收仿真参数，更新仿真参数，最后进入监听状态
 					SOCKET socketClient = Menge::Socket::socketClientInit("10.28.195.233", 12660);
 					Menge::Olympic::parameterInit(socketClient);
-					thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);
-					threadSocket.detach();
+					thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					threadSocket.detach();
 
 					cout << "It's OLYMPIC Simulation" << endl;
 					break;

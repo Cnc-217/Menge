@@ -92,10 +92,7 @@ namespace Menge {
 				_statusAgents[agent->_id] = 0;//初始状态为0
 				//insert在kv对已存在的情况下，忽略当前insert语句
 			}
-			
 		}
-		///////////////////////////////////////////////////////////////////////////店铺初始化  该放哪？
-
 
 		///////////////////////////////////////////////////////////////////////////
 
@@ -133,10 +130,16 @@ namespace Menge {
 				if (_reachedAgents[agentId])
 				{
 					if (shopType == 4)//针对出入口  如果到达出入口  不等待直接选择下一个goal
+					{
+						if (agent->_shopGone2.size() == 5)
+							agent->_shopGone2.erase(agent->_shopGone2.begin());
+						agent->_shopGoneNum = 1;
+						agent->_shopGone2.push_back(goalId);
 						return true;
+					}
 					_statusAgents[agentId] = 1;
 					if (agentId == 1)
-						cout << "0-1" << endl;
+						cout << "0-1" << "+" << shopInfo[goalId].serviceMax << endl;
 				}
 			}; break;
 				/*  转移  1->2  1->3 */
@@ -177,9 +180,16 @@ namespace Menge {
 					_lock.lockWrite();
 					shopInfo[goalId].serviceQ.pop();	//agent出服务队列;
 					_lock.releaseWrite();
-					//agent->_maxSpeed = 30.f;
+					int lastShopGone = agent->_shopGone2.back();
+					if (agent->_shopGone2.size() == 5)
+						agent->_shopGone2.erase(agent->_shopGone2.begin());
+					agent->_shopGone2.push_back(goalId);
+					if (shopInfo[goalId].goalSet == shopInfo[lastShopGone].goalSet)
+						agent->_shopGoneNum++;
+					else
+						agent->_shopGoneNum = 1;
 					if (agentId == 1)
-						cout << "2-0" << endl;
+						cout << "2-0" <<"+"<< agent->_shopGone2.front() << endl;
 					return true;					//出函数
 				};
 			}; break;
@@ -187,7 +197,7 @@ namespace Menge {
 			case 3: {
 				if (agentId == 1)
 					cout << shopInfo[goalId].serviceQ.size() <<"+"<< serviceMax <<"+" << shopInfo[goalId].blockQ.front() <<"+"<< agentId << endl;
-					if ((shopInfo[goalId].serviceQ.size() < serviceMax) && (agentId == shopInfo[goalId].blockQ.front()))
+				if ((shopInfo[goalId].serviceQ.size() < serviceMax) && (agentId == shopInfo[goalId].blockQ.front()))
 				{//服务队列有位&& 阻塞队头agent是自己
 					_statusAgents[agentId] = 2;					//agent->_status = 2;
 					_triggerTimes[agentId] = Menge::SIM_TIME + serviceTime;//此处可以再改详细的时间
@@ -203,6 +213,7 @@ namespace Menge {
 			return false;
 
 		}
+
 
 		///////////////////////////////////////////////////////////////////////////
 

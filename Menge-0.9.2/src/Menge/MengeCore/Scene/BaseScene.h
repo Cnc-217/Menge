@@ -6,6 +6,7 @@
 #include "MengeCore/Json/json.hpp"
 #include <string>
 #include <winsock.h>
+
 #pragma comment(lib, "ws2_32.lib")
 
 
@@ -42,7 +43,8 @@ namespace Menge {
 
         string matrixBusinessScene();
 
-		void Shopinit();
+
+		bool shopInit(string dir);
 
         void parameterInit(SOCKET socketClient);
 

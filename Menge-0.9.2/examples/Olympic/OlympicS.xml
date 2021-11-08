@@ -45,7 +45,7 @@
     <StateSelector type="const" name="tour" />
     <Generator type="rect_grid"
         anchor_x="-4200" anchor_y="-500"
-        offset_x="-250" offset_y="-250"
+        offset_x="-150" offset_y="-150"
         count_x="10" count_y="10"
         />
   </AgentGroup>

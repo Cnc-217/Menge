@@ -16,11 +16,9 @@
 #include <map>
 
 
-
 using namespace std;
 
 namespace Menge {
-	
 	/////////////////////////////////////////////////////////////////////
 	//					Implementation of BaseScene
 	/////////////////////////////////////////////////////////////////////
@@ -32,7 +30,9 @@ namespace Menge {
 			//等待客户端的连接
 			serConn = accept(socketServer, (SOCKADDR*)& clientsocket, &len);
 
+
 			string recevied_data = Menge::Socket::socketListen(serConn);
+
 
 			//json解析
 			json j = json::parse(recevied_data);
@@ -51,6 +51,7 @@ namespace Menge {
 			if (!strcmp(command.c_str(), "Evacuate")) {
 				cout << "Evacuate mode start" << endl;
 				//下面是根据不同项目的定制化代码部分
+
 				if (Menge::PROJECTNAME == THEMEPARK) ThemePark::evacuateModeStart();
 				else if (Menge::PROJECTNAME == OLYMPIC) Olympic::evacuateModeStart();
 				json j;
@@ -63,6 +64,7 @@ namespace Menge {
 			else if (!strcmp(command.c_str(), "MatrixModify")) {
 				cout << "Modifying probability matrix " << endl;
 				//修改概率矩阵
+
 				modifyMatrix((char*)matrix.c_str());
 				j["Info"] = "Menge has receive your commend: Modify matrix";
 				string sendBuf = j.dump();
@@ -72,11 +74,13 @@ namespace Menge {
 			//如果客户端传来了FlowScene的请求，则发送人流数据和矩阵
 			else if (!strcmp(command.c_str(), "FlowScene")) {
 				cout << "FlowScene" << endl;
+
 				string sendBuf = Olympic::matrixFlowScene();
 				Menge::Socket::socketSend(sendBuf.c_str(), serConn);
 			}
 			else if (!strcmp(command.c_str(), "BusinessScene")) {
 				cout << "BusinessScene" << endl;
+
 				string sendBuf = Olympic::matrixBusinessScene();
 				Menge::Socket::socketSend(sendBuf.c_str(), serConn);
 			}
@@ -136,6 +140,7 @@ namespace Menge {
 		Menge::BaseScene::ProbMatrix->Show();
 	}
 
+
 	void BaseScene::modifyMatrix(char* matrixStr) {
 		char* temp = strtok(matrixStr, " ");
 		vector<float> vec;
@@ -161,6 +166,7 @@ namespace Menge {
 			cout << "modify matrix complete" << endl;
 			ProbMatrix->Show();
 		}
+
 	}
 
 	void BaseScene::sendMatrix(SOCKET serConn, json j) {
@@ -191,12 +197,14 @@ namespace Menge {
 		else if (name.find("ThemePark") != name.npos) {
 			PROJECTNAME = THEMEPARK;
 		}
+
 		else if (name.find("olympic") != name.npos) {
 			PROJECTNAME = OLYMPIC;
 		}
 	}
 
 	namespace ThemePark {
+
 
 		void evacuateModeStart() {
 			//0.预先定义好引导者的agentgoalset，但恐慌者的goalset无法提前定义好，解决方案是把所有人都变成goal，id匹配，然后为goalset代码添加agentgoal,目前只能手动添加
@@ -242,8 +250,10 @@ namespace Menge {
 			for (int i = 0; i < numAgent; i++) {
 				cout << i << endl;
 				Agents::BaseAgent* agent = SIMULATOR->getAgent(i);
+
 				BFSM::State* currentState = Menge::ACTIVE_FSM->getCurrentState(agent);
 				currentState->leave(agent);
+
 				BFSM::State* nextState = Menge::ACTIVE_FSM->getNode("Evacuation");
 				nextState->enter(agent);
 				Menge::ACTIVE_FSM->setCurrentState((agent), nextState->getID());
@@ -251,11 +261,13 @@ namespace Menge {
 
 			//5.编写event,event需要启动状态码
 			evacuationState = true;
+
 		}
 
 	}
 
 	namespace Olympic {
+
 		void evacuateModeStart() {
 			//0.预先定义好引导者的agentgoalset，但恐慌者的goalset无法提前定义好，解决方案是把所有人都变成goal，id匹配，然后为goalset代码添加agentgoal,目前只能手动添加
 			//1.分配agent身份 8:2 普通：恐慌 ，存入数组
@@ -299,8 +311,10 @@ namespace Menge {
 			//4.agent转移到新state
 			for (int i = 0; i < numAgent; i++) {
 				Agents::BaseAgent* agent = SIMULATOR->getAgent(i);
+
 				BFSM::State* currentState = Menge::ACTIVE_FSM->getCurrentState(agent);
 				currentState->leave(agent);
+
 				BFSM::State* nextState = Menge::ACTIVE_FSM->getNode("Evacuation");
 				nextState->enter(agent);
 				Menge::ACTIVE_FSM->setCurrentState((agent), nextState->getID());
@@ -311,37 +325,48 @@ namespace Menge {
 			evacuationState = true;
 			cout << "evacuationState" << endl;
 
+
 		}
 
-		void Shopinit() {
+
+		bool shopInit(string dir) {
 			int data[10][4] = { 0 };
 			ifstream infile;//定义读取文件流，相对于程序来说是in
-			infile.open("D:\\File\\Project\\git\\Menge-0.9.2\\examples\\Olympic\\test.txt");//打开文件
-			for (int i = 0; i < 10; i++)//定义行循环
+			infile.open(dir);//打开文件
+			if (!infile.is_open())
 			{
-				for (int j = 0; j < 4; j++)//定义列循环
-				{
-					infile >> data[i][j];//读取一个值（空格、制表符、换行隔开）就写入到矩阵中，行列不断循环进行
-				}
+				cout << "open file error!" << endl;
+				return false;
 			}
+			for (int i = 0; i < 10; i++)//定义行循环
+				for (int j = 0; j < 4; j++)//定义列循环
+					infile >> data[i][j];//读取一个值（空格、制表符、换行隔开）就写入到矩阵中，行列不断循环进行
 			infile.close();//读取完成之后关闭文件
 			int index = 0;
 			for (int i = 0; i < 10; i++)
+			{
 				for (int j = 0; j < data[i][1]; j++)
 				{
 					Shoptype shoptemp;
 					shoptemp.type = data[i][0];
 					shoptemp.serviceMax = data[i][2];
 					shoptemp.blockMax = data[i][3];
-					//cout << shoptemp.blockMax << "+" << shoptemp.serviceMax << "+" << shoptemp.type << endl;
-					//shopInfo.insert(std::map< int, Shoptype>::value_type(index, shoptemp));
-					//shopInfo.insert(pair<int, Shoptype>(index, shoptemp));
-					shopInfo.insert(make_pair(index, shoptemp));
+					shoptemp.goalSet = i;
+					shoptemp.sameSetGoalNum = data[i][1];
+					shopInfo.insert(make_pair(index, shoptemp));//插入
+
 					index++;
 				}
-			//for (int i = 0; i < 36; i++)//测试用
-				//cout << shopInfo[index].blockMax << "+" << shopInfo[i].serviceMax << "+" << shopInfo[i].type << endl;
 			}
+			for (int i = 0; i < 10; i++)
+				goalSetInfo.insert(std::map< size_t, int >::value_type(i, data[i][1]));
+			//for (int i = 0; i < 10; i++)
+				//cout<<goalSetInfo[i]<<endl;
+			return true;
+			//for (int i = 0; i < 36; i++)//测试用
+			//	cout << shopInfo[index].blockMax << "+" << shopInfo[i].serviceMax << "+" << shopInfo[i].type <<"+"<< endl;
+			}
+
 
 		string matrixFlowScene() {
 			//发送 1：36个目标点的人数 2：概率矩阵
@@ -355,9 +380,11 @@ namespace Menge {
 			j["FlowData"] = agentNumOfShop;
 			j["Matrix"] = matrixVector;
 			string sendBuf = j.dump();
+
 			return sendBuf;
 
 		}
+
 
 		string matrixBusinessScene() {
 			//发送 1：36个目标点的人数 2：概率矩阵
@@ -370,6 +397,7 @@ namespace Menge {
 			j["BusinessScene"] = agentNumOfShop;
 			j["Matrix"] = matrixVector;
 			string sendBuf = j.dump();
+
 			return sendBuf;
 		}
 

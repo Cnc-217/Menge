@@ -41,9 +41,10 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/GoalSet.h"
 #include "MengeCore/BFSM/Goals/Goal.h"
 #include "MengeCore/Core.h"
-
+#include <cstdlib> // Header file needed to use srand and rand
+#include <ctime> // Header file needed to use time
 #include <cassert>
-
+using namespace Menge::Olympic;
 namespace Menge {
 
 	namespace BFSM {
@@ -53,8 +54,43 @@ namespace Menge {
 		/////////////////////////////////////////////////////////////////////
 		
 		Goal * MatrixGoalSelector::getGoal( const Agents::BaseAgent * agent ) const {
-			assert( agent != 0x0 && "MatrixGoalSelector requires a valid base agent!" );
-			return _goalSet->getGoalFromMatrix(agent);
+			if (Menge::SIM_TIME > 0)
+			{
+				//return _goalSet->getGoalFromMatrix(agent);
+				
+				assert(agent != 0x0 && "MatrixGoalSelector requires a valid base agent!");
+				srand(time(0));
+				//int lastShopGone = agent->_shopGone.back();
+				int lastShopGone2 = agent->_shopGone2.back();
+				int travelNum = agent->_shopGoneNum;//最近走过的五个店中同类店铺数量
+
+				float randomNumber = rand() % 100 * 0.01 ;//取概率
+				if (travelNum < shopInfo[lastShopGone2].sameSetGoalNum)//如果不够最大数量
+				{	
+					if (randomNumber < 0.9)//在一个大概率下
+					{
+						if (agent->_id == 1)
+							cout << "-----------SameRegion------------" << endl;
+						return _goalSet->getGoalSameRegion(agent);//仍在本区域选择
+					}
+					else//有0.1的可能跳出去选择原算法
+					{
+						if (agent->_id == 1)
+							cout << "-----------origin------------" << endl;
+						return _goalSet->getGoalFromMatrix(agent);//原来的
+					}
+				}
+				else//如果已经走了最大的数量
+				{
+					if (agent->_id == 1)
+						cout << "-----------origin------------" << endl;
+					return _goalSet->getGoalFromMatrix(agent);//就跳出去
+				}
+				
+			}
+			else
+				return _goalSet->getGoalByID(34);//第一次选择
+			
 			
 
 		}
