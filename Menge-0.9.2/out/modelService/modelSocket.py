@@ -2,7 +2,7 @@
 import socket
 import json
 import threading
-from modelService.model import model
+from model import model
 
 
 def service(client):

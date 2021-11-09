@@ -331,12 +331,10 @@ using namespace std;namespace Menge {
 						Menge::BaseScene::ExitReagionInfo.push_back(0);
 					}
 					//初始化店铺信息
-<<<<<<< HEAD
-					bool shopInitOk = shopInit("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\test.txt");
-=======
+					bool shopInitOk = Menge::Olympic::shopInit("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\test.txt");
+
 				
-					bool shopInitOk = Olympic::shopInit("D:\\File\\Project\\git\\Menge-0.9.2\\examples\\Olympic\\test.txt");
->>>>>>> 72121f7f5cc63a289c2500eb3211bdfc6c0cab9a
+
 					if (!shopInitOk)
 						cout << " shop init fail!" << endl;
 
@@ -409,11 +407,7 @@ using namespace std;namespace Menge {
 					
 					//3.初始化socket服务端，用于疏散状态转移控制
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
-<<<<<<< HEAD
 					SOCKET socketServer = Menge::Socket::socketServerInit("10.128.227.28", 12660); 
-=======
-					SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
->>>>>>> 72121f7f5cc63a289c2500eb3211bdfc6c0cab9a
 					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
 					threadSocket.detach();
 

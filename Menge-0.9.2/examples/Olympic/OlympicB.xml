@@ -191,7 +191,7 @@
   </State>
 
   <State name="tour" final="0" >
-    <GoalSelector type="Reality" goal_set="0"/>
+    <GoalSelector type="Model" goal_set="0"/>
     <!-- <GoalSelector type="random" goal_set="0"/> -->
     <VelComponent type="road_map" file_name="graph.txt" />
    <Action type="stress" exit_behavior="cool down"

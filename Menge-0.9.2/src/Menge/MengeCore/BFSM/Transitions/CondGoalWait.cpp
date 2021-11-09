@@ -134,12 +134,7 @@ namespace Menge {
 						if (agent->_shopGone.size() == 5)
 							agent->_shopGone.pop_front();
 						agent->_shopGoneNum = 1;
-<<<<<<< HEAD
 						agent->_shopGone.push_back(goalId);
-=======
-						agent->_shopGone2.push_back(goalId);
-						
->>>>>>> 72121f7f5cc63a289c2500eb3211bdfc6c0cab9a
 						return true;
 					}
 					_statusAgents[agentId] = 1;
