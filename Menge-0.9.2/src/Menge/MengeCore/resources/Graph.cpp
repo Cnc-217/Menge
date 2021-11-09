@@ -516,7 +516,7 @@ namespace Menge {
     void Graph::countPeople(Agents::BaseAgent* agent) {
 		assert(_vCount > 0 && "Trying to operate on an empty roadmap");
 
-		float bestDistSq = 100;
+		float bestDistSq = 10000;
 		size_t bestID = -1;
 		for (size_t i = 0; i < _vCount; ++i) {
 			float testDistSq = absSq(_vertices[i].getPosition() - agent->_pos);//每一个waypoint与agent的距离
@@ -595,7 +595,8 @@ namespace Menge {
         if (!found) {
             logger << Logger::ERR_MSG << "Was unable to find a path from " << startID;
             logger << " to " << endID << "\n";
-            return distanceAndNum;
+			cout << "Was unable to find a path from " << startID << " to " << endl;
+			exit(1);
         }
 
         // Count the number of nodes in the path
@@ -614,6 +615,7 @@ namespace Menge {
             distanceAndNum[1] += number[tmp];
             next = tmp;
         }
+		
         return distanceAndNum;
 	}
 

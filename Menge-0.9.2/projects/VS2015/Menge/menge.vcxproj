@@ -177,6 +177,7 @@ xcopy "$(SolutionDir)..\..\resources\common\*.*" "$(ExeDir)" /d /y /e</Command>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ShowIncludes>false</ShowIncludes>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <AdditionalDependencies>tinyxml.lib;MengeCore.lib;MengeVis.lib;OpenGL32.Lib;GlU32.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -208,7 +209,9 @@ xcopy "$(SolutionDir)..\..\resources\common\*.*" "$(ExeDir)" /d /y /e</Command>
   <ItemGroup>
     <ClInclude Include="mengMain.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

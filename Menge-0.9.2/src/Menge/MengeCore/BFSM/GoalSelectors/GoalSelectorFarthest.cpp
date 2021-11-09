@@ -3,7 +3,7 @@
 License
 
 Menge
-Copyright © and trademark ™ 2012-14 University of North Carolina at Chapel Hill. 
+Copyright ?and trademark ?2012-14 University of North Carolina at Chapel Hill. 
 All rights reserved.
 
 Permission to use, copy, modify, and distribute this software and its documentation 
@@ -14,7 +14,6 @@ this paragraph, and the following four paragraphs appear in all copies.
 This software program and documentation are copyrighted by the University of North 
 Carolina at Chapel Hill. The software program and documentation are supplied "as is," 
 without any accompanying services from the University of North Carolina at Chapel 
-Hill or the authors. The University of North Carolina at Chapel Hill and the 
 authors do not warrant that the operation of the program will be uninterrupted 
 or error-free. The end-user understands that the program was developed for research 
 purposes and is advised not to rely exclusively on the program for any reason.

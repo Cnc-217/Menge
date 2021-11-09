@@ -52,6 +52,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include <cassert>
 #include <cmath>
 #include <ctime>
+
 using namespace Menge::Olympic;
 using namespace std;
 namespace Menge {
@@ -236,37 +237,8 @@ namespace Menge {
 		Goal* GoalSet::getGoalFromMatrix(const Agents::BaseAgent* agent) {
 			// TODO: Change this to use _goalIDs as the key interface of available goals
 			Goal* tgtGoal = 0x0;
-			if (PROJECTNAME == BUSINESSREALITY) {
-				if (SIM_TIME > 0) {
-					int shopIDNow = ACTIVE_FSM->getNode(0)->getGoal(agent->_id)->_id;//agent当前的goal的id
-					float weight = BusinessReality::ProbGoals->_sumWeightMatrix->Point(agent->_class, shopIDNow);
-					LARGE_INTEGER seed;
-					QueryPerformanceFrequency(&seed);
-					QueryPerformanceCounter(&seed);
-					srand(seed.QuadPart);//取硬件计时器，精度更高
-					float TGT_WEIGHT = weight * (rand() % 100 * 0.01);//_totalWeight
-					std::map< size_t, Goal* >::const_iterator itr = _goals.find(_goalIDs[0]);
-					assert(itr != _goals.end() && "A goalID does not map to a goal");
-					tgtGoal = itr->second;
-					float accumWeight = BusinessReality::ProbGoals->Point(agent->_class, shopIDNow, tgtGoal->_id / 10, tgtGoal->_id % 10);//这里用矩阵
-					for (size_t i = 1; i < _goalIDs.size(); ++i) {
-						if (accumWeight > TGT_WEIGHT) break;
-						itr = _goals.find(_goalIDs[i]);
-						assert(itr != _goals.end() && "A goalID does not map to a goal");
-						tgtGoal = itr->second;
-						accumWeight += BusinessReality::ProbGoals->Point(agent->_class, shopIDNow, tgtGoal->_id / 10, tgtGoal->_id % 10);
-					}
-				}
 
-				else {
-					tgtGoal = GoalSet::getRandomWeightedGoal();
-				}
-				
-			
-				return tgtGoal;
-			}
-
-			else if (PROJECTNAME == THEMEPARK || PROJECTNAME == OLYMPIC) {
+			if (PROJECTNAME == OLYMPIC) {
 				int goalIDNow = ACTIVE_FSM->getNode("tour")->getGoal(agent->_id)->_id;//agent当前的goal的id
 				int goalSetNow = shopInfo[goalIDNow].goalSet;//agent当前的goalset的id	
 				//weight权重和的值如下
@@ -284,8 +256,6 @@ namespace Menge {
 					accumWeight += BaseScene::ProbMatrix->Point(goalIDNow, (tgtGoal->_id));
 					if (accumWeight > TGT_WEIGHT) break;
 				}
-				if (agent->_id == 1)
-					cout << "about goal  " << goalIDNow << "+" << goalSetNow << "+" << tgtGoal->_id << "+" << shopInfo[tgtGoal->_id].goalSet << endl;
 				return tgtGoal;
 
 
@@ -440,5 +410,33 @@ namespace Menge {
 				return tgtGoal;
 			}
 		}
+
+
+		Goal* GoalSet::getGoalFromProbs(const Agents::BaseAgent* agent, vector<float>& probs) {
+			Goal* tgtGoal = 0x0;
+
+			if (PROJECTNAME == OLYMPIC) {
+				
+				//weight权重和的值如下
+				float weight = 0;
+				for (float value : probs) weight += value;
+				LARGE_INTEGER seed;
+				QueryPerformanceFrequency(&seed);
+				QueryPerformanceCounter(&seed);
+				srand(seed.QuadPart);//取硬件计时器，精度更高
+				float TGT_WEIGHT = weight * ((rand() % 100) * 0.01);//概率和为weight
+				float accumWeight = 0;
+				std::map< size_t, Goal* >::const_iterator itr;
+				for (size_t i = 0; i < _goalIDs.size(); i++) {
+					itr = _goals.find(_goalIDs[i]);
+					tgtGoal = itr->second;
+					accumWeight += probs[i];
+					if (accumWeight > TGT_WEIGHT) break;
+				}
+			}
+			cout << agent->_id << " choose: " << tgtGoal->getID() << endl;
+			return tgtGoal;
+		}
+
 	}	// namespace BFSM 
 }	// namespace Menge

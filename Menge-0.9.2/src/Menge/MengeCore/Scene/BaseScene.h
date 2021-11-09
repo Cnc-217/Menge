@@ -7,7 +7,6 @@
 #include <string>
 #include <winsock.h>
 
-#pragma comment(lib, "ws2_32.lib")
 
 
 /*!
@@ -30,11 +29,6 @@ namespace Menge {
 
     }
 
-    namespace ThemePark {
-        void evacuateModeStart();
-    }
-
-
     namespace Olympic {
 
         void evacuateModeStart();
@@ -42,7 +36,6 @@ namespace Menge {
         string matrixFlowScene();
 
         string matrixBusinessScene();
-
 
 		bool shopInit(string dir);
 

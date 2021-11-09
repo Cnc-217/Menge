@@ -19,12 +19,6 @@ namespace Menge {
 
         SOCKET socketServerInit(char* ip, int host);
 
-        //Business的socket交互
-        int* socketGetCouponBusiness(char* message);
-
-        //BusinessReality的socket交互
-        int* socketGetCouponBusinessReality(char* message);
-
         void socketSend(const char* str, SOCKET socket);
 
         string socketListen(SOCKET socket);

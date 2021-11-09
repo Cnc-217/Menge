@@ -11,6 +11,7 @@
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorSet.h"
 #include "MengeCore/Socket.h"
 
+
 namespace Menge {
 
 	namespace BFSM {

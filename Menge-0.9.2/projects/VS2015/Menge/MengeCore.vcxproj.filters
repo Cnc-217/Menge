@@ -148,9 +148,6 @@
     <Filter Include="Header Files\Scene">
       <UniqueIdentifier>{5eeea1af-ec90-4cb3-ade2-1ac05de1f449}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Scene">
-      <UniqueIdentifier>{54aac16a-87bd-4ddb-b629-127f75f2285c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Json">
       <UniqueIdentifier>{5936ab03-1e0b-4973-b619-8eb735103f2d}</UniqueIdentifier>
     </Filter>
@@ -159,6 +156,9 @@
     </Filter>
     <Filter Include="Header Files\BFSM\Actions\Stress">
       <UniqueIdentifier>{30b926b8-ed2b-499c-b307-2858a499717c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene">
+      <UniqueIdentifier>{fbbccb3b-133c-476c-b10f-c12b1ad4a52e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -666,9 +666,6 @@
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\CondGoalWait.cpp">
       <Filter>Source Files\BFSM\Transitions</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Menge\MengeCore\Scene\Business.cpp">
-      <Filter>Source Files\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorReality.cpp">
       <Filter>Source Files\BFSM\GoalSelectors</Filter>
     </ClCompile>
@@ -686,9 +683,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorNearAgent.cpp">
       <Filter>Source Files\BFSM\GoalSelectors</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Menge\MengeCore\Scene\BaseScene.cpp">
-      <Filter>Source Files\Scene</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorEvacuation.cpp">
       <Filter>Source Files\BFSM\GoalSelectors</Filter>
@@ -722,6 +716,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorModel.cpp">
       <Filter>Source Files\BFSM\GoalSelectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\Scene\BaseScene.cpp">
+      <Filter>Source Files\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1348,9 +1345,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\CondGoalWait.h">
       <Filter>Header Files\BFSM\Transitions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\Menge\MengeCore\Scene\Business.h">
-      <Filter>Header Files\Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Menge\MengeCore\Socket.h">
       <Filter>Header Files</Filter>

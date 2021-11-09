@@ -29,6 +29,7 @@
 #include "MengeCore/Runtime/ReadersWriterLock.h"
 
 #include <map>
+#include <vector>
 
 namespace Menge {
 
@@ -164,6 +165,8 @@ namespace Menge {
 			Goal * getGoalNearly(const Agents::BaseAgent* agent);
 
 			Goal* getGoalSameRegion(const Agents::BaseAgent* agent);
+
+			Goal* getGoalFromProbs(const Agents::BaseAgent* agent,std::vector<float>& probs);
 
 			/*!
 			 *	@brief		Locks the goal set for a read-only operations.
