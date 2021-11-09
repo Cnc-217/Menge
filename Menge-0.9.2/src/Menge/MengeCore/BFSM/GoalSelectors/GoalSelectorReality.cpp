@@ -60,12 +60,12 @@ namespace Menge {
 				
 				assert(agent != 0x0 && "MatrixGoalSelector requires a valid base agent!");
 				srand(time(0));
-				//int lastShopGone = agent->_shopGone.back();
-				int lastShopGone2 = agent->_shopGone2.back();
+				int lastShopGone = agent->_shopGone.back();
+				//int lastShopGone2 = agent->_shopGone2.back();
 				int travelNum = agent->_shopGoneNum;//最近走过的五个店中同类店铺数量
 
 				float randomNumber = rand() % 100 * 0.01 ;//取概率
-				if (travelNum < shopInfo[lastShopGone2].sameSetGoalNum)//如果不够最大数量
+				if (travelNum < shopInfo[lastShopGone].sameSetGoalNum)//如果不够最大数量
 				{	
 					if (randomNumber < 0.9)//在一个大概率下
 					{

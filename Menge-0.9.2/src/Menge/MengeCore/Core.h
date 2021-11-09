@@ -140,6 +140,8 @@ namespace Menge {
 		extern MENGE_API std::map<size_t, int>  goalSetInfo;//储存goalset内有多少个goal
 		extern MENGE_API std::map< size_t, bool >	_reachedAgents;//存储agent是否到达目标点
 		extern MENGE_API std::map<size_t, int > nowReachTimes;//储存agent在当前goalset的不同goal的次数
+		extern MENGE_API std::vector<int>   verticesCanGo;
+
 	}
 
 	namespace BaseScene {

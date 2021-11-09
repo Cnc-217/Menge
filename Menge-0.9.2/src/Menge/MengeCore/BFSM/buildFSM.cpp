@@ -420,9 +420,10 @@ namespace Menge {
 						Menge::BaseScene::ExitReagionInfo.push_back(0);
 					}
 					//初始化店铺信息
-					bool shopInitOk = shopInit("..\\examples\\Olympic\\test.txt");
+					bool shopInitOk = shopInit("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\test.txt");
 					if (!shopInitOk)
 						cout << " shop init fail!" << endl;
+
 					vector<size_t> tmp0 = { 10,10 };
 					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
 
@@ -492,7 +493,7 @@ namespace Menge {
 					//int  myIp = getIp2();
 					//3.初始化socket服务端，用于疏散状态转移控制
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
-					SOCKET socketServer = Menge::Socket::socketServerInit("10.128.194.161", 12660); 
+					SOCKET socketServer = Menge::Socket::socketServerInit("10.128.227.28", 12660); 
 					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
 					threadSocket.detach();
 

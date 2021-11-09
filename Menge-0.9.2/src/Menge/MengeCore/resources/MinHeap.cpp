@@ -77,7 +77,7 @@ namespace Menge {
 	//////////////////////////////////////////////////////////////////////////////////////
 
 	unsigned int AStarMinHeap::pop() {
-		unsigned int returnVal = _heap[ _minIdx ];
+		unsigned int returnVal = _heap[ _minIdx ];//returnVal是一个索引值
 		_inHeap[ returnVal ] = false;
 		_visited[ returnVal ] = true;
 		// Swap into this slot as necessary
@@ -112,7 +112,7 @@ namespace Menge {
 
 	//////////////////////////////////////////////////////////////////////////////////////
 
-	void AStarMinHeap::changeF( unsigned int val, float key ) {
+	void AStarMinHeap::changeF( unsigned int val, float key ) {//changeF( node, value );
 		// Only has an impact if this introduces a new minimum
 		if ( key < _minKey ) {
 			_minKey = key;

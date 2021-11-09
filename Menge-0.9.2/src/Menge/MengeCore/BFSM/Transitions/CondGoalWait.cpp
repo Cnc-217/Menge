@@ -131,10 +131,10 @@ namespace Menge {
 				{
 					if (shopType == 4)//针对出入口  如果到达出入口  不等待直接选择下一个goal
 					{
-						if (agent->_shopGone2.size() == 5)
-							agent->_shopGone2.erase(agent->_shopGone2.begin());
+						if (agent->_shopGone.size() == 5)
+							agent->_shopGone.pop_front();
 						agent->_shopGoneNum = 1;
-						agent->_shopGone2.push_back(goalId);
+						agent->_shopGone.push_back(goalId);
 						return true;
 					}
 					_statusAgents[agentId] = 1;
@@ -152,7 +152,15 @@ namespace Menge {
 					shopInfo[goalId].serviceQ.push(agentId);//ID插入服务队尾；
 					_lock.releaseWrite();
 					if (agentId == 1)
-						cout << "1-2" << "+" << shopInfo[goalId].blockMax << "+" << shopInfo[goalId].serviceMax << endl;
+					{
+						cout << "1-2" << "+" << shopInfo[goalId].blockMax << "+" << shopInfo[goalId].serviceMax << "+ cango 2 :" << verticesCanGo[75] << endl;
+						/*if (Menge::SIM_TIME > 1000 && Menge::SIM_TIME < 2000)
+						{
+							verticesCanGo[75] = 0;
+							cout << "time is : " << Menge::SIM_TIME << "+ cango 2 :" << verticesCanGo[75] << endl;
+						}*/
+					}
+						
 				}
 				else
 				{//进阻塞队列之前先看是否达到上限  是则直接离开
@@ -180,16 +188,16 @@ namespace Menge {
 					_lock.lockWrite();
 					shopInfo[goalId].serviceQ.pop();	//agent出服务队列;
 					_lock.releaseWrite();
-					int lastShopGone = agent->_shopGone2.back();
-					if (agent->_shopGone2.size() == 5)
-						agent->_shopGone2.erase(agent->_shopGone2.begin());
-					agent->_shopGone2.push_back(goalId);
+					int lastShopGone = agent->_shopGone.back();
+					if (agent->_shopGone.size() == 5)
+						agent->_shopGone.pop_front();
+					agent->_shopGone.push_back(goalId);
 					if (shopInfo[goalId].goalSet == shopInfo[lastShopGone].goalSet)
 						agent->_shopGoneNum++;
 					else
 						agent->_shopGoneNum = 1;
 					if (agentId == 1)
-						cout << "2-0" <<"+"<< agent->_shopGone2.front() << endl;
+						cout << "2-0" <<"+"<< agent->_shopGone.front() << endl;
 					return true;					//出函数
 				};
 			}; break;

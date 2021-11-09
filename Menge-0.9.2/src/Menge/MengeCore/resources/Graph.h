@@ -30,7 +30,6 @@
 #include "MengeCore/resources/Resource.h"
 #include "MengeCore/Runtime/ReadersWriterLock.h"
 #include<vector>
-
 namespace Menge {
 
 	// Forward declarations
@@ -125,6 +124,9 @@ namespace Menge {
 		 */
 		inline size_t getVertexCount() const { return _vCount; }
 		inline Graph* getGraphLoad() const { return graphLoad; }
+
+
+
 		/*!
 		 *	@brief		Returns a const pointer to the ith vertex.
 		 *
@@ -210,7 +212,7 @@ namespace Menge {
 		 */
 		GraphVertex *	_vertices;
 
-		vector<int>   _verticesCanGo;
+
 		/*!
 		 *	@brief		Initializes the heap memory based on current
 		 *				graph state.
