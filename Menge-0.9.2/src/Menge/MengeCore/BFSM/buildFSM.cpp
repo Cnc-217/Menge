@@ -67,31 +67,22 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/Goals/Goal.h"
 #include "MengeCore/BFSM/GoalSet.h"
 
-#include "MengeCore/Scene/Business.h"
 #include "MengeCore/Scene/BaseScene.h"
 #include "MengeCore/Socket.h"
 #include <vector>
 #include <thread>
 
-#include <stdio.h> 
-
-using namespace Menge::Olympic;
-using namespace Menge::Socket;
-namespace Menge {
+using namespace std;namespace Menge {
 
 	namespace BFSM {
 		/////////////////////////////////////////////////////////////////////
 		//                   Implementation of buildFSM
 		/////////////////////////////////////////////////////////////////////
 
-		using namespace std;
-
-
 		FSM * buildFSM( FSMDescrip & fsmDescrip, Agents::SimulatorInterface * sim, bool VERBOSE ) {
 
 			//提取项目名
 			BaseScene::projectNameExtract(fsmDescrip._behaviorFldr);
-			cout << fsmDescrip._behaviorFldr << endl;
 			// Acquire the spatial query instance
 			SPATIAL_QUERY = sim->getSpatialQuery();
 
@@ -286,20 +277,6 @@ namespace Menge {
 			logger << Logger::INFO_MSG << "There are " << fsm->getTaskCount();
 			logger << " registered tasks.\n";
 			fsm->doTasks();
-
-			if (PROJECTNAME == EVACUATION) {
-				//初始化两个vector
-				for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++) {
-					Menge::BaseScene::ExitAgentInfo.push_back(1000);
-				}
-				for (int i = 0; i < fsm->getGoalSet(0)->size(); i++) {
-					Menge::BaseScene::ExitReagionInfo.push_back(0);
-				}
-
-				vector<size_t> tmp = { 15,8,5,5,15,10 };
-				Menge::BaseScene::ExitReagionCapacity.assign(tmp.begin(), tmp.end());
-				cout << "It's Evacuation Simulation" << endl;
-			}
 			
 			//	5. Initialize all agents
 			if ( VERBOSE ) logger << Logger::INFO_MSG << "Initializing agents:\n";
@@ -343,73 +320,7 @@ namespace Menge {
 
 
 			switch (PROJECTNAME) {
-				case BUSINESS: {
-					cout << "It's Bussiness Simulation" << endl;
-					Business::fsmToMartix();
-					break; 
-				}
-				case BUSINESSLEARNING: {
-					cout << "It's BussinessLearning Simulation" << endl;
-					Business::fsmToMartix();
-					break; 
-				}
-				case BUSINESSREALITY: {
-					cout << "It's BussinessReality Simulation" << endl;
-					//1.socket接收python的人流信息 2.生成初始矩阵
-					//1. socket接受人流信息
-					//2. 矩阵初始化：
-					BusinessReality::martixInit();
-					std::cout << "===================================" << std::endl;
-					std::cout << "ProbGoals Matrix:" << std::endl;
-					BusinessReality::ProbGoals->Show();
-					std::cout << "===================================" << std::endl;
-					break;
-					
-				}
-				case EVACUATION: {
-					break;
-				}
-				case THEMEPARK: {
-					//1.初始化两个vector
-					for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++) {
-						Menge::BaseScene::ExitAgentInfo.push_back(1000);//默认值设置为1000
-					}
-					for (int i = 0; i < fsm->getGoalSet(1)->size(); i++) {
-						Menge::BaseScene::ExitReagionInfo.push_back(0);
-					}
-
-					vector<size_t> tmp0 = { 10,10 };
-					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
-
-					//2.初始化概率矩阵
-					vector<vector<float>> tmp = {
-						{0, 0, 0.05, 0, 0.16, 0, 0.79, 0, 0, 0},
-						{0, 0, 0.19, 0.37, 0, 0.12, 0.24, 0.07, 0, 0},
-						{0, 0.26, 0, 0.40, 0, 0.10, 0.12, 0.11, 0, 0},
-						{0, 0.13, 0.20, 0, 0.08, 0.30, 0.13, 0, 0, 0.16},
-						{0, 0.17, 0, 0.62, 0, 0.11, 0.11, 0, 0, 0},
-						{0, 0.10, 0.08, 0.26, 0, 0, 0, 0.09, 0.12, 0.35},
-						{0, 0.21, 0.15, 0.54, 0, 0.10, 0, 0, 0, 0 },
-						{0, 0.25, 0.19, 0.16, 0, 0.17, 0, 0, 0.10, 0.13},
-						{0, 0, 0, 0, 0, 0.51, 0, 0.20, 0, 0.29},
-						{0, 0, 0, 0, 0, 0, 0, 0, 0, 1} };
-					for (int i = 0; i < 10; i++) {
-						for (int j = 0; j < 10; j++) {
-							BaseScene::ProbMatrix->SetPoint(i,j,tmp[i][j]);
-						}
-					}
-					BaseScene::ProbMatrix->Show();
-					BaseScene::ProbMatrix->InitSumWeight();
-
-					//3.初始化socket服务端，用于疏散状态转移控制
-					SOCKET socketServer = Menge::Socket::socketServerInit("127.0.0.1",12660);
-					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
-					threadSocket.detach();
-
-					cout << "It's ThemePark Simulation" << endl;
-					break;
-				}
-				
+			
 				case OLYMPIC: {
 					//1.初始化两个vector
 					for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++) {
@@ -420,7 +331,12 @@ namespace Menge {
 						Menge::BaseScene::ExitReagionInfo.push_back(0);
 					}
 					//初始化店铺信息
+<<<<<<< HEAD
 					bool shopInitOk = shopInit("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\test.txt");
+=======
+				
+					bool shopInitOk = Olympic::shopInit("D:\\File\\Project\\git\\Menge-0.9.2\\examples\\Olympic\\test.txt");
+>>>>>>> 72121f7f5cc63a289c2500eb3211bdfc6c0cab9a
 					if (!shopInitOk)
 						cout << " shop init fail!" << endl;
 
@@ -490,12 +406,22 @@ namespace Menge {
 						exit(1);
 					}
 					BaseScene::ProbMatrix->InitSumWeight();
-					//int  myIp = getIp2();
+					
 					//3.初始化socket服务端，用于疏散状态转移控制
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
+<<<<<<< HEAD
 					SOCKET socketServer = Menge::Socket::socketServerInit("10.128.227.28", 12660); 
+=======
+					SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
+>>>>>>> 72121f7f5cc63a289c2500eb3211bdfc6c0cab9a
 					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
 					threadSocket.detach();
+
+					//初始化socket客户端，发出数据同步请求，接收仿真参数，更新仿真参数，最后进入监听状态
+					//SOCKET socketClient = Menge::Socket::socketClientInit("10.28.195.233", 12660);
+					//Menge::Olympic::parameterInit(socketClient);
+					//thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
+					//threadSocket.detach();
 
 					cout << "It's OLYMPIC Simulation" << endl;
 					break;

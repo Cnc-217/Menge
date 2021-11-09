@@ -265,7 +265,7 @@ namespace Menge {
 			EVENT_SYSTEM->evaluateEvents();
 			int agtCount = (int)this->_sim->getNumAgents();
 			size_t exceptionCount = 0;
-			#pragma omp parallel for reduction(+:exceptionCount)
+			//#pragma omp parallel for reduction(+:exceptionCount)
 			for ( int a = 0; a < agtCount; ++a ) {
 				Agents::BaseAgent * agt = this->_sim->getAgent( a );
 				try {

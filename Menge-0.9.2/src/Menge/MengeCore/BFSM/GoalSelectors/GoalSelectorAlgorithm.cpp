@@ -49,7 +49,7 @@ namespace Menge {
 			if (_flag == false) {
 				cout << "AlgorithmGoalSelector start, AlgorithmID is: " << _algorithmID << endl;
 				//ÅÐ¶ÏÏµÍ³´íÎó
-				assert(agent != 0x0 && "AlgorithmGoalSelector requires a valid base agent!");
+				//assert(agent != 0x0 && "AlgorithmGoalSelector requires a valid base agent!");
 				const size_t GOAL_COUNT = _goalSet->size();
 				if (GOAL_COUNT == 0) {
 					logger << Logger::ERR_MSG;

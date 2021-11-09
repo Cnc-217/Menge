@@ -111,7 +111,7 @@ namespace Menge {
 						for (size_t i = 0; i < ExitReagionInfo.size(); i++)
 						{
 							populationExit += ExitReagionInfo[i];//所有出口的总人数
-							if (i > 0)populationCapacity += ExitReagionInfo[i] / ExitReagionCapacity[i];//所有出口的总容量
+							populationCapacity += ExitReagionInfo[i] / ExitReagionCapacity[i];//所有出口的总容量
 						}
 						cout << "xxx wrong" << endl;
 						//下面计算优先级
@@ -121,7 +121,6 @@ namespace Menge {
 							priorityMax = 0; //优先级算法得到的优先级越大越好
 							priorityTmp = 0;
 							for (int j = 0; j < NUM_GOAL; j++) {//遍历每个goal,计算优先级
-								
 								if (_algorithmID == 0) {
 
 									priorityTmp = 1 / distanceVec[i][j];
@@ -136,7 +135,10 @@ namespace Menge {
 								}
 								else if (_algorithmID == 3) {
 									if (populationExit == 0 || pathPeopleNum[i] == 0) priorityTmp = 2 - distanceVec[i][j] / distanceSum[i];
-									else priorityTmp = 3 * (1 - (ExitReagionInfo[j] / populationCapacity) / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]) + (1 - peopleNumVec[i][j] / pathPeopleNum[i]);
+									else {
+										if(populationCapacity==0) priorityTmp = 3 + (1 - distanceVec[i][j] / distanceSum[i]) + (1 - peopleNumVec[i][j] / pathPeopleNum[i]);
+										else priorityTmp = 3 * (1 - (ExitReagionInfo[j] / populationCapacity) / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]) + (1 - peopleNumVec[i][j] / pathPeopleNum[i]);
+									}
 								}
 								else {
 									cout << "AlgorithmID wrong" << endl;

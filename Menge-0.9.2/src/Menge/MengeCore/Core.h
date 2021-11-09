@@ -30,7 +30,7 @@
 #include "MengeCore/Agents/BaseAgent.h"
 #include <string>
 #include <map>
-#include<queue>
+#include <queue>
 #define BUSINESS 1
 #define EVACUATION 2
 #define BUSINESSREALITY 3
@@ -96,29 +96,6 @@ namespace Menge {
 	extern MENGE_API EventSystem * EVENT_SYSTEM;
 
 	extern MENGE_API size_t PROJECTNAME;
-
-	
-
-	namespace Business {
-		extern MENGE_API MatrixDim2* ProbStatesNormal;//第一维：顾客类型；第二维：选择state类型；值：概率
-		extern MENGE_API MatrixDim2* ProbStatesCoupon;
-		extern MENGE_API MatrixDim3* ProbGoalsNormal;//第一维：顾客类型；第二维：当前state类型；第三维：店铺id；值：选择店铺的概率
-		extern MENGE_API MatrixDim3* ProbGoalsCoupon;
-	}
-
-	namespace BusinessReality {
-		extern MENGE_API MatrixDim4* ProbGoals;
-		//第一维：顾客类型；第二维：当前的30家店铺；第三维：店铺类型；第四维：店铺id；值：选择店铺的概率
-	}
-
-
-	namespace ThemePark {
-		//三类人群的数组
-		extern MENGE_API std::vector<Agents::BaseAgent*> leaderAgentSet;
-		extern MENGE_API std::vector<Agents::BaseAgent*> panicAgentSet;
-		extern MENGE_API std::vector<Agents::BaseAgent*> normalAgentSet;
-		extern MENGE_API bool evacuationState; //控制event疏散部分状态启动和关闭
-	}
 
 	namespace Olympic {
 		//三类人群的数组

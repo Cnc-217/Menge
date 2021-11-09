@@ -136,8 +136,8 @@ namespace Menge {
 			p[i] = new float[cols_num];//为p[i]进行动态内存分配，大小为cols
 		}
 	}
-
-	//声明一个值全部为value的矩阵
+	 
+	//声明一个值全部为value的矩阵 
 	MatrixDim2::MatrixDim2(int rows, int cols, float value)
 	{
 		_sumWeight = new std::vector<float>();

@@ -379,6 +379,7 @@ xcopy /y $(TargetPath) $(ExeDir)
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressTask.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorAlgorithm.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorEvacuation.cpp" />
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorModel.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorNearAgent.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorReality.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Goals\GoalAgent.cpp" />
@@ -387,7 +388,6 @@ xcopy /y $(TargetPath) $(ExeDir)
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\CondLeaderGoal.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\MatrixMy.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\Scene\BaseScene.cpp" />
-    <ClCompile Include="..\..\..\src\Menge\MengeCore\Scene\Business.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\Socket.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -474,6 +474,7 @@ xcopy /y $(TargetPath) $(ExeDir)
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressManager.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressTask.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorEvacuation.h" />
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorModel.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorNearAgent.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorReality.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Goals\GoalAgent.h" />
@@ -616,7 +617,6 @@ xcopy /y $(TargetPath) $(ExeDir)
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorAlgorithm.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\MatrixMy.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\Scene\BaseScene.h" />
-    <ClInclude Include="..\..\..\src\Menge\MengeCore\Scene\Business.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\Socket.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
@@ -630,6 +630,5 @@ xcopy /y $(TargetPath) $(ExeDir)
     <ResourceCompile Include="MengeCore.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

@@ -31,6 +31,7 @@
 #include "MengeCore/Runtime/ReadersWriterLock.h"
 
 #include <map>
+#include <mutex>
 
 // forward declaration
 class TiXmlElement;

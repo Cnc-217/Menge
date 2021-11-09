@@ -64,27 +64,6 @@ namespace Menge {
 
 	size_t PROJECTNAME = 0;
 
-
-	namespace Business {
-		MatrixDim2* ProbStatesNormal = new MatrixDim2(3, 3, 1);//第一维：顾客类型；第二维：选择state类型；值：概率
-		MatrixDim2* ProbStatesCoupon = new MatrixDim2(3, 3, 1);
-		MatrixDim3* ProbGoalsNormal = new MatrixDim3(3, 3, 10, 1);//第一维：顾客类型；第二维：当前state类型；第三维：店铺id0~9；值：选择店铺的概率
-		MatrixDim3* ProbGoalsCoupon = new MatrixDim3(3, 3, 10, 1);
-	}
-
-	namespace BusinessReality {
-		MatrixDim4* ProbGoals = new MatrixDim4(3, 30, 3, 10, 1);
-		//第一维：顾客类型；第二维：当前的30家店铺；第三维：店铺类型；第四维：店铺id；值：选择店铺的概率
-	}
-
-	
-	namespace ThemePark {
-		std::vector<Agents::BaseAgent*> leaderAgentSet;
-		std::vector<Agents::BaseAgent*> panicAgentSet;
-		std::vector<Agents::BaseAgent*> normalAgentSet;
-		bool evacuationState = false;
-	}
-
 	namespace Olympic {
 		std::vector<Agents::BaseAgent*> leaderAgentSet;
 		std::vector<Agents::BaseAgent*> panicAgentSet;

@@ -51,13 +51,11 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/Transitions/Transition.h"
 #include "MengeCore/Agents/SimulatorInterface.h"
 #include "MengeCore/Agents/BaseAgent.h"
-#include "MengeCore/Scene/Business.h"
 #include "MengeCore/Socket.h"
 
 #include "MengeCore/Core.h"
 #include "MengeVis/Viewer/GLViewer.h"
-#include <winsock.h>
-#pragma comment(lib, "ws2_32.lib")
+
 
 #include <sstream>
 
@@ -67,15 +65,6 @@ namespace Menge {
 
 	using namespace std;
 	using namespace Menge::BFSM;
-
-	
-	//extern const MatrixDim2* Business::ProbStatesNormal;
-	//extern const MatrixDim2* Business::ProbStatesCoupon;
-	//extern const MatrixDim3* Business::ProbGoalsNormal;
-	//extern const MatrixDim3* Business::ProbGoalsCoupon;
-	extern char* Business::dataInit();
-	extern int* Socket::socketGetCouponBusiness(char* message);
-	extern int* Socket::socketGetCouponBusinessReality(char* message);
 
 	float TimeReachedTrigger::_timeSimulate = 10;
 	float TimeReachedTrigger::_lastTimestamp = 0;
@@ -141,80 +130,11 @@ namespace Menge {
 		if ((Menge::SIM_TIME - _lastTimestamp) > _timeSimulate) {
 			cout << "trigger condition met at :"<<Menge::SIM_TIME << endl;
 			_lastTimestamp = Menge::SIM_TIME;
-			MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;
+			//MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;
 			cout << "pause" << endl;
-
-
-			if (PROJECTNAME ==BUSINESS || PROJECTNAME == BUSINESSLEARNING) {
-				//下面需要0.初始化数据 1.socket发送数据 2.socket接收python动作 3.根据动作调用函数改变概率矩阵 4.刷新fsm概率
-				//0.初始化需要发送的数据：各店铺人数
-				//char* message = Business::dataInit();
-				char* message = Business::dataInit();
-
-				//1.socket发送数据 2.接收数据
-				int* res = Socket::socketGetCouponBusiness(message);
-				memset(message, 0, sizeof(message) / sizeof(char));
-				
-
-				//3.根据收到的动作，调用函数改变概率矩阵
-				
-				//[[0,0,1],[0,0,5],3] 第三类店铺，第3类人群，5号店铺，力度3; 注意店铺号id为1-10
-				int typeAgent = 0;
-				int shopID = 0;
-				int strength = 0;
-				int typeShop = 0;//0 1 2
-				for (int i = 0; i < 7; i++) {
-					cout << i << ":" << res[i] << endl;
-					if (i < 3 && res[i]!=0) {
-						typeShop = i;
-					}
-					else if (i < 6 && res[i]!=0) {
-						typeAgent = i - 3;
-						shopID = typeShop * 10 + res[i]-1;
-					}
-					else {
-						strength = res[i];
-					}
-				}
-				cout << "typeAgent" << typeAgent << "shopID"<< shopID<< "strength"<< strength << endl;
-				//矩阵概率聚集
-				Business::ProbGoalsCoupon->Aggregate(typeAgent, shopID, strength);
-				//cout << "ProbStatesNormal and ProbStatesCoupon" << endl;
-				//Business::ProbStatesNormal->Show();
-				//Business::ProbStatesCoupon->Show();
-				//cout << "ProbGoalsNormal and ProbGoalsCoupon" << endl;
-				//Business::ProbGoalsNormal->Show();
-				Business::ProbGoalsCoupon->Show();
-				//根据接收到的信息修改矩阵概率
-				Business::MartixToFsm();
-
-				
-
-			}
-			else if (PROJECTNAME ==BUSINESSREALITY) {
-				//0.初始化需要发送的数据  1.初始化socket 2.发送数据给python 3.接收action 4.将action转换为概率矩阵
-				//0 初始化发送的数据
-				char* message = BusinessReality::dataInit();
-				cout << "message: " << message << endl;
-
-				//1 2 3 初始化socket 发送、接收数据
-				int* res = Socket::socketGetCouponBusinessReality(message);
-				memset(message, 0, sizeof(message) / sizeof(char));
-				cout << "typeAgent: " << res[0] << "  shopID:  " << res[1] << "  strength: " << res[2] << endl;
-
-				//4 将action转换为概率矩阵
-				BusinessReality::ProbGoals->Aggregate(res[0], res[1], res[2]);
-				//BusinessReality::ProbGoals->Show();
-				//根据接收到的信息修改矩阵概率
-
-				
-
-			}
-			else {	
-			}
 			
 			//重新开始
-			MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;
+			//MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;
 			cout << "Timestamp: " << _lastTimestamp << endl;
 			return true;
 		}

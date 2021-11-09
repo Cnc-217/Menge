@@ -1,34 +1,27 @@
-
-
 #ifndef __Socket_H__
 #define	__Socket_H__
+#include <string>
 #include <winsock.h>
 #pragma comment(lib, "ws2_32.lib")
-#include <iostream>
-#include <string>
-#include <Iphlpapi.h>
-#pragma comment(lib,"Iphlpapi.lib")
+
+
 /*!
  * @namespace Menge
  * @brief	Socket
  */
-namespace Menge {
-    namespace Socket {
+using namespace std;
 
+namespace Menge {
+
+    namespace Socket {
 
         SOCKET socketClientInit(char* ip,int host);
 
         SOCKET socketServerInit(char* ip, int host);
 
-        //Business的socket交互
-        int* socketGetCouponBusiness(char* message);
+        void socketSend(const char* str, SOCKET socket);
 
-        //BusinessReality的socket交互
-        int* socketGetCouponBusinessReality(char* message);
-
-		int getIpinfo();
-		int getIp();
-		int getIp2();
+        string socketListen(SOCKET socket);
 
     }
 }	// namespace Menge
