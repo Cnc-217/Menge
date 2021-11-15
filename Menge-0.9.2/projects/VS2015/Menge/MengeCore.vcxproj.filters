@@ -50,9 +50,6 @@
     <Filter Include="Source Files\BFSM\VelComponents">
       <UniqueIdentifier>{a6e6d0f4-cc55-4033-a217-c4bd8d84584e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\BFSM\Tasks">
-      <UniqueIdentifier>{e955d6aa-701b-408f-b2ed-450f48302c39}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\BFSM\Goals">
       <UniqueIdentifier>{65499c4b-d50e-4fe9-b66b-5cd2e4ea48db}</UniqueIdentifier>
     </Filter>
@@ -159,6 +156,9 @@
     </Filter>
     <Filter Include="Source Files\Scene">
       <UniqueIdentifier>{fbbccb3b-133c-476c-b10f-c12b1ad4a52e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BFSM\Transitions\Tasks">
+      <UniqueIdentifier>{e955d6aa-701b-408f-b2ed-450f48302c39}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -448,13 +448,13 @@
       <Filter>Source Files\BFSM\VelComponents</Filter>
     </ClCompile>
     <ClCompile Include="$(SrcDir)\mengeCore\BFSM\Tasks\NavMeshLocalizerTask.cpp">
-      <Filter>Source Files\BFSM\Tasks</Filter>
+      <Filter>Source Files\BFSM\Transitions\Tasks</Filter>
     </ClCompile>
     <ClCompile Include="$(SrcDir)\mengeCore\BFSM\Tasks\Task.cpp">
-      <Filter>Source Files\BFSM\Tasks</Filter>
+      <Filter>Source Files\BFSM\Transitions\Tasks</Filter>
     </ClCompile>
     <ClCompile Include="$(SrcDir)\mengeCore\BFSM\Tasks\TaskDatabase.cpp">
-      <Filter>Source Files\BFSM\Tasks</Filter>
+      <Filter>Source Files\BFSM\Transitions\Tasks</Filter>
     </ClCompile>
     <ClCompile Include="$(SrcDir)\mengeCore\BFSM\Goals\Goal.cpp">
       <Filter>Source Files\BFSM\Goals</Filter>

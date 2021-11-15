@@ -132,7 +132,6 @@ namespace Menge {
 		if(PROJECTNAME == OLYMPIC) {
 			//疏散状态的控制信号量
 			if (Menge::Olympic::evacuationState == true) {
-				
 			if (_flag == false) {//第一次进入，将人群分进vector里
 				for (int idx = 0; idx < Menge::SIMULATOR->getNumAgents(); idx++) {
 					Agents::BaseAgent* agent = Menge::SIMULATOR->getAgent(idx);
