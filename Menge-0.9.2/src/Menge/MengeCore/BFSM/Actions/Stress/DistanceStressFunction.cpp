@@ -66,7 +66,7 @@ namespace StressGAS {
 						Menge::BaseScene::ExitReagionInfo[it->first] = Menge::BaseScene::ExitReagionInfo[it->first] + 1;
 						cout << "agentID: " << _agent->_id << " reagionID: " << it->first << " population: " << Menge::BaseScene::ExitReagionInfo[it->first] << endl;;
 					}
-
+					
 					float d = sqrt(region->squaredDistance(_agent->_pos));
 					if (d > _outer) target = 0.f;
 					else if (d < _inner) target = 1.f;

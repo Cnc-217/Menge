@@ -336,7 +336,7 @@ namespace Menge {
 				const GraphVertex * nbr = vert.getNeighbor( n );
 				size_t y = nbr->getID();
 				//if ( heap.isVisited( (unsigned int)y )
-				if ( heap.isVisited((unsigned int)y) || Menge::Olympic::verticesCanGo[(unsigned int)y] == 0 )// 如果被走过 || 是不可以走的  就跳过这个点
+				if ( heap.isVisited((unsigned int)y) || Menge::Olympic::verticesCanGo[(unsigned int)y] == 0 )// 如果被走过 or 是不可以走的  就跳过这个点
 					continue;
 				float distance = vert.getDistance( n );
 				float tempG = heap.g( x ) + distance;

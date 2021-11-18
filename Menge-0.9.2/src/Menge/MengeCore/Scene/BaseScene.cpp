@@ -284,6 +284,35 @@ namespace Menge {
 			
 			}
 
+		bool roadRegionInit(string dir) {//读取stop文件  即路障区域配置文件
+			float data[3][5] = { 0 };
+			ifstream infile;//定义读取文件流，相对于程序来说是in
+			infile.open(dir);//打开文件
+			if (!infile.is_open())
+			{
+				cout << "open file error!" << endl;
+				return false;
+			}
+			for (int i = 0; i < 3; i++)//定义行循环
+				for (int j = 0; j < 5; j++)//定义列循环
+				{
+					infile >> data[i][j];//读取一个值（空格、制表符、换行隔开）就写入到矩阵中，行列不断循环进行
+					//cout << data[i][j] << "+ type :" << typeid(data[i][j]).name() << endl;
+				}
+			infile.close();//读取完成之后关闭文件
+			Menge::Olympic::roadRegionType roadRegionTemp;//声明一个临时变量
+			for (int i = 0; i < 3; i++)
+			{//分别是vector2（Xmin，Ymin），宽width，高height
+				roadRegionTemp.obbRoadblock.set(Vector2(data[i][0], data[i][1]), data[i][2], data[i][3], data[i][4]);
+				roadRegionTemp.peopleNumInThisRoad = 0;//初始化为0
+				roadRegionInfo.insert(make_pair(i, roadRegionTemp));//插入
+				
+			}
+			//for(int i = 0; i<3 ;i++)
+				//cout << roadRegionInfo[i].obbRoadblock.getCentroid() << endl;
+			return true;
+
+		}
 
 		string matrixFlowScene() {
 			//发送 1：36个目标点的人数 2：概率矩阵

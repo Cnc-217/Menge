@@ -39,6 +39,8 @@ namespace Menge {
 
 		bool shopInit(string dir);
 
+		bool roadRegionInit(string dir);
+
         void parameterInit(SOCKET socketClient);
 
         string getSimData();

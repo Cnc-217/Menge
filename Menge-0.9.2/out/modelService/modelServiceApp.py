@@ -1,7 +1,7 @@
 #coding:utf-8
 
 from flask import Flask
-from modelService.controller.controller import controller
+from controller.controller import controller
 
 
 

@@ -118,6 +118,14 @@ namespace Menge {
 		extern MENGE_API std::map< size_t, bool >	_reachedAgents;//存储agent是否到达目标点
 		extern MENGE_API std::map<size_t, int > nowReachTimes;//储存agent在当前goalset的不同goal的次数
 		extern MENGE_API std::vector<int>   verticesCanGo;
+		/*--------------   以下是路障区域统计人数相关   -----------------*/
+		extern MENGE_API struct roadRegionType//声明一个数据结构  用来表示统计人流的区域
+		{
+			Menge::Math::OBBShape obbRoadblock;//一个形状  可旋转矩形
+			int peopleNumInThisRoad;//用来记录这个区域内的人数
+		};
+		extern MENGE_API std::map<size_t, roadRegionType>  roadRegionInfo;//一个map用来记录所有的统计区域
+		
 
 	}
 

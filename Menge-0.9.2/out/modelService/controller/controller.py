@@ -1,6 +1,6 @@
 # coding:utf-8
 from flask import Blueprint, request
-from modelService.model import model
+from model import model
 
 controller = Blueprint('controller', __name__)
 

@@ -288,7 +288,7 @@ namespace Menge {
 
 			std::deque<int> _shopGone;//记录曾经去过的五家店铺
 
-			//std::vector<int> _shopGone2;//记录曾经去过的五家店铺（vector）
+			int _lastRegion = -1;//-1代表不在任何一个区域中  自然数表示在ID为x的区域中
 
 			int _shopGoneNum;
 

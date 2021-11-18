@@ -179,12 +179,14 @@ namespace Menge {
 						}
 					}
 
-				} else if ( child->ValueStr() == "State" ) {
+				} 
+				else if ( child->ValueStr() == "State" ) {
 					if ( ! parseState( child, _behaviorFldr, _states ) ) {
 
 						return false;
 					}
-				} else if ( child->ValueStr() == "Transition" ) {
+				} 
+				else if ( child->ValueStr() == "Transition" ) {
 					std::string from;
 					Transition * trans = parseTransition( child, _behaviorFldr, from );
 					if ( trans == 0x0 ) {
@@ -192,14 +194,16 @@ namespace Menge {
 					}
 
 					addTransition( from, trans );
-				} else if ( child->ValueStr() == "VelModifier" ) {
+				} 
+				else if ( child->ValueStr() == "VelModifier" ) {
 					VelModifier *vel = parseVelModifier( child, _behaviorFldr);
 					if ( vel == 0x0 ) {
 						return false;
 					} else {
 						_velModifiers.push_back(vel);
 					}
-				} else if ( child->ValueStr() == "Task" ) {
+				} 
+				else if ( child->ValueStr() == "Task" ) {
 
 					Task * task = parseTask( child, _behaviorFldr );
 					if ( task == 0x0 ) {
@@ -209,7 +213,8 @@ namespace Menge {
 					} else {
 						_tasks.push_back( task );
 					}
-				} else if ( child->ValueStr() == "EventSystem" ) {
+				} 
+				else if ( child->ValueStr() == "EventSystem" ) {
 					if ( ! EVENT_SYSTEM->parseEvents( child, _behaviorFldr ) ) {
 						return false;
 					}

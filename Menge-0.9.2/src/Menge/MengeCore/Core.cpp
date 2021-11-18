@@ -74,6 +74,7 @@ namespace Menge {
 		std::map< size_t, bool >	_reachedAgents;//存储agent是否到达目标点
 		std::map<size_t, int > nowReachTimes;//储存agent在当前goalset的到达次数的次数
 		std::vector<int>   verticesCanGo;
+		std::map<size_t, roadRegionType>  roadRegionInfo;
 	}
 
 	namespace BaseScene {

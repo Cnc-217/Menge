@@ -71,7 +71,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/Socket.h"
 #include <vector>
 #include <thread>
-
+using namespace Menge::Olympic;
 using namespace std;namespace Menge {
 
 	namespace BFSM {
@@ -331,13 +331,22 @@ using namespace std;namespace Menge {
 						Menge::BaseScene::ExitReagionInfo.push_back(0);
 					}
 					//初始化店铺信息
-					bool shopInitOk = Menge::Olympic::shopInit("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\test.txt");
-
-				
-
+					bool shopInitOk = shopInit("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\test.txt");
+					//初始化路障
+					bool roadRegion = roadRegionInit("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\stop.txt");
 					if (!shopInitOk)
 						cout << " shop init fail!" << endl;
-
+					else
+						cout << " shop init OK!" << endl;
+					if (!roadRegion)
+						cout << " roadblockRegion init fail!" << endl;
+					else
+						cout << " roadblockRegion init OK!" << endl;
+					/*for (int i = 0; i < 3; i++)
+					{
+						cout << roadblockInfo.size() << endl;
+						cout<<"人数 ： "<<roadblockInfo[i].peopleNumInThisRoad<<endl;
+					}*/
 					vector<size_t> tmp0 = { 10,10 };
 					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
 
@@ -407,7 +416,7 @@ using namespace std;namespace Menge {
 					
 					//3.初始化socket服务端，用于疏散状态转移控制
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
-					SOCKET socketServer = Menge::Socket::socketServerInit("10.128.227.28", 12660); 
+					SOCKET socketServer = Menge::Socket::socketServerInit("10.128.247.122", 12660); 
 					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
 					threadSocket.detach();
 

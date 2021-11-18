@@ -55,7 +55,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeVis/Viewer/GLViewer.h"
 
 #include <sstream>
-
+using namespace Menge::Olympic;
 
 namespace Menge {
 
@@ -234,10 +234,41 @@ namespace Menge {
 				}
 
 			}
-
+			else//下面是新加的
+			{
+				Agents::BaseAgent* agent;
+				for (int idx = 0; idx < Menge::SIMULATOR->getNumAgents(); idx++) 
+				{
+					agent = Menge::SIMULATOR->getAgent(idx);
+					checkRegion(agent);
+				}
+			}
 		}
 
 		return false;
+	}
+
+	bool  NeighborhoodDetectedTrigger::checkRegion(Agents::BaseAgent* _agent)
+	{
+		
+		map<size_t, roadRegionType>::iterator it;
+		it = roadRegionInfo.begin();
+		while (it != roadRegionInfo.end()) 
+		{
+			Menge::Math::OBBShape region = it->second.obbRoadblock;
+			if (region.containsPoint(_agent->_pos)) //如果agent在区域内
+			{	
+				if (_agent->_lastRegion != -1)//如果agent之前在某个区域中
+					roadRegionInfo[_agent->_lastRegion].peopleNumInThisRoad--;//之前地区的人流减一
+				it->second.peopleNumInThisRoad++;//现处地区的人流加一
+				_agent->_lastRegion = it->first;//把该区域的id赋给_lastRegion
+				return true;//表示找到了
+			}
+			it++;//如果不在这个区域，就找下一个
+		}
+		_agent->_lastRegion = -1;//找到最后也没找到  agent不在任何一个区域中
+		return false;//没找到
+		
 	}
 
 }	// namespace Menge 
