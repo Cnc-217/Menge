@@ -483,6 +483,7 @@ namespace Menge {
             // rotate NEGATIVELY
             const float x = disp.x() * _cosTheta + disp.y() * _sinTheta;
             const float y = disp.y() * _cosTheta - disp.x() * _sinTheta;
+			//cout << x <<"+"<< y << "+" << _size.x() << "+" << _size.y() << endl;
             return (x >= 0.f && x <= _size.x() && y >= 0.f && y <= _size.y());
         }
 

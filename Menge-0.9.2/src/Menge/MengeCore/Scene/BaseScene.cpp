@@ -15,7 +15,7 @@
 #include "MengeCore/Socket.h"
 #include <map>
 
-
+#define row 7//txt文档中的行数
 using namespace std;
 
 namespace Menge {
@@ -285,7 +285,8 @@ namespace Menge {
 			}
 
 		bool roadRegionInit(string dir) {//读取stop文件  即路障区域配置文件
-			float data[3][5] = { 0 };
+			double Rad_to_deg = 45.0 / atan(1.0);//角度转弧度
+			float data[row][5] = { 0 };
 			ifstream infile;//定义读取文件流，相对于程序来说是in
 			infile.open(dir);//打开文件
 			if (!infile.is_open())
@@ -293,7 +294,7 @@ namespace Menge {
 				cout << "open file error!" << endl;
 				return false;
 			}
-			for (int i = 0; i < 3; i++)//定义行循环
+			for (int i = 0; i < row; i++)//定义行循环
 				for (int j = 0; j < 5; j++)//定义列循环
 				{
 					infile >> data[i][j];//读取一个值（空格、制表符、换行隔开）就写入到矩阵中，行列不断循环进行
@@ -301,12 +302,11 @@ namespace Menge {
 				}
 			infile.close();//读取完成之后关闭文件
 			Menge::Olympic::roadRegionType roadRegionTemp;//声明一个临时变量
-			for (int i = 0; i < 3; i++)
+			for (int i = 0; i < row; i++)
 			{//分别是vector2（Xmin，Ymin），宽width，高height
-				roadRegionTemp.obbRoadblock.set(Vector2(data[i][0], data[i][1]), data[i][2], data[i][3], data[i][4]);
+				roadRegionTemp.obbRoadblock.set(Vector2(data[i][0], data[i][1]), data[i][2], data[i][3], data[i][4]/ Rad_to_deg);
 				roadRegionTemp.peopleNumInThisRoad = 0;//初始化为0
 				roadRegionInfo.insert(make_pair(i, roadRegionTemp));//插入
-				
 			}
 			//for(int i = 0; i<3 ;i++)
 				//cout << roadRegionInfo[i].obbRoadblock.getCentroid() << endl;

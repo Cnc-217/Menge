@@ -235,18 +235,39 @@ namespace Menge {
 
 			}
 			else//下面是新加的
+			{/*Agents::BaseAgent* agent;
+			for (int idx = 0; idx < Menge::SIMULATOR->getNumAgents(); idx++)
 			{
-				Agents::BaseAgent* agent;
-				for (int idx = 0; idx < Menge::SIMULATOR->getNumAgents(); idx++) 
-				{
-					agent = Menge::SIMULATOR->getAgent(idx);
-					checkRegion(agent);
-				}
+				agent = Menge::SIMULATOR->getAgent(idx);
+				checkRegion(agent);
+			}*/
+			
+			Menge::Math::OBBShape  region;
+			for (int idx = 0; idx < roadRegionInfo.size(); idx++)
+			{
+				region = roadRegionInfo[idx].obbRoadblock;
+				roadRegionInfo[idx].peopleNumInThisRoad = checkRegionNew(region);
+			}
+			for (int i = 0; i < roadRegionInfo.size(); i++)
+				cout << "regionID : " << i << " people number : " << roadRegionInfo[i].peopleNumInThisRoad << endl;
+
+				
 			}
 		}
 
 		return false;
 	}
+	int  NeighborhoodDetectedTrigger::checkRegionNew(Menge::Math::OBBShape  region)
+	{
+		int regionNum = 0;
+		for (int idx = 0; idx < Menge::SIMULATOR->getNumAgents(); idx++)
+		{
+			Agents::BaseAgent* agent = Menge::SIMULATOR->getAgent(idx);
+			if (region.containsPoint(agent->_pos))
+				regionNum++;
+		}
+		return regionNum;
+	};
 
 	bool  NeighborhoodDetectedTrigger::checkRegion(Agents::BaseAgent* _agent)
 	{
@@ -266,6 +287,8 @@ namespace Menge {
 			}
 			it++;//如果不在这个区域，就找下一个
 		}
+		
+		roadRegionInfo[_agent->_lastRegion].peopleNumInThisRoad--;//之前地区的人流减一
 		_agent->_lastRegion = -1;//找到最后也没找到  agent不在任何一个区域中
 		return false;//没找到
 		

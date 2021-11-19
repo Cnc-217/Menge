@@ -132,7 +132,7 @@ namespace Menge {
 			Menge::Olympic::verticesCanGo.push_back(1);
 			vertNbr[ i ] = 0;
 		}
-		Menge::Olympic::verticesCanGo[125]=0;
+		//Menge::Olympic::verticesCanGo[125]=0;
 		// load edges
 		size_t eCount;
 		if ( ! ( f >> eCount ) ) {

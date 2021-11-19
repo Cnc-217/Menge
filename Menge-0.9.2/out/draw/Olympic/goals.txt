@@ -37,8 +37,13 @@
         <Goal capacity="1000000" id="33" radius="63.92" type="circle" weight="1.00" x="669.77" y="-281.52"/>
         <Goal capacity="1000000" id="34" radius="205.44" type="circle" weight="1.00" x="-3347.80" y="-601.36"/>
         <Goal capacity="1000000" id="35" radius="258.12" type="circle" weight="1.00" x="4467.77" y="-535.25"/>
-        <Goal angle="90.55" capacity="1000000" height="96.02" id="36" type="OBB" weight="1.00" width="1027.55" x="-2735.82" y="-580.33"/>
-        <Goal angle="0.00" capacity="1000000" height="0.00" id="37" type="OBB" weight="1.00" width="0.00" x="-2200.67" y="16.64"/>
+        <Goal angle="-15.81" capacity="1000000" height="325.30" id="36" type="OBB" weight="1.00" width="1470.06" x="-2779.14" y="-895.50"/>
+        <Goal angle="-33.46" capacity="1000000" height="1435.53" id="38" type="OBB" weight="1.00" width="136.12" x="-3722.27" y="-2056.68"/>
+        <Goal angle="0.00" capacity="1000000" height="1034.86" id="39" type="OBB" weight="1.00" width="133.72" x="-2860.56" y="-586.20"/>
+        <Goal angle="8.82" capacity="1000000" height="265.58" id="40" type="OBB" weight="1.00" width="1867.13" x="-3151.72" y="1952.04"/>
+        <Goal angle="-163.34" capacity="1000000" height="1513.67" id="41" type="OBB" weight="1.00" width="155.71" x="-3157.25" y="1950.30"/>
+        <Goal angle="-167.21" capacity="1000000" height="560.43" id="42" type="OBB" weight="1.00" width="176.38" x="-3618.23" y="-2132.45"/>
+        <Goal angle="11.77" capacity="1000000" height="197.36" id="43" type="OBB" weight="1.00" width="3323.11" x="-3455.20" y="-2823.82"/>
     </GoalSet>
 
 </Population>

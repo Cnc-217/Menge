@@ -330,18 +330,22 @@ using namespace std;namespace Menge {
 					for (int i = 0; i < fsm->getGoalSet(1)->size(); i++) {
 						Menge::BaseScene::ExitReagionInfo.push_back(0);
 					}
+					verticesCanGo[45] = 0;
 					//初始化店铺信息
 					bool shopInitOk = shopInit("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\test.txt");
-					//初始化路障
-					bool roadRegion = roadRegionInit("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\stop.txt");
+					//初始化路
+					bool roadRegionOk = roadRegionInit("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\stop.txt");
 					if (!shopInitOk)
 						cout << " shop init fail!" << endl;
 					else
 						cout << " shop init OK!" << endl;
-					if (!roadRegion)
+					if (!roadRegionOk)
 						cout << " roadblockRegion init fail!" << endl;
 					else
 						cout << " roadblockRegion init OK!" << endl;
+					//Menge::Math::Vector2 test = Menge::Math::Vector2(-2796.f, -129.f);//?
+					//cout << roadRegionInfo[2].obbRoadblock.getPivot() << roadRegionInfo[2].obbRoadblock.getSize() << roadRegionInfo[2].obbRoadblock.getXBasis() << roadRegionInfo[2].obbRoadblock.getYBasis() << endl;
+					//cout<< roadRegionInfo[2].obbRoadblock.containsPoint(test)<<endl;
 					/*for (int i = 0; i < 3; i++)
 					{
 						cout << roadblockInfo.size() << endl;
@@ -416,7 +420,7 @@ using namespace std;namespace Menge {
 					
 					//3.初始化socket服务端，用于疏散状态转移控制
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
-					SOCKET socketServer = Menge::Socket::socketServerInit("10.128.247.122", 12660); 
+					SOCKET socketServer = Menge::Socket::socketServerInit("10.128.200.211", 12660); 
 					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
 					threadSocket.detach();
 
