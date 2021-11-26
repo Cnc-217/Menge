@@ -434,7 +434,7 @@ namespace Menge {
 					if (accumWeight > TGT_WEIGHT) break;
 				}
 			}
-			cout << agent->_id << " choose: " << tgtGoal->getID() << endl;
+			//cout << agent->_id << " choose: " << tgtGoal->getID() << endl;
 			return tgtGoal;
 		}
 

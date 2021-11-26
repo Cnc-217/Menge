@@ -290,7 +290,7 @@ namespace Menge {
 
 			int _lastRegion = -1;//-1代表不在任何一个区域中  自然数表示在ID为x的区域中
 
-			int _shopGoneNum;
+			int _shopGoneNum = 0;//最近走过的五个店中同类店铺数量
 
 			/*!
 			 *	@brief		The priority of each agent.  

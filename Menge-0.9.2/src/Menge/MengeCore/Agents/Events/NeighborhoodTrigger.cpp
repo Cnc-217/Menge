@@ -55,6 +55,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeVis/Viewer/GLViewer.h"
 
 #include <sstream>
+#include <MengeCore\Scene\BaseScene.h>
 using namespace Menge::Olympic;
 
 namespace Menge {
@@ -232,66 +233,19 @@ namespace Menge {
 					}
 
 				}
-
 			}
-			else//下面是新加的
-			{/*Agents::BaseAgent* agent;
-			for (int idx = 0; idx < Menge::SIMULATOR->getNumAgents(); idx++)
+			/*
+			else
 			{
-				agent = Menge::SIMULATOR->getAgent(idx);
-				checkRegion(agent);
-			}*/
+			Menge::BaseScene::updateRoadNum();
+			for (size_t i = 0; i < roadRegionInfo.size(); i++)
+				cout << "roadID : "<<i<<" people num: "<<roadRegionInfo[i].peopleNumInThisRoad << endl;
+			}
+			*/
 			
-			Menge::Math::OBBShape  region;
-			for (int idx = 0; idx < roadRegionInfo.size(); idx++)
-			{
-				region = roadRegionInfo[idx].obbRoadblock;
-				roadRegionInfo[idx].peopleNumInThisRoad = checkRegionNew(region);
-			}
-			for (int i = 0; i < roadRegionInfo.size(); i++)
-				cout << "regionID : " << i << " people number : " << roadRegionInfo[i].peopleNumInThisRoad << endl;
-
-				
-			}
 		}
-
+		
 		return false;
 	}
-	int  NeighborhoodDetectedTrigger::checkRegionNew(Menge::Math::OBBShape  region)
-	{
-		int regionNum = 0;
-		for (int idx = 0; idx < Menge::SIMULATOR->getNumAgents(); idx++)
-		{
-			Agents::BaseAgent* agent = Menge::SIMULATOR->getAgent(idx);
-			if (region.containsPoint(agent->_pos))
-				regionNum++;
-		}
-		return regionNum;
-	};
-
-	bool  NeighborhoodDetectedTrigger::checkRegion(Agents::BaseAgent* _agent)
-	{
-		
-		map<size_t, roadRegionType>::iterator it;
-		it = roadRegionInfo.begin();
-		while (it != roadRegionInfo.end()) 
-		{
-			Menge::Math::OBBShape region = it->second.obbRoadblock;
-			if (region.containsPoint(_agent->_pos)) //如果agent在区域内
-			{	
-				if (_agent->_lastRegion != -1)//如果agent之前在某个区域中
-					roadRegionInfo[_agent->_lastRegion].peopleNumInThisRoad--;//之前地区的人流减一
-				it->second.peopleNumInThisRoad++;//现处地区的人流加一
-				_agent->_lastRegion = it->first;//把该区域的id赋给_lastRegion
-				return true;//表示找到了
-			}
-			it++;//如果不在这个区域，就找下一个
-		}
-		
-		roadRegionInfo[_agent->_lastRegion].peopleNumInThisRoad--;//之前地区的人流减一
-		_agent->_lastRegion = -1;//找到最后也没找到  agent不在任何一个区域中
-		return false;//没找到
-		
-	}
-
+	
 }	// namespace Menge 

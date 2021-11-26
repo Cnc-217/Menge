@@ -145,9 +145,7 @@ namespace Menge {
 		 */
 		virtual bool testCondition();
 
-		virtual bool checkRegion(Agents::BaseAgent* agent);
 
-		virtual int checkRegionNew(Menge::Math::OBBShape  region);
 
 		/*!
 		 *	@brief		The last timestamp of pause.

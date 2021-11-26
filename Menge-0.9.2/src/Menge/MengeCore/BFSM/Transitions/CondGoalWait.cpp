@@ -188,14 +188,22 @@ namespace Menge {
 					_lock.lockWrite();
 					shopInfo[goalId].serviceQ.pop();	//agent出服务队列;
 					_lock.releaseWrite();
-					int lastShopGone = agent->_shopGone.back();
-					if (agent->_shopGone.size() == 5)
-						agent->_shopGone.pop_front();
-					agent->_shopGone.push_back(goalId);
-					if (shopInfo[goalId].goalSet == shopInfo[lastShopGone].goalSet)
-						agent->_shopGoneNum++;
+					if (agent->_shopGone.size() != 0)
+					{
+						int lastShopGone = agent->_shopGone.back();
+						if (agent->_shopGone.size() == 5)
+							agent->_shopGone.pop_front();
+						agent->_shopGone.push_back(goalId);
+						if (shopInfo[goalId].goalSet == shopInfo[lastShopGone].goalSet)
+							agent->_shopGoneNum++;
+						else
+							agent->_shopGoneNum = 1;
+					}
 					else
+					{
+						agent->_shopGone.push_back(goalId);
 						agent->_shopGoneNum = 1;
+					}
 					if (agentId == 1)
 						cout << "2-0" <<"+"<< agent->_shopGone.front() << endl;
 					return true;					//出函数

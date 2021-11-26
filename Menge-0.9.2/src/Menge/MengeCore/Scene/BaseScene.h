@@ -6,7 +6,7 @@
 #include "MengeCore/Json/json.hpp"
 #include <string>
 #include <winsock.h>
-
+#include<Menge/MengeCore/Math/Geometry2D.h>
 
 
 /*!
@@ -26,6 +26,9 @@ namespace Menge {
         void modifyMatrix(char* matrixStr);
         void sendMatrix(SOCKET serConn, json j);
         void projectNameExtract(string folderPath);//提取项目名
+		bool setRoadRegionFromXML(string dir);//设置道路信息
+		int checkRegion(Menge::Math::OBBShape region);
+		void updateRoadNum();
 
     }
 

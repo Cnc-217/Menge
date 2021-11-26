@@ -15,9 +15,9 @@
 #include "MengeCore/Socket.h"
 #include <map>
 
-#define row 7//txt文档中的行数
+#define row 19//txt文档中的行数
 using namespace std;
-
+using namespace Menge::Olympic;
 namespace Menge {
 	/////////////////////////////////////////////////////////////////////
 	//					Implementation of BaseScene
@@ -29,11 +29,7 @@ namespace Menge {
 		while (true) {
 			//等待客户端的连接
 			serConn = accept(socketServer, (SOCKADDR*)& clientsocket, &len);
-
-
 			string recevied_data = Menge::Socket::socketListen(serConn);
-
-
 			//json解析
 			json j = json::parse(recevied_data);
 			string command = j["command"];
@@ -139,6 +135,7 @@ namespace Menge {
 	}
 
 
+
 	void BaseScene::modifyMatrix(char* matrixStr) {
 		char* temp = strtok(matrixStr, " ");
 		vector<float> vec;
@@ -185,6 +182,66 @@ namespace Menge {
 		}
 	}
 
+	bool BaseScene::setRoadRegionFromXML(string dir)
+	{
+		double Rad_to_deg = 45.0 / atan(1.0);//角度转弧度
+		float data[row][5] = { 0 };
+		int count = 0;
+		TiXmlDocument doc(dir);    // 读入XML文件
+		if (!doc.LoadFile())
+			return false;  // 如果无法读取文件，则返回
+		TiXmlHandle hDoc(&doc);         // hDoc是&doc指向的对象
+		TiXmlElement* pElem;            // 指向元素的指针
+		pElem = hDoc.FirstChildElement().Element(); //指向根节点
+		TiXmlHandle hRoot(pElem);       // hRoot是根节点
+
+		// 读取x,y，它们放在network->nodes->node节点中
+		TiXmlElement* nodeElem = hRoot.FirstChild("GoalSet").FirstChild("Goal").Element(); //当前指向了Goal节点
+		count = 0;  // 记录移动到了哪个node节点，并且把该node节点的信息录入到顺序对应的data中
+		for (nodeElem; nodeElem; nodeElem = nodeElem->NextSiblingElement())
+		{ // 挨个读取node节点的信息
+			nodeElem->QueryFloatAttribute("x", &data[count][0]);  //把x放到data[count][0]中，属性值读法
+			nodeElem->QueryFloatAttribute("y", &data[count][1]);  //把y放到data[count][1]中，属性值读法
+			nodeElem->QueryFloatAttribute("width", &data[count][2]);  //把width放到data[count][2]中，属性值读法
+			nodeElem->QueryFloatAttribute("height", &data[count][3]);  //把height放到data[count][3]中，属性值读法
+			nodeElem->QueryFloatAttribute("angle", &data[count][4]);  //把angle放到data[count][4]中，属性值读法
+			count++;
+		}
+		Menge::Olympic::roadRegionType roadRegionTemp;//声明一个临时变量
+		for (int i = 0; i < row; i++)
+		{//分别是vector2（Xmin，Ymin），宽width，高height
+			roadRegionTemp.obbRoadbRegion.set(Vector2(data[i][0], data[i][1]), data[i][2], data[i][3], data[i][4] / Rad_to_deg);
+			roadRegionTemp.peopleNumInThisRoad = 0;//初始化为0
+			roadRegionInfo.push_back(roadRegionTemp);//插入
+		}
+		for (int i = 0; i < row; i++)
+			cout << roadRegionInfo[i].obbRoadbRegion.getPivot() << roadRegionInfo[i].obbRoadbRegion.getSize() << data[i][4] << roadRegionInfo[i].peopleNumInThisRoad << endl;
+		return true;
+	}
+
+	void BaseScene::updateRoadNum()
+	{
+		Menge::Math::OBBShape  region;
+		for (int idx = 0; idx < roadRegionInfo.size(); idx++)
+		{
+			region = roadRegionInfo[idx].obbRoadbRegion;
+			int num = checkRegion(region);
+			roadRegionInfo[idx].peopleNumInThisRoad = num;
+		}
+		return ;
+	}
+
+	int  BaseScene::checkRegion(Menge::Math::OBBShape region)
+	{
+		int regionNum = 0;
+		for (int idx = 0; idx < Menge::SIMULATOR->getNumAgents(); idx++)//对所有的agent遍历
+		{
+			Agents::BaseAgent* agent = Menge::SIMULATOR->getAgent(idx);
+			if (region.containsPoint(agent->_pos))//如果在region里面
+				regionNum++;
+		}
+		return regionNum;
+	};
 
 	namespace Olympic {
 
@@ -296,20 +353,17 @@ namespace Menge {
 			}
 			for (int i = 0; i < row; i++)//定义行循环
 				for (int j = 0; j < 5; j++)//定义列循环
-				{
 					infile >> data[i][j];//读取一个值（空格、制表符、换行隔开）就写入到矩阵中，行列不断循环进行
-					//cout << data[i][j] << "+ type :" << typeid(data[i][j]).name() << endl;
-				}
 			infile.close();//读取完成之后关闭文件
 			Menge::Olympic::roadRegionType roadRegionTemp;//声明一个临时变量
 			for (int i = 0; i < row; i++)
 			{//分别是vector2（Xmin，Ymin），宽width，高height
-				roadRegionTemp.obbRoadblock.set(Vector2(data[i][0], data[i][1]), data[i][2], data[i][3], data[i][4]/ Rad_to_deg);
+				roadRegionTemp.obbRoadbRegion.set(Vector2(data[i][0], data[i][1]), data[i][2], data[i][3], data[i][4]/ Rad_to_deg);
 				roadRegionTemp.peopleNumInThisRoad = 0;//初始化为0
-				roadRegionInfo.insert(make_pair(i, roadRegionTemp));//插入
+				roadRegionInfo.push_back(roadRegionTemp);//插入
 			}
-			//for(int i = 0; i<3 ;i++)
-				//cout << roadRegionInfo[i].obbRoadblock.getCentroid() << endl;
+			for(int i = 0; i<row ;i++)
+				cout << roadRegionInfo[i].obbRoadbRegion.getPivot() <<roadRegionInfo[i].obbRoadbRegion.getSize()<< roadRegionInfo[i].peopleNumInThisRoad<< endl;
 			return true;
 
 		}
@@ -357,14 +411,23 @@ namespace Menge {
 			BaseScene::modifyMatrix((char*)matrix.c_str());
 		}
 
+		
+
 		string getSimData() {
-			//发送 1：36个目标点的人数 2：概率矩阵
+			cout << "yes" << endl;
+			//发送 1：36个目标点的人数
 			std::vector<int> agentNumOfShop(36, 0);
-			for (int i = 0; i < Menge::ACTIVE_FSM->getGoalSet(0)->size(); i++) agentNumOfShop[i] = shopInfo[i].serviceQ.size() + shopInfo[i].blockQ.size();
+			std::vector <int>roadRegionNum(19, 0);
+			for (int i = 0; i < Menge::ACTIVE_FSM->getGoalSet(0)->size(); i++) 
+				agentNumOfShop[i] = shopInfo[i].serviceQ.size() + shopInfo[i].blockQ.size();
+			BaseScene::updateRoadNum();
+			for (int i = 0; i < roadRegionInfo.size(); i++)
+				roadRegionNum[i] = roadRegionInfo[i].peopleNumInThisRoad;
 			//json生成
 			json j;
 			j["info"] = "Menge has receive your commend: getData";
 			j["data"] = agentNumOfShop;
+			j["regionPopulation"] = roadRegionNum;
 			string sendBuf = j.dump();
 			return sendBuf;
 		}
