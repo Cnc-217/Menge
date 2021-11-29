@@ -35,7 +35,7 @@
 #include<queue>
 #include <vector>
 #include <list>
-
+#include<deque>
 namespace Menge {
 
 	namespace Agents {
@@ -286,9 +286,9 @@ namespace Menge {
 			 */
 			size_t _obstacleSet;
 
-			//std::queue<int> _shopGone;//记录曾经去过的五家店铺
+			std::deque<int> _shopGone;//记录曾经去过的五家店铺
 
-			std::vector<int> _shopGone2;//记录曾经去过的五家店铺（vector）
+			//std::vector<int> _shopGone2;//记录曾经去过的五家店铺（vector）
 
 			int _shopGoneNum;
 

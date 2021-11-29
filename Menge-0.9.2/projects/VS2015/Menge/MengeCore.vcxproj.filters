@@ -666,9 +666,6 @@
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\CondGoalWait.cpp">
       <Filter>Source Files\BFSM\Transitions</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorReality.cpp">
-      <Filter>Source Files\BFSM\GoalSelectors</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Goals\GoalPath.cpp">
       <Filter>Source Files\BFSM\Goals</Filter>
     </ClCompile>
@@ -719,6 +716,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Menge\MengeCore\Scene\BaseScene.cpp">
       <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorMatrix.cpp">
+      <Filter>Source Files\BFSM\GoalSelectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\FileTool.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1349,9 +1352,6 @@
     <ClInclude Include="..\..\..\src\Menge\MengeCore\Socket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorReality.h">
-      <Filter>Header Files\BFSM\GoalSelectors</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Goals\GoalPath.h">
       <Filter>Header Files\BFSM\Goals</Filter>
     </ClInclude>
@@ -1405,6 +1405,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorModel.h">
       <Filter>Header Files\BFSM\GoalSelectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorMatrix.h">
+      <Filter>Header Files\BFSM\GoalSelectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\FileTool.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

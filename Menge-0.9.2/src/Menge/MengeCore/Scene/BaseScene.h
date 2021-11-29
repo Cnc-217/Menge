@@ -4,6 +4,7 @@
 
 #include "MengeCore/MatrixMy.h"
 #include "MengeCore/Json/json.hpp"
+#include "tinyxml/tinyxml.h"
 #include <string>
 #include <winsock.h>
 
@@ -24,9 +25,10 @@ namespace Menge {
         void sockerClientListen(SOCKET socketClient);
         void loadMatrixFromTxt(const char* fileName);
         void modifyMatrix(char* matrixStr);
-        void sendMatrix(SOCKET serConn, json j);
+        vector<bool> strToVectorBool (char* listStr);
+        vector<float> strToVectorFloat (char* listStr);
         void projectNameExtract(string folderPath);//提取项目名
-
+        void sceneParallelXML(string senceXmlFliePath);//记录人群位置，写一个新的xml文件
     }
 
     namespace Olympic {

@@ -131,7 +131,7 @@ namespace Menge {
 			cout << "trigger condition met at :"<<Menge::SIM_TIME << endl;
 			_lastTimestamp = Menge::SIM_TIME;
 			//MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;
-			cout << "pause" << endl;
+			//cout << "pause" << endl;
 			
 			//重新开始
 			//MengeVis::SimViewer->_pause = !MengeVis::SimViewer->_pause;

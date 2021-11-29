@@ -69,10 +69,12 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 
 #include "MengeCore/Scene/BaseScene.h"
 #include "MengeCore/Socket.h"
+#include "MengeCore/FileTool.h"
 #include <vector>
 #include <thread>
 
-using namespace std;namespace Menge {
+using namespace std;
+namespace Menge {
 
 	namespace BFSM {
 		/////////////////////////////////////////////////////////////////////
@@ -82,7 +84,7 @@ using namespace std;namespace Menge {
 		FSM * buildFSM( FSMDescrip & fsmDescrip, Agents::SimulatorInterface * sim, bool VERBOSE ) {
 
 			//提取项目名
-			BaseScene::projectNameExtract(fsmDescrip._behaviorFldr);
+			BaseScene::projectNameExtract(Menge::BehaveFilePath);
 			// Acquire the spatial query instance
 			SPATIAL_QUERY = sim->getSpatialQuery();
 
@@ -278,6 +280,46 @@ using namespace std;namespace Menge {
 			logger << " registered tasks.\n";
 			fsm->doTasks();
 			
+			//初始化矩阵
+			if (PROJECTNAME == OLYMPIC) {
+				if (Menge::Olympic::goalSeclectorType == "Matrix") {
+					//2.无输入矩阵
+					int goalNum = fsm->getGoalSet(0)->size();
+
+					if (BaseScene::ProbMatrix == 0x0) {
+						cout << "apply the defult matrix,all ONE" << endl;
+						MatrixDim2* tmp = new MatrixDim2(goalNum, goalNum, 1);
+						BaseScene::ProbMatrix = tmp;
+						BaseScene::ProbMatrix->Show();
+						BaseScene::ProbMatrix->InitSumWeight();
+
+					}
+					else if (BaseScene::ProbMatrix->col_size() != goalNum) {
+						cout << "matrix not matching goal number" << endl;
+						exit(1);
+					}
+
+					BaseScene::ProbMatrix->InitSumWeight();
+				}
+			}
+			else {
+				//2.无输入矩阵
+				int goalNum = fsm->getGoalSet(0)->size();
+				if (BaseScene::ProbMatrix == 0x0) {
+					cout << "apply the defult matrix,all ONE" << endl;
+					MatrixDim2* tmp = new MatrixDim2(goalNum, goalNum, 1);
+					BaseScene::ProbMatrix = tmp;
+					BaseScene::ProbMatrix->Show();
+					BaseScene::ProbMatrix->InitSumWeight();
+				}
+				else if (BaseScene::ProbMatrix->col_size() != goalNum) {
+					cout << "matrix not matching goal number" << endl;
+					exit(1);
+				}
+			}
+			
+				
+			
 			//	5. Initialize all agents
 			if ( VERBOSE ) logger << Logger::INFO_MSG << "Initializing agents:\n";
 			Agents::SimulatorState * initState = sim->getInitialState();
@@ -330,90 +372,30 @@ using namespace std;namespace Menge {
 					for (int i = 0; i < fsm->getGoalSet(1)->size(); i++) {
 						Menge::BaseScene::ExitReagionInfo.push_back(0);
 					}
-					//初始化店铺信息
-				
-					bool shopInitOk = Olympic::shopInit("D:\\File\\Project\\git\\Menge-0.9.2\\examples\\Olympic\\test.txt");
-					if (!shopInitOk)
-						cout << " shop init fail!" << endl;
 					vector<size_t> tmp0 = { 10,10 };
 					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
 
+					//初始化店铺信息
+					bool shopInitOk = Menge::Olympic::shopInit("D:\\File\\Project\\git\\Menge-0.9.2\\examples\\Olympic\\test.txt");
 
-					//2.无输入矩阵
-					int goalNum = fsm->getGoalSet(0)->size();
-					if (BaseScene::ProbMatrix == 0x0) {
-						cout << "apply the defult matrix,all ONE" << endl;
-						vector<vector<float>> tmp = {
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+					if (!shopInitOk)
+						cout << " shop init fail!" << endl;
 
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
-						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1}
-
-						};
-						MatrixDim2* tmpm = new MatrixDim2(goalNum, goalNum, 1);
-						for (int i = 0; i < goalNum; i++) {
-							for (int j = 0; j < goalNum; j++) {
-								tmpm->SetPoint(i, j, tmp[i][j]);
-							}
-						}
-						BaseScene::ProbMatrix = tmpm;
-						BaseScene::ProbMatrix->Show();
-						BaseScene::ProbMatrix->InitSumWeight();
-						
-					}
-					else if (BaseScene::ProbMatrix->col_size() != goalNum) {
-						cout << "matrix not matching goal number" << endl;
-						exit(1);
-					}
-					BaseScene::ProbMatrix->InitSumWeight();
+					
+					
+					
 					
 					//3.初始化socket服务端，用于疏散状态转移控制
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
-					SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
-					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
-					threadSocket.detach();
-
-					//初始化socket客户端，发出数据同步请求，接收仿真参数，更新仿真参数，最后进入监听状态
-					//SOCKET socketClient = Menge::Socket::socketClientInit("10.28.195.233", 12660);
-					//Menge::Olympic::parameterInit(socketClient);
-					//thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
+					//SOCKET socketServer = Menge::Socket::socketServerInit("10.128.227.28", 12660); 
+					//thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
 					//threadSocket.detach();
 
+					//初始化socket客户端，发出数据同步请求，接收仿真参数，更新仿真参数，最后进入监听状态
+					SOCKET socketClient = Menge::Socket::socketClientInit("10.28.195.233", 12660);
+					Menge::Olympic::parameterInit(socketClient);
+					thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
+					threadSocket.detach();
 					cout << "It's OLYMPIC Simulation" << endl;
 					break;
 				}
@@ -434,18 +416,7 @@ using namespace std;namespace Menge {
 					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
 
 
-					//2.无输入矩阵
-					int goalNum = fsm->getGoalSet(0)->size();
-					if (BaseScene::ProbMatrix == 0x0) {
-						cout << "apply the defult matrix,all ONE" << endl;
-						MatrixDim2* tmp = new MatrixDim2(goalNum, goalNum, 1);
-						BaseScene::ProbMatrix = tmp;
-						BaseScene::ProbMatrix->Show();
-					}
-					else if (BaseScene::ProbMatrix->col_size() != goalNum) {
-						cout << "matrix not matching goal number" << endl;
-						exit(1);
-					}
+					
 
 					//3.初始化socket服务端，用于疏散状态转移控制
 					SOCKET socketServer = Menge::Socket::socketServerInit("127.0.0.1", 12660);

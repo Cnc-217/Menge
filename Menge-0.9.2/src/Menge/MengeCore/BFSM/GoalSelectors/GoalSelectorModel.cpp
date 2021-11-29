@@ -27,15 +27,15 @@ namespace Menge {
 		
 		ModelGoalSelector::ModelGoalSelector() {
 			client = Socket::socketClientInit("127.0.0.1", 5001);
-			
+			Menge::Olympic::goalSeclectorType = "Model";
 		}
 
 		Goal * ModelGoalSelector::getGoal( const Agents::BaseAgent * agent ) const {
 			
-			if (!agent->_shopGone2.empty()) {
+			if (!agent->_shopGone.empty()) {
 				
 				json j;
-				j["data"] = agent->_shopGone2;
+				j["data"] = agent->_shopGone;
 				string sendBuf = j.dump();
 				send(client, sendBuf.c_str(), strlen(sendBuf.c_str()), 0);
 				char receiveBuf[1024] = {};
@@ -45,6 +45,7 @@ namespace Menge {
 				j.clear();
 				j = json::parse(receiveBuf);
 				vector<float> probList = j["data"];
+				for (int i = 0; i < probList.size(); i++) probList[i] += Olympic::Influence[i];
 				
 
 				return _goalSet->getGoalFromProbs(agent, probList);

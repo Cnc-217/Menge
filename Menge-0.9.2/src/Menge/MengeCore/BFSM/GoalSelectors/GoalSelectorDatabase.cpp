@@ -50,7 +50,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorShared.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorWeighted.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorAlgorithm.h"
-#include "MengeCore/BFSM/GoalSelectors/GoalSelectorReality.h"
+#include "MengeCore/BFSM/GoalSelectors/GoalSelectorMatrix.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorNearAgent.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorEvacuation.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorModel.h"

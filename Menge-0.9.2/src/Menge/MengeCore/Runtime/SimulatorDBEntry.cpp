@@ -135,6 +135,10 @@ namespace Menge {
 																 const std::string & outFile,
 																 const std::string & scbVersion,
 																 bool verbose) {
+		Menge::BehaveFilePath = behaveFile;
+		Menge::SceneFilePath = sceneFile;
+		replace(BehaveFilePath.begin(), BehaveFilePath.end(), '\\', '/');
+		replace(SceneFilePath.begin(), SceneFilePath.end(), '\\', '/');
 		_sim = initSimulator( sceneFile, verbose );
 		if ( !_sim ) {
 			return 0x0;

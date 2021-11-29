@@ -267,7 +267,7 @@ namespace MengeVis {
 			 */
 			void setDumpPath( const std::string & path );
 
-			bool _pause;
+			bool _pause;//false是正常运行
 
 		protected:
 			/*!

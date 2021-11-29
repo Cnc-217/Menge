@@ -1,13 +1,11 @@
 #coding:utf-8
 import socket
-import json
-import threading
 
 
 class SocketServer:
     #初始化
     def __init__(self, serverIp, serverPort):
-        self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server:socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.bind((serverIp, serverPort))
         self.server.listen(5)
         print("socket server start")
@@ -26,3 +24,7 @@ class SocketServer:
 
     def getSocket(self):
         return self.server
+
+
+#socket服务器，用于和Menge通信
+socketServer = SocketServer("10.28.195.233", 12660)

@@ -97,6 +97,12 @@ namespace Menge {
 
 	extern MENGE_API size_t PROJECTNAME;
 
+	extern MENGE_API std::string BehaveFilePath;
+
+	extern MENGE_API std::string SceneFilePath;
+
+
+
 	namespace Olympic {
 		//三类人群的数组
 		extern MENGE_API std::vector<Agents::BaseAgent*> leaderAgentSet;
@@ -117,6 +123,10 @@ namespace Menge {
 		extern MENGE_API std::map<size_t, int>  goalSetInfo;//储存goalset内有多少个goal
 		extern MENGE_API std::map< size_t, bool >	_reachedAgents;//存储agent是否到达目标点
 		extern MENGE_API std::map<size_t, int > nowReachTimes;//储存agent在当前goalset的不同goal的次数
+		extern MENGE_API std::vector<bool>   verticesCanGo;//路障，false为不可通过，默认全为true
+		extern MENGE_API std::string goalSeclectorType; //存储goalSelector的类型（reality、model）
+		extern MENGE_API std::vector<float> Influence;//Olympic下model类型的goalselector需要用到的影响因子
+
 	}
 
 	namespace BaseScene {

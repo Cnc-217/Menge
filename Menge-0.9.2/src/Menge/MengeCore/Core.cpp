@@ -44,7 +44,6 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/Agents/Events/EventSystem.h"
 #include "MengeCore/MatrixMy.h"
 #include "MengeCore/Math/Geometry2D.h"
-#include<queue>
 
 namespace Menge {
 
@@ -64,6 +63,10 @@ namespace Menge {
 
 	size_t PROJECTNAME = 0;
 
+	std::string BehaveFilePath;
+
+	std::string SceneFilePath;
+
 	namespace Olympic {
 		std::vector<Agents::BaseAgent*> leaderAgentSet;
 		std::vector<Agents::BaseAgent*> panicAgentSet;
@@ -73,11 +76,14 @@ namespace Menge {
 		std::map<size_t, int>  goalSetInfo;//储存goalset内有多少个goal
 		std::map< size_t, bool >	_reachedAgents;//存储agent是否到达目标点
 		std::map<size_t, int > nowReachTimes;//储存agent在当前goalset的到达次数的次数
+		std::vector<bool>   verticesCanGo;
+		std::string goalSeclectorType;
+		vector<float> Influence;//如果是model类型的goalselector，需要用到Influence
 	}
 
 	namespace BaseScene {
-		MatrixDim2* ProbMatrix = 0x0;
-
+		MatrixDim2* ProbMatrix = 0x0;//如果是matrix类型的goalselector，需要用到ProbMatrix
+		
 		std::vector<size_t> ExitReagionInfo;//exitRegionID-population
 
 		std::vector<size_t> ExitAgentInfo;//AgentID-AgentState

@@ -2,6 +2,7 @@
 #include "MengeCore/Scene/BaseScene.h"
 #include "MengeCore/Core.h"
 #include "MengeCore/BFSM/FSM.h"
+#include "MengeCore/BFSM/GoalSelectors/GoalSelector.h"
 #include "MengeCore/Agents/Events/EventSystem.h"
 
 #include "MengeCore/BFSM/Transitions/TargetProb.h"
@@ -13,6 +14,7 @@
 
 #include "MengeVis/Viewer/GLViewer.h"
 #include "MengeCore/Socket.h"
+#include "MengeCore/FileTool.h"
 #include <map>
 
 
@@ -97,24 +99,47 @@ namespace Menge {
 			json j = json::parse(recevied_data);
 			string info = j["info"];
 			cout << "socketClient receive info: " << j["info"] << endl;
-			string matrix = j["data"];
-			cout << "socketClient receive data: " << j["data"] << endl;
-			//返回的json
-			j.clear();
 
 			if (Menge::PROJECTNAME == OLYMPIC) {
 				if (!strcmp(info.c_str(), "getData")) {
 					string sendBuf = Olympic::getSimData();
 					Menge::Socket::socketSend(sendBuf.c_str(), socketClient);
 				}
-				else if (!strcmp(info.c_str(), "parameters")) modifyMatrix((char*)matrix.c_str());
-				else if (!strcmp(info.c_str(), "evacuate")) {
-					Olympic::evacuateModeStart();
+				else if (!strcmp(info.c_str(), "evacuate")) Olympic::evacuateModeStart();
+				else if (!strcmp(info.c_str(), "parameters")) {
+					if (Olympic::goalSeclectorType == "Matrix") {
+						string matrix = j["matrix"];
+						BaseScene::modifyMatrix((char*)matrix.c_str());
+					}
+					else if (Olympic::goalSeclectorType == "Model") {
+						string tmp = j["influence"];
+						char* strc = new char[strlen(tmp.c_str()) + 1];
+						strcpy(strc, tmp.c_str());
+						vector<float> vec = BaseScene::strToVectorFloat(strc);
+						Menge::Olympic::Influence.assign(vec.begin(), vec.end());
+						delete[] strc;
+					}
+					string tmp1 = j["roadblock"];
+					cout << tmp1 << endl;
+					char* strc1 = new char[strlen(tmp1.c_str()) + 1];
+					strcpy(strc1, tmp1.c_str());
+					vector<bool> vec1 = BaseScene::strToVectorBool(strc1);
+					Menge::Olympic::verticesCanGo.assign(vec1.begin(), vec1.end());
+					delete[] strc1;
 				}
-				
+				else if (!strcmp(info.c_str(), "timeSlice")) {
+					Menge::FileTool::copySceneFile();
+					std::size_t found = SceneFilePath.find_last_of("/");
+					std::string parallelSceneFilePath = SceneFilePath.substr(0, found) + "/OlympicParallelS.xml";
+					BaseScene::sceneParallelXML(parallelSceneFilePath);
+				}
+				else if (!strcmp(info.c_str(), "pause")) {
+					MengeVis::SimViewer->_pause = true;
+				}
+				else if (!strcmp(info.c_str(), "restart")) {
+					MengeVis::SimViewer->_pause = false;
+				}
 			}
-			
-
 		}
 	}
 
@@ -137,7 +162,6 @@ namespace Menge {
 		Matrix::getFileData(fileName, rowNum, columnsNum);
 		Menge::BaseScene::ProbMatrix->Show();
 	}
-
 
 	void BaseScene::modifyMatrix(char* matrixStr) {
 		char* temp = strtok(matrixStr, " ");
@@ -167,25 +191,85 @@ namespace Menge {
 
 	}
 
-	void BaseScene::sendMatrix(SOCKET serConn, json j) {
-
-		char sendBuf[100] = " ";
-		//send(serConn, sendBuf, strlen(sendBuf) + 1, 0);
-
-	}
-
 	void BaseScene::projectNameExtract(string folderPath) {
-		std::string tmp = folderPath;
-		size_t ps = tmp.find_last_of("\\");
-		size_t pe = tmp.length();
-		std::string name = tmp.substr(ps + 1, pe - ps + 1);
-		cout << name << endl;
-		if (name.find("Olympic") != name.npos) {
+		if (folderPath.find("Olympic") != folderPath.npos) {
 			PROJECTNAME = OLYMPIC;
 		}
+
+	}
+	
+	vector<bool> BaseScene::strToVectorBool(char* listStr) {
+		char* temp = strtok(listStr, " ");
+		vector<bool> vec;
+		while (temp != NULL) {
+			//strcmp(temp, "False") 相等时返回0
+			if (strcmp(temp, "False")==0)vec.push_back(false);
+			else if (strcmp(temp, "True")==0)vec.push_back(true);
+			temp = strtok(NULL, " ");
+		}
+		return vec;
 	}
 
+	vector<float> BaseScene::strToVectorFloat(char* listStr) {
+		char* temp = strtok(listStr, " ");
+		vector<float> vec;
+		while (temp != NULL) {
+			vec.push_back(atof(temp));
+			temp = strtok(NULL, " ");
+		}
+		return vec;
+	}
+	
+	void BaseScene::sceneParallelXML(string senceXmlFliePath) {
+		TiXmlDocument xml(senceXmlFliePath);
+		bool loadOkay = xml.LoadFile();
 
+		if (!loadOkay) {	// load xml file
+			cout << "load xml error: "<< senceXmlFliePath <<endl;
+			exit(1);
+		}
+
+		TiXmlElement* experimentNode = xml.RootElement();
+		if (!experimentNode) {
+			cout << "load experimentNode error: "  << endl;
+			exit(1);
+		}
+
+		//Tags I'm not ready to parse - only parse agent sets and obstacles AFTER experiment
+		//parameters
+		TiXmlElement* child;
+		for (child = experimentNode->FirstChildElement(); child; child = child->NextSiblingElement()) {
+			//找到了AgentGroup的属性组
+			if (child->ValueStr() == "AgentGroup") {
+				TiXmlElement* nodeChild;
+				for (nodeChild = child->FirstChildElement();nodeChild;nodeChild = nodeChild->NextSiblingElement()) {
+					//找到了ProfileSelector的属性组
+					if (nodeChild->ValueStr() == "ProfileSelector") {
+						TiXmlAttribute* attr;
+						attr = nodeChild->FirstAttribute();
+						if (strncmp(attr->Name(), "name", 4) != 0 || strncmp(attr->Value(), "tourist", 7) != 0) break;
+					}
+					//找到了Generator的属性组
+					if (nodeChild->ValueStr() == "Generator") {
+						nodeChild->Clear();
+						nodeChild->SetAttribute("type", "explicit");
+						int numAgent = SIMULATOR->getNumAgents();
+						for (int i = 0; i < numAgent; i++) {
+							Agents::BaseAgent* agent = SIMULATOR->getAgent(i);
+							TiXmlElement* node = new TiXmlElement("Agent");
+							node->SetAttribute("p_x", to_string(agent->_pos._x));
+							node->SetAttribute("p_y", to_string(agent->_pos._y));
+							nodeChild->LinkEndChild(node);
+						}
+					}
+
+				}
+			}
+		}
+		xml.SaveFile();
+
+	}
+	
 	namespace Olympic {
 
 		void evacuateModeStart() {
@@ -247,7 +331,6 @@ namespace Menge {
 
 
 		}
-
 
 		bool shopInit(string dir) {
 			int data[10][4] = { 0 };
@@ -324,8 +407,25 @@ namespace Menge {
 			string recevied_data = Menge::Socket::socketListen(socketClient);
 			//json解析
 			j = json::parse(recevied_data);
-			string matrix = j["data"];
-			BaseScene::modifyMatrix((char*)matrix.c_str());
+			cout << recevied_data << endl;
+			if (j.find("matrix") != j.end()) {
+				string matrix = j["matrix"];
+				BaseScene::modifyMatrix((char*)matrix.c_str());
+			}
+			else if (j.find("influence") != j.end()) {
+				string tmp = j["influence"];
+				char* strc = new char[strlen(tmp.c_str()) + 1];
+				strcpy(strc,tmp.c_str());
+				vector<float> vec = BaseScene::strToVectorFloat(strc);
+				Menge::Olympic::Influence.assign(vec.begin(), vec.end());
+				delete[] strc;
+			}
+			string tmp = j["roadblock"];
+			char* strc = new char[strlen(tmp.c_str()) + 1];
+			strcpy(strc, tmp.c_str());
+			vector<bool> vec = BaseScene::strToVectorBool(strc);
+			Menge::Olympic::verticesCanGo.assign(vec.begin(), vec.end());
+			delete[] strc;
 		}
 
 		string getSimData() {

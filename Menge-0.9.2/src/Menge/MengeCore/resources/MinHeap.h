@@ -117,7 +117,8 @@ namespace Menge {
 		 *	@param		value		The f-value for the given node.
 		 */
 		inline void f( unsigned int node, float value ) {
-			if ( _inHeap[ node ] ) changeF( node, value );
+			if ( _inHeap[ node ] ) 
+				changeF( node, value );
 			else _f[ node ] = value;
 		}
 		

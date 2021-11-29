@@ -2,6 +2,7 @@
 
 from flask import Flask
 from flask_apscheduler import APScheduler
+from flask_cors import CORS
 from simService.controller.controller import controller
 
 
@@ -20,6 +21,7 @@ class Config(object):
 
 if __name__ == '__main__':
     app = Flask(__name__)
+    CORS(app, resources=r'/*')
     app.register_blueprint(controller, url_prefix="/")
     app.config.from_object(Config())
     scheduler = APScheduler()  # 实例化 APScheduler
