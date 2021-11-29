@@ -145,6 +145,8 @@ namespace Menge {
 		 */
 		virtual bool testCondition();
 
+
+
 		/*!
 		 *	@brief		The last timestamp of pause.
 		 */

@@ -15,8 +15,11 @@ def service(client):
         # 接收数据，解析json
         print("\nhave recive data")
         jsonData = json.loads(rawData)
+        print(jsonData)
         dataList = jsonData["data"]
+        #roadList = jsonData["regionNum"]
         print(dataList)
+        #print(roadList)
         # 输入模型，输出probList，返回参数
         problist = model(dataList)
         jsonData = {"data": problist}

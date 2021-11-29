@@ -483,14 +483,15 @@ namespace Menge {
             // rotate NEGATIVELY
             const float x = disp.x() * _cosTheta + disp.y() * _sinTheta;
             const float y = disp.y() * _cosTheta - disp.x() * _sinTheta;
+			//cout << x <<"+"<< y << "+" << _size.x() << "+" << _size.y() << endl;
             return (x >= 0.f && x <= _size.x() && y >= 0.f && y <= _size.y());
         }
 
         /////////////////////////////////////////////////////////////////////
 
         bool OBBShape::containsPoint(const Vector2& pt, const Vector2& pos) const {
-            // point relative to the center
-            //  Scaled by 2 so I can use the size value directly to do the test
+            // point relative to the center  并未用到
+            //  Scaled by 2 so I can use the size value directly to do the test 乘二是因为代码简洁  如果不乘  后续x应该在（-size.z/2，size.z/2）之间
             Vector2 p = (pt - pos) * 2.f;
             // rotate it
             const float x = p.x() * _cosTheta + p.y() * _sinTheta;

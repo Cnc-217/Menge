@@ -795,6 +795,8 @@ namespace Menge {
 			 */
 			const Vector2 & getSize() const { return _size; }
 
+			
+
 			/*!
 			 *	@brief		Return the pivot point of the obb.
 			 *				

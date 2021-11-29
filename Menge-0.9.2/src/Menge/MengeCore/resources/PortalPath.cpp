@@ -84,11 +84,15 @@ namespace Menge {
                 speed = 0.f;
             }
             else {
-                const float speedSq = speed * speed;
-                const float TS_SQD = SIM_TIME_STEP * SIM_TIME_STEP;
-                if (distSq / speedSq < TS_SQD) {
+                const float speedSq = speed * speed;//速度的平方
+                const float TS_SQD = SIM_TIME_STEP * SIM_TIME_STEP;//时间的平方
+                if (distSq / speedSq < TS_SQD) {//dis = 距离的平方
                     // The distance is less than I would travel in a single time step.
                     speed = sqrtf(distSq) / SIM_TIME_STEP;
+					if (agent->_id == 1)
+					{
+						std::cout << "setPreferredDirection: " << speed << std::endl;
+					}
                 }
             }
             pVel.setSpeed(speed);

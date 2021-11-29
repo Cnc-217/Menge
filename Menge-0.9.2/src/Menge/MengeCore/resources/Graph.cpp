@@ -132,6 +132,10 @@ namespace Menge {
 			Menge::Olympic::verticesCanGo.push_back(true);
 			vertNbr[ i ] = 0;
 		}
+<<<<<<< HEAD
+=======
+		//Menge::Olympic::verticesCanGo[125]=0;
+>>>>>>> f684803ff931159ac6e86cfa3b6bdc4fcab9f200
 		// load edges
 		size_t eCount;
 		if ( ! ( f >> eCount ) ) {
@@ -335,7 +339,11 @@ namespace Menge {
 				const GraphVertex * nbr = vert.getNeighbor( n );
 				size_t y = nbr->getID();
 				//if ( heap.isVisited( (unsigned int)y )
+<<<<<<< HEAD
 				if ( heap.isVisited((unsigned int)y) || Menge::Olympic::verticesCanGo[(unsigned int)y] == false )// 如果被走过 || 是不可以走的  就跳过这个点
+=======
+				if ( heap.isVisited((unsigned int)y) || Menge::Olympic::verticesCanGo[(unsigned int)y] == 0 )// 如果被走过 or 是不可以走的  就跳过这个点
+>>>>>>> f684803ff931159ac6e86cfa3b6bdc4fcab9f200
 					continue;
 				float distance = vert.getDistance( n );
 				float tempG = heap.g( x ) + distance;

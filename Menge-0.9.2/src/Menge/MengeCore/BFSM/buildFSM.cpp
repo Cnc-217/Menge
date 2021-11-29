@@ -72,9 +72,14 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/FileTool.h"
 #include <vector>
 #include <thread>
+<<<<<<< HEAD
 
 using namespace std;
 namespace Menge {
+=======
+using namespace Menge::Olympic;
+using namespace std;namespace Menge {
+>>>>>>> f684803ff931159ac6e86cfa3b6bdc4fcab9f200
 
 	namespace BFSM {
 		/////////////////////////////////////////////////////////////////////
@@ -372,14 +377,23 @@ namespace Menge {
 					for (int i = 0; i < fsm->getGoalSet(1)->size(); i++) {
 						Menge::BaseScene::ExitReagionInfo.push_back(0);
 					}
+<<<<<<< HEAD
 					vector<size_t> tmp0 = { 10,10 };
 					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
 
 					//初始化店铺信息
 					bool shopInitOk = Menge::Olympic::shopInit("D:\\File\\Project\\git\\Menge-0.9.2\\examples\\Olympic\\test.txt");
 
+=======
+					//初始化店铺信息
+					bool shopInitOk = shopInit("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\test.txt");
+					//初始化路
+					bool roadRegionOk = Menge::BaseScene::setRoadRegionFromXML("E:\\git\\men\\Menge\\Menge-0.9.2\\examples\\Olympic\\roadRegion.xml");
+>>>>>>> f684803ff931159ac6e86cfa3b6bdc4fcab9f200
 					if (!shopInitOk)
+					{
 						cout << " shop init fail!" << endl;
+<<<<<<< HEAD
 
 					
 					
@@ -388,14 +402,106 @@ namespace Menge {
 					//3.初始化socket服务端，用于疏散状态转移控制
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.128.227.28", 12660); 
+=======
+						return 0x0;
+					}
+					else
+						cout << " shop init OK!" << endl;
+					if (!roadRegionOk)
+					{
+						cout << " roadblockRegion init fail!" << endl;
+						return 0x0;
+					}
+					else
+						cout << " roadblockRegion init OK!" << endl;
+					vector<size_t> tmp0 = { 10,10 };
+					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
+
+					verticesCanGo[45] = 0;
+					//2.无输入矩阵
+					int goalNum = fsm->getGoalSet(0)->size();
+					if (BaseScene::ProbMatrix == 0x0) {
+						cout << "apply the defult matrix,all ONE" << endl;
+						vector<vector<float>> tmp = {
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1},
+						{1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1}
+
+						};
+						MatrixDim2* tmpm = new MatrixDim2(goalNum, goalNum, 1);
+						for (int i = 0; i < goalNum; i++) {
+							for (int j = 0; j < goalNum; j++) {
+								tmpm->SetPoint(i, j, tmp[i][j]);
+							}
+						}
+						BaseScene::ProbMatrix = tmpm;
+						BaseScene::ProbMatrix->Show();
+						BaseScene::ProbMatrix->InitSumWeight();
+						
+					}
+					else if (BaseScene::ProbMatrix->col_size() != goalNum) {
+						cout << "matrix not matching goal number" << endl;
+						exit(1);
+					}
+					BaseScene::ProbMatrix->InitSumWeight();
+					
+					//3.初始化socket服务端，用于疏散状态转移控制
+					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
+					//SOCKET socketServer = Menge::Socket::socketServerInit("10.128.207.206", 12660); 
+
+>>>>>>> f684803ff931159ac6e86cfa3b6bdc4fcab9f200
 					//thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
 					//threadSocket.detach();
 
 					//初始化socket客户端，发出数据同步请求，接收仿真参数，更新仿真参数，最后进入监听状态
+<<<<<<< HEAD
 					SOCKET socketClient = Menge::Socket::socketClientInit("10.28.195.233", 12660);
 					Menge::Olympic::parameterInit(socketClient);
 					thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
 					threadSocket.detach();
+=======
+					SOCKET socketClient = Menge::Socket::socketClientInit("10.128.207.206", 12660);
+					Menge::Olympic::parameterInit(socketClient);
+					thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
+					threadSocket.detach();
+
+>>>>>>> f684803ff931159ac6e86cfa3b6bdc4fcab9f200
 					cout << "It's OLYMPIC Simulation" << endl;
 					break;
 				}

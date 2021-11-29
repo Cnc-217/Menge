@@ -55,7 +55,8 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeVis/Viewer/GLViewer.h"
 
 #include <sstream>
-
+#include <MengeCore\Scene\BaseScene.h>
+using namespace Menge::Olympic;
 
 namespace Menge {
 
@@ -231,12 +232,19 @@ namespace Menge {
 					}
 
 				}
-
 			}
-
+			/*
+			else
+			{
+			Menge::BaseScene::updateRoadNum();
+			for (size_t i = 0; i < roadRegionInfo.size(); i++)
+				cout << "roadID : "<<i<<" people num: "<<roadRegionInfo[i].peopleNumInThisRoad << endl;
+			}
+			*/
+			
 		}
-
+		
 		return false;
 	}
-
+	
 }	// namespace Menge 

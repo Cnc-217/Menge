@@ -73,12 +73,19 @@ namespace Menge {
 		std::vector<Agents::BaseAgent*> normalAgentSet;
 		bool evacuationState = false;
 		std::map<int, Shoptype>  shopInfo;
+		//std::vector<Shoptype> shopInfo2;
 		std::map<size_t, int>  goalSetInfo;//储存goalset内有多少个goal
 		std::map< size_t, bool >	_reachedAgents;//存储agent是否到达目标点
+<<<<<<< HEAD
 		std::map<size_t, int > nowReachTimes;//储存agent在当前goalset的到达次数的次数
 		std::vector<bool>   verticesCanGo;
 		std::string goalSeclectorType;
 		vector<float> Influence;//如果是model类型的goalselector，需要用到Influence
+=======
+		//std::map<size_t, int > nowReachTimes;//储存agent在当前goalset的到达次数的次数（没用到
+		std::vector<int>   verticesCanGo;
+		std::vector <roadRegionType> roadRegionInfo;
+>>>>>>> f684803ff931159ac6e86cfa3b6bdc4fcab9f200
 	}
 
 	namespace BaseScene {

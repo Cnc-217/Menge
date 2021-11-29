@@ -128,7 +128,8 @@ namespace Menge {
 						return false;
 					}
 					s->_actions.push_back( action );
-				} else if ( gchild->ValueStr() == "VelComponent" ) {
+				} 
+				else if ( gchild->ValueStr() == "VelComponent" ) {
 					if ( s->_velComponent != 0x0 ) {
 						logger << Logger::ERR_MSG << "Multiple velocity components defined for "
 							"the state (" << s->_name << ") on line " << gchild->Row() << ".  Only "
@@ -143,7 +144,8 @@ namespace Menge {
 						delete s;
 						return false;
 					}
-				} else if ( gchild->ValueStr() == "GoalSelector" ) {
+				} 
+				else if ( gchild->ValueStr() == "GoalSelector" ) {
 					s->_goalSelector = parseGoalSelector( gchild, behaveFldr );
 					if ( s->_goalSelector == 0x0 ) {
 						logger << Logger::ERR_MSG << "Unable to instantiate a goal selector for "
@@ -153,7 +155,8 @@ namespace Menge {
 						delete s;
 						return false;
 					}
-				} else if ( gchild->ValueStr() == "VelModifier" ) {
+				} 
+				else if ( gchild->ValueStr() == "VelModifier" ) {
 					VelModifier *vel = parseVelModifier( gchild, behaveFldr );
 					if ( vel == 0x0 ) {
 						delete s;
@@ -161,7 +164,8 @@ namespace Menge {
 					} else {
 						s->_velModifiers.push_back(vel);
 					}
-				} else {
+				} 
+				else {
 					logger << Logger::ERR_MSG << "State contains an improper child element: ";
 					logger << gchild->ValueStr() << ".";
 					return false;

@@ -120,13 +120,25 @@ namespace Menge {
 			int sameSetGoalNum;
 		};
 		extern MENGE_API std::map<int, Shoptype>  shopInfo;
+		//extern MENGE_API std::vector<Shoptype> shopInfo2;
 		extern MENGE_API std::map<size_t, int>  goalSetInfo;//储存goalset内有多少个goal
 		extern MENGE_API std::map< size_t, bool >	_reachedAgents;//存储agent是否到达目标点
+<<<<<<< HEAD
 		extern MENGE_API std::map<size_t, int > nowReachTimes;//储存agent在当前goalset的不同goal的次数
 		extern MENGE_API std::vector<bool>   verticesCanGo;//路障，false为不可通过，默认全为true
 		extern MENGE_API std::string goalSeclectorType; //存储goalSelector的类型（reality、model）
 		extern MENGE_API std::vector<float> Influence;//Olympic下model类型的goalselector需要用到的影响因子
 
+=======
+		//extern MENGE_API std::map<size_t, int > nowReachTimes;//储存agent在当前goalset的不同goal的次数(没用到)
+		extern MENGE_API std::vector<int>   verticesCanGo;
+		extern MENGE_API struct roadRegionType//声明一个数据结构  用来表示统计人流的区域
+		{
+			Menge::Math::OBBShape obbRoadbRegion;//一个形状  可旋转矩形
+			int peopleNumInThisRoad;//用来记录这个区域内的人数
+		};
+		extern MENGE_API std::vector <roadRegionType> roadRegionInfo;//一个vector  用来记录所有的统计区域
+>>>>>>> f684803ff931159ac6e86cfa3b6bdc4fcab9f200
 	}
 
 	namespace BaseScene {

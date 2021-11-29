@@ -436,6 +436,10 @@ namespace Menge {
 					if (accumWeight > TGT_WEIGHT) break;
 				}
 			}
+<<<<<<< HEAD
+=======
+			//cout << agent->_id << " choose: " << tgtGoal->getID() << endl;
+>>>>>>> f684803ff931159ac6e86cfa3b6bdc4fcab9f200
 			return tgtGoal;
 		}
 

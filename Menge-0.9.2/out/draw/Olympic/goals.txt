@@ -1,60 +1,61 @@
 <?xml version="1.0"?>
 <Population >
     <GoalSet id="0">
-        <!-- 滑雪场 -->
         <Goal capacity="1000000" id="0" radius="214.56" type="circle" weight="1.00" x="-1063.35" y="1335.10"/>
         <Goal capacity="1000000" id="1" radius="200.13" type="circle" weight="1.00" x="-3158.18" y="-2427.94"/>
         <Goal capacity="1000000" id="2" radius="169.66" type="circle" weight="1.00" x="-891.28" y="-1889.59"/>
-
-        <!-- 饭店 -->
         <Goal capacity="1000000" id="3" radius="51.83" type="circle" weight="1.00" x="918.10" y="-1073.62"/>
         <Goal capacity="1000000" id="4" radius="54.43" type="circle" weight="1.00" x="1923.06" y="-1150.74"/>
         <Goal capacity="1000000" id="5" radius="51.54" type="circle" weight="1.00" x="2681.09" y="-1019.34"/>
         <Goal capacity="1000000" id="6" radius="44.15" type="circle" weight="1.00" x="1367.67" y="-2175.81"/>
         <Goal capacity="1000000" id="7" radius="55.65" type="circle" weight="1.00" x="1811.88" y="-2147.10"/>
-       <Goal capacity="1000000" id="8" radius="42.88" type="circle" weight="1.00" x="2559.81" y="-2181.67"/>
+        <Goal capacity="1000000" id="8" radius="42.88" type="circle" weight="1.00" x="2559.81" y="-2181.67"/>
         <Goal capacity="1000000" id="9" radius="54.43" type="circle" weight="1.00" x="1273.79" y="-1886.15"/>
-        
-        <!-- 颁奖广场-->
         <Goal capacity="1000000" id="10" radius="255.09" type="circle" weight="1.00" x="134.09" y="-1787.49"/>
-
-        <!-- 冬奥纪念品-->
         <Goal capacity="1000000" id="11" radius="42.88" type="circle" weight="1.00" x="-300.52" y="-119.81"/>
         <Goal capacity="1000000" id="12" radius="54.43" type="circle" weight="1.00" x="558.59" y="132.87"/>
-
-        <!-- 雪具商店-->
         <Goal capacity="1000000" id="13" radius="50.54" type="circle" weight="1.00" x="-249.98" y="1638.84"/>
         <Goal capacity="1000000" id="14" radius="67.18" type="circle" weight="1.00" x="205.75" y="1803.82"/>
-
-        <!-- 主题商店 复仇者联盟-->
         <Goal capacity="1000000" id="15" radius="63.92" type="circle" weight="1.00" x="3459.35" y="1345.73"/>
-       <Goal capacity="1000000" id="16" radius="64.72" type="circle" weight="1.00" x="3358.27" y="820.16"/>
+        <Goal capacity="1000000" id="16" radius="64.72" type="circle" weight="1.00" x="3358.27" y="820.16"/>
         <Goal capacity="1000000" id="17" radius="64.72" type="circle" weight="1.00" x="3317.85" y="405.77"/>
         <Goal capacity="1000000" id="18" radius="58.93" type="circle" weight="1.00" x="3792.88" y="991.98"/>
         <Goal capacity="1000000" id="19" radius="58.93" type="circle" weight="1.00" x="2569.92" y="72.23"/>
-
-        <!-- 服装店-->
         <Goal capacity="1000000" id="20" radius="58.93" type="circle" weight="1.00" x="2064.56" y="2305.91"/>
         <Goal capacity="1000000" id="21" radius="50.54" type="circle" weight="1.00" x="1276.20" y="1972.38"/>
         <Goal capacity="1000000" id="22" radius="51.54" type="circle" weight="1.00" x="1589.52" y="1507.45"/>
         <Goal capacity="1000000" id="23" radius="63.92" type="circle" weight="1.00" x="2145.41" y="1588.31"/>
         <Goal capacity="1000000" id="24" radius="64.72" type="circle" weight="1.00" x="2772.06" y="1739.91"/>
-
-        <!-- 主题商店 冰雪奇缘-->
         <Goal capacity="1000000" id="25" radius="56.59" type="circle" weight="1.00" x="1122.87" y="687.53"/>
         <Goal capacity="1000000" id="26" radius="63.92" type="circle" weight="1.00" x="1599.63" y="142.98"/>
         <Goal capacity="1000000" id="27" radius="72.88" type="circle" weight="1.00" x="2044.34" y="921.23"/>
-
-        <!-- noisePoint -->
         <Goal capacity="1000000" id="28" radius="50.54" type="circle" weight="1.00" x="2003.91" y="-483.66"/>
         <Goal capacity="1000000" id="29" radius="54.43" type="circle" weight="1.00" x="-1088.88" y="-958.70"/>
         <Goal capacity="1000000" id="30" radius="54.43" type="circle" weight="1.00" x="-482.45" y="-776.77"/>
         <Goal capacity="1000000" id="31" radius="78.94" type="circle" weight="1.00" x="-826.09" y="1972.38"/>
         <Goal capacity="1000000" id="32" radius="81.49" type="circle" weight="1.00" x="669.77" y="1315.41"/>
         <Goal capacity="1000000" id="33" radius="63.92" type="circle" weight="1.00" x="669.77" y="-281.52"/>
-<!-- 出口入口 -->	
         <Goal capacity="1000000" id="34" radius="205.44" type="circle" weight="1.00" x="-3347.80" y="-601.36"/>
         <Goal capacity="1000000" id="35" radius="258.12" type="circle" weight="1.00" x="4467.77" y="-535.25"/>
+        <Goal angle="-15.81" capacity="1000000" height="325.30" id="36" type="OBB" weight="1.00" width="1470.06" x="-2779.14" y="-895.50"/>
+        <Goal angle="10.44" capacity="1000000" height="341.67" id="37" type="OBB" weight="1.00" width="725.02" x="-469.14" y="2000.01"/>
+        <Goal angle="-33.46" capacity="1000000" height="1435.53" id="38" type="OBB" weight="1.00" width="136.12" x="-3722.27" y="-2056.68"/>
+        <Goal angle="-11.74" capacity="1000000" height="1286.53" id="39" type="OBB" weight="1.00" width="189.97" x="-1069.98" y="-254.61"/>
+        <Goal angle="8.82" capacity="1000000" height="265.58" id="40" type="OBB" weight="1.00" width="1867.13" x="-3151.72" y="1952.04"/>
+        <Goal angle="-163.34" capacity="1000000" height="2538.20" id="41" type="OBB" weight="1.00" width="444.07" x="-3157.25" y="1950.30"/>
+        <Goal angle="-167.21" capacity="1000000" height="560.43" id="42" type="OBB" weight="1.00" width="176.38" x="-3618.23" y="-2132.45"/>
+        <Goal angle="11.77" capacity="1000000" height="197.36" id="43" type="OBB" weight="1.00" width="3323.11" x="-3455.20" y="-2823.82"/>
+        <Goal angle="6.98" capacity="1000000" height="358.24" id="44" type="OBB" weight="1.00" width="1188.22" x="558.02" y="2157.25"/>
+        <Goal angle="17.29" capacity="1000000" height="399.04" id="45" type="OBB" weight="1.00" width="874.11" x="-459.25" y="853.37"/>
+        <Goal angle="-21.66" capacity="1000000" height="235.53" id="46" type="OBB" weight="1.00" width="1556.53" x="2675.62" y="2018.57"/>
+        <Goal angle="167.47" capacity="1000000" height="1682.06" id="47" type="OBB" weight="1.00" width="268.19" x="4258.57" y="1400.95"/>
+        <Goal angle="167.50" capacity="1000000" height="1508.42" id="48" type="OBB" weight="1.00" width="129.63" x="3763.70" y="-841.70"/>
+        <Goal angle="0.84" capacity="1000000" height="131.41" id="49" type="OBB" weight="1.00" width="1221.83" x="1058.02" y="-2376.04"/>
+        <Goal angle="14.47" capacity="1000000" height="714.44" id="50" type="OBB" weight="1.00" width="109.84" x="2316.28" y="-2084.81"/>
+        <Goal angle="0.30" capacity="1000000" height="228.40" id="51" type="OBB" weight="1.00" width="809.61" x="2628.17" y="-2548.31"/>
+        <Goal angle="-33.11" capacity="1000000" height="925.08" id="52" type="OBB" weight="1.00" width="248.56" x="1067.75" y="-1352.58"/>
+        <Goal angle="12.82" capacity="1000000" height="208.61" id="53" type="OBB" weight="1.00" width="1156.27" x="2069.76" y="1267.77"/>
+        <Goal angle="-28.37" capacity="1000000" height="312.93" id="54" type="OBB" weight="1.00" width="805.34" x="888.47" y="962.66"/>
     </GoalSet>
 
 </Population>
