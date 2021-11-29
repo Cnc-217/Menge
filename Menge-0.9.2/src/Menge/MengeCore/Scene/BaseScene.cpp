@@ -228,7 +228,6 @@ namespace Menge {
 			int num = checkRegion(region);
 			roadRegionInfo[idx].peopleNumInThisRoad = num;
 		}
-		return ;
 	}
 
 	int  BaseScene::checkRegion(Menge::Math::OBBShape region)
