@@ -113,7 +113,6 @@ namespace Menge {
 							populationExit += ExitReagionInfo[i];//所有出口的总人数
 							populationCapacity += ExitReagionInfo[i] / ExitReagionCapacity[i];//所有出口的总容量
 						}
-						cout << "xxx wrong" << endl;
 						//下面计算优先级
 						float_t priorityMax;
 						float_t priorityTmp;

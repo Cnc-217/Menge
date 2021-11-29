@@ -29,6 +29,12 @@ namespace Menge {
 			std::string parallelFilePath = scene.substr(0, found) + "/OlympicParallelS.xml";
 			CopyFile(scene.c_str(), parallelFilePath.c_str(), FALSE);
 		}
+
+		string getDirectoryPath(string str) {
+			std::size_t found = str.find_last_of("/");
+			string filePath = str.substr(0, found);
+			return filePath;
+		}
 	}
 
 }

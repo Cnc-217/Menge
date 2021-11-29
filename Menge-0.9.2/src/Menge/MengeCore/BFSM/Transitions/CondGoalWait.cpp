@@ -178,34 +178,17 @@ namespace Menge {
 						int lastShopGone = agent->_shopGone.back();
 						if (agent->_shopGone.size() == 5)
 							agent->_shopGone.pop_front();
-<<<<<<< HEAD
-
-=======
-						agent->_shopGone.push_back(goalId);
->>>>>>> f684803ff931159ac6e86cfa3b6bdc4fcab9f200
 						if (shopInfo[goalId].goalSet == shopInfo[lastShopGone].goalSet)
 							agent->_shopGoneNum++;
 						else
 							agent->_shopGoneNum = 1;
 					}
-<<<<<<< HEAD
 					else {
 						agent->_shopGone.push_back(goalId);
 						agent->_shopGoneNum = 1;
 					}
-					
-					//if (agentId == 1)
-						return true;					//出函数
-=======
-					else
-					{
-						agent->_shopGone.push_back(goalId);
-						agent->_shopGoneNum = 1;
-					}
-					if (agentId == 1)
-						cout << "2-0" <<"+"<< agent->_shopGone.front() << endl;
 					return true;					//出函数
->>>>>>> f684803ff931159ac6e86cfa3b6bdc4fcab9f200
+
 				};
 			}; break;
 				/*  转移  3->2 */

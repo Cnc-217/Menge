@@ -7,14 +7,14 @@
 #include<fstream>
 #include <windows.h>
 
-
+using namespace std;
 namespace Menge{
 
 	namespace FileTool {
 
 		void copyBehaveFile();
 		void copySceneFile();
-
+		string getDirectoryPath(string str);
 
 	}
 

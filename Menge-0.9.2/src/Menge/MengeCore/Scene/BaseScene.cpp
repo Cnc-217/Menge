@@ -159,11 +159,6 @@ namespace Menge {
 		Menge::BaseScene::ProbMatrix->Show();
 	}
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> f684803ff931159ac6e86cfa3b6bdc4fcab9f200
 	void BaseScene::modifyMatrix(char* matrixStr) {
 		char* temp = strtok(matrixStr, " ");
 		vector<float> vec;
@@ -226,13 +221,13 @@ namespace Menge {
 		bool loadOkay = xml.LoadFile();
 
 		if (!loadOkay) {	// load xml file
-			cout << "load xml error: "<< senceXmlFliePath <<endl;
+			cout << "load xml error: " << senceXmlFliePath << endl;
 			exit(1);
 		}
 
 		TiXmlElement* experimentNode = xml.RootElement();
 		if (!experimentNode) {
-			cout << "load experimentNode error: "  << endl;
+			cout << "load experimentNode error: " << endl;
 			exit(1);
 		}
 
@@ -243,7 +238,7 @@ namespace Menge {
 			//找到了AgentGroup的属性组
 			if (child->ValueStr() == "AgentGroup") {
 				TiXmlElement* nodeChild;
-				for (nodeChild = child->FirstChildElement();nodeChild;nodeChild = nodeChild->NextSiblingElement()) {
+				for (nodeChild = child->FirstChildElement(); nodeChild; nodeChild = nodeChild->NextSiblingElement()) {
 					//找到了ProfileSelector的属性组
 					if (nodeChild->ValueStr() == "ProfileSelector") {
 						TiXmlAttribute* attr;
@@ -264,14 +259,13 @@ namespace Menge {
 						}
 					}
 
-<<<<<<< HEAD
 				}
 			}
 		}
 		xml.SaveFile();
-=======
-	bool BaseScene::setRoadRegionFromXML(string dir)
-	{
+	}
+
+	bool BaseScene::setRoadRegionFromXML(string dir){
 		double Rad_to_deg = 45.0 / atan(1.0);//角度转弧度
 		float data[row][5] = { 0 };
 		int count = 0;
@@ -319,8 +313,7 @@ namespace Menge {
 		return ;
 	}
 
-	int  BaseScene::checkRegion(Menge::Math::OBBShape region)
-	{
+	int  BaseScene::checkRegion(Menge::Math::OBBShape region){
 		int regionNum = 0;
 		for (int idx = 0; idx < Menge::SIMULATOR->getNumAgents(); idx++)//对所有的agent遍历
 		{
@@ -329,10 +322,9 @@ namespace Menge {
 				regionNum++;
 		}
 		return regionNum;
-	};
->>>>>>> f684803ff931159ac6e86cfa3b6bdc4fcab9f200
-
 	}
+
+	
 	
 	namespace Olympic {
 
@@ -475,7 +467,6 @@ namespace Menge {
 
 		}
 
-
 		string matrixBusinessScene() {
 			//发送 1：36个目标点的人数 2：概率矩阵
 			std::vector<int> agentNumOfShop(36, 0);
@@ -517,11 +508,8 @@ namespace Menge {
 			Menge::Olympic::verticesCanGo.assign(vec.begin(), vec.end());
 			delete[] strc;
 		}
-
 		
-
 		string getSimData() {
-			cout << "yes" << endl;
 			//发送 1：36个目标点的人数
 			std::vector<int> agentNumOfShop(36, 0);
 			std::vector <int>roadRegionNum(19, 0);

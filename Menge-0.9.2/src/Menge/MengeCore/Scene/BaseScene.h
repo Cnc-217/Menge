@@ -28,14 +28,10 @@ namespace Menge {
         vector<bool> strToVectorBool (char* listStr);
         vector<float> strToVectorFloat (char* listStr);
         void projectNameExtract(string folderPath);//提取项目名
-<<<<<<< HEAD
         void sceneParallelXML(string senceXmlFliePath);//记录人群位置，写一个新的xml文件
-=======
-		bool setRoadRegionFromXML(string dir);//设置道路信息
+		bool setRoadRegionFromXML(string dir);//从XML文件中设置道路信息
 		int checkRegion(Menge::Math::OBBShape region);
 		void updateRoadNum();
-
->>>>>>> f684803ff931159ac6e86cfa3b6bdc4fcab9f200
     }
 
     namespace Olympic {
