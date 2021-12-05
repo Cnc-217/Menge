@@ -29,6 +29,7 @@
 #define	__SIMULATOR_DB_ENTRY_H__
 
 #include "MengeCore/CoreConfig.h"
+#include "MengeCore/Core.h"
 
 #include <string>
 #include <iostream>

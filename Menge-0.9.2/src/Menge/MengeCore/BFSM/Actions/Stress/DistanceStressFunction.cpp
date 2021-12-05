@@ -1,6 +1,6 @@
 #include "DistanceStressFunction.h"
 #include "AgentStressor.h"
-
+#include"MengeCore/Scene/BaseScene.h"
 #include <map>
 #include "MengeCore/Core.h"
 #include "MengeCore/Agents/BaseAgent.h"
@@ -12,9 +12,8 @@ namespace StressGAS {
 	using Menge::Agents::BaseAgent;
 	using Menge::Math::Geometry2D;
 	using std::map;
-	using Menge::BaseScene::ExitAgentInfo;
-	using Menge::BaseScene::ExitReagionInfo;
-	using Menge::BaseScene::ExitReagionCapacity;
+	using namespace Menge::BaseScene;
+	using namespace Menge::Olympic;
 
 	/////////////////////////////////////////////////////////////////////
 	//                   Implementation of DistanceStressFunction
@@ -51,23 +50,13 @@ namespace StressGAS {
 			// increase to distance if greater
 			float target = 0.f;
 			//下面判断agent是否在regions里面
-			map <size_t, Geometry2D*> ::iterator it;
-			it = _regions.begin();
-			Geometry2D* region = it->second;
 			//遍历每一个区域
-			while (it != _regions.end()) {
-				region = it->second;
-				if (region->containsPoint(_agent->_pos)) {//这里的agent不是所有的agent，是在某个state中的一个agent
-
-					//vector=1000表示agent之前不在region里，现在进入了
-					if (Menge::BaseScene::ExitAgentInfo[_agent->_id] == 1000) {
-						Menge::BaseScene::ExitAgentInfo[_agent->_id] = it->first;
-						//cout << "agentState" << Menge::Evacuation::ExitAgentInfo[_agent->_id] << endl;
-						Menge::BaseScene::ExitReagionInfo[it->first] = Menge::BaseScene::ExitReagionInfo[it->first] + 1;
-						cout << "agentID: " << _agent->_id << " reagionID: " << it->first << " population: " << Menge::BaseScene::ExitReagionInfo[it->first] << endl;;
-					}
-					
-					float d = sqrt(region->squaredDistance(_agent->_pos));
+			for (int i = 19; i < 21; i++)
+			{	Menge::Math::OBBShape region = roadRegionInfo[i].obbRoadbRegion;
+				if (agentInWhichRegion[_agent->_id] == i )
+				{
+					//cout << "agentID: " << _agent->_id << " reagionID: " << i << " population: " << roadRegionInfo[i].peopleNumInThisRoad << endl;;
+					float d = sqrt(region.squaredDistance(_agent->_pos));
 					if (d > _outer) target = 0.f;
 					else if (d < _inner) target = 1.f;
 					else {
@@ -79,19 +68,13 @@ namespace StressGAS {
 							target *= target;
 						}
 					}
-
 					_stressLevel = (target > _stressLevel) ? target : _stressLevel;
 					return _stressLevel;
 				}
-				else {
-					//agent之前在此区域内，现在出去了
-					if (Menge::BaseScene::ExitAgentInfo[_agent->_id] == it->first) {
-						Menge::BaseScene::ExitAgentInfo[_agent->_id] = 1000;
-						Menge::BaseScene::ExitReagionInfo[it->first] = Menge::BaseScene::ExitReagionInfo[it->first] - 1;
-					}
+				else 
+				{
 
 				}
-				it++;
 			}
 			return 0;
 		//}

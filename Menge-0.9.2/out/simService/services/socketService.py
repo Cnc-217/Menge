@@ -21,5 +21,4 @@ def socketRecive(client):
         dataRecived = client.recv(1024).decode("utf8")
         recevied_size += len(dataRecived)  # 每次收到的服务端的数据有可能小于1024，所以必须用len判断
         recevied_data += dataRecived
-
     return recevied_data

@@ -69,7 +69,7 @@ namespace Menge {
 			_priority = 0.f;
 			_id = 0;
 			_radius = 0.19f;
-			_shopGoneNum = 0;
+			_shopGoneNum = 1;
 		}
 
 		////////////////////////////////////////////////////////////////

@@ -10,7 +10,8 @@
 #include "MengeCore/Agents/SimulatorInterface.h"
 
 #include <cassert>
-
+using namespace Menge::Olympic;
+using namespace Menge::BaseScene;
 namespace Menge {
 
 	namespace BFSM {
@@ -20,9 +21,7 @@ namespace Menge {
 		/////////////////////////////////////////////////////////////////////
 
 		using namespace std;
-		using Menge::BaseScene::ExitReagionInfo;
-		using Menge::BaseScene::ExitAgentInfo;
-		using Menge::BaseScene::ExitReagionCapacity;
+		using namespace Menge::BaseScene;
 
 		bool AlgorithmGoalSelector::_flag;
 		map <size_t, Goal*> AlgorithmGoalSelector::_bestGoals;
@@ -57,7 +56,6 @@ namespace Menge {
 					logger << agent->_id << ".  There were no available goals in the goal set.";
 					return 0x0;
 				}
-				cout << "yes" << endl;
 				AlgorithmGoalSelector::_bestGoals.clear();
 				const size_t NUM_AGENT = Menge::SIMULATOR->getNumAgents();
 				const size_t NUM_GOAL = _goalSet->size();
@@ -73,14 +71,12 @@ namespace Menge {
 				vector<vector<float_t>> distanceVec(NUM_AGENT, vector<float_t>(NUM_GOAL+1,0));
                 //存储每个agent到所有出口的路上的人数
                 vector<vector<float_t>> peopleNumVec(NUM_AGENT, vector<float_t>(NUM_GOAL+1,0));
-				cout << "yes2" << endl;
                 vector<float_t> temp(2, 0);
 				for (int i = 0; i < NUM_AGENT; i++) { //遍历每个agent
 					Agents::BaseAgent* agentCur = Menge::SIMULATOR->getAgent(i);//当前agent
 					Graph::graphLoad->countPeople(agentCur);
 					
 				}
-				cout << "yes3" << endl;
 				for (int i = 0; i < NUM_AGENT; i++) { //遍历每个agent
 					distance = 0;
 					for (int j = 0; j < NUM_GOAL; j++) { //遍历每个出口
@@ -95,16 +91,15 @@ namespace Menge {
 					}
 					cout <<"这是第i个人  "<< pathPeopleNum[i] << endl;
 				}
-				cout << "aaaa  "  << endl;
 				Goal* bestGoal = _goalSet->getGoalByID(1);
 				size_t populationExit = 0;
 				float_t populationCapacity = 0;
-				for (size_t i = 0; i < ExitReagionInfo.size(); i++)
+				for (size_t i = 19; i < 21; i++)
 				{
-					populationExit += ExitReagionInfo[i];//所有出口的总人数
-					if(i>0)populationCapacity += ExitReagionInfo[i]/ ExitReagionCapacity[i];//所有出口的总容量
+					populationExit += roadRegionInfo[i].peopleNumInThisRoad;//所有出口的总人数
+					if(i > 0)
+						populationCapacity += roadRegionInfo[i].peopleNumInThisRoad/ roadRegionInfo[i].capacity;//所有出口的总容量
 				}
-				cout << "xxx wrong" << endl;
 				//下面计算优先级
 				float_t priorityMax;
 				float_t priorityTmp;
@@ -112,22 +107,22 @@ namespace Menge {
 					priorityMax = 0; //优先级算法得到的优先级越大越好
 					priorityTmp = 0;
 					for (int j = 0; j < NUM_GOAL; j++) {//遍历每个goal,计算优先级
-						/**/
+						int indexJ = j + 19;
 						if (_algorithmID == 0) {
 
 							priorityTmp = 1/distanceVec[i][j];
 						}
 						else if (_algorithmID == 1) {
 							if (populationExit == 0) priorityTmp = 2 - distanceVec[i][j] / distanceSum[i];
-							else priorityTmp = 3*(1 - ExitReagionInfo[j] / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]);
+							else priorityTmp = 3*(1 - roadRegionInfo[indexJ].peopleNumInThisRoad / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]);
 						}
 						else if (_algorithmID == 2) {
 							if (populationExit == 0) priorityTmp = 2 - distanceVec[i][j] / distanceSum[i];
-							else priorityTmp = 3*(1 - (ExitReagionInfo[j]/ populationCapacity) / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]);
+							else priorityTmp = 3*(1 - (roadRegionInfo[indexJ].peopleNumInThisRoad / populationCapacity) / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]);
 						}
 						else if (_algorithmID == 3) {
                             if (populationExit == 0 || pathPeopleNum[i] == 0) priorityTmp = 2 - distanceVec[i][j] / distanceSum[i];
-                            else priorityTmp = 3*(1 - (ExitReagionInfo[j]/ populationCapacity) / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]) + (1 - peopleNumVec[i][j] / pathPeopleNum[i]);
+                            else priorityTmp = 3*(1 - (roadRegionInfo[indexJ].peopleNumInThisRoad / populationCapacity) / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]) + (1 - peopleNumVec[i][j] / pathPeopleNum[i]);
 						}
 						else {
 							cout <<"AlgorithmID wrong" << endl;

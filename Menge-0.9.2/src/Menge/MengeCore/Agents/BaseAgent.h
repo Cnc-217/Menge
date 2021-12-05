@@ -292,6 +292,8 @@ namespace Menge {
 
 			int _shopGoneNum = 0;//最近走过的五个店中同类店铺数量
 
+			int _shopGoing = 0;
+
 			/*!
 			 *	@brief		The priority of each agent.  
 			 *

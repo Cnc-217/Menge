@@ -166,7 +166,7 @@ namespace Menge {
 
 			Goal* getGoalSameRegion(const Agents::BaseAgent* agent);
 
-			Goal* getGoalFromProbs(const Agents::BaseAgent* agent,std::vector<float>& probs);
+			Goal* getGoalFromProbs( const Agents::BaseAgent* agent,std::vector<float>& probs);
 
 			/*!
 			 *	@brief		Locks the goal set for a read-only operations.

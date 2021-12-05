@@ -1,19 +1,19 @@
 #coding:utf-8
-from simService import sim,redisServer
+from simService import redisServer, sims
 from simService.services.mengeDataService import getDataFromMenge
 import json
 
 def dataSynToRadis():
-    if(sim.getSceneName()=="olympic"):
+    for sim in sims.getSimulationList():
         rawData = getDataFromMenge(sim)
         #list类型
         jsonRecive = json.loads(rawData)
         jsonStr = json.dumps(jsonRecive)
-        redisServer.set("data",jsonStr)
-        print("collect data to Redis")
+        redisServer.set(sim.getPid(),jsonStr)
+        print ("collect sim pid:"+str(sim.getPid())+" data to Redis")
 
 def dataCollectToRedis():
-    if(sim.isRunning==True):
+    if (len(sims.getSimulationList())==0):
+        pass
+    else :
         dataSynToRadis()
-    else:
-        print("simulation is not running")

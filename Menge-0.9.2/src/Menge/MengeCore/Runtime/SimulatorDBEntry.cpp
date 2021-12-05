@@ -44,6 +44,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/FSM.h"
 #include "MengeCore/BFSM/FSMDescrip.h"
 #include "MengeCore/Runtime/Logger.h"
+#include "MengeCore/FileTool.h"
 
 namespace Menge {
 
@@ -135,6 +136,11 @@ namespace Menge {
 																 const std::string & outFile,
 																 const std::string & scbVersion,
 																 bool verbose) {
+		Menge::BehaveFilePath = behaveFile;
+		Menge::SceneFilePath = sceneFile;
+		replace(BehaveFilePath.begin(), BehaveFilePath.end(), '\\', '/');
+		replace(SceneFilePath.begin(), SceneFilePath.end(), '\\', '/');
+		Menge::DirectoryPath = FileTool::getDirectoryPath(BehaveFilePath);
 		_sim = initSimulator( sceneFile, verbose );
 		if ( !_sim ) {
 			return 0x0;

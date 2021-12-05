@@ -239,7 +239,10 @@ namespace Menge {
 			Goal* tgtGoal = 0x0;
 
 			if (PROJECTNAME == OLYMPIC) {
-				int goalIDNow = ACTIVE_FSM->getNode("tour")->getGoal(agent->_id)->_id;//agent当前的goal的id
+				int goalIDNow;
+				if (agent->_shopGone.size() == 0) 
+					goalIDNow = 34;
+				else goalIDNow = agent->_shopGone.back();//agent当前的goal的id
 				int goalSetNow = shopInfo[goalIDNow].goalSet;//agent当前的goalset的id	
 				//weight权重和的值如下
 				float weight = BaseScene::ProbMatrix->_sumWeight->at(goalIDNow);
@@ -254,8 +257,10 @@ namespace Menge {
 					itr = _goals.find(_goalIDs[i]);
 					tgtGoal = itr->second;
 					accumWeight += BaseScene::ProbMatrix->Point(goalIDNow, (tgtGoal->_id));
-					if (accumWeight > TGT_WEIGHT) break;
+					if (accumWeight > TGT_WEIGHT) 
+						break;
 				}
+				agentGoingShop[agent->_id] = int(itr->first);
 				return tgtGoal;
 
 
@@ -412,7 +417,7 @@ namespace Menge {
 		}
 
 
-		Goal* GoalSet::getGoalFromProbs(const Agents::BaseAgent* agent, vector<float>& probs) {
+		Goal* GoalSet::getGoalFromProbs( const Agents::BaseAgent* agent, vector<float>& probs) {
 			Goal* tgtGoal = 0x0;
 
 			if (PROJECTNAME == OLYMPIC) {
@@ -431,10 +436,13 @@ namespace Menge {
 					itr = _goals.find(_goalIDs[i]);
 					tgtGoal = itr->second;
 					accumWeight += probs[i];
-					if (accumWeight > TGT_WEIGHT) break;
+					if (accumWeight > TGT_WEIGHT)
+					{
+						Menge::Olympic::agentGoingShop[agent->_id] = itr->first;
+						break;
+					}
 				}
 			}
-			//cout << agent->_id << " choose: " << tgtGoal->getID() << endl;
 			return tgtGoal;
 		}
 

@@ -13,7 +13,8 @@
 #include "MengeCore/Agents/SimulatorInterface.h"
 
 #include <cassert>
-
+using namespace Menge::Olympic;
+using namespace Menge::BaseScene;
 namespace Menge {
 
 	namespace BFSM {
@@ -23,9 +24,6 @@ namespace Menge {
 		/////////////////////////////////////////////////////////////////////
 
 		using namespace std;
-		using Menge::BaseScene::ExitReagionInfo;
-		using Menge::BaseScene::ExitAgentInfo;
-		using Menge::BaseScene::ExitReagionCapacity;
 
 		bool EvacuationGoalSelector::_flag;
 		map <size_t, Goal*> EvacuationGoalSelector::_bestGoals;
@@ -104,16 +102,14 @@ namespace Menge {
 							}
 							cout << "这是第" << i << "个人到所有出口路上的总人数" << pathPeopleNum[i] << endl;
 						}
-						cout << "aaaa  " << endl;
 						Goal* bestGoal = _goalSet->getGoalByID(1);
 						size_t populationExit = 0;
 						float_t populationCapacity = 0;
-						for (size_t i = 0; i < ExitReagionInfo.size(); i++)
+						for (size_t i = 19; i < 21; i++)
 						{
-							populationExit += ExitReagionInfo[i];//所有出口的总人数
-							populationCapacity += ExitReagionInfo[i] / ExitReagionCapacity[i];//所有出口的总容量
+							populationExit += roadRegionInfo[i].peopleNumInThisRoad;//所有出口的总人数
+							populationCapacity += roadRegionInfo[i].peopleNumInThisRoad / roadRegionInfo[i].capacity;//所有出口的总容量
 						}
-						cout << "xxx wrong" << endl;
 						//下面计算优先级
 						float_t priorityMax;
 						float_t priorityTmp;
@@ -121,23 +117,24 @@ namespace Menge {
 							priorityMax = 0; //优先级算法得到的优先级越大越好
 							priorityTmp = 0;
 							for (int j = 0; j < NUM_GOAL; j++) {//遍历每个goal,计算优先级
+								int idx_j = j + 19;
 								if (_algorithmID == 0) {
 
 									priorityTmp = 1 / distanceVec[i][j];
 								}
 								else if (_algorithmID == 1) {
 									if (populationExit == 0) priorityTmp = 2 - distanceVec[i][j] / distanceSum[i];
-									else priorityTmp = 3 * (1 - ExitReagionInfo[j] / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]);
+									else priorityTmp = 3 * (1 - roadRegionInfo[idx_j].peopleNumInThisRoad / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]);
 								}
 								else if (_algorithmID == 2) {
 									if (populationExit == 0) priorityTmp = 2 - distanceVec[i][j] / distanceSum[i];
-									else priorityTmp = 3 * (1 - (ExitReagionInfo[j] / populationCapacity) / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]);
+									else priorityTmp = 3 * (1 - (roadRegionInfo[idx_j].peopleNumInThisRoad / populationCapacity) / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]);
 								}
 								else if (_algorithmID == 3) {
 									if (populationExit == 0 || pathPeopleNum[i] == 0) priorityTmp = 2 - distanceVec[i][j] / distanceSum[i];
 									else {
 										if(populationCapacity==0) priorityTmp = 3 + (1 - distanceVec[i][j] / distanceSum[i]) + (1 - peopleNumVec[i][j] / pathPeopleNum[i]);
-										else priorityTmp = 3 * (1 - (ExitReagionInfo[j] / populationCapacity) / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]) + (1 - peopleNumVec[i][j] / pathPeopleNum[i]);
+										else priorityTmp = 3 * (1 - (roadRegionInfo[idx_j].peopleNumInThisRoad / populationCapacity) / populationExit) + (1 - distanceVec[i][j] / distanceSum[i]) + (1 - peopleNumVec[i][j] / pathPeopleNum[i]);
 									}
 								}
 								else {

@@ -61,7 +61,7 @@ namespace Menge {
 		//                   Implementation of GoalWaitCondition
 		///////////////////////////////////////////////////////////////////////////
 
-		GoalWaitCondition::GoalWaitCondition(): Condition(),_distSq(0.f) {
+		GoalWaitCondition::GoalWaitCondition(): Condition(),_distSq(0.f){
 		}
 
 		///////////////////////////////////////////////////////////////////////////
@@ -106,8 +106,7 @@ namespace Menge {
 				_reachedAgents[agentId] = true;
 				_lock.releaseWrite();
 			}
-			else
-				return false;
+			else return false;
 			//定义一些局部变量
 			float serviceTime;
 			int goalId = goal->getID();
@@ -123,49 +122,37 @@ namespace Menge {
 			case 4:serviceTime = IOTIME; break;//出入口
 			default:break;
 			}
-			switch (_statusAgents[agentId])//  0未到达  1到达  2接受服务  3阻塞  
-			{
+			//  0未到达  1到达  2接受服务  3阻塞
+			switch (_statusAgents[agentId])  {
 				/*  转移  0->1  */
 			case 0: {
-				if (_reachedAgents[agentId])
-				{
-					if (shopType == 4)//针对出入口  如果到达出入口  不等待直接选择下一个goal
-					{
+				if (_reachedAgents[agentId]){
+					//针对出入口  如果到达出入口  不等待直接选择下一个goal
+					if (shopType == 4){
 						if (agent->_shopGone.size() == 5)
 							agent->_shopGone.pop_front();
 						agent->_shopGoneNum = 1;
 						agent->_shopGone.push_back(goalId);
 						return true;
 					}
+					
 					_statusAgents[agentId] = 1;
-					if (agentId == 1)
-						cout << "0-1" << "+" << shopInfo[goalId].serviceMax << endl;
 				}
 			}; break;
 				/*  转移  1->2  1->3 */
 			case 1: {
-				 if (shopInfo[goalId].serviceQ.size() < serviceMax && shopInfo[goalId].blockQ.size()==0 )//服务队列有位&&没人在阻塞队列排队
-				{
+				//服务队列有位&&没人在阻塞队列排队
+				 if (shopInfo[goalId].serviceQ.size() < serviceMax && shopInfo[goalId].blockQ.size()==0 ){
 					_statusAgents[agentId] = 2;					//agent->_status = 2;
 					_triggerTimes[agentId] = Menge::SIM_TIME + serviceTime;
 					_lock.lockWrite();
 					shopInfo[goalId].serviceQ.push(agentId);//ID插入服务队尾；
 					_lock.releaseWrite();
-					if (agentId == 1)
-					{
-						cout << "1-2" << "+" << shopInfo[goalId].blockMax << "+" << shopInfo[goalId].serviceMax << "+ cango 2 :" << verticesCanGo[75] << endl;
-						/*if (Menge::SIM_TIME > 1000 && Menge::SIM_TIME < 2000)
-						{
-							verticesCanGo[75] = 0;
-							cout << "time is : " << Menge::SIM_TIME << "+ cango 2 :" << verticesCanGo[75] << endl;
-						}*/
-					}
 						
 				}
-				else
-				{//进阻塞队列之前先看是否达到上限  是则直接离开
-					 if (shopInfo[goalId].blockQ.size() == blockMax)
-					 {
+				 //进阻塞队列之前先看是否达到上限  是则直接离开
+				else{
+					 if (shopInfo[goalId].blockQ.size() == blockMax){
 						 _statusAgents[agentId] = 0;					//agent->_status = 0;
 						 _reachedAgents[agentId] = false;
 						 return true;
@@ -175,8 +162,6 @@ namespace Menge {
 					_lock.lockWrite();
 					shopInfo[goalId].blockQ.push(agentId);//ID插入阻塞队尾；
 					_lock.releaseWrite();
-					if (agentId == 1)
-						cout << "1-3" << "+"<< _triggerTimes[agentId] <<endl;
 				}
 			}; break;
 
@@ -193,20 +178,17 @@ namespace Menge {
 						int lastShopGone = agent->_shopGone.back();
 						if (agent->_shopGone.size() == 5)
 							agent->_shopGone.pop_front();
-						agent->_shopGone.push_back(goalId);
 						if (shopInfo[goalId].goalSet == shopInfo[lastShopGone].goalSet)
 							agent->_shopGoneNum++;
 						else
 							agent->_shopGoneNum = 1;
 					}
-					else
-					{
+					else {
 						agent->_shopGone.push_back(goalId);
 						agent->_shopGoneNum = 1;
 					}
-					if (agentId == 1)
-						cout << "2-0" <<"+"<< agent->_shopGone.front() << endl;
 					return true;					//出函数
+
 				};
 			}; break;
 				/*  转移  3->2 */
@@ -221,8 +203,6 @@ namespace Menge {
 					shopInfo[goalId].blockQ.pop();			  //agent出阻塞队列;
 					shopInfo[goalId].serviceQ.push(agentId);//agent进服务队列;
 					_lock.releaseWrite();
-					if (agentId == 1)
-						cout << "3-2" << endl;
 				}
 			} break;
 			}

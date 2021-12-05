@@ -6,13 +6,12 @@
 #include "MengeCore/Core.h"
 #include "MengeCore/BFSM/State.h"
 #include "MengeCore/BFSM/FSM.h"
-
+using namespace Menge::BaseScene;
 namespace StressGAS {
 	using Menge::BFSM::State;
 	using Menge::Agents::BaseAgent;
-	using Menge::BaseScene::ExitAgentInfo;
-	using Menge::BaseScene::ExitReagionInfo;
-	using Menge::BaseScene::ExitReagionCapacity;
+	using namespace Menge::BaseScene;
+	using namespace Menge::Olympic;
 
 	// These values come from the GAS paper
 	//	Interactive Simulation of Dynamic Crowd Behaviors using General Adaptation Syndrome Theory
@@ -121,13 +120,12 @@ namespace StressGAS {
 
 		if (Menge::PROJECTNAME == EVACUATION|| Menge::PROJECTNAME == THEMEPARK|| Menge::PROJECTNAME == OLYMPIC) {
 			if (stressLevel > 0.0&& Menge::Olympic::evacuationState == true) { //进入出口区域，判断该区域的人数
-				size_t exitID = Menge::BaseScene::ExitAgentInfo[agt->_id];
-				size_t population = Menge::BaseScene::ExitReagionInfo[exitID];
-				if (population >= Menge::BaseScene::ExitReagionCapacity[exitID]) agt->_prefSpeed = 10;
-				else {
+				size_t exitID = agentInWhichRegion[agt->_id];
+				size_t population = roadRegionInfo[exitID].peopleNumInThisRoad;
+				if (population >= roadRegionInfo[exitID].capacity) 
+					agt->_prefSpeed = 10;
+				else 
 					agt->_prefSpeed = _basePrefSpeed;
-				}
-
 			}
 			else agt->_prefSpeed = _basePrefSpeed;
 		}

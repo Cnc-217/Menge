@@ -37,7 +37,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 */
 
 #include "MengeCore/Agents/AgentGenerators/ExplicitAgentGenerator.h"
-
+#include"MengeCore/Core.h"
 #include "MengeCore/Agents/BaseAgent.h"
 #include "MengeCore/Runtime/Logger.h"
 
@@ -81,7 +81,8 @@ namespace Menge {
 					"Trying to set attributes of an explicit agent generator component on an "
 					"incompatible object" );
 
-			if ( ! AgentGeneratorFactory::setFromXML( eGen, node, specFldr ) ) return false;
+			if ( ! AgentGeneratorFactory::setFromXML( eGen, node, specFldr ) ) 
+				return false;
 
 			for( TiXmlElement * child = node->FirstChildElement();
 				 child;
@@ -108,6 +109,7 @@ namespace Menge {
 		Vector2 ExplicitGeneratorFactory::parseAgent( TiXmlElement * node ) const {
 			float x, y;
 			double dVal;
+			int goingTo;
 			bool valid = true;
 			if (node->Attribute( "p_x", &dVal ) ) {
 				x = (float)dVal;
@@ -119,12 +121,15 @@ namespace Menge {
 			} else {
 				valid = false;
 			}
+			if (node->Attribute("goingTo", &goingTo))
+				Menge::Olympic::agentGoingShop.push_back(goingTo);
 			if ( ! valid ) {
 				logger << Logger::ERR_MSG << "Agent on line " << node->Row();
 				logger << " didn't define position!";
 				throw AgentGeneratorFatalException( "Agent in explicit generator didn't "
 													"define a position" );
 			}
+			cout << Vector2(x, y) << " + " << goingTo << endl;
 			return Vector2( x, y );
 		}
 

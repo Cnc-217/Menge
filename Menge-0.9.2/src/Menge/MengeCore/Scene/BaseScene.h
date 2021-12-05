@@ -4,6 +4,7 @@
 
 #include "MengeCore/MatrixMy.h"
 #include "MengeCore/Json/json.hpp"
+#include "tinyxml/tinyxml.h"
 #include <string>
 #include <winsock.h>
 #include<Menge/MengeCore/Math/Geometry2D.h>
@@ -24,12 +25,13 @@ namespace Menge {
         void sockerClientListen(SOCKET socketClient);
         void loadMatrixFromTxt(const char* fileName);
         void modifyMatrix(char* matrixStr);
-        void sendMatrix(SOCKET serConn, json j);
+        vector<bool> strToVectorBool (char* listStr);
+        vector<float> strToVectorFloat (char* listStr);
         void projectNameExtract(string folderPath);//提取项目名
-		bool setRoadRegionFromXML(string dir);//设置道路信息
-		int checkRegion(Menge::Math::OBBShape region);
+        void sceneParallelXML(string senceXmlFliePath);//记录人群位置，写一个新的xml文件
+		bool setRoadRegionFromXML(string dir);//从XML文件中设置道路信息
 		void updateRoadNum();
-
+		void updateAgentInRegion();
     }
 
     namespace Olympic {
@@ -41,8 +43,6 @@ namespace Menge {
         string matrixBusinessScene();
 
 		bool shopInit(string dir);
-
-		bool roadRegionInit(string dir);
 
         void parameterInit(SOCKET socketClient);
 

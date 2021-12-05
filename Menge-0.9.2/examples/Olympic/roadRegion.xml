@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <Population >
     <GoalSet id="0">
-        <Goal angle="-15.81" capacity="1000000" height="325.30" id="36" type="OBB" weight="1.00" width="1470.06" x="-2779.14" y="-895.50"/>
+        <Goal angle="-14.71" capacity="1000000" height="315.02" id="36" type="OBB" weight="1.00" width="1279.80" x="-2580.75" y="-944.82"/>
         <Goal angle="10.44" capacity="1000000" height="341.67" id="37" type="OBB" weight="1.00" width="725.02" x="-469.14" y="2000.01"/>
-        <Goal angle="-33.46" capacity="1000000" height="1435.53" id="38" type="OBB" weight="1.00" width="136.12" x="-3722.27" y="-2056.68"/>
+        <Goal angle="-33.46" capacity="1000000" height="1448.24" id="38" type="OBB" weight="1.00" width="136.45" x="-3722.27" y="-2056.68"/>
         <Goal angle="-11.74" capacity="1000000" height="1286.53" id="39" type="OBB" weight="1.00" width="189.97" x="-1069.98" y="-254.61"/>
         <Goal angle="8.82" capacity="1000000" height="265.58" id="40" type="OBB" weight="1.00" width="1867.13" x="-3151.72" y="1952.04"/>
-        <Goal angle="-163.34" capacity="1000000" height="2538.20" id="41" type="OBB" weight="1.00" width="444.07" x="-3157.25" y="1950.30"/>
+        <Goal angle="-163.34" capacity="1000000" height="2499.65" id="41" type="OBB" weight="1.00" width="422.08" x="-3157.25" y="1950.30"/>
         <Goal angle="-167.21" capacity="1000000" height="560.43" id="42" type="OBB" weight="1.00" width="176.38" x="-3618.23" y="-2132.45"/>
         <Goal angle="11.77" capacity="1000000" height="197.36" id="43" type="OBB" weight="1.00" width="3323.11" x="-3455.20" y="-2823.82"/>
         <Goal angle="6.98" capacity="1000000" height="358.24" id="44" type="OBB" weight="1.00" width="1188.22" x="558.02" y="2157.25"/>
@@ -20,6 +20,20 @@
         <Goal angle="-33.11" capacity="1000000" height="925.08" id="52" type="OBB" weight="1.00" width="248.56" x="1067.75" y="-1352.58"/>
         <Goal angle="12.82" capacity="1000000" height="208.61" id="53" type="OBB" weight="1.00" width="1156.27" x="2069.76" y="1267.77"/>
         <Goal angle="-28.37" capacity="1000000" height="312.93" id="54" type="OBB" weight="1.00" width="805.34" x="888.47" y="962.66"/>
+        <Goal angle="-14.28" capacity="1000000" height="296.52" id="55" type="OBB" weight="1.00" width="601.23" x="-3169.05" y="-781.78"/>
+        <Goal angle="-12.82" capacity="1000000" height="345.75" id="56" type="OBB" weight="1.00" width="894.22" x="3297.13" y="-468.09"/>
     </GoalSet>
+    <ShopSet id="0">
+        <Shop id="0" type="2" number="3" serviceMax="10" blockMax="15"/>
+        <Shop id="1" type="0" number="7" serviceMax="3" blockMax="5"/>
+        <Shop id="2" type="2" number="1" serviceMax="10" blockMax="10"/>
+        <Shop id="3" type="1" number="2" serviceMax="3" blockMax="5"/>
+        <Shop id="4" type="1" number="2" serviceMax="2" blockMax="4"/>
+        <Shop id="5" type="1" number="5" serviceMax="2" blockMax="4"/>
+        <Shop id="6" type="1" number="5" serviceMax="5" blockMax="5"/>
+        <Shop id="7" type="1" number="3" serviceMax="2" blockMax="4"/>
+        <Shop id="8" type="3" number="6" serviceMax="10" blockMax="10"/>
+        <Shop id="9" type="4" number="2" serviceMax="10" blockMax="10"/>
+    </ShopSet>
 
 </Population>
