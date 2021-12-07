@@ -73,7 +73,7 @@ namespace Menge {
 		std::vector<Agents::BaseAgent*> leaderAgentSet;
 		std::vector<Agents::BaseAgent*> panicAgentSet;
 		std::vector<Agents::BaseAgent*> normalAgentSet;
-
+		bool parallelState = false; //是否是平行模式
 		bool evacuationState = false;
 		std::map<int, Shoptype>  shopInfo;
 		std::map<size_t, int>  goalSetInfo;//储存goalset内有多少个goal
@@ -83,8 +83,8 @@ namespace Menge {
 		std::string goalSeclectorType;
 		vector<float> Influence;//如果是model类型的goalselector，需要用到Influence
 		std::vector <roadRegionType> roadRegionInfo;
-		std::vector<int>agentGoingShop;
-		std::vector<int> agentInWhichRegion;
+		std::vector<int>agentGoingShop;//agent要去的店铺
+		std::vector<int> agentInWhichRegion;//agent在哪个区域
 	}
 
 	namespace BaseScene {

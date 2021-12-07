@@ -85,6 +85,8 @@ namespace Menge {
 
 			//提取项目名
 			BaseScene::projectNameExtract(Menge::BehaveFilePath);
+			//测试是否是平行模式
+			testParallel(BehaveFilePath);
 			// Acquire the spatial query instance
 			SPATIAL_QUERY = sim->getSpatialQuery();
 
@@ -378,7 +380,6 @@ namespace Menge {
 						return 0x0;
 					}
 					else  cout << "shop and road init OK!" << endl;
-
 					//2.无输入矩阵
 					int goalNum = fsm->getGoalSet(0)->size();
 					if (BaseScene::ProbMatrix == 0x0) {
@@ -397,15 +398,15 @@ namespace Menge {
 					
 					//3.初始化socket服务端，用于疏散状态转移控制
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
-					SOCKET socketServer = Menge::Socket::socketServerInit("10.128.208.226", 12660); 
-					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
-					threadSocket.detach();
+					//SOCKET socketServer = Menge::Socket::socketServerInit("10.128.218.217", 12660); 
+					//thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
+					//threadSocket.detach();
 
 					//初始化socket客户端，发出数据同步请求，接收仿真参数，更新仿真参数，最后进入监听状态
-					//SOCKET socketClient = Menge::Socket::socketClientInit("127.0.0.1", 12660);
-					//Menge::Olympic::parameterInit(socketClient);
-					//thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
-					//threadSocket.detach();
+					SOCKET socketClient = Menge::Socket::socketClientInit("127.0.0.1", 12660);
+					Menge::Olympic::parameterInit(socketClient);
+					thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
+					threadSocket.detach();
 
 
 					cout << "It's OLYMPIC Simulation" << endl;

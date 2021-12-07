@@ -17,7 +17,6 @@
 #include "MengeCore/FileTool.h"
 #include <map>
 
-#define row 21//txt文档中的行数
 using namespace std;
 using namespace Menge::Olympic;
 namespace Menge {
@@ -256,11 +255,14 @@ namespace Menge {
 						int numAgent = SIMULATOR->getNumAgents();
 						for (int i = 0; i < numAgent; i++) {
 							Agents::BaseAgent* agent = SIMULATOR->getAgent(i);
-							TiXmlElement* node = new TiXmlElement("Agent");
-							node->SetAttribute("p_x", to_string(agent->_pos._x));
-							node->SetAttribute("p_y", to_string(agent->_pos._y));
-							node->SetAttribute("goingTo", to_string(Menge::Olympic::agentGoingShop[i]));
-							nodeChild->LinkEndChild(node);
+							if (agent->_class == 0)//游客class为0   leader的class为1
+							{
+								TiXmlElement* node = new TiXmlElement("Agent");
+								node->SetAttribute("p_x", to_string(agent->_pos._x));
+								node->SetAttribute("p_y", to_string(agent->_pos._y));
+								node->SetAttribute("goingTo", to_string(Menge::Olympic::agentGoingShop[i]));
+								nodeChild->LinkEndChild(node);
+							}
 						}
 					}
 
@@ -272,8 +274,8 @@ namespace Menge {
 
 	bool BaseScene::setRoadRegionFromXML(string dir){
 		double Rad_to_deg = 45.0 / atan(1.0);//角度转弧度
-		float data[row][5] = { 0 };
-		int capacityData[row] = { 0 };
+		float data[5] = { 0 };
+		int capacityData =  0 ;
 		int count = 0;
 		TiXmlDocument doc(dir);    // 读入XML文件
 		if (!doc.LoadFile())
@@ -285,27 +287,23 @@ namespace Menge {
 
 		// 读取x,y，它们放在network->nodes->node节点中
 		TiXmlElement* nodeElem = hRoot.FirstChild("GoalSet").FirstChild("Goal").Element(); //当前指向了Goal节点
-		count = 0;  // 记录移动到了哪个node节点，并且把该node节点的信息录入到顺序对应的data中
+		// 记录移动到了哪个node节点，并且把该node节点的信息录入到顺序对应的data中
 		for (nodeElem; nodeElem; nodeElem = nodeElem->NextSiblingElement())
 		{ // 挨个读取node节点的信息
-			nodeElem->QueryFloatAttribute("x", &data[count][0]);  //把x放到data[count][0]中，属性值读法
-			nodeElem->QueryFloatAttribute("y", &data[count][1]);  //把y放到data[count][1]中，属性值读法
-			nodeElem->QueryFloatAttribute("width", &data[count][2]);  //把width放到data[count][2]中，属性值读法
-			nodeElem->QueryFloatAttribute("height", &data[count][3]);  //把height放到data[count][3]中，属性值读法
-			nodeElem->QueryFloatAttribute("angle", &data[count][4]);  //把angle放到data[count][4]中，属性值读法
-			nodeElem->QueryIntAttribute("capacity", &capacityData[count]);  //把angle放到data[count][4]中，属性值读法
-			count++;
-		}
-		Menge::Olympic::roadRegionType roadRegionTemp;//声明一个临时变量
-		for (int i = 0; i < row; i++)
-		{//分别是vector2（Xmin，Ymin），宽width，高height
-			roadRegionTemp.obbRoadbRegion.set(Vector2(data[i][0], data[i][1]), data[i][2], data[i][3], data[i][4] / Rad_to_deg);
+			Menge::Olympic::roadRegionType roadRegionTemp;//声明一个临时变量
+			nodeElem->QueryFloatAttribute("x", &data[0]);  //把x放到data[0]中，属性值读法
+			nodeElem->QueryFloatAttribute("y", &data[1]);  //把y放到data[1]中，属性值读法
+			nodeElem->QueryFloatAttribute("width", &data[2]);  //把width放到data[2]中，属性值读法
+			nodeElem->QueryFloatAttribute("height", &data[3]);  //把height放到data[3]中，属性值读法
+			nodeElem->QueryFloatAttribute("angle", &data[4]);  //把angle放到data[4]中，属性值读法
+			nodeElem->QueryIntAttribute("capacity", &capacityData);  //把angle放到data[4]中，属性值读法
+			roadRegionTemp.obbRoadbRegion.set(Vector2(data[0], data[1]), data[2], data[3], data[4] / Rad_to_deg);
 			roadRegionTemp.peopleNumInThisRoad = 0;//初始化为0
-			roadRegionTemp.capacity = capacityData[i];
+			roadRegionTemp.capacity = capacityData;
 			roadRegionInfo.push_back(roadRegionTemp);//插入
 		}
-		for (int i = 0; i < row; i++)
-			cout << roadRegionInfo[i].obbRoadbRegion.getPivot() << roadRegionInfo[i].obbRoadbRegion.getSize() << data[i][4] << roadRegionInfo[i].peopleNumInThisRoad << endl;
+		for (int i = 0; i < roadRegionInfo.size(); i++)
+			cout << roadRegionInfo[i].obbRoadbRegion.getPivot() << roadRegionInfo[i].obbRoadbRegion.getSize() << roadRegionInfo[i].peopleNumInThisRoad << endl;
 		return true;
 	}
 
@@ -462,6 +460,13 @@ namespace Menge {
 			return true;
 			
 			}
+
+		void testParallel(string dir)
+		{
+			string source = "Parallel";
+			if (dir.find(source) != string::npos)
+				parallelState = true;
+		}
 
 		string matrixFlowScene() {
 			//发送 1：36个目标点的人数 2：概率矩阵

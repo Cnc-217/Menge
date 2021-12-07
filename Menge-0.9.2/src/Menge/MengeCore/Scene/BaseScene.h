@@ -48,6 +48,8 @@ namespace Menge {
 
         string getSimData();
 
+		void testParallel(string dir);
+
     }
 
 }	// namespace Menge

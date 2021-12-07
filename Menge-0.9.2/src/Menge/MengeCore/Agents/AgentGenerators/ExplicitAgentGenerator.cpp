@@ -109,7 +109,7 @@ namespace Menge {
 		Vector2 ExplicitGeneratorFactory::parseAgent( TiXmlElement * node ) const {
 			float x, y;
 			double dVal;
-			int goingTo;
+			int goingTo = -1 ;
 			bool valid = true;
 			if (node->Attribute( "p_x", &dVal ) ) {
 				x = (float)dVal;
@@ -121,8 +121,9 @@ namespace Menge {
 			} else {
 				valid = false;
 			}
-			if (node->Attribute("goingTo", &goingTo))
+			if (Menge::Olympic::parallelState && node->Attribute("goingTo", &goingTo))
 				Menge::Olympic::agentGoingShop.push_back(goingTo);
+
 			if ( ! valid ) {
 				logger << Logger::ERR_MSG << "Agent on line " << node->Row();
 				logger << " didn't define position!";

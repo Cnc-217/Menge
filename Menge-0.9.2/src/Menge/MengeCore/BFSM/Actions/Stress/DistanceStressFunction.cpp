@@ -55,7 +55,7 @@ namespace StressGAS {
 			{	Menge::Math::OBBShape region = roadRegionInfo[i].obbRoadbRegion;
 				if (agentInWhichRegion[_agent->_id] == i )
 				{
-					//cout << "agentID: " << _agent->_id << " reagionID: " << i << " population: " << roadRegionInfo[i].peopleNumInThisRoad << endl;;
+					cout << "agentID: " << _agent->_id << " reagionID: " << i << " population: " << roadRegionInfo[i].peopleNumInThisRoad << endl;;
 					float d = sqrt(region.squaredDistance(_agent->_pos));
 					if (d > _outer) target = 0.f;
 					else if (d < _inner) target = 1.f;

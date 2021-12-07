@@ -112,6 +112,7 @@ namespace Menge {
 		extern MENGE_API std::vector<Agents::BaseAgent*> normalAgentSet;
 
 		extern MENGE_API bool evacuationState; //控制event疏散部分状态启动和关闭
+		extern MENGE_API bool parallelState; //是否是平行模式
 		extern MENGE_API struct Shoptype
 		{
 			int serviceMax;
