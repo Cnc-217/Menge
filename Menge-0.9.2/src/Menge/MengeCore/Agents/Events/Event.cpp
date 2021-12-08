@@ -159,7 +159,8 @@ namespace Menge {
 					delete evt;
 					return 0x0;
 				}
-			} else if ( child->ValueStr() == "Response" ) {
+			} 
+			else if ( child->ValueStr() == "Response" ) {
 				const char * eStr = child->Attribute( "effect" );
 				if ( eStr == 0x0 ) {
 					logger << Logger::ERR_MSG << "Event response on line " << child->Row();
@@ -192,7 +193,8 @@ namespace Menge {
 					delete evt;
 					return 0x0;
 				}
-			} else {
+			} 
+			else {
 				logger << Logger::ERR_MSG << "Encountered unexpected child tag of Effects on "
 					"line " << child->Row() << ": " << child->ValueStr() << ".";
 				delete evt;

@@ -303,7 +303,7 @@ namespace Menge {
 		
 		}
 
-		Goal* GoalSet::getGoalNearly(const Agents::BaseAgent* agent)//在当前goalset下选择目标店铺
+		/*Goal* GoalSet::getGoalNearly(const Agents::BaseAgent* agent)//在当前goalset下选择目标店铺
 		{
 			if (SIM_TIME > 0)
 			{
@@ -345,8 +345,8 @@ namespace Menge {
 					tgtGoal = itr->second;
 					if (shopInfo[tgtGoal->_id].goalSet == goalSetNow)
 						accumWeight += BaseScene::ProbMatrix->Point(goalIDNow, (tgtGoal->_id)) * k;
-					/*else
-						accumWeight += BaseScene::ProbMatrix->Point(goalIDNow, (tgtGoal->_id)) * 0;*/
+					else
+						accumWeight += BaseScene::ProbMatrix->Point(goalIDNow, (tgtGoal->_id)) * 0;
 					if (accumWeight > TGT_WEIGHT) break;
 				}
 				if (agent->_id == 1)
@@ -356,9 +356,9 @@ namespace Menge {
 			else
 				return getGoalByID(34);
 			
-		}
+		}*/
 
-		Goal* GoalSet::getGoalSameRegion(const Agents::BaseAgent* agent)
+		/*Goal* GoalSet::getGoalSameRegion(const Agents::BaseAgent* agent)
 		{
 			Goal* tgtGoal = 0x0;
 			int goalIDNow = ACTIVE_FSM->getNode("tour")->getGoal(agent->_id)->_id;//agent当前的goal的id
@@ -419,7 +419,7 @@ namespace Menge {
 					cout << "about goal  " << goalIDNow << "+" << goalSetNow << "+" << tgtGoal->_id << "+" << shopInfo[tgtGoal->_id].goalSet << endl;
 				return tgtGoal;
 			}
-		}
+		}*/
 
 
 		Goal* GoalSet::getGoalFromProbs( const Agents::BaseAgent* agent, vector<float>& probs) {

@@ -70,17 +70,24 @@ namespace Menge {
 	std::string SceneFilePath;
 
 	std::string DirectoryPath;
+
+	std::string ip;
+	int methor ;
+	int port ;
 	
 	namespace Olympic {
 		std::vector<Agents::BaseAgent*> leaderAgentSet;
 		std::vector<Agents::BaseAgent*> panicAgentSet;
 		std::vector<Agents::BaseAgent*> normalAgentSet;
+
+
+
 		bool parallelState = false; //是否是平行模式
 		bool evacuationState = false;
 		std::map<int, Shoptype>  shopInfo;
-		std::map<size_t, int>  goalSetInfo;//储存goalset内有多少个goal
+		//std::map<size_t, int>  goalSetInfo;//储存goalset内有多少个goal
 		std::map< size_t, bool >	_reachedAgents;//存储agent是否到达目标点
-		std::map<size_t, int > nowReachTimes;//储存agent在当前goalset的到达次数的次数
+		//std::map<size_t, int > nowReachTimes;//储存agent在当前goalset的到达次数的次数
 		std::vector<bool>   verticesCanGo;
 		std::string goalSeclectorType;
 		vector<float> Influence;//如果是model类型的goalselector，需要用到Influence

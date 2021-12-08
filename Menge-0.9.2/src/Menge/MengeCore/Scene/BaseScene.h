@@ -32,7 +32,11 @@ namespace Menge {
 		bool setRoadRegionFromXML(string dir);//从XML文件中设置道路信息
 		void updateRoadNum();
 		void updateAgentInRegion();
+<<<<<<< HEAD
         void testParallel(string dir);
+=======
+		bool testSwitchOn(string dir);
+>>>>>>> fc1829b9771d9e306d62138437bcae1d101b51d6
     }
 
     namespace Olympic {
@@ -44,6 +48,8 @@ namespace Menge {
         string matrixBusinessScene();
 
 		bool shopInit(string dir);
+
+		bool getIpFromXml(string dir);
 
         void parameterInit(SOCKET socketClient);
 

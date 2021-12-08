@@ -352,13 +352,40 @@ namespace Menge {
 		}
 	}
 
+<<<<<<< HEAD
 	void BaseScene::testParallel(string dir)
 	{
 		string source = "Parallel";
 		if (dir.find(source) != string::npos)
 			parallelState = true;
+=======
+	bool BaseScene::testSwitchOn(string dir)
+	{
+		ifstream infile;//定义读取文件流，相对于程序来说是in
+		infile.open(dir);//打开文件
+		if (!infile.is_open())
+		{
+			cout << "open file error!" << endl;
+			return false;
+		}
+		
+		TiXmlDocument doc(dir);    // 读入XML文件
+		if (!doc.LoadFile())
+			return false;  // 如果无法读取文件，则返回
+		TiXmlHandle hDoc(&doc);         // hDoc是&doc指向的对象
+		TiXmlElement* pElem;            // 指向元素的指针
+		pElem = hDoc.FirstChildElement().Element(); //指向根节点
+		TiXmlHandle hRoot(pElem);       // hRoot是根节点
+
+		// 读取x,y，它们放在network->nodes->node节点中
+		TiXmlElement* nodeElem = hRoot.FirstChild("kon").Element(); //当前指向了Goal节点
+		int  s;
+		nodeElem->QueryIntAttribute("onoff", &s);
+		return s ;
+>>>>>>> fc1829b9771d9e306d62138437bcae1d101b51d6
 	}
 	
+
 	namespace Olympic {
 
 		void evacuateModeStart() {
@@ -422,9 +449,10 @@ namespace Menge {
 		}
 
 		bool shopInit(string dir) {
-			int data[10][4] = { 0 };
+			int data[4] = { 0 };
 			ifstream infile;//定义读取文件流，相对于程序来说是in
 			infile.open(dir);//打开文件
+
 			if (!infile.is_open())
 			{
 				cout << "open file error!" << endl;
@@ -446,15 +474,25 @@ namespace Menge {
 			int count = 0;  // 记录移动到了哪个node节点，并且把该node节点的信息录入到顺序对应的data中
 			for (nodeElem; nodeElem; nodeElem = nodeElem->NextSiblingElement())
 			{ // 挨个读取node节点的信息
-				nodeElem->QueryIntAttribute("type", &data[count][0]);  //把x放到data[count][0]中，属性值读法
-				nodeElem->QueryIntAttribute("number", &data[count][1]);  //把y放到data[count][1]中，属性值读法
-				nodeElem->QueryIntAttribute("serviceMax", &data[count][2]);  //把width放到data[count][2]中，属性值读法
-				nodeElem->QueryIntAttribute("blockMax", &data[count][3]);  //把height放到data[count][3]中，属性值读法
-				count++;
+				nodeElem->QueryIntAttribute("type", &data[0]);  //把x放到data[count][0]中，属性值读法
+				nodeElem->QueryIntAttribute("number", &data[1]);  //把y放到data[count][1]中，属性值读法
+				nodeElem->QueryIntAttribute("serviceMax", &data[2]);  //把width放到data[count][2]中，属性值读法
+				nodeElem->QueryIntAttribute("blockMax", &data[3]);  //把height放到data[count][3]中，属性值读法
+				Shoptype shoptemp;
+				for (int i = 0; i < data[1]; i++)
+				{
+					shoptemp.type = data[0];
+					shoptemp.serviceMax = data[2];
+					shoptemp.blockMax = data[3];
+					shoptemp.goalSet = count;
+					shoptemp.sameSetGoalNum = data[1];
+					shopInfo.insert(make_pair(count, shoptemp));//插入
+					count++;
+				}
 			}
 			infile.close();//读取完成之后关闭文件
 			int index = 0;
-			for (int i = 0; i < 10; i++)
+			/*for (int i = 0; i < 10; i++)
 			{
 				for (int j = 0; j < data[i][1]; j++)
 				{
@@ -467,11 +505,34 @@ namespace Menge {
 					shopInfo.insert(make_pair(index, shoptemp));//插入
 					index++;
 				}
-				goalSetInfo.insert(std::map< size_t, int >::value_type(i, data[i][1]));
-			}				
-			return true;
+			}	*/
 			
+
+			return true;
 			}
+
+		bool getIpFromXml(string dir)
+		{
+			ifstream infile;//定义读取文件流，相对于程序来说是in
+			infile.open(dir);//打开文件
+			if (!infile.is_open())
+			{
+				cout << "open file error!" << endl;
+				return false;
+			}
+			TiXmlDocument doc(dir);    // 读入XML文件
+			if (!doc.LoadFile())
+				return false;  // 如果无法读取文件，则返回
+			TiXmlHandle hDoc(&doc);         // hDoc是&doc指向的对象
+			TiXmlElement* pElem;            // 指向元素的指针
+			pElem = hDoc.FirstChildElement().Element(); //指向根节点
+			TiXmlHandle hRoot(pElem);       // hRoot是根节点
+			TiXmlElement* nodeElem = hRoot.FirstChild("internet").Element(); //当前指向了internet节点
+			nodeElem->QueryIntAttribute("methor", &methor);  //把x放到data[count][0]中，属性值读法
+			nodeElem->QueryValueAttribute("ip", &ip);  //把x放到data[count][0]中，属性值读法
+			nodeElem->QueryIntAttribute("port", &port);  //把x放到data[count][0]中，属性值读法
+			return true;
+		}
 
 		string matrixFlowScene() {
 			//发送 1：36个目标点的人数 2：概率矩阵

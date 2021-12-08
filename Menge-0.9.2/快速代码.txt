@@ -1,3 +1,4 @@
 python roadmapBuilder.py --inDir="./draw/Olympic" --obstacle="obstacles.xml" --roadmap="graph.txt" --goal="goals.txt" --outDir="./draw/Olympic"
 menge.exe -p E:\git\men\Menge\Menge-0.9.2\examples\Olympic\Olympic.xml
 menge.exe -p E:\git\men\Menge\Menge-0.9.2\examples\Olympic\OlympicMatrix.xml
+menge.exe -p E:\git\men\Menge\Menge-0.9.2\examples\Olympic\OlympicParallel.xml
