@@ -410,11 +410,12 @@ namespace Menge {
 					//3.初始化socket服务端，用于疏散状态转移控制
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.128.207.206", 12660); 
+					
 
-					//SOCKET socketClient = Menge::Socket::socketClientInit("10.28.195.233", 12660);
-					//Menge::Olympic::parameterInit(socketClient);
-					//thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
-					//threadSocket.detach();
+					SOCKET socketClient = Menge::Socket::socketClientInit("10.28.195.233", 12660);
+					Menge::Olympic::parameterInit(socketClient);
+					thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
+					threadSocket.detach();
 
 					cout << "It's OLYMPIC Simulation" << endl;
 					break;

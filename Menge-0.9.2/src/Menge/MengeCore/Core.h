@@ -59,6 +59,7 @@ namespace Menge {
 	class MatrixDim3;
 	class MatrixDim4;
 	class EventSystem;
+	class Graph;
 
 	/*!
 	 *	@brief		The fsm running for the simulation.
@@ -94,6 +95,8 @@ namespace Menge {
 	 *	@brief		The event system.
 	 */
 	extern MENGE_API EventSystem * EVENT_SYSTEM;
+
+	extern MENGE_API Graph* GRAPH;
 
 	extern MENGE_API size_t PROJECTNAME;
 

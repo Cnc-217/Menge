@@ -200,6 +200,7 @@ namespace Menge {
 
 		graphLoad = graph;
 		graph->number = vector<int>(graph->_vCount, 0);
+		Menge::GRAPH = graph;
 		return graph;
 	}
 

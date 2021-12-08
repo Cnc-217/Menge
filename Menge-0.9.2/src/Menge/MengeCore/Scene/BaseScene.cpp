@@ -11,6 +11,7 @@
 #include "MengeCore/BFSM/Transitions/Transition.h"
 #include "MengeCore/BFSM/State.h"
 #include "MengeCore/Agents/SimulatorInterface.h"
+#include "MengeCore/resources/Graph.h"
 
 #include "MengeVis/Viewer/GLViewer.h"
 #include "MengeCore/Socket.h"
@@ -99,6 +100,10 @@ namespace Menge {
 			if (Menge::PROJECTNAME == OLYMPIC) {
 				if (!strcmp(info.c_str(), "getData")) {
 					string sendBuf = Olympic::getSimData();
+					Menge::Socket::socketSend(sendBuf.c_str(), socketClient);
+				}
+				else if (!strcmp(info.c_str(), "getBlockPosition")) {
+					string sendBuf = Olympic::getBlockPosition();
 					Menge::Socket::socketSend(sendBuf.c_str(), socketClient);
 				}
 				else if (!strcmp(info.c_str(), "evacuate")) Olympic::evacuateModeStart();
@@ -526,7 +531,22 @@ namespace Menge {
 			string sendBuf = j.dump();
 			return sendBuf;
 		}
-	}
+	
+		string getBlockPosition() {
+			vector<float> blockPosition;
+			for (int i = 0; i < verticesCanGo.size(); i++) {
+				if (verticesCanGo[i] == false) {
+					blockPosition.push_back(Menge::GRAPH->getVertex(i)->getPosition().x());
+					blockPosition.push_back(Menge::GRAPH->getVertex(i)->getPosition().y());
+				}
+			}
+			json reply;
+			reply["info"] = "blockSet";
+			reply["data"] = blockPosition;
+			string sendBuf = reply.dump();
+			return sendBuf;
+		}
+}
 
 }
 

@@ -50,6 +50,7 @@ namespace Menge {
 
         string getSimData();
 
+        string getBlockPosition();
     }
 
 }	// namespace Menge

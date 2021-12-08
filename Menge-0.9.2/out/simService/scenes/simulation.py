@@ -2,6 +2,7 @@
 from services.simlationControl import startSimulation
 from simService.scenes.scene import *
 from simService.socket.socketServer import socketServer
+from simService.services.mengeDataService import *
 import os
 
 class Simulation:
@@ -21,8 +22,8 @@ class Simulation:
     def simRun(self):
         if (self.isUnitySim() == True):
             self.__processPid = startSimulation(self.__scene.getSceneName(), self.__scene.getSceneType(), True,self.isParallel())
-            self.__unityClient, caddr = socketServer.getSocket().accept()
             self.__client, caddr = socketServer.getSocket().accept()
+            self.__unityClient, caddr = socketServer.getSocket().accept()
         else:
             self.__processPid = startSimulation(self.__scene.getSceneName(), self.__scene.getSceneType(), False,self.isParallel())
             # 等待Menge的socketClient连接本服务
@@ -44,7 +45,10 @@ class Simulation:
         return self.__processPid
 
     def stopSimulation(self):
-        os.system("taskkill /pid " + str(self.__processPid) + " -t -f")
+        if(self.isUnitySim()==True):
+            simulationStop(self.__unityClient)
+        else:
+            os.system("taskkill /pid " + str(self.__processPid) + " -t -f")
         self.__scene = None
         self.__client = None
         self.__unityClient = None

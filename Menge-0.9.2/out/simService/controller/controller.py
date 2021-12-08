@@ -2,6 +2,7 @@
 from simService.services.mengeDataService import *
 from simService import sims,redisServer
 from flask import Blueprint, request
+import time
 
 controller = Blueprint('controller', __name__)
 
@@ -153,14 +154,13 @@ def checkRoadBlock(sceneName):
     simPid = request.values.get("pid")
     block = []
     find = False
-    info = ""
     for sim in sims.getSimulationList():
         if str(sim.getPid()) == simPid:
             sim = sims.getSimulation(sim.getPid())
             block = sim.getScene().checkRoadBlock()
             find = True
             break
-    if (info == ""):
+    if (find == False):
         info = "no " + sceneName + ": " + simPid + " simulation is running"
     else:
         if(len(block)==0):
@@ -170,8 +170,6 @@ def checkRoadBlock(sceneName):
             for i in block:
                 returnstr = returnstr + str(i) +' '
             info = returnstr
-        if(find == False):
-            info =  "no " + sceneName + ": " + simPid + " simulation is running"
     jsonData = {"info": info}
     jsonStr = json.dumps(jsonData)
     return jsonStr
@@ -190,6 +188,8 @@ def setRoadBlock(sceneName):
             sim = sims.getSimulation(sim.getPid())
             sim.getScene().updateRoadBlock(blockList)
             parameterSynToMenge(sim)
+            time.sleep(0.5)
+            setUnityBlock(sim)
             info =  sim.getSceneName() + " update parameter complete"
     if (info == ""):
         info = "no " + sceneName + ": " + simPid + " simulation is running"

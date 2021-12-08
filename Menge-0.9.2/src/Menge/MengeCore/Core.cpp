@@ -61,6 +61,8 @@ namespace Menge {
 
 	Menge::EventSystem * EVENT_SYSTEM = new Menge::EventSystem();
 
+	Menge::Graph* GRAPH = 0x0;
+
 	size_t PROJECTNAME = 0;
 
 	std::string BehaveFilePath;
