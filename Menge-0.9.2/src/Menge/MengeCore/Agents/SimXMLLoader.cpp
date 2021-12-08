@@ -54,6 +54,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include <iostream>
 #include <list>
 #include <vector>
+#include <MengeCore\Scene\BaseScene.h>
 
 namespace Menge {
 
@@ -75,6 +76,7 @@ namespace Menge {
 			//	a) available for reading
 			//	b) valid xml
 			//	c) An "Experiment"
+			Menge::Olympic::testParallel(BehaveFilePath);
 			if ( verbose ) logger << Logger::INFO_MSG << "Loading from xml: " << filename << ".";
 			TiXmlDocument xml( filename );
 			bool loadOkay = xml.LoadFile();

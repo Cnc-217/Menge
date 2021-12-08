@@ -35,5 +35,8 @@
         <Shop id="8" type="3" number="6" serviceMax="10" blockMax="10"/>
         <Shop id="9" type="4" number="2" serviceMax="10" blockMax="10"/>
     </ShopSet>
+    <!-- <internet methor="1" ip="127.0.0.1" port="12660"/> -->
+    <internet methor="0" ip="192.168.236.1" port="12660"/> 
+    <kon onoff= "1"/>
 
 </Population>

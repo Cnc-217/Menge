@@ -184,7 +184,8 @@ namespace Menge {
 							}
 							_targets[ name ] = target;
 						}
-					} else if ( pass == EFFECT_PASS ) {
+					} 
+					else if ( pass == EFFECT_PASS ) {
 						const char * cStr = child->Attribute( "name" );
 						if ( cStr == 0x0 ) {
 							logger << Logger::ERR_MSG << "Event effect on line " << child->Row();
@@ -203,13 +204,15 @@ namespace Menge {
 							}
 							_effects[ name ] = effect;
 						}
-					} else if ( pass == EVENT_PASS ) {
+					} 
+					else if ( pass == EVENT_PASS ) {
 						Event * evt = parseEvent( child, behaveFldr );
 						if ( evt == 0x0 ) {
 							return false;
 						}
 						_events.push_back( evt );
-					} else {
+					} 
+					else {
 						std::stringstream ss;
 						ss << "Found invalid child of EventSystem tag: " << child->ValueStr();
 						ss << ".";
