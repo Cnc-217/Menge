@@ -235,11 +235,11 @@ namespace Menge {
 			
 			else
 			{
-				updateRoadNum();
+				//updateRoadNum();
 				//updateAgentInRegion();
 				//for (size_t i = 0; i < roadRegionInfo.size(); i++)
 					//cout << "roadID : " << i << " people num: " << roadRegionInfo[i].peopleNumInThisRoad << endl;
-				cout << "agentInWhichRegion : " << agentInWhichRegion[1] << "agentGoingShop :" << agentGoingShop[1] << "peopleNumInThisRoad : "<<roadRegionInfo[0].peopleNumInThisRoad<<endl;
+				//cout << "agentInWhichRegion : " << agentInWhichRegion[1] << "agentGoingShop :" << agentGoingShop[1] << "peopleNumInThisRoad : "<<roadRegionInfo[0].peopleNumInThisRoad<<endl;
 				//_lastTimestamp = Menge::SIM_TIME;
 			}
 			

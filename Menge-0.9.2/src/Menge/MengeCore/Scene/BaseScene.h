@@ -32,6 +32,7 @@ namespace Menge {
 		bool setRoadRegionFromXML(string dir);//从XML文件中设置道路信息
 		void updateRoadNum();
 		void updateAgentInRegion();
+        void testParallel(string dir);
     }
 
     namespace Olympic {
@@ -48,12 +49,10 @@ namespace Menge {
 
         string getSimData();
 
-<<<<<<< HEAD
         string getBlockPosition();
-=======
-		void testParallel(string dir);
 
->>>>>>> f2b4fac281166089eb1c19ed52061e14bf5b89a7
+		
+
     }
 
 }	// namespace Menge

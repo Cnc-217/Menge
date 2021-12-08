@@ -27,5 +27,5 @@ if __name__ == '__main__':
     scheduler = APScheduler()  # 实例化 APScheduler
     scheduler.init_app(app)  # 把任务列表放入 flask
     scheduler.start()  # 启动任务列表
-    app.run('127.0.0.1', 5000)
+    app.run('10.28.195.233', 5000)
 

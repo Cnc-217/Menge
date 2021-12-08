@@ -307,8 +307,8 @@ namespace Menge {
 			roadRegionTemp.capacity = capacityData;
 			roadRegionInfo.push_back(roadRegionTemp);//插入
 		}
-		for (int i = 0; i < roadRegionInfo.size(); i++)
-			cout << roadRegionInfo[i].obbRoadbRegion.getPivot() << roadRegionInfo[i].obbRoadbRegion.getSize() << roadRegionInfo[i].peopleNumInThisRoad << endl;
+		//for (int i = 0; i < roadRegionInfo.size(); i++)
+			//cout << roadRegionInfo[i].obbRoadbRegion.getPivot() << roadRegionInfo[i].obbRoadbRegion.getSize() << roadRegionInfo[i].peopleNumInThisRoad << endl;
 		return true;
 	}
 
@@ -350,6 +350,13 @@ namespace Menge {
 					break;
 				}
 		}
+	}
+
+	void BaseScene::testParallel(string dir)
+	{
+		string source = "Parallel";
+		if (dir.find(source) != string::npos)
+			parallelState = true;
 	}
 	
 	namespace Olympic {
@@ -465,13 +472,6 @@ namespace Menge {
 			return true;
 			
 			}
-
-		void testParallel(string dir)
-		{
-			string source = "Parallel";
-			if (dir.find(source) != string::npos)
-				parallelState = true;
-		}
 
 		string matrixFlowScene() {
 			//发送 1：36个目标点的人数 2：概率矩阵
