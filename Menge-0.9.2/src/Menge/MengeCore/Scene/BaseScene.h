@@ -30,8 +30,8 @@ namespace Menge {
         void projectNameExtract(string folderPath);//提取项目名
         void sceneParallelXML(string senceXmlFliePath);//记录人群位置，写一个新的xml文件
 		bool setRoadRegionFromXML(string dir);//从XML文件中设置道路信息
-		int checkRegion(Menge::Math::OBBShape region);
 		void updateRoadNum();
+		void updateAgentInRegion();
     }
 
     namespace Olympic {
@@ -44,13 +44,16 @@ namespace Menge {
 
 		bool shopInit(string dir);
 
-		bool roadRegionInit(string dir);
-
         void parameterInit(SOCKET socketClient);
 
         string getSimData();
 
+<<<<<<< HEAD
         string getBlockPosition();
+=======
+		void testParallel(string dir);
+
+>>>>>>> f2b4fac281166089eb1c19ed52061e14bf5b89a7
     }
 
 }	// namespace Menge

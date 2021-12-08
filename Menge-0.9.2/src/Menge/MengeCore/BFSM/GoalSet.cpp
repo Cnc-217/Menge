@@ -46,7 +46,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/State.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelector.h"
 #include "MengeCore/Agents/BaseAgent.h"
-
+#include"MengeCore/Scene/BaseScene.h"
 #include "MengeCore/MatrixMy.h"
 #include<numeric>
 #include <cassert>
@@ -240,9 +240,15 @@ namespace Menge {
 
 			if (PROJECTNAME == OLYMPIC) {
 				int goalIDNow;
-				if (agent->_shopGone.size() == 0) goalIDNow = 34;
+
+				if (agent->_shopGone.size() == 0)
+				{
+					if (parallelState)
+						return getGoalByID(agentGoingShop[agent->_id]);
+					else
+						goalIDNow = 34;
+				}
 				else goalIDNow = agent->_shopGone.back();//agent当前的goal的id
-				int goalSetNow = shopInfo[goalIDNow].goalSet;//agent当前的goalset的id	
 				//weight权重和的值如下
 				float weight = BaseScene::ProbMatrix->_sumWeight->at(goalIDNow);
 				LARGE_INTEGER seed;
@@ -256,8 +262,10 @@ namespace Menge {
 					itr = _goals.find(_goalIDs[i]);
 					tgtGoal = itr->second;
 					accumWeight += BaseScene::ProbMatrix->Point(goalIDNow, (tgtGoal->_id));
-					if (accumWeight > TGT_WEIGHT) break;
+					if (accumWeight > TGT_WEIGHT) 
+						break;
 				}
+				agentGoingShop[agent->_id] = int(itr->first);
 				return tgtGoal;
 
 
@@ -414,7 +422,7 @@ namespace Menge {
 		}
 
 
-		Goal* GoalSet::getGoalFromProbs(const Agents::BaseAgent* agent, vector<float>& probs) {
+		Goal* GoalSet::getGoalFromProbs( const Agents::BaseAgent* agent, vector<float>& probs) {
 			Goal* tgtGoal = 0x0;
 
 			if (PROJECTNAME == OLYMPIC) {
@@ -433,10 +441,13 @@ namespace Menge {
 					itr = _goals.find(_goalIDs[i]);
 					tgtGoal = itr->second;
 					accumWeight += probs[i];
-					if (accumWeight > TGT_WEIGHT) break;
+					if (accumWeight > TGT_WEIGHT)
+					{
+						Menge::Olympic::agentGoingShop[agent->_id] = itr->first;
+						break;
+					}
 				}
 			}
-
 			return tgtGoal;
 		}
 

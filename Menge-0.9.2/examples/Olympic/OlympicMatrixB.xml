@@ -218,14 +218,7 @@
  <State name="Evacuation" final="0" >
     <GoalSelector type="evacuation" goal_set="1" algorithmID="3" />
     <VelComponent type="road_map" file_name="graph.txt" />
-     <Action type="stress" exit_behavior="cool down"
-      inner_dist="c" inner_value="100" 
-      outer_dist="c" outer_value="120"
-      fall_off="linear"
-      shape_number="2" 
-      max_x0="-2300" min_x0="-3000" max_y0="-580" min_y0="-1000"
-      max_x1="4180" min_x1="3200" max_y1="-100" min_y1="-600"
-      />
+
   </State>
 
   <State name="Agent" final="0" >

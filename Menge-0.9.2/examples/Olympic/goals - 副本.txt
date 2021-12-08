@@ -23,17 +23,5 @@
         <Goal angle="-14.28" capacity="1000000" height="296.52" id="55" type="OBB" weight="1.00" width="601.23" x="-3169.05" y="-781.78"/>
         <Goal angle="-12.82" capacity="1000000" height="345.75" id="56" type="OBB" weight="1.00" width="894.22" x="3297.13" y="-468.09"/>
     </GoalSet>
-    <ShopSet id="0">
-        <Shop id="0" type="2" number="3" serviceMax="10" blockMax="15"/>
-        <Shop id="1" type="0" number="7" serviceMax="3" blockMax="5"/>
-        <Shop id="2" type="2" number="1" serviceMax="10" blockMax="10"/>
-        <Shop id="3" type="1" number="2" serviceMax="3" blockMax="5"/>
-        <Shop id="4" type="1" number="2" serviceMax="2" blockMax="4"/>
-        <Shop id="5" type="1" number="5" serviceMax="2" blockMax="4"/>
-        <Shop id="6" type="1" number="5" serviceMax="5" blockMax="5"/>
-        <Shop id="7" type="1" number="3" serviceMax="2" blockMax="4"/>
-        <Shop id="8" type="3" number="6" serviceMax="10" blockMax="10"/>
-        <Shop id="9" type="4" number="2" serviceMax="10" blockMax="10"/>
-    </ShopSet>
 
 </Population>

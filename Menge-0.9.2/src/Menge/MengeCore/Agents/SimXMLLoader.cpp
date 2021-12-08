@@ -136,7 +136,8 @@ namespace Menge {
 						}
 					}
 					commonDone = true;
-				} else if ( child->ValueStr() == "AgentProfile" ) {
+				} 
+				else if ( child->ValueStr() == "AgentProfile" ) {
 					if ( !parseAgentProfile( child, agentInit ) ) {
 						return false;
 					}
@@ -290,7 +291,8 @@ namespace Menge {
 						logger << " was unable to find a named profile.";
 						return false;
 					}
-				} else if ( child->ValueStr() == "StateSelector" ) {
+				} 
+				else if ( child->ValueStr() == "StateSelector" ) {
 					if ( stateSel != 0x0 ) {
 						// There should be only one.  If there are multiple, only the first will
 						//	have an effect.

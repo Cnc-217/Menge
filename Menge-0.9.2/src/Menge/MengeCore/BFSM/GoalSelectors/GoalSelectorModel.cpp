@@ -16,7 +16,7 @@
 
 using namespace nlohmann;
 using namespace std;
-
+using namespace Menge::Olympic;
 namespace Menge {
 
 	namespace BFSM {
@@ -45,14 +45,12 @@ namespace Menge {
 				j.clear();
 				j = json::parse(receiveBuf);
 				vector<float> probList = j["data"];
-				for (int i = 0; i < probList.size(); i++) probList[i] += Olympic::Influence[i];
-				
-
+				for (int i = 0; i < probList.size(); i++) 
+					probList[i] += Olympic::Influence[i];
 				return _goalSet->getGoalFromProbs(agent, probList);
 			}
-			
+			agentGoingShop[agent->_id] = 34;
 			return _goalSet->getGoalByID(34);
-
 		}
 		
 	}	// namespace BFSM

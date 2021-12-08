@@ -57,7 +57,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include <sstream>
 #include <MengeCore\Scene\BaseScene.h>
 using namespace Menge::Olympic;
-
+using namespace Menge::BaseScene;
 namespace Menge {
 
 	using namespace std;
@@ -151,20 +151,20 @@ namespace Menge {
 					for (agent = _leaderSet.begin(); agent != _leaderSet.end(); agent++) {
 						
 						State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
-						if (currentState->getName() == "Stop") continue;
+						if (currentState->getName() == "Stop") 
+							continue;
 						currentState->leave(*agent);
 						AlgorithmGoalSelector* algorithmGoalSelector = (AlgorithmGoalSelector*)currentState->getGoalSelector();
-						if (agent == _leaderSet.begin()) algorithmGoalSelector->_flag = false;//算法一轮只需要进行一次
+						if (agent == _leaderSet.begin()) 
+							algorithmGoalSelector->_flag = false;//算法一轮只需要进行一次
 						currentState->enter(*agent);
 						cout << "leader ID: " << (*agent)->_id << " choose new goal" << endl;
 					}
 					_lastTimestamp = Menge::SIM_TIME;
 
-					vector<size_t>::iterator it;
-					int idx = 0;
-					for (it = Menge::BaseScene::ExitReagionInfo.begin(); it != Menge::BaseScene::ExitReagionInfo.end(); it++) {
-						cout << "reagionID: " << idx << " reagionPopulation: " << (*it) << endl;
-						idx++;
+					for (int i = 19; i < 21; i++)
+					{
+						cout << "reagionID: " << i << " reagionPopulation: " << roadRegionInfo[i].peopleNumInThisRoad << endl;
 					}
 				}
 
@@ -173,19 +173,18 @@ namespace Menge {
 				for (agent = Menge::Olympic::leaderAgentSet.begin(); agent != Menge::Olympic::leaderAgentSet.end(); agent++) {
 					State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
 					if (currentState->getName() == "Stop") continue;
-					else if (Menge::BaseScene::ExitAgentInfo[(*agent)->_id] != 1000) {//正在疏散出口附近
+					else if ( agentInWhichRegion[(*agent)->_id] == 19 || agentInWhichRegion[(*agent)->_id] == 20) {//正在疏散出口附近
 						currentState->leave((*agent));
 						State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
 						nextState->enter((*agent));
 						Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
 					}
 				}
-
 				//每一个恐慌者判断有没有进入出口区域；是否有引导者在附近，有的话就跟随
 				for (agent = Menge::Olympic::panicAgentSet.begin(); agent != Menge::Olympic::panicAgentSet.end(); agent++) {
 					State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
 					if (currentState->getName() == "Stop") continue;
-					else if (Menge::BaseScene::ExitAgentInfo[(*agent)->_id] != 1000) {//正在疏散出口附近
+					else if (agentInWhichRegion[(*agent)->_id] == 19 || agentInWhichRegion[(*agent)->_id] == 20) {//正在疏散出口附近
 						currentState->leave((*agent));
 						State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
 						nextState->enter((*agent));
@@ -211,7 +210,7 @@ namespace Menge {
 				for (agent = Menge::Olympic::normalAgentSet.begin(); agent != Menge::Olympic::normalAgentSet.end(); agent++) {
 					State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
 					if (currentState->getName() == "Stop") continue;
-					else if (Menge::BaseScene::ExitAgentInfo[(*agent)->_id] != 1000) {//进入了出口区域
+					else if (agentInWhichRegion[(*agent)->_id] == 19 || agentInWhichRegion[(*agent)->_id] == 20) {//进入了出口区域
 						currentState->leave((*agent));
 						State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
 						nextState->enter((*agent));
@@ -233,14 +232,18 @@ namespace Menge {
 
 				}
 			}
-			/*
+			
 			else
 			{
-			Menge::BaseScene::updateRoadNum();
-			for (size_t i = 0; i < roadRegionInfo.size(); i++)
-				cout << "roadID : "<<i<<" people num: "<<roadRegionInfo[i].peopleNumInThisRoad << endl;
+				updateRoadNum();
+				//updateAgentInRegion();
+				//for (size_t i = 0; i < roadRegionInfo.size(); i++)
+					//cout << "roadID : " << i << " people num: " << roadRegionInfo[i].peopleNumInThisRoad << endl;
+				cout << "agentInWhichRegion : " << agentInWhichRegion[1] << "agentGoingShop :" << agentGoingShop[1] << "peopleNumInThisRoad : "<<roadRegionInfo[0].peopleNumInThisRoad<<endl;
+				//_lastTimestamp = Menge::SIM_TIME;
 			}
-			*/
+			
+			
 			
 		}
 		

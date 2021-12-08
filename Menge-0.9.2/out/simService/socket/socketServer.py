@@ -27,4 +27,4 @@ class SocketServer:
 
 
 #socket服务器，用于和Menge通信
-socketServer = SocketServer("10.28.195.233", 12660)
+socketServer = SocketServer("127.0.0.1", 12660)

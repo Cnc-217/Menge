@@ -85,6 +85,8 @@ namespace Menge {
 
 			//提取项目名
 			BaseScene::projectNameExtract(Menge::BehaveFilePath);
+			//测试是否是平行模式
+			testParallel(BehaveFilePath);
 			// Acquire the spatial query instance
 			SPATIAL_QUERY = sim->getSpatialQuery();
 
@@ -285,12 +287,16 @@ namespace Menge {
 				if (Menge::Olympic::goalSeclectorType == "Matrix") {
 					//2.无输入矩阵
 					int goalNum = fsm->getGoalSet(0)->size();
-
+					for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++)
+					{
+						agentInWhichRegion.push_back(-1);//agent在哪  默认值设置为-1
+						agentGoingShop.push_back(-1);//agent要去哪  默认值为-1
+					}
 					if (BaseScene::ProbMatrix == 0x0) {
 						cout << "apply the defult matrix,all ONE" << endl;
 						MatrixDim2* tmp = new MatrixDim2(goalNum, goalNum, 1);
 						BaseScene::ProbMatrix = tmp;
-						BaseScene::ProbMatrix->Show();
+						//BaseScene::ProbMatrix->Show();
 						BaseScene::ProbMatrix->InitSumWeight();
 
 					}
@@ -309,7 +315,7 @@ namespace Menge {
 					cout << "apply the defult matrix,all ONE" << endl;
 					MatrixDim2* tmp = new MatrixDim2(goalNum, goalNum, 1);
 					BaseScene::ProbMatrix = tmp;
-					BaseScene::ProbMatrix->Show();
+					//BaseScene::ProbMatrix->Show();
 					BaseScene::ProbMatrix->InitSumWeight();
 				}
 				else if (BaseScene::ProbMatrix->col_size() != goalNum) {
@@ -364,33 +370,16 @@ namespace Menge {
 			switch (PROJECTNAME) {
 			
 				case OLYMPIC: {
-					//1.初始化两个vector
-					for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++) {
-						Menge::BaseScene::ExitAgentInfo.push_back(1000);//默认值设置为1000
-					}
-					//goalSet1包含了出口goal
-					for (int i = 0; i < fsm->getGoalSet(1)->size(); i++) {
-						Menge::BaseScene::ExitReagionInfo.push_back(0);
-					}
 
 					//初始化店铺信息
-					bool shopInitOk = Menge::Olympic::shopInit(Menge::DirectoryPath+"/test.txt");
-
-					if (!shopInitOk){
-						cout << " shop init fail!" << endl;
-						return 0x0;
-					}
-					else  cout << " shop init OK!" << endl;
+					bool shopInitOk = Menge::Olympic::shopInit(Menge::DirectoryPath + "/roadRegion.xml");
 					bool roadRegionOk = Menge::BaseScene::setRoadRegionFromXML(Menge::DirectoryPath + "/roadRegion.xml");
-					if (!roadRegionOk){
-						cout << " roadblockRegion init fail!" << endl;
+					if (!shopInitOk || !roadRegionOk)
+					{
+						cout << " shop : " << shopInitOk << " road : " << roadRegionOk << endl;
 						return 0x0;
 					}
-					else
-						cout << " roadblockRegion init OK!" << endl;
-					vector<size_t> tmp0 = { 10,10 };
-					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
-
+					else  cout << "shop and road init OK!" << endl;
 					//2.无输入矩阵
 					int goalNum = fsm->getGoalSet(0)->size();
 					if (BaseScene::ProbMatrix == 0x0) {
@@ -409,6 +398,7 @@ namespace Menge {
 					
 					//3.初始化socket服务端，用于疏散状态转移控制
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
+<<<<<<< HEAD
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.128.207.206", 12660); 
 					
 
@@ -416,6 +406,18 @@ namespace Menge {
 					Menge::Olympic::parameterInit(socketClient);
 					thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
 					threadSocket.detach();
+=======
+					//SOCKET socketServer = Menge::Socket::socketServerInit("10.128.218.217", 12660); 
+					//thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
+					//threadSocket.detach();
+>>>>>>> f2b4fac281166089eb1c19ed52061e14bf5b89a7
+
+					//初始化socket客户端，发出数据同步请求，接收仿真参数，更新仿真参数，最后进入监听状态
+					SOCKET socketClient = Menge::Socket::socketClientInit("127.0.0.1", 12660);
+					Menge::Olympic::parameterInit(socketClient);
+					thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
+					threadSocket.detach();
+
 
 					cout << "It's OLYMPIC Simulation" << endl;
 					break;
@@ -423,19 +425,6 @@ namespace Menge {
 				
 				default: {
 					cout << "No Specific Simulation" << endl;
-					//1.初始化区域检测的vector
-					for (int i = 0; i < fsm->getSimulator()->getNumAgents(); i++) {
-						Menge::BaseScene::ExitAgentInfo.push_back(1000);//默认值设置为1000
-					}
-					for (int i = 0; i < BaseScene::DetectReagionNum; i++) {
-						Menge::BaseScene::ExitReagionInfo.push_back(0);
-					}
-
-					//vector<size_t> tmp0 = { 10,10 };
-					//默认为10
-					vector<size_t> tmp0(BaseScene::DetectReagionNum, 10);
-					Menge::BaseScene::ExitReagionCapacity.assign(tmp0.begin(), tmp0.end());
-
 					//3.初始化socket服务端，用于疏散状态转移控制
 					SOCKET socketServer = Menge::Socket::socketServerInit("127.0.0.1", 12660);
 					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);

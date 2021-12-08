@@ -113,7 +113,9 @@ namespace Menge {
 		extern MENGE_API std::vector<Agents::BaseAgent*> leaderAgentSet;
 		extern MENGE_API std::vector<Agents::BaseAgent*> panicAgentSet;
 		extern MENGE_API std::vector<Agents::BaseAgent*> normalAgentSet;
+
 		extern MENGE_API bool evacuationState; //控制event疏散部分状态启动和关闭
+		extern MENGE_API bool parallelState; //是否是平行模式
 		extern MENGE_API struct Shoptype
 		{
 			int serviceMax;
@@ -139,7 +141,8 @@ namespace Menge {
 			int capacity;//区域的限制容量人数
 		};//声明一个数据结构  用来表示统计人流的区域
 		extern MENGE_API std::vector <roadRegionType> roadRegionInfo;//一个vector  用来记录所有的统计区域
-
+		extern MENGE_API std::vector<int> agentInWhichRegion;
+		extern MENGE_API std::vector<int> agentGoingShop;
 
 	}
 
@@ -147,11 +150,11 @@ namespace Menge {
 		extern MENGE_API MatrixDim2* ProbMatrix;//通用场景下输入文件的矩阵
 
 		//通用场景下人流量检测
-		extern MENGE_API   std::vector<size_t> ExitReagionInfo;//exitRegionID-population
+		extern MENGE_API   std::vector<size_t> ExitReagionInfo;//exitRegionID-population  y
 
-		extern MENGE_API   std::vector<size_t> ExitAgentInfo;//AgentID-AgentState
+		extern MENGE_API   std::vector<size_t> ExitAgentInfo;//AgentID-AgentState  n
 
-		extern MENGE_API   std::vector<size_t> ExitReagionCapacity;//exitRegionID-Capacity
+		extern MENGE_API   std::vector<size_t> ExitReagionCapacity;//exitRegionID-Capacity  y
 
 		extern MENGE_API   size_t DetectReagionNum;//detect region num
 
