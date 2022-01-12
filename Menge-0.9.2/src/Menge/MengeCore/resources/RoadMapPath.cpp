@@ -73,8 +73,8 @@ namespace Menge {
 
 	/////////////////////////////////////////////////////////////////////
 
-	bool RoadMapPath::setPrefDirection( const Agents::BaseAgent * agent,
-										Agents::PrefVelocity & pVel ) {
+	bool RoadMapPath::setPrefDirection(const Agents::BaseAgent* agent,
+		Agents::PrefVelocity& pVel) {
 		// Assume that when I'm overlapping one node, that I can see the next
 		// Test to see if I can advance target way point
 		//	while I'm overlapping current target, advance it
@@ -91,37 +91,49 @@ namespace Menge {
 		bool isVisible = false;
 		// TODO: Should I compute this blindly?  Although it is used in potentially three places
 		//		mostly, it won't be used.
-		Vector2 target = _goal->getTargetPoint( agent->_pos, agent->_radius );
-		if ( _targetID < _wayPointCount ) {
+		Vector2 target = _goal->getTargetPoint(agent->_pos, agent->_radius);
+		/*
+		if (agent->_id == 222) {
+			std::cout << "targetID:" << _targetID << ",_wayPointCount:" << _wayPointCount;
+		}*/
+		if (_targetID < _wayPointCount) {
 			isVisible =
-				Menge::SPATIAL_QUERY->queryVisibility( agent->_pos, _wayPoints[ _targetID ],
-				agent->_radius );
-		} else {
-			isVisible = Menge::SPATIAL_QUERY->queryVisibility( agent->_pos, target,
-															   agent->_radius );
+				Menge::SPATIAL_QUERY->queryVisibility(agent->_pos, _wayPoints[_targetID],
+					agent->_radius);
 		}
+		else {
+			isVisible = Menge::SPATIAL_QUERY->queryVisibility(agent->_pos, target,
+				agent->_radius);
+		}
+		//std::cout << "1111可否看见id为" << _targetID << "的目标:" << isVisible;
 		size_t testID = _targetID + 1;
-		while ( testID < _wayPointCount &&
-				Menge::SPATIAL_QUERY->queryVisibility( agent->_pos, _wayPoints[ testID ],
-				agent->_radius ) ) {
+		while (testID < _wayPointCount &&
+			Menge::SPATIAL_QUERY->queryVisibility(agent->_pos, _wayPoints[testID],
+				agent->_radius)) {
 			_targetID = testID;
 			isVisible = true;
 			++testID;
 		}
-		if ( _targetID == _wayPointCount - 1 ) {
-			if ( Menge::SPATIAL_QUERY->queryVisibility( agent->_pos, target, agent->_radius ) ) {
+		//std::cout << "2222可否看见id为" << _targetID << "的目标:" << isVisible;
+		if (_targetID == _wayPointCount - 1) {
+			if (Menge::SPATIAL_QUERY->queryVisibility(agent->_pos, target, agent->_radius)) {
 				++_targetID;
 				isVisible = true;
 			}
 		}
 		// Visibility test
 		Vector2 dir;
-		if ( isVisible ) {
-			Vector2 curr( _targetID < _wayPointCount ? _wayPoints[ _targetID ] : target );
-			dir = norm( curr - agent->_pos );
+		if (isVisible) {
+			Vector2 curr(_targetID < _wayPointCount ? _wayPoints[_targetID] : target);
+			dir = norm(curr - agent->_pos);
 			_validPos = agent->_pos;
-			pVel.setTarget( curr );
-		} else {
+			pVel.setTarget(curr);
+		}
+		else {
+			return false;
+			
+
+			/*
 			if (Menge::SPATIAL_QUERY->queryVisibility(agent->_pos, _validPos, agent->_radius)) {
 				// This should never be the zero vector.
 				//	_validPos is set when the current waypoint is visible
@@ -130,11 +142,13 @@ namespace Menge {
 				//		that breaks the earlier assertion.
 				dir = norm(_validPos - agent->_pos);
 				pVel.setTarget(_validPos);
-			} else {
-				return false;
 			}
+			else {
+				return false;
+			}*/
 		}
-		pVel.setSingle( dir );
+		//std::cout << "validPos:" << _validPos;
+		pVel.setSingle(dir);
 		return true;
 	}
 

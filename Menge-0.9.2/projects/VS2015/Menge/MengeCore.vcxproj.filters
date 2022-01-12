@@ -723,6 +723,9 @@
     <ClCompile Include="..\..\..\src\Menge\MengeCore\FileTool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorEnd.cpp">
+      <Filter>Source Files\BFSM\GoalSelectors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(SrcDir)\mengeCore\Core.h">
@@ -1411,6 +1414,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\Menge\MengeCore\FileTool.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorEnd.h">
+      <Filter>Header Files\BFSM\GoalSelectors</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

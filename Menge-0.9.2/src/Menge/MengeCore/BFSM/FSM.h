@@ -332,6 +332,8 @@ namespace Menge {
 			 */
 			void addVelModifier( VelModifier * v ) { _velModifiers.push_back( v ); }
 
+			void addGoalSet(GoalSet* goalSet);
+
 			friend FSM * buildFSM( FSMDescrip & fsmDescrip, Agents::SimulatorInterface * sim,
 								   bool VERBOSE );
 

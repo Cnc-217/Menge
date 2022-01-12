@@ -149,8 +149,6 @@ namespace Menge {
 			assert(path->getGoal() == goal &&
 				"Trying to update an agent, goal pair for which I have a conflicting goal");
 
-			//if (Menge::PROJECTNAME == EVACUATION) return;
-			//cout << "path" << endl;
 			RoadMapPath* update_path = _roadmap->updatePathForGoal(agent, path);
 			if (update_path == nullptr) {
 				logger << Logger::ERR_MSG << "Agent " << agent->_id

@@ -40,6 +40,8 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 
 #include "MengeCore/Agents/BaseAgent.h"
 #include "MengeCore/BFSM/Goals/GoalPoint.h"
+#include "MengeCore/Core.h"
+#include "Menge\MengeCore\Agents\SimulatorInterface.h"
 
 #include <cassert>
 
@@ -57,6 +59,8 @@ namespace Menge {
 		
 		Goal * IdentityGoalSelector::getGoal( const Agents::BaseAgent * agent ) const {
 			assert( agent != 0x0 && "IdentityGoalGenerator requires a valid base agent!\n" );
+			//Agents::BaseAgent* agentTmp = (Agents::BaseAgent*)agent;
+			//->_radius = 1;
 			return new PointGoal(agent->_pos);
 		}
 		

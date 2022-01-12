@@ -62,6 +62,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include <time.h>
 
 namespace MengeVis {
 
@@ -192,8 +193,9 @@ namespace MengeVis {
 		///////////////////////////////////////////////////////////////////////////
 
 		void GLViewer::run() {
+			DWORD  start;
+			start = GetTickCount();
 			bool redraw = true;
-			float time = 0.f;
 			_fpsDisplayTimer.start();
 			if (Menge::PROJECTNAME == BUSINESSLEARNING || Menge::PROJECTNAME == BUSINESSREALITY || Menge::PROJECTNAME == OLYMPIC) _pause = false;
 			while ( _running ) {
@@ -231,6 +233,9 @@ namespace MengeVis {
 							// When a system sends an exception that things are over
 							// pause everything
 							std::cout << "System stopped!\n";
+							DWORD  end;
+							end = GetTickCount();
+							 
 							_pause = true;	
 						}
 						if (!_update ) {

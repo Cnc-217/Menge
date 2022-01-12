@@ -104,6 +104,7 @@ class OlympicMatrix(Scene):
         self.__roadblock = [True for _ in range(153)]
         self.__sceneName = "Olympic"
         self.__sceneType = "Matrix"
+        self.action = []
 
     def getSceneName(self):
         return self.__sceneName
@@ -114,6 +115,8 @@ class OlympicMatrix(Scene):
     def updateParameter(self, actionType, actionIndex):
         if(actionType=="flow"):
             self.__matrix = matrixFlowAction(self.__matrix, actionIndex)
+        elif(actionType=="business"):
+            self.__matrix = matrixBusinessAction(self.__matrix, actionIndex)
         print("update olympic matrix complete")
 
     def getParameter(self):

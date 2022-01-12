@@ -44,6 +44,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/Agents/BaseAgent.h"
 #include "MengeCore/Agents/SpatialQueries/SpatialQuery.h"
 #include "MengeCore/BFSM/Goals/Goal.h"
+#include "MengeCore/BFSM/Goals/GoalAgent.h"
 #include "MengeCore/resources/GraphEdge.h"
 #include "MengeCore/resources/MinHeap.h"
 #include "MengeCore/resources/RoadMapPath.h"
@@ -224,6 +225,16 @@ namespace Menge {
 		// Find the closest visible node to goal position
 		Vector2 goalPos = goal->getCentroid();
 		size_t endID = getClosestVertex( goalPos, agent->_radius );
+		if (endID == -1) {
+			//如果穿墙, 将其强制移动到最近的waypoint的位置
+			BFSM::AgentGoal* ptr = (BFSM::AgentGoal*)goal;
+			int leaderID = ptr->_leaderID;
+			Agents::BaseAgent*  agentTmp = (Agents::BaseAgent*)SIMULATOR->getAgent(leaderID);
+			Vector2 pos = getClosestVertex(agentTmp->_pos);
+			agentTmp->setPosition(pos);
+			endID = getClosestVertex(agentTmp->_pos, agentTmp->_radius);
+		}
+
 		// Compute the path based on those nodes
 		RoadMapPath * path = getPath( startID, endID );
 		if ( path ) { 
@@ -245,6 +256,8 @@ namespace Menge {
 		if (!Menge::SPATIAL_QUERY->queryVisibility(last_way_point, goal_pos, agent->_radius)) {
 			return getPath(agent, &goal);
 		}
+		
+
 		return path;
 	}
 
@@ -430,8 +443,16 @@ namespace Menge {
 	//////////////////////////////////////////////////////////////////////////////////////
 
 	float Graph::getPathLenth(const Agents::BaseAgent* agent, const BFSM::Goal* goal) {
-		// Find the closest visible node to agent position
-		size_t startID = getClosestVertex(agent->_pos, agent->_radius);//起点的路径点
+		//解决bug：如果穿墙，将其强制移动到最近的waypoint的位置
+		size_t startID = getClosestVertex(agent->_pos, agent->_radius);
+		if (startID == -1) {
+			//如果穿墙, 将其强制移动到最近的waypoint的位置
+			Vector2 pos;
+			pos = getClosestVertex(agent->_pos);
+			Agents::BaseAgent* ptr = (Agents::BaseAgent*)agent;
+			ptr->setPosition(pos);
+			startID = getClosestVertex(agent->_pos, agent->_radius);
+		}
 		// Find the closest visible node to goal position
 		Vector2 goalPos1 = goal->getCentroid();
 		size_t endID = getClosestVertex(goalPos1, agent->_radius);//终点的路径点
@@ -523,7 +544,7 @@ namespace Menge {
 			float testDistSq = absSq(_vertices[i].getPosition() - agent->_pos);//每一个waypoint与agent的距离
 			if (testDistSq < bestDistSq) {//找到更小的距离所对应的waypoint
 				number[i]++;
-				cout << "small  " << i << endl;
+				//cout << "small  " << i << endl;
 				break;
 			}
 		}
@@ -533,6 +554,14 @@ namespace Menge {
     vector<float_t> Graph::pathPeopleNumberAndLength( const Agents::BaseAgent * agent, const BFSM::Goal * goal ) {
         // Find the closest visible node to agent position
         size_t startID = getClosestVertex(agent->_pos, agent->_radius);//起点的路径点
+		if (startID == -1) {
+			//如果穿墙, 将其强制移动到最近的waypoint的位置
+			Vector2 pos;
+			pos = getClosestVertex(agent->_pos);
+			Agents::BaseAgent* ptr = (Agents::BaseAgent*)agent;
+			ptr->setPosition(pos);
+			startID = getClosestVertex(agent->_pos, agent->_radius);
+		}
         // Find the closest visible node to goal position
         Vector2 goalPos1 = goal->getCentroid();
         size_t endID = getClosestVertex(goalPos1, agent->_radius);//终点的路径点

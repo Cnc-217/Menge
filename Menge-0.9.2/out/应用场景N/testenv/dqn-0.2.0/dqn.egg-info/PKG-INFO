@@ -1,0 +1,9 @@
+Metadata-Version: 1.1
+Name: dqn
+Version: 0.2.0
+Summary: The dqn create ReST files for sphinx from source code
+Home-page: https://bitbucket.org/takesxi_sximada/dqn
+Author: TakesxiSximada
+Author-email: takesxi.sximada@gmail.com
+License: BSD
+Download-URL: https://bitbucket.org/takesxi_sximada/dqn

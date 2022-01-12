@@ -129,7 +129,7 @@ namespace Menge {
 				if (_reachedAgents[agentId]){
 					//针对出入口  如果到达出入口  不等待直接选择下一个goal
 					if (shopType == 4){
-						if (agent->_shopGone.size() == 5)
+						if (agent->_shopGone.size() == 30)
 							agent->_shopGone.pop_front();
 						agent->_shopGoneNum = 1;
 						agent->_shopGone.push_back(goalId);
@@ -173,20 +173,11 @@ namespace Menge {
 					_lock.lockWrite();
 					shopInfo[goalId].serviceQ.pop();	//agent出服务队列;
 					_lock.releaseWrite();
-					if (agent->_shopGone.size() != 0)
-					{
-						int lastShopGone = agent->_shopGone.back();
-						if (agent->_shopGone.size() == 5)
-							agent->_shopGone.pop_front();
-						if (shopInfo[goalId].goalSet == shopInfo[lastShopGone].goalSet)
-							agent->_shopGoneNum++;
-						else
-							agent->_shopGoneNum = 1;
-					}
-					else {
-						agent->_shopGone.push_back(goalId);
-						agent->_shopGoneNum = 1;
-					}
+
+					if (agent->_shopGone.size() == 30)
+						agent->_shopGone.pop_front();
+					agent->_shopGone.push_back(goalId);
+
 					return true;					//出函数
 
 				};

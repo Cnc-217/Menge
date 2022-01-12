@@ -1,8 +1,11 @@
 # coding:utf-8
-from simService.services.mengeDataService import *
-from simService import sims,redisServer
-from flask import Blueprint, request
 import time
+
+from flask import Blueprint, request
+
+import simService
+from simService import sims, redisServer
+from simService.services.mengeDataService import *
 
 controller = Blueprint('controller', __name__)
 
@@ -117,10 +120,13 @@ def actionApply(sceneName):
             actionType = request.values.get("actionType")
             if(actionType==None):
                 return "actionType is None"
-            if(actionType=="flow"):
+            elif(actionType=="flow" or actionType=="business"):
                 actionList = request.values.get("actionList")
+                print(actionList)
+                # actionList = actionList.split(',')
                 actionList = actionList.strip('[').strip(']').split(',')
                 actionList = [int(num) for num in actionList]
+                sim.action = actionList
                 sim.getScene().updateParameter(actionType,list(actionList))
                 parameterSynToMenge(sim)
                 info =  sim.getSceneName() + " update parameter complete"
@@ -133,17 +139,18 @@ def actionApply(sceneName):
 
 # 执行疏散
 # http://10.28.195.233:5000/olympic/evacuate
-@controller.route('/<sceneName>/evacuate', methods=['POST'])
-def evacuateApply(sceneName):
+@controller.route('/evacuate', methods=['POST'])
+def evacuateApply():
     simPid = request.values.get("pid")
+    algorithmID = request.values.get("id")
     info = ""
     for sim in sims.getSimulationList():
         if str(sim.getPid()) == simPid:
             sim = sims.getSimulation(sim.getPid())
-            evacuateStart(sim)
-            info =  sim.getSceneName() + " evacuate start complete"
+            evacuateStart(sim,int(algorithmID))
+            info =  sim.getSceneName() + " evacuate start complete,algorithmID: "+ algorithmID
     if (info == ""):
-        info = "no " + sceneName + ": " + simPid + " simulation is running"
+        info = "no : " + simPid + " simulation is running"
     jsonData = {"info": info}
     return jsonData
 
@@ -171,8 +178,7 @@ def checkRoadBlock(sceneName):
                 returnstr = returnstr + str(i) +' '
             info = returnstr
     jsonData = {"info": info}
-    jsonStr = json.dumps(jsonData)
-    return jsonStr
+    return jsonData
 
 # 设置路障
 # http://10.28.195.233:5000/olympic/blockSet
@@ -188,8 +194,9 @@ def setRoadBlock(sceneName):
             sim = sims.getSimulation(sim.getPid())
             sim.getScene().updateRoadBlock(blockList)
             parameterSynToMenge(sim)
-            time.sleep(0.5)
-            setUnityBlock(sim)
+            if sim.isUnitySim()==True:
+                time.sleep(0.5)
+                setUnityBlock(sim)
             info =  sim.getSceneName() + " update parameter complete"
     if (info == ""):
         info = "no " + sceneName + ": " + simPid + " simulation is running"
@@ -207,6 +214,34 @@ def saveTimeSlice(sceneName):
             sim = sims.getSimulation(sim.getPid())
             timeSliceSave(sim)
             info =  sim.getSceneName() + " save timeSlice to xml complete"
+    if (info == ""):
+        info = "no " + sceneName + ": " + simPid + " simulation is running"
+    jsonData = {"info": info}
+    return jsonData
+
+
+# 接收action，修改sim对象中scene对象的参数，socket方式将参数发送给Menge进行数据同步
+#http://10.28.195.233:5000/olympic/train?actionType=flow&actionList=[1,2,35]
+@controller.route('/<sceneName>/trainFlow', methods=['POST'])
+def trainFlow(sceneName):
+    simService.TRAIN = True
+    simPid = request.values.get("pid")
+    info = ""
+    for sim in sims.getSimulationList():
+        if str(sim.getPid()) == simPid:
+            sim = sims.getSimulation(sim.getPid())
+            actionType = request.values.get("actionType")
+            if(actionType==None):
+                return "actionType is None"
+            elif(actionType=="flow"):
+                actionList = request.values.get("actionList")
+                print(actionList)
+                actionList = actionList.strip('[').strip(']').split(',')
+                actionList = [int(num) for num in actionList]
+                sim.action = actionList
+                info =  sim.getSceneName() + " action update parameter complete"
+            else:
+                info =  "actionType wrong"
     if (info == ""):
         info = "no " + sceneName + ": " + simPid + " simulation is running"
     jsonData = {"info": info}

@@ -35,13 +35,9 @@ namespace Menge {
 		/////////////////////////////////////////////////////////////////////
 
 		void AgentGoal::move(float time_step) { //控制goal如何移动
-		
 			//思路1：一个goal对应一个agent的id，goal坐标=agent的坐标即可
 			CircleShape* geo = (CircleShape*)_geometry;
 			geo->setCenter(Menge::SIMULATOR->getAgent(_leaderID)->_pos);
-
-
-			
 		}
 	
 

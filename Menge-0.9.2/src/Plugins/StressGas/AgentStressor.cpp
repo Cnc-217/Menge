@@ -10,9 +10,7 @@
 namespace StressGAS {
 	using Menge::BFSM::State;
 	using Menge::Agents::BaseAgent;
-	using Menge::BaseScene::ExitAgentInfo;
-	using Menge::BaseScene::ExitReagionInfo;
-	using Menge::BaseScene::ExitReagionCapacity;
+	
 
 	// These values come from the GAS paper
 	//	Interactive Simulation of Dynamic Crowd Behaviors using General Adaptation Syndrome Theory
@@ -118,7 +116,7 @@ namespace StressGAS {
 		// the additional 0.5f uses truncation to do rounding.
 		//agt->_maxNeighbors = static_cast<size_t>(_baseMaxNeighbors +
 			//stressLevel * _deltaMaxNeighbors + 0.5f);
-
+		/*
 		if (Menge::PROJECTNAME == EVACUATION|| Menge::PROJECTNAME == THEMEPARK|| Menge::PROJECTNAME == OLYMPIC) {
 			if (stressLevel > 0.0&& Menge::Olympic::evacuationState == true) { //进入出口区域，判断该区域的人数
 				size_t exitID = Menge::BaseScene::ExitAgentInfo[agt->_id];
@@ -133,7 +131,7 @@ namespace StressGAS {
 		}
 		
 		else agt->_prefSpeed = _basePrefSpeed;
-
+		*/
 		// handle the orca-derived classes specially
 		ORCA::Agent * oAgt = dynamic_cast<ORCA::Agent *>(agt);
 		if (oAgt != 0x0) {

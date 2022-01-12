@@ -33,9 +33,9 @@ def getDataFromMenge(sim):
 
 #命令Menge开始疏散
 #json={"info"="evacuate"}
-def evacuateStart(sim):
+def evacuateStart(sim,algorithmID):
     client = sim.getClient()
-    jsonData = {"info": "evacuate", "data": ""}
+    jsonData = {"info": "evacuate", "data": algorithmID}
     socketSend(jsonData, client)
 
 #命令Menge存储时间切片的数据到XML

@@ -146,17 +146,15 @@ namespace Menge {
 		extern MENGE_API std::vector<int> agentInWhichRegion;
 		extern MENGE_API std::vector<int> agentGoingShop;
 
+		extern MENGE_API std::float_t startSimTime;
+		extern MENGE_API size_t AGENT_NUM;
+		extern MENGE_API std::vector<float_t> AGENT_SCORES;
+		extern MENGE_API std::vector<int> AGENT_GOALS;
+
 	}
 
 	namespace BaseScene {
 		extern MENGE_API MatrixDim2* ProbMatrix;//通用场景下输入文件的矩阵
-
-		//通用场景下人流量检测
-		extern MENGE_API   std::vector<size_t> ExitReagionInfo;//exitRegionID-population  y
-
-		extern MENGE_API   std::vector<size_t> ExitAgentInfo;//AgentID-AgentState  n
-
-		extern MENGE_API   std::vector<size_t> ExitReagionCapacity;//exitRegionID-Capacity  y
 
 		extern MENGE_API   size_t DetectReagionNum;//detect region num
 

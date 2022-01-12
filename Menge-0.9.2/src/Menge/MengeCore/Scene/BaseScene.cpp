@@ -12,6 +12,7 @@
 #include "MengeCore/BFSM/State.h"
 #include "MengeCore/Agents/SimulatorInterface.h"
 #include "MengeCore/resources/Graph.h"
+#include "MengeCore/BFSM/GoalSelectors/GoalSelectorEvacuation.h"
 
 #include "MengeVis/Viewer/GLViewer.h"
 #include "MengeCore/Socket.h"
@@ -49,13 +50,15 @@ namespace Menge {
 			if (!strcmp(command.c_str(), "Evacuate")) {
 				cout << "Evacuate mode start" << endl;
 				//下面是根据不同项目的定制化代码部分
-				if (Menge::PROJECTNAME == OLYMPIC) 
-					Olympic::evacuateModeStart();
+				int algorithmID = j["data"];
+				cout << "here "<<algorithmID << endl;
+				Menge::BFSM::EvacuationGoalSelector* evacuationGoalSelector = (Menge::BFSM::EvacuationGoalSelector*)Menge::ACTIVE_FSM->getNode("Evacuation")->getGoalSelector();
+				evacuationGoalSelector->_algorithmID = algorithmID;
+				evacuateModeStart();
 				json j;
 				j["Info"] = "Menge has receive your commend: evacuation start";
 				string sendBuf = j.dump();
 				Menge::Socket::socketSend(sendBuf.c_str(), serConn);
-				//MengeVis::SimViewer->_pause = false;//false是正常运行
 			}
 			//如果客户端传来了修改概率矩阵的数据，则修改概率矩阵
 			else if (!strcmp(command.c_str(), "MatrixModify")) {
@@ -97,51 +100,55 @@ namespace Menge {
 			string info = j["info"];
 			cout << "socketClient receive info: " << j["info"] << endl;
 
-			if (Menge::PROJECTNAME == OLYMPIC) {
-				if (!strcmp(info.c_str(), "getData")) {
-					string sendBuf = Olympic::getSimData();
-					Menge::Socket::socketSend(sendBuf.c_str(), socketClient);
-				}
-				else if (!strcmp(info.c_str(), "getBlockPosition")) {
-					string sendBuf = Olympic::getBlockPosition();
-					Menge::Socket::socketSend(sendBuf.c_str(), socketClient);
-				}
-				else if (!strcmp(info.c_str(), "evacuate")) Olympic::evacuateModeStart();
-				else if (!strcmp(info.c_str(), "parameters")) {
-					if (Olympic::goalSeclectorType == "Matrix") {
-						string matrix = j["matrix"];
-						BaseScene::modifyMatrix((char*)matrix.c_str());
-					}
-					else if (Olympic::goalSeclectorType == "Model") {
-						string tmp = j["influence"];
-						char* strc = new char[strlen(tmp.c_str()) + 1];
-						strcpy(strc, tmp.c_str());
-						vector<float> vec = BaseScene::strToVectorFloat(strc);
-						Menge::Olympic::Influence.assign(vec.begin(), vec.end());
-						delete[] strc;
-					}
-					string tmp1 = j["roadblock"];
-					cout << tmp1 << endl;
-					char* strc1 = new char[strlen(tmp1.c_str()) + 1];
-					strcpy(strc1, tmp1.c_str());
-					vector<bool> vec1 = BaseScene::strToVectorBool(strc1);
-					Menge::Olympic::verticesCanGo.assign(vec1.begin(), vec1.end());
-					delete[] strc1;
-				}
-				else if (!strcmp(info.c_str(), "timeSlice")) {
-					Menge::FileTool::copySceneFile();
-					//Menge::FileTool::copyBehaveFile();
-					std::size_t found = SceneFilePath.find_last_of("/");
-					std::string parallelSceneFilePath = SceneFilePath.substr(0, found) + "/OlympicParallelS.xml";
-					BaseScene::sceneParallelXML(parallelSceneFilePath);
-				}
-				else if (!strcmp(info.c_str(), "pause")) {
-					MengeVis::SimViewer->_pause = true;
-				}
-				else if (!strcmp(info.c_str(), "restart")) {
-					MengeVis::SimViewer->_pause = false;
-				}
+			if (!strcmp(info.c_str(), "getData")) {
+				string sendBuf = Olympic::getSimData();
+				Menge::Socket::socketSend(sendBuf.c_str(), socketClient);
 			}
+			else if (!strcmp(info.c_str(), "getBlockPosition")) {
+				string sendBuf = Olympic::getBlockPosition();
+				Menge::Socket::socketSend(sendBuf.c_str(), socketClient);
+			}
+			else if (!strcmp(info.c_str(), "evacuate")) {
+				int algorithmID = j["data"];
+				Menge::BFSM::EvacuationGoalSelector* evacuationGoalSelector = (Menge::BFSM::EvacuationGoalSelector*)Menge::ACTIVE_FSM->getNode("Evacuation")->getGoalSelector();
+				evacuationGoalSelector->_algorithmID = algorithmID;
+				evacuateModeStart();
+			}
+			else if (!strcmp(info.c_str(), "parameters")) {
+				if (Olympic::goalSeclectorType == "Matrix") {
+					string matrix = j["matrix"];
+					BaseScene::modifyMatrix((char*)matrix.c_str());
+				}
+				else if (Olympic::goalSeclectorType == "Model") {
+					string tmp = j["influence"];
+					char* strc = new char[strlen(tmp.c_str()) + 1];
+					strcpy(strc, tmp.c_str());
+					vector<float> vec = BaseScene::strToVectorFloat(strc);
+					Menge::Olympic::Influence.assign(vec.begin(), vec.end());
+					delete[] strc;
+				}
+				string tmp1 = j["roadblock"];
+				cout << tmp1 << endl;
+				char* strc1 = new char[strlen(tmp1.c_str()) + 1];
+				strcpy(strc1, tmp1.c_str());
+				vector<bool> vec1 = BaseScene::strToVectorBool(strc1);
+				Menge::Olympic::verticesCanGo.assign(vec1.begin(), vec1.end());
+				delete[] strc1;
+			}
+			else if (!strcmp(info.c_str(), "timeSlice")) {
+				Menge::FileTool::copySceneFile();
+				//Menge::FileTool::copyBehaveFile();
+				std::size_t found = SceneFilePath.find_last_of("/");
+				std::string parallelSceneFilePath = SceneFilePath.substr(0, found) + "/OlympicParallelS.xml";
+				BaseScene::sceneParallelXML(parallelSceneFilePath);
+			}
+			else if (!strcmp(info.c_str(), "pause")) {
+				MengeVis::SimViewer->_pause = true;
+			}
+			else if (!strcmp(info.c_str(), "restart")) {
+				MengeVis::SimViewer->_pause = false;
+			}
+			
 		}
 	}
 
@@ -323,14 +330,17 @@ namespace Menge {
 		{
 			region = roadRegionInfo[roadId].obbRoadbRegion;//取当前需要更新的区域
 			num = 0;
-			for (int agentID = 0; agentID < agentNum && agentInWhichRegion[agentID] == -1 ; agentID++)//对所有不在任何一个区域的人
+			for (int agentID = 0; agentID < agentNum ; agentID++)//对所有不在任何一个区域的人
 			{
-				Agents::BaseAgent* agent = Menge::SIMULATOR->getAgent(agentID);
-				if (region.containsPoint(agent->_pos))//如果在region里面
-				{
-					num++;
-					agentInWhichRegion[agentID] = roadId;//把agent所在的区域改掉  这样下一次就能少遍历一个
+				if (agentInWhichRegion[agentID] == -1) {
+					Agents::BaseAgent* agent = Menge::SIMULATOR->getAgent(agentID);
+					if (region.containsPoint(agent->_pos))//如果在region里面
+					{
+						num++;
+						agentInWhichRegion[agentID] = roadId;//把agent所在的区域改掉  这样下一次就能少遍历一个
+					}
 				}
+				
 			}
 			roadRegionInfo[roadId].peopleNumInThisRoad = num;
 		}
@@ -352,13 +362,13 @@ namespace Menge {
 		}
 	}
 
-<<<<<<< HEAD
 	void BaseScene::testParallel(string dir)
 	{
 		string source = "Parallel";
 		if (dir.find(source) != string::npos)
 			parallelState = true;
-=======
+	}
+
 	bool BaseScene::testSwitchOn(string dir)
 	{
 		ifstream infile;//定义读取文件流，相对于程序来说是in
@@ -382,7 +392,6 @@ namespace Menge {
 		int  s;
 		nodeElem->QueryIntAttribute("onoff", &s);
 		return s ;
->>>>>>> fc1829b9771d9e306d62138437bcae1d101b51d6
 	}
 	
 
@@ -425,7 +434,11 @@ namespace Menge {
 				}
 			}
 
-
+			startSimTime = Menge::SIM_TIME;
+			AGENT_NUM = Menge::SIMULATOR->getNumAgents();
+			for (int i = 0; i < AGENT_NUM; i++) AGENT_SCORES.push_back(0);
+			for (int i = 0; i < AGENT_NUM; i++) AGENT_GOALS.push_back(-1);
+			startSimTime = Menge::SIM_TIME;
 			//2.编写特定的goalselctor，对于引导者，使用算法来决定出口，对于普通人和恐慌者，使用near_agent来决定跟随
 			//3.action中，定好出口位置，agent抵达出口区域，自动转换到stop状态
 			//4.agent转移到新state
@@ -442,6 +455,7 @@ namespace Menge {
 
 
 			//5.编写event,event需要启动状态码
+		
 			evacuationState = true;
 			cout << "evacuationState" << endl;
 
@@ -596,17 +610,21 @@ namespace Menge {
 		string getSimData() {
 			//发送 1：36个目标点的人数
 			std::vector<int> agentNumOfShop(36, 0);
-			std::vector <int>roadRegionNum(19, 0);
+			std::vector<int> roadRegionNum(19, 0);
+			int numAgent = Menge::SIMULATOR->getNumAgents();
+			std::vector<std::vector<int>> agentTrajectory(numAgent, std::vector<int>(30,0));
 			for (int i = 0; i < Menge::ACTIVE_FSM->getGoalSet(0)->size(); i++) 
 				agentNumOfShop[i] = shopInfo[i].serviceQ.size() + shopInfo[i].blockQ.size();
-			//BaseScene::updateRoadNum();
 			for (int i = 0; i < roadRegionInfo.size(); i++)
 				roadRegionNum[i] = roadRegionInfo[i].peopleNumInThisRoad;
+			for (int i = 0; i < numAgent; i++)
+				agentTrajectory[i].assign(Menge::SIMULATOR->getAgent(i)->_shopGone.begin(), Menge::SIMULATOR->getAgent(i)->_shopGone.end());
 			//json生成
 			json j;
 			j["info"] = "Menge has receive your commend: getData";
 			j["data"] = agentNumOfShop;
 			j["regionPopulation"] = roadRegionNum;
+			j["agentTrajectory"] = agentTrajectory;
 			string sendBuf = j.dump();
 			return sendBuf;
 		}
@@ -620,10 +638,64 @@ namespace Menge {
 				}
 			}
 			json reply;
-			reply["info"] = "blockSet";
+			reply["info"] = "setBlock";
 			reply["data"] = blockPosition;
 			string sendBuf = reply.dump();
 			return sendBuf;
+		}
+
+		void evacuateExperiment() {
+			//0.预先定义好引导者的agentgoalset，但恐慌者的goalset无法提前定义好，解决方案是把所有人都变成goal，id匹配，然后为goalset代码添加agentgoal,目前只能手动添加
+			//1.分配agent身份 8:2 普通：恐慌 ，存入数组
+			//2.编写特定的goalselctor，对于引导者，使用算法来决定出口，对于普通人和恐慌者，使用near_agent来决定跟随
+			//3.action中，定好出口位置，agent抵达出口区域，自动转换到stop状态
+			//4.agent转移到新state
+			//5.编写event neighborhoodtrigger中编写themepark的agent跟随逻辑，如果附近有特定的agent，就重新进入evacuation状态，选择目标
+
+			Menge::BFSM::EvacuationGoalSelector* selector = (Menge::BFSM::EvacuationGoalSelector*)Menge::ACTIVE_FSM->getNode("Evacuation")->getGoalSelector();
+			selector->setAgentGoalSet();
+
+			//1.分配agent身份，存入数组
+			int numAgent = SIMULATOR->getNumAgents();
+			for (int i = 0; i < numAgent; i++) {
+				Agents::BaseAgent* agent = SIMULATOR->getAgent(i);
+				//normal
+				if (agent->_class == 3) {
+					normalAgentSet.push_back(agent);
+				}//panic
+				else if (agent->_class == 2) {
+					panicAgentSet.push_back(agent);
+				}
+				//leader
+				else if (agent->_class == 1) {
+					leaderAgentSet.push_back(agent);
+				}
+			}
+
+			startSimTime = Menge::SIM_TIME;
+			AGENT_NUM = Menge::SIMULATOR->getNumAgents();			
+			for (int i = 0; i < AGENT_NUM; i++) AGENT_SCORES.push_back(0);
+			for (int i = 0; i < AGENT_NUM; i++) AGENT_GOALS.push_back(-1);
+			startSimTime = Menge::SIM_TIME;
+
+			//2.编写特定的goalselctor，对于引导者，使用算法来决定出口，对于普通人和恐慌者，使用near_agent来决定跟随
+			//3.action中，定好出口位置，agent抵达出口区域，自动转换到stop状态
+			//4.agent转移到新state
+			for (int i = 0; i < numAgent; i++) {
+				Agents::BaseAgent* agent = SIMULATOR->getAgent(i);
+
+				BFSM::State* currentState = Menge::ACTIVE_FSM->getCurrentState(agent);
+				currentState->leave(agent);
+
+				BFSM::State* nextState = Menge::ACTIVE_FSM->getNode("Evacuation");
+				nextState->enter(agent);
+				Menge::ACTIVE_FSM->setCurrentState((agent), nextState->getID());
+			}
+
+
+			//5.编写event,event需要启动状态码
+			
+			evacuationState = true;
 		}
 }
 

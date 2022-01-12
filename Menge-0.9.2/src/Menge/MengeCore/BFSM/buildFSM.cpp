@@ -85,12 +85,7 @@ namespace Menge {
 
 			//提取项目名
 			BaseScene::projectNameExtract(Menge::BehaveFilePath);
-			//测试是否是平行模式
-<<<<<<< HEAD
-			BaseScene::testParallel(BehaveFilePath);
-=======
 
->>>>>>> fc1829b9771d9e306d62138437bcae1d101b51d6
 			// Acquire the spatial query instance
 			SPATIAL_QUERY = sim->getSpatialQuery();
 
@@ -405,7 +400,6 @@ namespace Menge {
 						exit(1);
 					}
 					BaseScene::ProbMatrix->InitSumWeight();
-<<<<<<< HEAD
 					
 					//3.初始化socket服务端，用于疏散状态转移控制
 					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
@@ -416,11 +410,9 @@ namespace Menge {
 					Menge::Olympic::parameterInit(socketClient);
 					thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
 					threadSocket.detach();*/
-=======
 
 					getIpFromXml(dir);
-					cout << ip << methor << port << endl;
->>>>>>> fc1829b9771d9e306d62138437bcae1d101b51d6
+
 
 					//3.初始化socket服务端，用于疏散状态转移控制
 					switch (methor)
@@ -438,6 +430,9 @@ namespace Menge {
 							thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
 							threadSocket.detach();
 						};break;
+						case 2: {
+							evacuateExperiment();
+						}; break;
 					}
 					cout << "It's OLYMPIC Simulation" << endl;
 					break;

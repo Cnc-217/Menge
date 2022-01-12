@@ -17,3 +17,5 @@ def dataCollectToRedis():
         pass
     else :
         dataSynToRadis()
+
+

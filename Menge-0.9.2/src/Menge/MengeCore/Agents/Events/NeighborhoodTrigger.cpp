@@ -46,7 +46,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/Goals/Goal.h"
 #include "MengeCore/BFSM/GoalSet.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelector.h"
-#include "MengeCore/BFSM/GoalSelectors/GoalSelectorAlgorithm.h"
+#include "MengeCore/BFSM/GoalSelectors/GoalSelectorEvacuation.h"
 #include "MengeCore/MatrixMy.h"
 #include "MengeCore/BFSM/Transitions/Transition.h"
 #include "MengeCore/Agents/SimulatorInterface.h"
@@ -129,124 +129,106 @@ namespace Menge {
 	/////////////////////////////////////////////////////////////////////
 
 	bool NeighborhoodDetectedTrigger::testCondition() { //检测触发条件
-
-		if(PROJECTNAME == OLYMPIC) {
-			//疏散状态的控制信号量
-			if (Menge::Olympic::evacuationState == true) {
-			if (_flag == false) {//第一次进入，将人群分进vector里
-				for (int idx = 0; idx < Menge::SIMULATOR->getNumAgents(); idx++) {
-					Agents::BaseAgent* agent = Menge::SIMULATOR->getAgent(idx);
-					if (agent->_class == 1) _leaderSet.push_back(agent);
-					else if (agent->_class == 2) _panicSet.push_back(agent);
-					else _normalSet.push_back(agent);
-				}
-				_flag = true;
-				}
-				
-
-				//每一段时间检测一次leader的goal,并重新选择出口
-				if ((Menge::SIM_TIME - _lastTimestamp) > _timeSimulate) {//时间到了
-					cout << "trigger condition met at :" << Menge::SIM_TIME << endl;
-					vector<Agents::BaseAgent*>::iterator agent;
-					for (agent = _leaderSet.begin(); agent != _leaderSet.end(); agent++) {
-						
-						State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
-						if (currentState->getName() == "Stop") 
-							continue;
-						currentState->leave(*agent);
-						AlgorithmGoalSelector* algorithmGoalSelector = (AlgorithmGoalSelector*)currentState->getGoalSelector();
-						if (agent == _leaderSet.begin()) 
-							algorithmGoalSelector->_flag = false;//算法一轮只需要进行一次
-						currentState->enter(*agent);
-						cout << "leader ID: " << (*agent)->_id << " choose new goal" << endl;
-					}
-					_lastTimestamp = Menge::SIM_TIME;
-
-					for (int i = 19; i < 21; i++)
-					{
-						cout << "reagionID: " << i << " reagionPopulation: " << roadRegionInfo[i].peopleNumInThisRoad << endl;
-					}
-				}
-
-				//每一个引导者判断是否进入了出口区域
+		updateRoadNum();
+		
+		if (Menge::Olympic::evacuationState == true) {
+			//每一段时间检测一次leader的goal,并重新选择出口
+			if ((Menge::SIM_TIME - _lastTimestamp) > _timeSimulate) {//时间到了
+				cout << "trigger condition met at :" << Menge::SIM_TIME << endl;
 				vector<Agents::BaseAgent*>::iterator agent;
+				EvacuationGoalSelector* evacuationGoalSelector = (EvacuationGoalSelector*)Menge::ACTIVE_FSM->getNode("Evacuation")->getGoalSelector();
+				evacuationGoalSelector->_flag = false;
 				for (agent = Menge::Olympic::leaderAgentSet.begin(); agent != Menge::Olympic::leaderAgentSet.end(); agent++) {
 					State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
-					if (currentState->getName() == "Stop") continue;
-					else if ( agentInWhichRegion[(*agent)->_id] == 19 || agentInWhichRegion[(*agent)->_id] == 20) {//正在疏散出口附近
-						currentState->leave((*agent));
-						State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
-						nextState->enter((*agent));
-						Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
-					}
+					if (currentState->getName() == "Stop" || currentState->getName() == "EndSimulate") continue;
+					currentState->leave(*agent);
+					currentState->enter(*agent);
+					//cout << "leader ID: " << (*agent)->_id << " choose new goal" << endl;
 				}
-				//每一个恐慌者判断有没有进入出口区域；是否有引导者在附近，有的话就跟随
-				for (agent = Menge::Olympic::panicAgentSet.begin(); agent != Menge::Olympic::panicAgentSet.end(); agent++) {
-					State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
-					if (currentState->getName() == "Stop") continue;
-					else if (agentInWhichRegion[(*agent)->_id] == 19 || agentInWhichRegion[(*agent)->_id] == 20) {//正在疏散出口附近
-						currentState->leave((*agent));
-						State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
-						nextState->enter((*agent));
-						Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
-						continue;
-					}
+				_lastTimestamp = Menge::SIM_TIME;
 
-					vector<Menge::Agents::NearAgent>::iterator nearAgent;
-					//遍历每一个附近的人
-					for (nearAgent = (*agent)->_nearAgents.begin(); nearAgent != (*agent)->_nearAgents.end(); ++nearAgent) {
-						if ((*nearAgent).agent->_class == 1) {
-							currentState->leave((*agent));
-							State* nextState = Menge::ACTIVE_FSM->getNode("Evacuation");//重新进入Evacuation，选择新的目标
-							nextState->enter((*agent));
-							Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
-							break;
-						}
-					}
 
-				}
+			}
 
-				//每一个普通人判断判断有没有进入出口区域；附近有无恐慌者和引导者，有的话就跟随，引导者优先
-				for (agent = Menge::Olympic::normalAgentSet.begin(); agent != Menge::Olympic::normalAgentSet.end(); agent++) {
-					State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
-					if (currentState->getName() == "Stop") continue;
-					else if (agentInWhichRegion[(*agent)->_id] == 19 || agentInWhichRegion[(*agent)->_id] == 20) {//进入了出口区域
-						currentState->leave((*agent));
-						State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
-						nextState->enter((*agent));
-						Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
-						continue;
-					}
-
-					//判断附近的人
-					vector<Menge::Agents::NearAgent>::iterator nearAgent;
-					for (nearAgent = (*agent)->_nearAgents.begin(); nearAgent != (*agent)->_nearAgents.end(); ++nearAgent) {
-						if ((*nearAgent).agent->_class == 1 || (*nearAgent).agent->_class == 2) {
-							currentState->leave((*agent));
-							State* nextState = Menge::ACTIVE_FSM->getNode("Evacuation");
-							nextState->enter((*agent));
-							Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
-							break;
-						}
-					}
-
+			//每一个引导者判断是否进入了出口区域
+			vector<Agents::BaseAgent*>::iterator agent;
+			for (agent = Menge::Olympic::leaderAgentSet.begin(); agent != Menge::Olympic::leaderAgentSet.end(); agent++) {
+				State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
+				if (currentState->getName() == "Stop" || currentState->getName() == "EndSimulate") continue;
+				else if (agentInWhichRegion[(*agent)->_id] == 21 || agentInWhichRegion[(*agent)->_id] == 20 || agentInWhichRegion[(*agent)->_id] == 1) {//正在疏散出口附近
+					currentState->leave((*agent));
+					State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
+					nextState->enter((*agent));
+					Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
 				}
 			}
-			
-			else
-			{
-				//updateRoadNum();
-				//updateAgentInRegion();
-				//for (size_t i = 0; i < roadRegionInfo.size(); i++)
-					//cout << "roadID : " << i << " people num: " << roadRegionInfo[i].peopleNumInThisRoad << endl;
-				//cout << "agentInWhichRegion : " << agentInWhichRegion[1] << "agentGoingShop :" << agentGoingShop[1] << "peopleNumInThisRoad : "<<roadRegionInfo[0].peopleNumInThisRoad<<endl;
-				//_lastTimestamp = Menge::SIM_TIME;
+			//每一个恐慌者判断有没有进入出口区域；是否有引导者在附近，有的话就跟随
+			for (agent = Menge::Olympic::panicAgentSet.begin(); agent != Menge::Olympic::panicAgentSet.end(); agent++) {
+				State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
+				if (currentState->getName() == "Stop" || currentState->getName() == "EndSimulate") continue;
+				else if (agentInWhichRegion[(*agent)->_id] == 21 || agentInWhichRegion[(*agent)->_id] == 20 || agentInWhichRegion[(*agent)->_id] == 1) {//正在疏散出口附近
+					currentState->leave((*agent));
+					State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
+					nextState->enter((*agent));
+					Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
+					continue;
+				}
+				vector<Menge::Agents::NearAgent>::iterator nearAgent;
+				//遍历每一个附近的人
+				for (nearAgent = (*agent)->_nearAgents.begin(); nearAgent != (*agent)->_nearAgents.end(); ++nearAgent) {
+					if ((*nearAgent).agent->_class == 1) {
+						currentState->leave((*agent));
+						State* nextState = Menge::ACTIVE_FSM->getNode("Evacuation");//重新进入Evacuation，选择新的目标
+						nextState->enter((*agent));
+						Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
+						break;
+					}
+				}
+
 			}
-			
-			
+
+			//每一个普通人判断判断有没有进入出口区域；附近有无恐慌者和引导者，有的话就跟随，引导者优先
+			for (agent = Menge::Olympic::normalAgentSet.begin(); agent != Menge::Olympic::normalAgentSet.end(); agent++) {
+				State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
+				if (currentState->getName() == "Stop" || currentState->getName() == "EndSimulate") continue;
+				else if (agentInWhichRegion[(*agent)->_id] == 21 || agentInWhichRegion[(*agent)->_id] == 20 || agentInWhichRegion[(*agent)->_id] == 1) {//进入了出口区域
+					currentState->leave((*agent));
+					State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
+					nextState->enter((*agent));
+					Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
+					continue;
+				}
+
+				//判断附近的人
+				vector<Menge::Agents::NearAgent>::iterator nearAgent;
+				for (nearAgent = (*agent)->_nearAgents.begin(); nearAgent != (*agent)->_nearAgents.end(); ++nearAgent) {
+					if ((*nearAgent).agent->_class == 1 || (*nearAgent).agent->_class == 2) {
+						currentState->leave((*agent));
+						State* nextState = Menge::ACTIVE_FSM->getNode("Evacuation");
+						nextState->enter((*agent));
+						Menge::ACTIVE_FSM->setCurrentState((*agent), nextState->getID());
+						break;
+					}
+				}
+
+			}
+
+
 			
 		}
+
+		//检测出入口减速
+		for (int i = 0; i < SIMULATOR->getNumAgents(); i++) {
+			Agents::BaseAgent* agent = SIMULATOR->getAgent(i);
+			int location = agentInWhichRegion[i];
+			if (location == -1) agent->_prefSpeed = 25;
+			else if (roadRegionInfo[location].peopleNumInThisRoad > roadRegionInfo[location].capacity) agent->_prefSpeed = agent->_maxSpeed * 0.4;
+		}
 		
+
+			
+
+
 		return false;
 	}
 	

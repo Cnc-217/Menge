@@ -317,7 +317,10 @@ namespace Menge {
 			}
 		}
 
-
+		void FSM::addGoalSet(GoalSet* goalSet) {
+			int lastID = _goalSets.size();
+			_goalSets[lastID] = goalSet;
+		}
 
 		/////////////////////////////////////////////////////////////////////
 

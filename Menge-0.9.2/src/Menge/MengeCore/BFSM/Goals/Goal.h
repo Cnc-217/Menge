@@ -298,6 +298,7 @@ namespace Menge {
             friend class GoalSet;
             inline size_t getPopulation() const { return _population; }
 
+
         protected:
             // For a point Q, maps the position vector measured and expressed in the world frame (p_WQ) to the
             // geometry frame (p_GQ). For goals that are stationary (i.e., moves() return false)

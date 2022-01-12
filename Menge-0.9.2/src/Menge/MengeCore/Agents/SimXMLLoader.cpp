@@ -76,7 +76,7 @@ namespace Menge {
 			//	a) available for reading
 			//	b) valid xml
 			//	c) An "Experiment"
-			Menge::Olympic::testParallel(BehaveFilePath);
+			Menge::BaseScene::testParallel(BehaveFilePath);
 			if ( verbose ) logger << Logger::INFO_MSG << "Loading from xml: " << filename << ".";
 			TiXmlDocument xml( filename );
 			bool loadOkay = xml.LoadFile();

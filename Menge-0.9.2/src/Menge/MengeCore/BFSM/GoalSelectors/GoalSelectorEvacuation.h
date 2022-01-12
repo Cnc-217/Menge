@@ -43,6 +43,7 @@ namespace Menge {
 			 *	@param		goalSets	A mapping from goal set identifier to goal set pointers.
 			 */
 			void setGoalSet(std::map< size_t, GoalSet* >& goalSets);
+			void setAgentGoalSet();
 
 			/*!
 			 *	@brief		Sets the goal set identifier.
@@ -57,6 +58,7 @@ namespace Menge {
 
 			static bool _flag;
 			static map <size_t, Goal*> _bestGoals;
+			size_t	_algorithmID;
 
 		protected:
 			/*!
@@ -87,7 +89,8 @@ namespace Menge {
 
 			size_t		_goalSetID;		///< The identifier for the goal set
 			GoalSet* _goalSet;		///< The pointer to the goal set.
-			size_t	_algorithmID;
+			GoalSet* _agentGoalSet;		
+			
 		};
 
 		/*!

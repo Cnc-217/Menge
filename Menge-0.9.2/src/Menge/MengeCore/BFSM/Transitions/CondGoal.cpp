@@ -62,7 +62,8 @@ namespace Menge {
 		///////////////////////////////////////////////////////////////////////////
 
 		bool GoalCondition::conditionMet( Agents::BaseAgent * agent, const Goal * goal ) {
-			float distSq = goal->squaredDistance( agent->_pos );
+			//float distSq = goal->squaredDistance( agent->_pos );
+			float distSq = goal->getCentroid().distanceSq(agent->_pos);
 			return distSq <= _distSq;
 		}
 

@@ -32,10 +32,10 @@
 #include "MengeCore/Agents/XMLSimulatorBase.h"
 #include "MengeCore/BFSM/VelocityModifiers/VelModifier.h"
 #include "MengeCore/Agents/SpatialQueries/SpatialQueryStructs.h"
-#include<queue>
+#include <queue>
 #include <vector>
 #include <list>
-#include<deque>
+#include <deque>
 namespace Menge {
 
 	namespace Agents {
@@ -306,7 +306,7 @@ namespace Menge {
 			 */
 			size_t _id;
 
-			
+			int _leadersID = -1;
 
 			/*!
 			 *	@brief		The agent's radius.  

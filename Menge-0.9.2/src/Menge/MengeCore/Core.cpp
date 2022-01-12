@@ -94,16 +94,15 @@ namespace Menge {
 		std::vector <roadRegionType> roadRegionInfo;
 		std::vector<int>agentGoingShop;//agent要去的店铺
 		std::vector<int> agentInWhichRegion;//agent在哪个区域
+
+		std::float_t startSimTime;
+		size_t AGENT_NUM;
+		std::vector<float_t> AGENT_SCORES;
+		std::vector<int> AGENT_GOALS;
 	}
 
 	namespace BaseScene {
 		MatrixDim2* ProbMatrix = 0x0;//如果是matrix类型的goalselector，需要用到ProbMatrix
-		
-		std::vector<size_t> ExitReagionInfo;//exitRegionID-population
-
-		std::vector<size_t> ExitAgentInfo;//AgentID-AgentState
-
-		std::vector<size_t> ExitReagionCapacity;//exitRegionID-Capacity
 
 		size_t DetectReagionNum = 0;
 	
