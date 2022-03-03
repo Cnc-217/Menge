@@ -34,13 +34,14 @@ def test():
 
 
 if __name__ == '__main__':
-    # 从redis获取数据
-    redisServer = redis.Redis(host='10.28.195.233', port=6379, decode_responses=True)
-    data = redisServer.get(23004)
-    jsonData = json.loads(data)
-    datalist = jsonData["data"]
-    print(datalist)
-
-
+    # # 从redis获取数据
+    # redisServer = redis.Redis(host='10.28.195.233', port=6379, decode_responses=True)
+    # data = redisServer.get(23004)
+    # jsonData = json.loads(data)
+    # datalist = jsonData["data"]
+    # print(datalist)
+    req = urllib.request.Request("http://www.businsight.cn:5000/stopService?pid=53572", method='POST')
+    res = urllib.request.urlopen(req).read()
+    print(req)
 
 

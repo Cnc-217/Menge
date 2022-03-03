@@ -48,6 +48,6 @@ def matrixBusinessAction(matrix,action):
             if j!=shop:
                 matrix[i][shop] += matrix[i][j]*0.03*strength
                 matrix[i][j] = matrix[i][j]*(1-0.03*strength)
-    print("matrix change")
+    # print("matrix change")
     print(matrix)
     return matrix

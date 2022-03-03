@@ -70,6 +70,8 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/Scene/BaseScene.h"
 #include "MengeCore/Socket.h"
 #include "MengeCore/FileTool.h"
+#include "MengeCore/BFSM/init.h"
+#include "MengeCore/BFSM/SceneFactory.h"
 #include <vector>
 #include <thread>
 
@@ -84,7 +86,7 @@ namespace Menge {
 		FSM * buildFSM( FSMDescrip & fsmDescrip, Agents::SimulatorInterface * sim, bool VERBOSE ) {
 
 			//提取项目名
-			BaseScene::projectNameExtract(Menge::BehaveFilePath);
+			FileTool::projectNameExtract(Menge::BehaveFilePath);
 
 			// Acquire the spatial query instance
 			SPATIAL_QUERY = sim->getSpatialQuery();
@@ -367,88 +369,12 @@ namespace Menge {
 			ACTIVE_FSM = fsm;
 
 
-			switch (PROJECTNAME) {
-			
-				case OLYMPIC: {
-
-					//初始化店铺信息
-					string dir = Menge::DirectoryPath + "/roadRegion.xml";
-					if (Menge::BaseScene::testSwitchOn(dir))
-					{
-						bool shopInitOk = Menge::Olympic::shopInit(dir);
-						bool roadRegionOk = Menge::BaseScene::setRoadRegionFromXML(dir);
-						if (!shopInitOk || !roadRegionOk)
-						{
-							cout << " shop : " << shopInitOk << " road : " << roadRegionOk << endl;
-							return 0x0;
-						}
-						else  cout << "shop and road init OK!" << endl;
-					}
-					
-					//2.无输入矩阵
-					int goalNum = fsm->getGoalSet(0)->size();
-					if (BaseScene::ProbMatrix == 0x0) {
-						cout << "apply the defult matrix,all ONE" << endl;
-						MatrixDim2* tmpm = new MatrixDim2(goalNum, goalNum, 1);
-						BaseScene::ProbMatrix = tmpm;
-						BaseScene::ProbMatrix->Show();
-						BaseScene::ProbMatrix->InitSumWeight();
-						
-					}
-					else if (BaseScene::ProbMatrix->col_size() != goalNum) {
-						cout << "matrix not matching goal number" << endl;
-						exit(1);
-					}
-					BaseScene::ProbMatrix->InitSumWeight();
-					
-					//3.初始化socket服务端，用于疏散状态转移控制
-					//SOCKET socketServer = Menge::Socket::socketServerInit("10.28.195.233", 12660);
-					//SOCKET socketServer = Menge::Socket::socketServerInit("10.128.207.206", 12660); 
-					
-					/*
-					SOCKET socketClient = Menge::Socket::socketClientInit("127.0.0.1", 12660);
-					Menge::Olympic::parameterInit(socketClient);
-					thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
-					threadSocket.detach();*/
-
-					getIpFromXml(dir);
-
-
-					//3.初始化socket服务端，用于疏散状态转移控制
-					switch (methor)
-					{
-						case 0:
-						{
-							SOCKET socketServer = Menge::Socket::socketServerInit((char*)ip.data(), port);
-							thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
-							threadSocket.detach(); 
-						}; break;
-						case 1:
-						{					//初始化socket客户端，发出数据同步请求，接收仿真参数，更新仿真参数，最后进入监听状态
-							SOCKET socketClient = Menge::Socket::socketClientInit((char*)ip.data(), port);
-							Menge::Olympic::parameterInit(socketClient);
-							thread threadSocket(Menge::BaseScene::sockerClientListen, socketClient);					
-							threadSocket.detach();
-						};break;
-						case 2: {
-							evacuateExperiment();
-						}; break;
-					}
-					cout << "It's OLYMPIC Simulation" << endl;
-					break;
-				}
-				
-				default: {
-					cout << "No Specific Simulation" << endl;
-					//3.初始化socket服务端，用于疏散状态转移控制
-					SOCKET socketServer = Menge::Socket::socketServerInit("127.0.0.1", 12660);
-					thread threadSocket(Menge::BaseScene::sockerServerListen, socketServer);
-					threadSocket.detach();
-
-					break;
-				}
-					
-			}
+			string dir = Menge::DirectoryPath + "/roadRegion.xml";
+			SceneFactory* factory = new SceneFactory();
+			Scene* scene = factory->creatscene(dir);
+			//Menge::Scene* scene = new olympicScene();
+			scene->init_all(dir, fsm->getGoalSet(0)->size());
+			ACTIVE_SCENE = scene;
 			return fsm;
 		}
 	}	// namespace BFSM

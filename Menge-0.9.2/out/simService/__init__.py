@@ -1,4 +1,6 @@
 # coding:utf-8
+from flask_apscheduler import APScheduler
+
 from scenes.simulations import Simulations
 import redis
 
@@ -10,4 +12,4 @@ redisServer = redis.Redis(host='127.0.0.1', port=6379, decode_responses=True)
 for elem in redisServer.keys():
     redisServer.delete(elem)
 
-TRAIN = False
+scheduler = APScheduler()  # 实例化 APScheduler

@@ -49,7 +49,6 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorRandom.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorShared.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorWeighted.h"
-#include "MengeCore/BFSM/GoalSelectors/GoalSelectorAlgorithm.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorMatrix.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorNearAgent.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelectorEvacuation.h"
@@ -79,7 +78,6 @@ namespace Menge {
 		addFactory( new BFSM::NearestNMGoalSelectorFactory() );
 		addFactory( new BFSM::FarthestNMGoalSelectorFactory() );
 		addFactory( new BFSM::SharedGoalSelectorFactory() );
-		addFactory( new BFSM::AlgorithmGoalSelectorFactory() ); // my job
 		addFactory( new BFSM::MatrixGoalSelectorFactory() ); // matrix
 		addFactory( new BFSM::NearAgentGoalSelectorFactory ); // near agent
 		addFactory( new BFSM::EvacuationGoalSelectorFactory ); // evacuation

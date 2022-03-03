@@ -46,7 +46,6 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/Goals/Goal.h"
 #include "MengeCore/BFSM/GoalSet.h"
 #include "MengeCore/BFSM/GoalSelectors/GoalSelector.h"
-#include "MengeCore/BFSM/GoalSelectors/GoalSelectorAlgorithm.h"
 #include "MengeCore/MatrixMy.h"
 #include "MengeCore/BFSM/Transitions/Transition.h"
 #include "MengeCore/Agents/SimulatorInterface.h"

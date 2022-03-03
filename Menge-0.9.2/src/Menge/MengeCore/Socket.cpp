@@ -59,7 +59,7 @@ namespace Menge {
 		adr_socket.sin_family = AF_INET;
 		adr_socket.sin_addr.s_addr = inet_addr(ip);
 		adr_socket.sin_port = htons(host);
-		if (bind(socketServer, (SOCKADDR*)&adr_socket, sizeof(SOCKADDR)) == SOCKET_ERROR)
+		if (::bind(socketServer, (SOCKADDR*)&adr_socket, sizeof(SOCKADDR)) == SOCKET_ERROR)
 		{
 			std::cout << "socket server bind error! ip: " << ip <<" port: "<< host << std::endl;
 			exit(1);

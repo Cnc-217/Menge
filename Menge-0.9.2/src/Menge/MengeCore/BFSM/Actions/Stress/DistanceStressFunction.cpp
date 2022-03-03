@@ -3,6 +3,7 @@
 #include"MengeCore/Scene/BaseScene.h"
 #include <map>
 #include "MengeCore/Core.h"
+#include "MengeCore/BFSM/init.h"
 #include "MengeCore/Agents/BaseAgent.h"
 #include "MengeCore/Math/Geometry2D.h"
 
@@ -43,7 +44,7 @@ namespace StressGAS {
 	/////////////////////////////////////////////////////////////////////
 
 	float DistanceStressFunction::updateStress() {
-
+		vector<Menge::Olympic::roadRegionType>* roadRegionInfo = (Menge::ACTIVE_SCENE->roadRegionInfo);//局部变量
 		//if (Menge::ThemePark::evacuationState == true) {
 			// natural cool down
 			_stressLevel -= _coolDownRate * SIM_TIME_STEP;
@@ -52,7 +53,7 @@ namespace StressGAS {
 			//下面判断agent是否在regions里面
 			//遍历每一个区域
 			for (int i = 19; i < 21; i++)
-			{	Menge::Math::OBBShape region = roadRegionInfo[i].obbRoadbRegion;
+			{	Menge::Math::OBBShape region = roadRegionInfo->at(i).obbRoadbRegion;
 				if (agentInWhichRegion[_agent->_id] == i )
 				{
 					//cout << "agentID: " << _agent->_id << " reagionID: " << i << " population: " << roadRegionInfo[i].peopleNumInThisRoad << endl;;

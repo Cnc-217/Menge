@@ -377,14 +377,16 @@ xcopy /y $(TargetPath) $(ExeDir)
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressGlobals.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressManager.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Actions\Stress\StressTask.cpp" />
-    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorAlgorithm.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorEnd.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorEvacuation.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorMatrix.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorModel.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorNearAgent.cpp" />
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorTown.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Goals\GoalAgent.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Goals\GoalPath.cpp" />
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\init.cpp" />
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\SceneFactory.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\CondGoalWait.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\CondLeaderGoal.cpp" />
     <ClCompile Include="..\..\..\src\Menge\MengeCore\FileTool.cpp" />
@@ -480,8 +482,11 @@ xcopy /y $(TargetPath) $(ExeDir)
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorMatrix.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorModel.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorNearAgent.h" />
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorTown.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Goals\GoalAgent.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Goals\GoalPath.h" />
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\init.h" />
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\SceneFactory.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\CondGoalWait.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\Transitions\CondLeaderGoal.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\FileTool.h" />
@@ -618,7 +623,6 @@ xcopy /y $(TargetPath) $(ExeDir)
     <ClInclude Include="..\..\..\src\Menge\MengeCore\Agents\Events\TargetAgentByClass.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\Agents\Events\TimeEventEffect.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\Agents\Events\TimeEvtTrigger.h" />
-    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorAlgorithm.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\MatrixMy.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\Scene\BaseScene.h" />
     <ClInclude Include="..\..\..\src\Menge\MengeCore\Socket.h" />

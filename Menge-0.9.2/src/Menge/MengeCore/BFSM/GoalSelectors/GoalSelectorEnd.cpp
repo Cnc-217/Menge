@@ -61,7 +61,7 @@ namespace Menge {
 			assert( agent != 0x0 && "IdentityGoalGenerator requires a valid base agent!\n" );
 			Agents::BaseAgent* agentTmp = (Agents::BaseAgent*)agent;
 			agentTmp->_radius = 0;
-			agentTmp->_pos = agentTmp->_pos + Vector2(100, 0);
+			//agentTmp->_pos = agentTmp->_pos + Vector2(100, 0);
 			return new PointGoal(agent->_pos);
 		}
 		

@@ -2,6 +2,7 @@
 from abc import abstractmethod
 from resources.matrixActions import *
 from resources.modelActions import *
+import copy
 
 
 class Scene:
@@ -28,7 +29,7 @@ class Scene:
 class OlympicMatrix(Scene):
     def __init__(self):
         super().__init__()
-        self.__matrix = [
+        self.__matrixOri = [
             [0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 5.0, 1.0, 1.0, 0.1, 0.1, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
              1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0],
             [0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 5.0, 1.0, 1.0, 0.1, 0.1, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
@@ -101,6 +102,7 @@ class OlympicMatrix(Scene):
              1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0],
             [0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 5.0, 1.0, 1.0, 0.1, 0.1, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
              1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0]]
+        self.__matrix = copy.deepcopy(self.__matrixOri[:])
         self.__roadblock = [True for _ in range(153)]
         self.__sceneName = "Olympic"
         self.__sceneType = "Matrix"
@@ -133,6 +135,8 @@ class OlympicMatrix(Scene):
                 block.append(i)
         return block
 
+    def matrixReset(self):
+        self.__matrix = copy.deepcopy(self.__matrixOri[:])
 
 class OlympicModel(Scene):
     def __init__(self):

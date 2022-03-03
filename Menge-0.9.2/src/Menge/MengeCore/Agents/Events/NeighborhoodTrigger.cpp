@@ -52,12 +52,12 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/Agents/SimulatorInterface.h"
 
 #include "MengeCore/Core.h"
+#include "MengeCore/BFSM/init.h"
 #include "MengeVis/Viewer/GLViewer.h"
 
 #include <sstream>
 #include <MengeCore\Scene\BaseScene.h>
-using namespace Menge::Olympic;
-using namespace Menge::BaseScene;
+
 namespace Menge {
 
 	using namespace std;
@@ -129,7 +129,8 @@ namespace Menge {
 	/////////////////////////////////////////////////////////////////////
 
 	bool NeighborhoodDetectedTrigger::testCondition() { //检测触发条件
-		updateRoadNum();
+		vector<Olympic::roadRegionType>* roadRegionInfo = (ACTIVE_SCENE->roadRegionInfo);//局部变量
+		Menge::BaseScene::updateRoadNum();
 		
 		if (Menge::Olympic::evacuationState == true) {
 			//每一段时间检测一次leader的goal,并重新选择出口
@@ -146,8 +147,6 @@ namespace Menge {
 					//cout << "leader ID: " << (*agent)->_id << " choose new goal" << endl;
 				}
 				_lastTimestamp = Menge::SIM_TIME;
-
-
 			}
 
 			//每一个引导者判断是否进入了出口区域
@@ -155,7 +154,7 @@ namespace Menge {
 			for (agent = Menge::Olympic::leaderAgentSet.begin(); agent != Menge::Olympic::leaderAgentSet.end(); agent++) {
 				State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
 				if (currentState->getName() == "Stop" || currentState->getName() == "EndSimulate") continue;
-				else if (agentInWhichRegion[(*agent)->_id] == 21 || agentInWhichRegion[(*agent)->_id] == 20 || agentInWhichRegion[(*agent)->_id] == 1) {//正在疏散出口附近
+				else if (Olympic::agentInWhichRegion[(*agent)->_id] == 21 || Olympic::agentInWhichRegion[(*agent)->_id] == 20 || Olympic::agentInWhichRegion[(*agent)->_id] == 1) {//正在疏散出口附近
 					currentState->leave((*agent));
 					State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
 					nextState->enter((*agent));
@@ -166,7 +165,7 @@ namespace Menge {
 			for (agent = Menge::Olympic::panicAgentSet.begin(); agent != Menge::Olympic::panicAgentSet.end(); agent++) {
 				State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
 				if (currentState->getName() == "Stop" || currentState->getName() == "EndSimulate") continue;
-				else if (agentInWhichRegion[(*agent)->_id] == 21 || agentInWhichRegion[(*agent)->_id] == 20 || agentInWhichRegion[(*agent)->_id] == 1) {//正在疏散出口附近
+				else if (Olympic::agentInWhichRegion[(*agent)->_id] == 21 || Olympic::agentInWhichRegion[(*agent)->_id] == 20 || Olympic::agentInWhichRegion[(*agent)->_id] == 1) {//正在疏散出口附近
 					currentState->leave((*agent));
 					State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
 					nextState->enter((*agent));
@@ -191,7 +190,7 @@ namespace Menge {
 			for (agent = Menge::Olympic::normalAgentSet.begin(); agent != Menge::Olympic::normalAgentSet.end(); agent++) {
 				State* currentState = Menge::ACTIVE_FSM->getCurrentState(*agent);
 				if (currentState->getName() == "Stop" || currentState->getName() == "EndSimulate") continue;
-				else if (agentInWhichRegion[(*agent)->_id] == 21 || agentInWhichRegion[(*agent)->_id] == 20 || agentInWhichRegion[(*agent)->_id] == 1) {//进入了出口区域
+				else if (Olympic::agentInWhichRegion[(*agent)->_id] == 21 || Olympic::agentInWhichRegion[(*agent)->_id] == 20 || Olympic::agentInWhichRegion[(*agent)->_id] == 1) {//进入了出口区域
 					currentState->leave((*agent));
 					State* nextState = Menge::ACTIVE_FSM->getNode("Stop");
 					nextState->enter((*agent));
@@ -220,15 +219,11 @@ namespace Menge {
 		//检测出入口减速
 		for (int i = 0; i < SIMULATOR->getNumAgents(); i++) {
 			Agents::BaseAgent* agent = SIMULATOR->getAgent(i);
-			int location = agentInWhichRegion[i];
+			int location = Olympic::agentInWhichRegion[i];
 			if (location == -1) agent->_prefSpeed = 25;
-			else if (roadRegionInfo[location].peopleNumInThisRoad > roadRegionInfo[location].capacity) agent->_prefSpeed = agent->_maxSpeed * 0.4;
+			else if (roadRegionInfo->at(location).peopleNumInThisRoad > roadRegionInfo->at(location).capacity) agent->_prefSpeed = agent->_maxSpeed * 0.4;
 		}
 		
-
-			
-
-
 		return false;
 	}
 	

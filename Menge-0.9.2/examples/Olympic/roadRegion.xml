@@ -21,8 +21,8 @@
         <Goal angle="-33.11" capacity="100" height="925.08" id="52" type="OBB" weight="1.00" width="248.56" x="1067.75" y="-1352.58"/>
         <Goal angle="12.82" capacity="100" height="208.61" id="53" type="OBB" weight="1.00" width="1156.27" x="2069.76" y="1267.77"/>
         <Goal angle="-28.37" capacity="100" height="312.93" id="54" type="OBB" weight="1.00" width="805.34" x="888.47" y="962.66"/>
-        <Goal angle="-14.28" capacity="30" height="296.52" id="55" type="OBB" weight="1.00" width="601.23" x="-3169.05" y="-781.78"/>
-        <Goal angle="-12.82" capacity="100" height="677.38" id="56" type="OBB" weight="1.00" width="1518.81"  x="2350.40" y="-414.42"/>
+        <Goal angle="-14.28" capacity="30" height="567.76" id="55" type="OBB" weight="1.00" width="1149.85" x="-3738.70" y="-809.39"/>
+        <Goal angle="-12.82" capacity="100" height="751.62" id="56" type="OBB" weight="1.00" width="2422.03" x="2472.54" y="-545.22"/>
     </GoalSet>
     <ShopSet id="0">
         <Shop id="0" type="2" number="3" serviceMax="10" blockMax="15"/>
@@ -36,8 +36,13 @@
         <Shop id="8" type="3" number="6" serviceMax="10" blockMax="10"/>
         <Shop id="9" type="4" number="2" serviceMax="10" blockMax="10"/>
     </ShopSet>
-    <!-- <internet methor="1" ip="127.0.0.1" port="12660"/> -->
-    <internet methor="1" ip="127.0.0.1" port="12660"/> 
-    <kon onoff= "1"/>
+    <!-- method 1微服务  0单机仿真 -->
+    <internet method="1" ip="127.0.0.1" port="12660"/>
+    <!-- 是否要读上面的道路店铺信息 -->
+    <RoadConfig onoff="1"/>
+    <!-- 是否开启socket -->
+    <internetConfig onoff="1"/>
+    <!--  是否初始化概率矩阵-->
+    <ProbConfig onoff="1"/>
 
 </Population>

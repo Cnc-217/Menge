@@ -32,15 +32,52 @@
 #include "MengeCore/Agents/XMLSimulatorBase.h"
 #include "MengeCore/BFSM/VelocityModifiers/VelModifier.h"
 #include "MengeCore/Agents/SpatialQueries/SpatialQueryStructs.h"
-#include <queue>
+#include "MengeCore/MatrixMy.h"
 #include <vector>
-#include <list>
+#include <mutex>
 #include <deque>
+
 namespace Menge {
 
 	namespace Agents {
 
 		class Obstacle;
+
+		struct Factor {
+			//因子
+			int priceFactor_;//0~10 Kp
+			int distanceFactor_;//0~10 Kd
+			int crowdedFactor_;//0~10  Kc
+			float advertiseSensitivity_;//0~1 Sen
+			vector<float> typeFactors_;//-1~1 Kt
+
+			//参数
+			float priceParameter_;//alpha
+			float distanceParameter_;//beta
+			float crowdedParameter_;//ci
+
+			//效用结果
+			float utilityPrice_ = 0;
+			float utilityDistance_ = 0;
+			float utilityType_ = 0;
+			float utilityCrowded_ = 0;
+
+			//社交矩阵（包含了人数信息）
+			MatrixDim2* relationShip = NULL;
+
+
+			Factor(int priceFactor,int distanceFactor,int crowdedFactor,float advertiseSensitivity, vector<float> typeFactors,
+				float priceParameter = 2, float distanceParameter=1.3, float crowdedParameter=5)
+				:priceFactor_(priceFactor), 
+				distanceFactor_(distanceFactor),
+				crowdedFactor_(crowdedFactor),
+				advertiseSensitivity_(advertiseSensitivity),
+				typeFactors_(typeFactors),
+
+				priceParameter_(priceParameter),
+				distanceParameter_(distanceParameter),
+				crowdedParameter_(crowdedParameter){}
+		};
 
 		/*!
 		 *	@brief		Exception for BaseAgent problems.

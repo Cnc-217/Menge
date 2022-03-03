@@ -60,11 +60,14 @@ namespace Menge {
 	class MatrixDim4;
 	class EventSystem;
 	class Graph;
+	class Scene;
 
 	/*!
 	 *	@brief		The fsm running for the simulation.
 	 */
 	extern MENGE_API BFSM::FSM * ACTIVE_FSM;
+
+	extern MENGE_API Scene* ACTIVE_SCENE;
 
 	/*!
 	 *	@brief		The global simulation time.
@@ -106,10 +109,6 @@ namespace Menge {
 
 	extern MENGE_API std::string DirectoryPath;
 
-	extern MENGE_API std::string ip;
-	extern MENGE_API int methor ;
-	extern MENGE_API int port ;
-
 	namespace Olympic {
 		//三类人群的数组
 		extern MENGE_API std::vector<Agents::BaseAgent*> leaderAgentSet;
@@ -118,34 +117,24 @@ namespace Menge {
 
 		extern MENGE_API bool evacuationState; //控制event疏散部分状态启动和关闭
 		extern MENGE_API bool parallelState; //是否是平行模式
-		extern MENGE_API struct Shoptype
-		{
+		struct Shoptype{
 			int serviceMax;
 			int blockMax;
 			int type;
-			int goalSet;//哪种商店  也就是goalset
 			std::queue<int> serviceQ;
 			std::queue<int> blockQ;
-			int sameSetGoalNum;
 		};
-		extern MENGE_API std::map<int, Shoptype>  shopInfo;
-		//extern MENGE_API std::vector<Shoptype> shopInfo2;
-		//extern MENGE_API std::map<size_t, int>  goalSetInfo;//储存goalset内有多少个goal
-		extern MENGE_API std::map< size_t, bool >	_reachedAgents;//存储agent是否到达目标点
-
-		//extern MENGE_API std::map<size_t, int > nowReachTimes;//储存agent在当前goalset的不同goal的次数
 		extern MENGE_API std::vector<bool>   verticesCanGo;//路障，false为不可通过，默认全为true
 		extern MENGE_API std::string goalSeclectorType; //存储goalSelector的类型（reality、model）
 		extern MENGE_API std::vector<float> Influence;//Olympic下model类型的goalselector需要用到的影响因子
-		extern MENGE_API struct roadRegionType{
+		struct roadRegionType {
 			Menge::Math::OBBShape obbRoadbRegion;//一个形状  可旋转矩形
 			int peopleNumInThisRoad;//用来记录这个区域内的人数
 			int capacity;//区域的限制容量人数
 		};//声明一个数据结构  用来表示统计人流的区域
-		extern MENGE_API std::vector <roadRegionType> roadRegionInfo;//一个vector  用来记录所有的统计区域
 		extern MENGE_API std::vector<int> agentInWhichRegion;
 		extern MENGE_API std::vector<int> agentGoingShop;
-
+		
 		extern MENGE_API std::float_t startSimTime;
 		extern MENGE_API size_t AGENT_NUM;
 		extern MENGE_API std::vector<float_t> AGENT_SCORES;

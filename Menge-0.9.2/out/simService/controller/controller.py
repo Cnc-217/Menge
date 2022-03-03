@@ -6,9 +6,10 @@ from flask import Blueprint, request
 import simService
 from simService import sims, redisServer
 from simService.services.mengeDataService import *
+from simService.resources.error import errorConnectionResetError
+from services.timeService import *
 
 controller = Blueprint('controller', __name__)
-
 
 @controller.route('/')
 def hello():
@@ -120,6 +121,7 @@ def actionApply(sceneName):
             actionType = request.values.get("actionType")
             if(actionType==None):
                 return "actionType is None"
+            #目前的修改函数由训练者提供，后期由menge环境提供，这里仅暴露修改接口，由训练者输入动作组合
             elif(actionType=="flow" or actionType=="business"):
                 actionList = request.values.get("actionList")
                 print(actionList)
@@ -220,29 +222,53 @@ def saveTimeSlice(sceneName):
     return jsonData
 
 
-# 接收action，修改sim对象中scene对象的参数，socket方式将参数发送给Menge进行数据同步
-#http://10.28.195.233:5000/olympic/train?actionType=flow&actionList=[1,2,35]
-@controller.route('/<sceneName>/trainFlow', methods=['POST'])
-def trainFlow(sceneName):
-    simService.TRAIN = True
-    simPid = request.values.get("pid")
+#http://10.28.195.233:5000/train?actionType=flow&actionList=[1,2,35]
+@controller.route('/train', methods=['POST'])
+def train():
     info = ""
+    simPid = request.values.get("pid")
     for sim in sims.getSimulationList():
         if str(sim.getPid()) == simPid:
             sim = sims.getSimulation(sim.getPid())
             actionType = request.values.get("actionType")
             if(actionType==None):
                 return "actionType is None"
-            elif(actionType=="flow"):
+            elif(actionType!=None):
                 actionList = request.values.get("actionList")
                 print(actionList)
                 actionList = actionList.strip('[').strip(']').split(',')
                 actionList = [int(num) for num in actionList]
-                sim.action = actionList
-                info =  sim.getSceneName() + " action update parameter complete"
-            else:
-                info =  "actionType wrong"
+                for i in actionList:
+                    sim.getScene().action.append(i)
+                try:
+                    matrixUpdate(sim,actionType)
+                    info = sim.getSceneName() + " action update parameter complete"
+                    interval = request.values.get("interval")
+                    if interval == None or interval == "0":
+                        info = "manual reset"
+                    else:
+                        timer(int(interval), sim)
+                except ConnectionResetError:
+                    errorConnectionResetError(sim)
+                    print("menge crush, sim and redis job deleted")
+                    info = "menge crush, sim and redis job deleted"
     if (info == ""):
-        info = "no " + sceneName + ": " + simPid + " simulation is running"
+        info = "no " + simPid + " simulation is running"
     jsonData = {"info": info}
     return jsonData
+
+
+#http://10.28.195.233:5000/train?actionType=flow&actionList=[1,2,35]
+@controller.route('/trainReset', methods=['POST'])
+def trainReset():
+    info = ""
+    simPid = request.values.get("pid")
+    for sim in sims.getSimulationList():
+        if str(sim.getPid()) == simPid:
+            sim = sims.getSimulation(sim.getPid())
+            matrixReset(sim)
+    if (info == ""):
+        info = "no " + simPid + " simulation is running"
+    jsonData = {"info": info}
+    return jsonData
+

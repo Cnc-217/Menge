@@ -45,6 +45,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 #include "MengeCore/BFSM/State.h"
 #include "MengeCore/BFSM/GoalSet.h"
 #include "MengeCore/Agents/SimulatorInterface.h"
+#include "MengeCore/BFSM/init.h"
 
 #define EATTIME 20
 #define BUYTIME 40
@@ -107,12 +108,17 @@ namespace Menge {
 				_lock.releaseWrite();
 			}
 			else return false;
+
+			map<int, Shoptype>* shopInfoTemp = ACTIVE_SCENE->shopInfo;
+			bool shopInitTest = shopInfoTemp->size();//测试是否进行了店铺初始化  如果是就正常运行  否则就到了就返回
+			if (!shopInitTest && reached)
+				return true;
 			//定义一些局部变量
 			float serviceTime;
 			int goalId = goal->getID();
-			int serviceMax = shopInfo[goalId].serviceMax;
-			int blockMax = shopInfo[goalId].blockMax;
-			int shopType = shopInfo[goalId].type;
+			int serviceMax = shopInfoTemp->at(goalId).serviceMax;
+			int blockMax = shopInfoTemp->at(goalId).blockMax;
+			int shopType = shopInfoTemp->at(goalId).type;
 			switch (shopType)//此处可以再改更详细的时间
 			{
 			case 0:serviceTime = EATTIME; break;//吃
@@ -142,17 +148,17 @@ namespace Menge {
 				/*  转移  1->2  1->3 */
 			case 1: {
 				//服务队列有位&&没人在阻塞队列排队
-				 if (shopInfo[goalId].serviceQ.size() < serviceMax && shopInfo[goalId].blockQ.size()==0 ){
+				 if (shopInfoTemp->at(goalId).serviceQ.size() < serviceMax && shopInfoTemp->at(goalId).blockQ.size()==0 ){
 					_statusAgents[agentId] = 2;					//agent->_status = 2;
 					_triggerTimes[agentId] = Menge::SIM_TIME + serviceTime;
 					_lock.lockWrite();
-					shopInfo[goalId].serviceQ.push(agentId);//ID插入服务队尾；
+					shopInfoTemp->at(goalId).serviceQ.push(agentId);//ID插入服务队尾；
 					_lock.releaseWrite();
 						
 				}
 				 //进阻塞队列之前先看是否达到上限  是则直接离开
 				else{
-					 if (shopInfo[goalId].blockQ.size() == blockMax){
+					 if (shopInfoTemp->at(goalId).blockQ.size() == blockMax){
 						 _statusAgents[agentId] = 0;					//agent->_status = 0;
 						 _reachedAgents[agentId] = false;
 						 return true;
@@ -160,39 +166,39 @@ namespace Menge {
 					_statusAgents[agentId] = 3;					//agent->_status = 3;
 					//_triggerTimes[agentId] = Menge::SIM_TIME + (shopInfo[goalId].blockQ.size()+ shopInfo[goalId].serviceQ.size())*servicetime;//此处需修改因为理论上最长的排队时间为服务队列+阻塞队列总人数*服务时间
 					_lock.lockWrite();
-					shopInfo[goalId].blockQ.push(agentId);//ID插入阻塞队尾；
+					shopInfoTemp->at(goalId).blockQ.push(agentId);//ID插入阻塞队尾；
 					_lock.releaseWrite();
 				}
 			}; break;
 
 			case 2: {				/*  转移  2->0 */
-				if (Menge::SIM_TIME > _triggerTimes[agentId] && agentId == shopInfo[goalId].serviceQ.front())
+				if (Menge::SIM_TIME > _triggerTimes[agentId] && agentId == shopInfoTemp->at(goalId).serviceQ.front())
 				{//服务队头agent时间到了&& 服务队头agent是自己
-					_statusAgents[agentId] = 0;					//agent->_status = 0;
+					_statusAgents[agentId] = 0;	//agent->_status = 0;
 					_reachedAgents[agentId] = false;
 					_lock.lockWrite();
-					shopInfo[goalId].serviceQ.pop();	//agent出服务队列;
+					shopInfoTemp->at(goalId).serviceQ.pop();	//agent出服务队列;
 					_lock.releaseWrite();
 
 					if (agent->_shopGone.size() == 30)
 						agent->_shopGone.pop_front();
 					agent->_shopGone.push_back(goalId);
 
-					return true;					//出函数
+					return true;//出函数
 
 				};
 			}; break;
 				/*  转移  3->2 */
 			case 3: {
 				if (agentId == 1)
-					cout << shopInfo[goalId].serviceQ.size() <<"+"<< serviceMax <<"+" << shopInfo[goalId].blockQ.front() <<"+"<< agentId << endl;
-				if ((shopInfo[goalId].serviceQ.size() < serviceMax) && (agentId == shopInfo[goalId].blockQ.front()))
+					cout << shopInfoTemp->at(goalId).serviceQ.size() <<"+"<< serviceMax <<"+" << shopInfoTemp->at(goalId).blockQ.front() <<"+"<< agentId << endl;
+				if ((shopInfoTemp->at(goalId).serviceQ.size() < serviceMax) && (agentId == shopInfoTemp->at(goalId).blockQ.front()))
 				{//服务队列有位&& 阻塞队头agent是自己
 					_statusAgents[agentId] = 2;					//agent->_status = 2;
 					_triggerTimes[agentId] = Menge::SIM_TIME + serviceTime;//此处可以再改详细的时间
 					_lock.lockWrite();
-					shopInfo[goalId].blockQ.pop();			  //agent出阻塞队列;
-					shopInfo[goalId].serviceQ.push(agentId);//agent进服务队列;
+					shopInfoTemp->at(goalId).blockQ.pop();			  //agent出阻塞队列;
+					shopInfoTemp->at(goalId).serviceQ.push(agentId);//agent进服务队列;
 					_lock.releaseWrite();
 				}
 			} break;

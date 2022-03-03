@@ -12,6 +12,7 @@
 #include "MengeCore/BFSM/Goals/Goal.h"
 #include "MengeCore/BFSM/Goals/GoalAgent.h"
 #include "MengeCore/Agents/SimulatorInterface.h"
+#include "MengeCore/BFSM/init.h"
 
 #include <cassert>
 
@@ -24,7 +25,6 @@ namespace Menge {
 		/////////////////////////////////////////////////////////////////////
 
 		using namespace std;
-		using Menge::Olympic::roadRegionInfo;
 
 		bool EvacuationGoalSelector::_flag;
 		map <size_t, Goal*> EvacuationGoalSelector::_bestGoals;
@@ -64,6 +64,7 @@ namespace Menge {
 		}
 
 		Goal* EvacuationGoalSelector::getGoal(const Agents::BaseAgent* agent) const {
+			vector<Olympic::roadRegionType>* roadRegionInfo = (ACTIVE_SCENE->roadRegionInfo);//局部变量
 			Agents::BaseAgent* agentTmp = (Agents::BaseAgent*)agent;
 			//leader,用算法选择出口 
 			//if (agent->_class == 1) {
@@ -123,19 +124,19 @@ namespace Menge {
 					size_t populationExit = 0;
 					float_t populationCapacityRatio = 0;
 						
-					populationExit += roadRegionInfo[1].peopleNumInThisRoad;//所有出口的总人数
-					populationExit += roadRegionInfo[20].peopleNumInThisRoad;//所有出口的总人数
-					populationExit += roadRegionInfo[21].peopleNumInThisRoad;//所有出口的总人数
-					populationCapacityRatio += (roadRegionInfo[1].peopleNumInThisRoad+ roadRegionInfo[20].peopleNumInThisRoad) 
-						/ (roadRegionInfo[1].capacity+ roadRegionInfo[20].capacity);//所有出口的总人口容量比
-					populationCapacityRatio += roadRegionInfo[21].peopleNumInThisRoad / roadRegionInfo[21].capacity;//所有出口的总人口容量比
+					populationExit += roadRegionInfo->at(1).peopleNumInThisRoad;//所有出口的总人数
+					populationExit += roadRegionInfo->at(20).peopleNumInThisRoad;//所有出口的总人数
+					populationExit += roadRegionInfo->at(21).peopleNumInThisRoad;//所有出口的总人数
+					populationCapacityRatio += (roadRegionInfo->at(1).peopleNumInThisRoad+ roadRegionInfo->at(20).peopleNumInThisRoad)
+						/ (roadRegionInfo->at(1).capacity+ roadRegionInfo->at(20).capacity);//所有出口的总人口容量比
+					populationCapacityRatio += roadRegionInfo->at(21).peopleNumInThisRoad / roadRegionInfo->at(21).capacity;//所有出口的总人口容量比
 						
 					//cout << "xxx wrong" << endl;
 					//下面计算优先级
 					float_t priorityMax;
 					float_t priorityTmp;
-					vector<int> ExitReagionInfo{ roadRegionInfo[20].peopleNumInThisRoad + roadRegionInfo[1].peopleNumInThisRoad,roadRegionInfo[21].peopleNumInThisRoad };
-					vector<int> populationCapacity{ roadRegionInfo[20].capacity + roadRegionInfo[1].capacity,roadRegionInfo[21].capacity };
+					vector<int> ExitReagionInfo{ roadRegionInfo->at(20).peopleNumInThisRoad + roadRegionInfo->at(1).peopleNumInThisRoad,roadRegionInfo->at(21).peopleNumInThisRoad };
+					vector<int> populationCapacity{ roadRegionInfo->at(20).capacity + roadRegionInfo->at(1).capacity,roadRegionInfo->at(21).capacity };
 					for (int i = 0; i < NUM_AGENT; i++) { //遍历每个agent
 						priorityMax = 0; //优先级算法得到的优先级越大越好
 						priorityTmp = 0;

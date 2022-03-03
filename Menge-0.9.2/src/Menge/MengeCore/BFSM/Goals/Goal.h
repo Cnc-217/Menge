@@ -27,6 +27,8 @@
 #include "MengeCore/PluginEngine/Element.h"
 #include "MengeCore/Runtime/ReadersWriterLock.h"
 
+#include<vector>
+
  // forward declaration
 class TiXmlElement;
 
@@ -40,7 +42,15 @@ namespace Menge {
 
         // Forward declaration
         class GoalSet;
-
+        struct Portrait {
+            int price_;//0~10 价格
+            int serviceTime_;//服务时间
+            std::vector<float> typePortraits_;//-1~1 描述目标点（店铺）的类型
+            Portrait(int price, int serviceTime, std::vector<float> typePortraits)
+                :price_(price),
+                serviceTime_(serviceTime),
+                typePortraits_(typePortraits) {}
+        };
         /*!
          @brief    Exception class for BFSM goals.
          */
@@ -297,6 +307,7 @@ namespace Menge {
 
             friend class GoalSet;
             inline size_t getPopulation() const { return _population; }
+
 
 
         protected:

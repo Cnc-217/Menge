@@ -17,10 +17,10 @@
 #include "MengeVis/Viewer/GLViewer.h"
 #include "MengeCore/Socket.h"
 #include "MengeCore/FileTool.h"
+#include "MengeCore/BFSM/init.h"
 #include <map>
 
 using namespace std;
-using namespace Menge::Olympic;
 namespace Menge {
 	/////////////////////////////////////////////////////////////////////
 	//					Implementation of BaseScene
@@ -54,7 +54,7 @@ namespace Menge {
 				cout << "here "<<algorithmID << endl;
 				Menge::BFSM::EvacuationGoalSelector* evacuationGoalSelector = (Menge::BFSM::EvacuationGoalSelector*)Menge::ACTIVE_FSM->getNode("Evacuation")->getGoalSelector();
 				evacuationGoalSelector->_algorithmID = algorithmID;
-				evacuateModeStart();
+				Olympic::evacuateModeStart();
 				json j;
 				j["Info"] = "Menge has receive your commend: evacuation start";
 				string sendBuf = j.dump();
@@ -112,7 +112,7 @@ namespace Menge {
 				int algorithmID = j["data"];
 				Menge::BFSM::EvacuationGoalSelector* evacuationGoalSelector = (Menge::BFSM::EvacuationGoalSelector*)Menge::ACTIVE_FSM->getNode("Evacuation")->getGoalSelector();
 				evacuationGoalSelector->_algorithmID = algorithmID;
-				evacuateModeStart();
+				Olympic::evacuateModeStart();
 			}
 			else if (!strcmp(info.c_str(), "parameters")) {
 				if (Olympic::goalSeclectorType == "Matrix") {
@@ -140,7 +140,7 @@ namespace Menge {
 				//Menge::FileTool::copyBehaveFile();
 				std::size_t found = SceneFilePath.find_last_of("/");
 				std::string parallelSceneFilePath = SceneFilePath.substr(0, found) + "/OlympicParallelS.xml";
-				BaseScene::sceneParallelXML(parallelSceneFilePath);
+				Menge::FileTool::sceneParallelXML(parallelSceneFilePath);
 			}
 			else if (!strcmp(info.c_str(), "pause")) {
 				MengeVis::SimViewer->_pause = true;
@@ -199,13 +199,6 @@ namespace Menge {
 		}
 
 	}
-
-	void BaseScene::projectNameExtract(string folderPath) {
-		if (folderPath.find("Olympic") != folderPath.npos) {
-			PROJECTNAME = OLYMPIC;
-		}
-
-	}
 	
 	vector<bool> BaseScene::strToVectorBool(char* listStr) {
 		char* temp = strtok(listStr, " ");
@@ -228,172 +221,52 @@ namespace Menge {
 		}
 		return vec;
 	}
-	
-	void BaseScene::sceneParallelXML(string senceXmlFliePath) {
-		TiXmlDocument xml(senceXmlFliePath);
-		bool loadOkay = xml.LoadFile();
-
-		if (!loadOkay) {	// load xml file
-			cout << "load xml error: " << senceXmlFliePath << endl;
-			exit(1);
-		}
-
-		TiXmlElement* experimentNode = xml.RootElement();
-		if (!experimentNode) {
-			cout << "load experimentNode error: " << endl;
-			exit(1);
-		}
-
-		//Tags I'm not ready to parse - only parse agent sets and obstacles AFTER experiment
-		//parameters
-		TiXmlElement* child;
-		for (child = experimentNode->FirstChildElement(); child; child = child->NextSiblingElement()) {
-			//找到了AgentGroup的属性组
-			if (child->ValueStr() == "AgentGroup") {
-				TiXmlElement* nodeChild;
-				for (nodeChild = child->FirstChildElement(); nodeChild; nodeChild = nodeChild->NextSiblingElement()) {
-					//找到了ProfileSelector的属性组
-					if (nodeChild->ValueStr() == "ProfileSelector") 
-					{
-						TiXmlAttribute* attr;
-						attr = nodeChild->FirstAttribute();
-						if (strncmp(attr->Name(), "name", 4) != 0 || strncmp(attr->Value(), "tourist", 7) != 0) 
-							break;
-					}
-					//找到了Generator的属性组
-					if (nodeChild->ValueStr() == "Generator") {
-						nodeChild->Clear();
-						nodeChild->SetAttribute("type", "explicit");
-						int numAgent = SIMULATOR->getNumAgents();
-						for (int i = 0; i < numAgent; i++) {
-							Agents::BaseAgent* agent = SIMULATOR->getAgent(i);
-							if (agent->_class == 0)//游客class为0   leader的class为1
-							{
-								TiXmlElement* node = new TiXmlElement("Agent");
-								node->SetAttribute("p_x", to_string(agent->_pos._x));
-								node->SetAttribute("p_y", to_string(agent->_pos._y));
-								node->SetAttribute("goingTo", to_string(Menge::Olympic::agentGoingShop[i]));
-								nodeChild->LinkEndChild(node);
-							}
-						}
-					}
-
-				}
-			}
-		}
-		xml.SaveFile();
-	}
-
-	bool BaseScene::setRoadRegionFromXML(string dir){
-		double Rad_to_deg = 45.0 / atan(1.0);//角度转弧度
-		float data[5] = { 0 };
-		int capacityData =  0 ;
-		int count = 0;
-		TiXmlDocument doc(dir);    // 读入XML文件
-		if (!doc.LoadFile())
-			return false;  // 如果无法读取文件，则返回
-		TiXmlHandle hDoc(&doc);         // hDoc是&doc指向的对象
-		TiXmlElement* pElem;            // 指向元素的指针
-		pElem = hDoc.FirstChildElement().Element(); //指向根节点
-		TiXmlHandle hRoot(pElem);       // hRoot是根节点
-
-		// 读取x,y，它们放在network->nodes->node节点中
-		TiXmlElement* nodeElem = hRoot.FirstChild("GoalSet").FirstChild("Goal").Element(); //当前指向了Goal节点
-		// 记录移动到了哪个node节点，并且把该node节点的信息录入到顺序对应的data中
-		for (nodeElem; nodeElem; nodeElem = nodeElem->NextSiblingElement())
-		{ // 挨个读取node节点的信息
-			Menge::Olympic::roadRegionType roadRegionTemp;//声明一个临时变量
-			nodeElem->QueryFloatAttribute("x", &data[0]);  //把x放到data[0]中，属性值读法
-			nodeElem->QueryFloatAttribute("y", &data[1]);  //把y放到data[1]中，属性值读法
-			nodeElem->QueryFloatAttribute("width", &data[2]);  //把width放到data[2]中，属性值读法
-			nodeElem->QueryFloatAttribute("height", &data[3]);  //把height放到data[3]中，属性值读法
-			nodeElem->QueryFloatAttribute("angle", &data[4]);  //把angle放到data[4]中，属性值读法
-			nodeElem->QueryIntAttribute("capacity", &capacityData);  //把angle放到data[4]中，属性值读法
-			roadRegionTemp.obbRoadbRegion.set(Vector2(data[0], data[1]), data[2], data[3], data[4] / Rad_to_deg);
-			roadRegionTemp.peopleNumInThisRoad = 0;//初始化为0
-			roadRegionTemp.capacity = capacityData;
-			roadRegionInfo.push_back(roadRegionTemp);//插入
-		}
-		//for (int i = 0; i < roadRegionInfo.size(); i++)
-			//cout << roadRegionInfo[i].obbRoadbRegion.getPivot() << roadRegionInfo[i].obbRoadbRegion.getSize() << roadRegionInfo[i].peopleNumInThisRoad << endl;
-		return true;
-	}
 
 	void BaseScene::updateRoadNum()//对每一个区域 遍历所有人  重度  同时更新区域人数和人在哪个区域
 	{
-		agentInWhichRegion.assign(agentInWhichRegion.size(), -1);//先全初始化成-1
+		vector<Olympic::roadRegionType>* roadRegionInfo = ACTIVE_SCENE->roadRegionInfo;//局部变量
+		Olympic::agentInWhichRegion.assign(Olympic::agentInWhichRegion.size(), -1);//先全初始化成-1
 		Menge::Math::OBBShape  region;
 		int agentNum = Menge::SIMULATOR->getNumAgents();
 		int num;
-		int regionNum = roadRegionInfo.size();
+		int regionNum = roadRegionInfo->size();
 		for (int roadId = 0; roadId < regionNum; roadId++)
 		{
-			region = roadRegionInfo[roadId].obbRoadbRegion;//取当前需要更新的区域
+			region = roadRegionInfo->at(roadId).obbRoadbRegion;//取当前需要更新的区域
 			num = 0;
-			for (int agentID = 0; agentID < agentNum ; agentID++)//对所有不在任何一个区域的人
+			for (int agentID = 0; agentID < agentNum; agentID++)//对所有不在任何一个区域的人
 			{
-				if (agentInWhichRegion[agentID] == -1) {
+				if (Olympic::agentInWhichRegion[agentID] == -1)
+				{
 					Agents::BaseAgent* agent = Menge::SIMULATOR->getAgent(agentID);
 					if (region.containsPoint(agent->_pos))//如果在region里面
 					{
 						num++;
-						agentInWhichRegion[agentID] = roadId;//把agent所在的区域改掉  这样下一次就能少遍历一个
+						Olympic::agentInWhichRegion[agentID] = roadId;//把agent所在的区域改掉  这样下一次就能少遍历一个
 					}
 				}
-				
 			}
-			roadRegionInfo[roadId].peopleNumInThisRoad = num;
+			roadRegionInfo->at(roadId).peopleNumInThisRoad = num;
 		}
 	}
 
 	void BaseScene::updateAgentInRegion()//对每一个人 遍历所有的区域  仅统计人在哪个区域
 	{
-		agentInWhichRegion.assign(agentInWhichRegion.size(), -1);//先全初始化成-1
+		vector<Olympic::roadRegionType>* roadRegionInfo = ACTIVE_SCENE->roadRegionInfo;//局部变量
+		Olympic::agentInWhichRegion.assign(Olympic::agentInWhichRegion.size(), -1);//先全初始化成-1
 		Agents::BaseAgent* agent;
 		for (size_t agentId = 0; agentId < Menge::SIMULATOR->getNumAgents(); agentId++)
 		{
 			agent = Menge::SIMULATOR->getAgent(agentId);
-			for (size_t regionId = 0; regionId < roadRegionInfo.size(); regionId++)
-				if (roadRegionInfo[regionId].obbRoadbRegion.containsPoint(agent->_pos))
+			for (size_t regionId = 0; regionId < roadRegionInfo->size(); regionId++)
+				if (roadRegionInfo->at(regionId).obbRoadbRegion.containsPoint(agent->_pos))
 				{
-					agentInWhichRegion[agentId] = regionId;
+					Olympic::agentInWhichRegion[agentId] = regionId;
 					break;
 				}
 		}
 	}
 
-	void BaseScene::testParallel(string dir)
-	{
-		string source = "Parallel";
-		if (dir.find(source) != string::npos)
-			parallelState = true;
-	}
-
-	bool BaseScene::testSwitchOn(string dir)
-	{
-		ifstream infile;//定义读取文件流，相对于程序来说是in
-		infile.open(dir);//打开文件
-		if (!infile.is_open())
-		{
-			cout << "open file error!" << endl;
-			return false;
-		}
-		
-		TiXmlDocument doc(dir);    // 读入XML文件
-		if (!doc.LoadFile())
-			return false;  // 如果无法读取文件，则返回
-		TiXmlHandle hDoc(&doc);         // hDoc是&doc指向的对象
-		TiXmlElement* pElem;            // 指向元素的指针
-		pElem = hDoc.FirstChildElement().Element(); //指向根节点
-		TiXmlHandle hRoot(pElem);       // hRoot是根节点
-
-		// 读取x,y，它们放在network->nodes->node节点中
-		TiXmlElement* nodeElem = hRoot.FirstChild("kon").Element(); //当前指向了Goal节点
-		int  s;
-		nodeElem->QueryIntAttribute("onoff", &s);
-		return s ;
-	}
-	
 
 	namespace Olympic {
 
@@ -434,11 +307,10 @@ namespace Menge {
 				}
 			}
 
-			startSimTime = Menge::SIM_TIME;
-			AGENT_NUM = Menge::SIMULATOR->getNumAgents();
+			
+			int AGENT_NUM = Menge::SIMULATOR->getNumAgents();
 			for (int i = 0; i < AGENT_NUM; i++) AGENT_SCORES.push_back(0);
 			for (int i = 0; i < AGENT_NUM; i++) AGENT_GOALS.push_back(-1);
-			startSimTime = Menge::SIM_TIME;
 			//2.编写特定的goalselctor，对于引导者，使用算法来决定出口，对于普通人和恐慌者，使用near_agent来决定跟随
 			//3.action中，定好出口位置，agent抵达出口区域，自动转换到stop状态
 			//4.agent转移到新state
@@ -455,103 +327,18 @@ namespace Menge {
 
 
 			//5.编写event,event需要启动状态码
-		
+			startSimTime = Menge::SIM_TIME;
 			evacuationState = true;
 			cout << "evacuationState" << endl;
 
 
 		}
 
-		bool shopInit(string dir) {
-			int data[4] = { 0 };
-			ifstream infile;//定义读取文件流，相对于程序来说是in
-			infile.open(dir);//打开文件
-
-			if (!infile.is_open())
-			{
-				cout << "open file error!" << endl;
-				return false;
-			}
-			//for (int i = 0; i < 10; i++)//定义行循环
-			//	for (int j = 0; j < 4; j++)//定义列循环
-			//		infile >> data[i][j];//读取一个值（空格、制表符、换行隔开）就写入到矩阵中，行列不断循环进行
-			TiXmlDocument doc(dir);    // 读入XML文件
-			if (!doc.LoadFile())
-				return false;  // 如果无法读取文件，则返回
-			TiXmlHandle hDoc(&doc);         // hDoc是&doc指向的对象
-			TiXmlElement* pElem;            // 指向元素的指针
-			pElem = hDoc.FirstChildElement().Element(); //指向根节点
-			TiXmlHandle hRoot(pElem);       // hRoot是根节点
-
-			// 读取x,y，它们放在network->nodes->node节点中
-			TiXmlElement* nodeElem = hRoot.FirstChild("ShopSet").FirstChild("Shop").Element(); //当前指向了Goal节点
-			int count = 0;  // 记录移动到了哪个node节点，并且把该node节点的信息录入到顺序对应的data中
-			for (nodeElem; nodeElem; nodeElem = nodeElem->NextSiblingElement())
-			{ // 挨个读取node节点的信息
-				nodeElem->QueryIntAttribute("type", &data[0]);  //把x放到data[count][0]中，属性值读法
-				nodeElem->QueryIntAttribute("number", &data[1]);  //把y放到data[count][1]中，属性值读法
-				nodeElem->QueryIntAttribute("serviceMax", &data[2]);  //把width放到data[count][2]中，属性值读法
-				nodeElem->QueryIntAttribute("blockMax", &data[3]);  //把height放到data[count][3]中，属性值读法
-				Shoptype shoptemp;
-				for (int i = 0; i < data[1]; i++)
-				{
-					shoptemp.type = data[0];
-					shoptemp.serviceMax = data[2];
-					shoptemp.blockMax = data[3];
-					shoptemp.goalSet = count;
-					shoptemp.sameSetGoalNum = data[1];
-					shopInfo.insert(make_pair(count, shoptemp));//插入
-					count++;
-				}
-			}
-			infile.close();//读取完成之后关闭文件
-			int index = 0;
-			/*for (int i = 0; i < 10; i++)
-			{
-				for (int j = 0; j < data[i][1]; j++)
-				{
-					Shoptype shoptemp;
-					shoptemp.type = data[i][0];
-					shoptemp.serviceMax = data[i][2];
-					shoptemp.blockMax = data[i][3];
-					shoptemp.goalSet = i;
-					shoptemp.sameSetGoalNum = data[i][1];
-					shopInfo.insert(make_pair(index, shoptemp));//插入
-					index++;
-				}
-			}	*/
-			
-
-			return true;
-			}
-
-		bool getIpFromXml(string dir)
-		{
-			ifstream infile;//定义读取文件流，相对于程序来说是in
-			infile.open(dir);//打开文件
-			if (!infile.is_open())
-			{
-				cout << "open file error!" << endl;
-				return false;
-			}
-			TiXmlDocument doc(dir);    // 读入XML文件
-			if (!doc.LoadFile())
-				return false;  // 如果无法读取文件，则返回
-			TiXmlHandle hDoc(&doc);         // hDoc是&doc指向的对象
-			TiXmlElement* pElem;            // 指向元素的指针
-			pElem = hDoc.FirstChildElement().Element(); //指向根节点
-			TiXmlHandle hRoot(pElem);       // hRoot是根节点
-			TiXmlElement* nodeElem = hRoot.FirstChild("internet").Element(); //当前指向了internet节点
-			nodeElem->QueryIntAttribute("methor", &methor);  //把x放到data[count][0]中，属性值读法
-			nodeElem->QueryValueAttribute("ip", &ip);  //把x放到data[count][0]中，属性值读法
-			nodeElem->QueryIntAttribute("port", &port);  //把x放到data[count][0]中，属性值读法
-			return true;
-		}
-
 		string matrixFlowScene() {
 			//发送 1：36个目标点的人数 2：概率矩阵
 			std::vector<int> agentNumOfShop(36, 0);
-			for (int i = 0; i < Menge::ACTIVE_FSM->getGoalSet(0)->size(); i++) agentNumOfShop[i] = shopInfo[i].serviceQ.size() + shopInfo[i].blockQ.size();
+			for (int i = 0; i < Menge::ACTIVE_FSM->getGoalSet(0)->size(); i++) 
+				agentNumOfShop[i] = ACTIVE_SCENE->shopInfo->at(i).serviceQ.size() + ACTIVE_SCENE->shopInfo->at(i).blockQ.size();
 
 			vector<vector<float>> matrixVector = Menge::BaseScene::ProbMatrix->toVector();
 			//json生成
@@ -568,7 +355,8 @@ namespace Menge {
 		string matrixBusinessScene() {
 			//发送 1：36个目标点的人数 2：概率矩阵
 			std::vector<int> agentNumOfShop(36, 0);
-			for (int i = 0; i < Menge::ACTIVE_FSM->getGoalSet(0)->size(); i++) agentNumOfShop[i] = shopInfo[i].serviceQ.size() + shopInfo[i].blockQ.size();
+			for (int i = 0; i < Menge::ACTIVE_FSM->getGoalSet(0)->size(); i++) 
+				agentNumOfShop[i] = ACTIVE_SCENE->shopInfo->at(i).serviceQ.size() + ACTIVE_SCENE->shopInfo->at(i).blockQ.size();
 			vector<vector<float>> matrixVector = Menge::BaseScene::ProbMatrix->toVector();
 			//json生成
 			json j;
@@ -610,13 +398,14 @@ namespace Menge {
 		string getSimData() {
 			//发送 1：36个目标点的人数
 			std::vector<int> agentNumOfShop(36, 0);
-			std::vector<int> roadRegionNum(19, 0);
+			vector<roadRegionType>* roadRegionInfo = (ACTIVE_SCENE->roadRegionInfo);//局部变量
+			std::vector<int> roadRegionNum(roadRegionInfo->size(), 0);
 			int numAgent = Menge::SIMULATOR->getNumAgents();
 			std::vector<std::vector<int>> agentTrajectory(numAgent, std::vector<int>(30,0));
 			for (int i = 0; i < Menge::ACTIVE_FSM->getGoalSet(0)->size(); i++) 
-				agentNumOfShop[i] = shopInfo[i].serviceQ.size() + shopInfo[i].blockQ.size();
-			for (int i = 0; i < roadRegionInfo.size(); i++)
-				roadRegionNum[i] = roadRegionInfo[i].peopleNumInThisRoad;
+				agentNumOfShop[i] = ACTIVE_SCENE->shopInfo->at(i).serviceQ.size() + ACTIVE_SCENE->shopInfo->at(i).blockQ.size();
+			for (int i = 0; i < roadRegionInfo->size(); i++)
+				roadRegionNum[i] = roadRegionInfo->at(i).peopleNumInThisRoad;
 			for (int i = 0; i < numAgent; i++)
 				agentTrajectory[i].assign(Menge::SIMULATOR->getAgent(i)->_shopGone.begin(), Menge::SIMULATOR->getAgent(i)->_shopGone.end());
 			//json生成
@@ -625,6 +414,9 @@ namespace Menge {
 			j["data"] = agentNumOfShop;
 			j["regionPopulation"] = roadRegionNum;
 			j["agentTrajectory"] = agentTrajectory;
+			j["time"] = Menge::SIMULATOR->getGlobalTime();
+			if (evacuationState == true) j["evacuateTime"] = Menge::SIMULATOR->getGlobalTime() - Olympic::startSimTime;
+			else j["evacuateTime"] = 0;
 			string sendBuf = j.dump();
 			return sendBuf;
 		}

@@ -3,6 +3,7 @@ from scenes.simulation import Simulation
 from services.socketService import *
 from resources.tool import *
 
+
 #将Menge的参数与服务器同步
 #json={"info"="updateParameter","data"=matrix}
 #接收json={"info"="xxxxx"}
@@ -30,6 +31,7 @@ def getDataFromMenge(sim):
     socketSend(jsonData, client)
     rawData = socketRecive(client)
     return rawData
+
 
 #命令Menge开始疏散
 #json={"info"="evacuate"}
@@ -91,3 +93,4 @@ def setUnityBlock(sim):
     messageSend = json.dumps(jsonData)
     unityClient = sim.getUnityClient()
     unityClient.sendall(messageSend.encode("utf8"))
+

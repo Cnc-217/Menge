@@ -102,7 +102,7 @@
   </Transition>
 
   <Transition from="Stop" to="EndSimulate" >
-    <Condition type="goal_reached" distance="200" />
+    <Condition type="goal_reached" distance="100" />
   </Transition>
 
 <!-- 这里只有trigger有用，其他的都是donothing -->

@@ -645,9 +645,6 @@
     <ClCompile Include="$(SrcDir)\MengeCore\Agents\ProfileSelectors\profile_selector_weighted.cpp">
       <Filter>Source Files\Agents\ProfileSelectors</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorAlgorithm.cpp">
-      <Filter>Source Files\BFSM\GoalSelectors</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Menge\MengeCore\Agents\Events\TimeEvtTrigger .cpp">
       <Filter>Source Files\Agents\Events</Filter>
     </ClCompile>
@@ -725,6 +722,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorEnd.cpp">
       <Filter>Source Files\BFSM\GoalSelectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorTown.cpp">
+      <Filter>Source Files\BFSM\GoalSelectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\init.cpp">
+      <Filter>Source Files\BFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Menge\MengeCore\BFSM\SceneFactory.cpp">
+      <Filter>Source Files\BFSM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1325,9 +1331,6 @@
     <ClInclude Include="$(SrcDir)\MengeCore\data_set_selector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorAlgorithm.h">
-      <Filter>Header Files\BFSM\GoalSelectors</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\Menge\MengeCore\Agents\Events\TimeEvtTrigger.h">
       <Filter>Header Files\Agents\Events</Filter>
     </ClInclude>
@@ -1417,6 +1420,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorEnd.h">
       <Filter>Header Files\BFSM\GoalSelectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\GoalSelectors\GoalSelectorTown.h">
+      <Filter>Header Files\BFSM\GoalSelectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\init.h">
+      <Filter>Header Files\BFSM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\BFSM\SceneFactory.h">
+      <Filter>Header Files\BFSM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
