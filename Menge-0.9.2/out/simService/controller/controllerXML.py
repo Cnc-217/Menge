@@ -1,11 +1,12 @@
+import json
 
-# from services.timeService import *
+from services.timeService import *
 from resources.xmlTool import *
 
 from flask import Blueprint, request
 controllerXML = Blueprint('controllerXML', __name__)
 
-@controllerXML.route('/xmlTest', methods=['POST'])
+@controllerXML.route('/<sceneName>/xmlTest', methods=['POST'])
 def xmlTest(sceneName):
     tree = ET.parse("..\..\examples\Olympic\OlympicS.xml")#相对路径
     root = tree.getroot()
@@ -70,7 +71,7 @@ def xmlTest(sceneName):
 
 
 
-@controllerXML.route('/xmlTest2', methods=['POST'])
+@controllerXML.route('/<sceneName>/xmlTest2', methods=['POST'])
 def xmlTest2(sceneName):
     sceneType = request.values.get("sceneType")  # model matrix
     runType = request.values.get("runType")  # menge unity
@@ -173,4 +174,16 @@ def xmlTest2(sceneName):
     parameterSynToMenge(sim)
     info = sim.getSceneName() + " simulation start complete"
     jsonData = {"info": info, "pid": str(sim.getPid())}
+    return jsonData
+
+@controllerXML.route('/<sceneName>/bodyTest', methods=['POST'])
+def bodyTest(sceneName):
+    sceneType = request.values.get("sceneType")  # model matrix
+    runType = request.values.get("runType")  # menge unity
+    body = request.get_data().decode()
+    print(body,type(body))
+    jsondata = json.loads(body)
+    print(jsondata,type(jsondata))
+    info = ""
+    jsonData = jsondata
     return jsonData
